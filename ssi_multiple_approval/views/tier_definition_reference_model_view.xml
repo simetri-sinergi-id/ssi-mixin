@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2018 Eficent Business and IT Consulting Services S.L.
+     Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="tier_definition_reference_model_view_tree" model="ir.ui.view">
+        <field name="name">tier.definition_reference_model tree</field>
+        <field name="model">tier.definition_reference_model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="model_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="tier_definition_reference_model_view_form" model="ir.ui.view">
+        <field name="name">tier.definition_reference_model form</field>
+        <field name="model">tier.definition_reference_model</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box" />
+                    <group name="group_1" colspan="4" col="2">
+                        <field name="model_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="tier_definition_reference_model_action" model="ir.actions.act_window">
+        <field name="name">Tier Definition Reference Model</field>
+        <field name="res_model">tier.definition_reference_model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="tier_definition_reference_model_menu"
+        parent="menu_tier_confirmation"
+        action="tier_definition_reference_model_action"
+        name="Reference Model"
+    />
+</odoo>

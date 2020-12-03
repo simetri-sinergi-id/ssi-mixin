@@ -1,16 +1,16 @@
-# -*- coding: utf-8 -*-
 # Copyright 2018 Eficent Business and IT Consulting Services S.L.
 # Copyright 2020 OpenSynergy Indonesia
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from openerp import api, fields, models, _
-from openerp.exceptions import Warning as UserError, ValidationError
-from openerp.tools.safe_eval import safe_eval
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError, ValidationError
+from odoo.tools.safe_eval import safe_eval
 
 
-class TierValidation(models.AbstractModel):
-    _name = "tier.validation"
+class TierValidationMixin(models.AbstractModel):
+    _name = "tier.validation.mixin"
+    _description = "Tier Validation"
 
     _state_field = "state"
     _state_from = ["draft"]
@@ -63,37 +63,33 @@ class TierValidation(models.AbstractModel):
         compute="_compute_reviewer_partner_ids",
     )
 
-    @api.multi
     @api.depends(
         "review_ids",
     )
     def _compute_active_reviewer_ids(self):
         for rec in self:
             rec.active_reviewer_ids = rec.review_ids.filtered(
-                lambda r: r.status == "pending")
+                lambda r: r.status == "pending"
+            )
 
-    @api.multi
     @api.depends(
         "review_ids",
     )
     def _compute_next_reviewer_ids(self):
         for rec in self:
             rec.next_reviewer_ids = rec.review_ids.filtered(
-                lambda r: r.status == "draft")
-            if rec.definition_id.validate_sequence and \
-                    len(rec.next_reviewer_ids) > 0:
+                lambda r: r.status == "draft"
+            )
+            if rec.definition_id.validate_sequence and len(rec.next_reviewer_ids) > 0:
                 rec.next_reviewer_ids = rec.next_reviewer_ids[0]
 
-    @api.multi
-    @api.depends(
-        "review_ids"
-    )
+    @api.depends("review_ids")
     def _compute_reviewer_ids(self):
         for rec in self:
             rec.reviewer_ids = rec.review_ids.filtered(
-                lambda r: r.status == "pending").mapped("reviewer_ids")
+                lambda r: r.status == "pending"
+            ).mapped("reviewer_ids")
 
-    @api.multi
     @api.depends(
         "reviewer_ids",
         "definition_id",
@@ -102,58 +98,53 @@ class TierValidation(models.AbstractModel):
     def _compute_reviewer_partner_ids(self):
         for rec in self:
             if rec.definition_id.validate_sequence:
-                rec.reviewer_partner_ids =\
-                    rec._get_reviewer_partner_ids_by_sequence()
+                rec.reviewer_partner_ids = rec._get_reviewer_partner_ids_by_sequence()
             else:
-                rec.reviewer_partner_ids =\
-                    rec._get_reviewer_partner_ids()
+                rec.reviewer_partner_ids = rec._get_reviewer_partner_ids()
 
-    @api.multi
     def _get_reviewer_partner_ids(self):
         self.ensure_one()
         partner = False
         if self.review_ids:
-            filter_review_ids =\
-                self.review_ids.filtered(lambda r: r.status in ("pending"))
+            filter_review_ids = self.review_ids.filtered(
+                lambda r: r.status in ("pending")
+            )
             if filter_review_ids:
-                partner = (filter_review_ids
-                           .mapped("reviewer_ids")
-                           .mapped("partner_id"))
+                partner = filter_review_ids.mapped("reviewer_ids").mapped("partner_id")
         return partner
 
-    @api.multi
     def _get_reviewer_partner_ids_by_sequence(self):
         self.ensure_one()
         partner = False
         if self.review_ids:
-            filter_review_ids =\
-                self.review_ids.filtered(lambda r: r.status in ("pending"))
+            filter_review_ids = self.review_ids.filtered(
+                lambda r: r.status in ("pending")
+            )
             if filter_review_ids:
-                sorted_review_ids =\
-                    filter_review_ids.sorted(key=lambda s: s.sequence)[0]
-                partner = (sorted_review_ids
-                           .mapped("reviewer_ids")
-                           .mapped("partner_id"))
+                sorted_review_ids = filter_review_ids.sorted(key=lambda s: s.sequence)[
+                    0
+                ]
+                partner = sorted_review_ids.mapped("reviewer_ids").mapped("partner_id")
         return partner
 
-    @api.model
     def _search_validated(self, operator, value):
         assert operator in ("=", "!="), "Invalid domain operator"
         assert value in (True, False), "Invalid domain value"
-        pos = self.search([
-            (self._state_field, "in", self._state_from)]).filtered(
-            lambda r: r.review_ids and r.validated == value)
+        pos = self.search([(self._state_field, "in", self._state_from)]).filtered(
+            lambda r: r.review_ids and r.validated == value
+        )
         return [("id", "in", pos.ids)]
 
-    @api.model
     def _search_reviewer_ids(self, operator, value):
-        reviews = self.env["tier.review"].search([
-            ("model", "=", self._name),
-            ("reviewer_ids", operator, value),
-            ("status", "=", "pending")])
+        reviews = self.env["tier.review"].search(
+            [
+                ("model", "=", self._name),
+                ("reviewer_ids", operator, value),
+                ("status", "=", "pending"),
+            ]
+        )
         return [("id", "in", list(set(reviews.mapped("res_id"))))]
 
-    @api.multi
     def _compute_validated_rejected(self):
         for rec in self:
             rec.validated = self._calc_reviews_validated(rec.review_ids)
@@ -171,7 +162,6 @@ class TierValidation(models.AbstractModel):
         """Override for different rejection policy."""
         return any([s == "rejected" for s in reviews.mapped("status")])
 
-    @api.multi
     def _compute_need_validation(self):
         obj_tier_definition = self.env["tier.definition"]
         for rec in self:
@@ -181,16 +171,19 @@ class TierValidation(models.AbstractModel):
             ]
             tiers = obj_tier_definition.search(criteria)
             valid_tiers = any([rec.evaluate_tier(tier) for tier in tiers])
-            rec.need_validation = not rec.review_ids and valid_tiers and \
-                getattr(rec, self._state_field) in self._state_from
+            rec.need_validation = (
+                not rec.review_ids
+                and valid_tiers
+                and getattr(rec, self._state_field) in self._state_from
+            )
 
-    @api.multi
     def evaluate_tier(self, tier):
         try:
             res = safe_eval(tier.python_code, globals_dict={"rec": self})
         except Exception as error:
-            raise UserError(_(
-                "Error evaluating tier validation conditions.\n %s") % error)
+            raise UserError(
+                _("Error evaluating tier validation conditions.\n %s") % error
+            )
         return res
 
     @api.model
@@ -202,7 +195,6 @@ class TierValidation(models.AbstractModel):
         ]
         return fields
 
-    @api.multi
     def _check_allow_write_under_validation(self, vals):
         """Allow to add exceptions for fields that are allowed to be written
         even when the record is under validation."""
@@ -212,75 +204,87 @@ class TierValidation(models.AbstractModel):
                 return False
         return True
 
-    @api.multi
     def write(self, vals):
         for rec in self:
-            if (getattr(rec, self._state_field) in self._state_from and
-                    vals.get(self._state_field) in self._state_to):
+            if (
+                getattr(rec, self._state_field) in self._state_from
+                and vals.get(self._state_field) in self._state_to
+            ):
                 if rec.need_validation:
                     reviews = rec.request_validation()
                     if not self._calc_reviews_validated(reviews):
-                        raise ValidationError(_(
-                            "This action needs to be validated for at least "
-                            "one record. \nPlease request a validation."))
+                        raise ValidationError(
+                            _(
+                                "This action needs to be validated for at least "
+                                "one record. \nPlease request a validation."
+                            )
+                        )
                 if rec.review_ids and not rec.validated:
-                    raise ValidationError(_(
-                        "A validation process is still open for at least "
-                        "one record."))
-            if (rec.review_ids and getattr(rec, self._state_field) in
-                    self._state_from and not vals.get(self._state_field) in
-                    (self._state_to + [self._cancel_state]) and not
-                    self._check_allow_write_under_validation(vals)):
+                    raise ValidationError(
+                        _(
+                            "A validation process is still open for at least "
+                            "one record."
+                        )
+                    )
+            if (
+                rec.review_ids
+                and getattr(rec, self._state_field) in self._state_from
+                and not vals.get(self._state_field)
+                in (self._state_to + [self._cancel_state])
+                and not self._check_allow_write_under_validation(vals)
+            ):
                 raise ValidationError(_("The operation is under validation."))
         if vals.get(self._state_field) in self._state_from:
             self.mapped("review_ids").unlink()
             self.mapped("reviewer_partner_ids").unlink()
             self.definition_id = False
-        return super(TierValidation, self).write(vals)
+        return super(TierValidationMixin, self).write(vals)
 
-    @api.multi
     def set_active(self, reviewer):
         self.ensure_one()
         if reviewer and self.definition_id:
-            reviewer_ids = reviewer.filtered(
-                lambda r: r.status == "draft")
-            if self.definition_id.validate_sequence and \
-                    len(reviewer_ids) > 0:
+            reviewer_ids = reviewer.filtered(lambda r: r.status == "draft")
+            if self.definition_id.validate_sequence and len(reviewer_ids) > 0:
                 reviewer_ids = reviewer_ids[0]
             reviewer_ids.write({"status": "pending"})
 
-    @api.multi
     def _validate_tier(self):
         self.ensure_one()
         review_ids = self.active_reviewer_ids
         user_reviews = review_ids.filtered(
-            lambda r: self.env.user.id in r.reviewer_ids.ids)
+            lambda r: self.env.user.id in r.reviewer_ids.ids
+        )
         if user_reviews:
-            user_reviews.write({
-                "status": "approved",
-                "date": fields.Datetime.now(),
-                "user_id": self.env.user.id,
-            })
+            user_reviews.write(
+                {
+                    "status": "approved",
+                    "date": fields.Datetime.now(),
+                    "user_id": self.env.user.id,
+                }
+            )
             self.set_active(self.next_reviewer_ids)
 
-    @api.multi
     def validate_tier(self):
         for rec in self:
             rec._validate_tier()
 
-    @api.multi
     def reject_tier(self):
         for rec in self:
             review_ids = rec.active_reviewer_ids
             user_reviews = review_ids.filtered(
-                lambda r: self.env.user.id in r.reviewer_ids.ids)
-            user_reviews.write({
-                "status": "rejected",
-                "date": fields.Datetime.now(),
-                "user_id": self.env.user.id,
-            })
+                lambda r: self.env.user.id in r.reviewer_ids.ids
+            )
+            user_reviews.write(
+                {
+                    "status": "rejected",
+                    "date": fields.Datetime.now(),
+                    "user_id": self.env.user.id,
+                }
+            )
+            for review in user_reviews:
+                rec = self.env[review.model].browse(review.res_id)
+                rec._notify_rejected_review()
 
-    @api.multi
     def request_validation(self):
         td_obj = self.env["tier.definition"]
         reviewer_ids = False
@@ -307,37 +311,61 @@ class TierValidation(models.AbstractModel):
                                 break
                 reviewer_ids = rec.create_reviewer()
                 rec.set_active(reviewer_ids)
+        self._notify_review_requested(reviewer_ids)
         return reviewer_ids
 
-    @api.multi
     def create_reviewer(self):
         self.ensure_one()
         td_reviewer_obj = self.env["tier.definition.review"]
         tr_obj = created_trs = self.env["tier.review"]
         sequence = 0
 
-        criteria_reviewer = [
-            ("definition_id", "=", self.definition_id.id)
-        ]
-        reviewer_ids =\
-            td_reviewer_obj.search(
-                criteria_reviewer,
-                order="sequence"
-            )
+        criteria_reviewer = [("definition_id", "=", self.definition_id.id)]
+        reviewer_ids = td_reviewer_obj.search(criteria_reviewer, order="sequence")
         if reviewer_ids:
             for reviewer in reviewer_ids:
                 sequence += 1
-                created_trs += tr_obj.create({
-                    "model": self._name,
-                    "res_id": self.id,
-                    "definition_id": self.definition_id.id,
-                    "definition_review_id": reviewer.id,
-                    "sequence": sequence,
-                })
+                created_trs += tr_obj.create(
+                    {
+                        "model": self._name,
+                        "res_id": self.id,
+                        "definition_id": self.definition_id.id,
+                        "definition_review_id": reviewer.id,
+                        "sequence": sequence,
+                    }
+                )
         return created_trs
 
-    @api.multi
     def restart_validation(self):
         for rec in self:
             if getattr(rec, self._state_field) in self._state_from:
                 rec.mapped("review_ids").unlink()
+
+    def _notify_requested_review_body(self):
+        return _("A review has been requested by %s.") % (self.env.user.name)
+
+    def _notify_review_requested(self, tier_reviews):
+        post = "message_post"
+        subscribe = "message_subscribe"
+        if hasattr(self, post) and hasattr(self, subscribe):
+            for rec in self:
+                users_to_notify = tier_reviews.filtered(
+                    lambda r: r.definition_id.notify_on_create and r.res_id == rec.id
+                ).mapped("reviewer_ids")
+                getattr(rec, subscribe)(
+                    partner_ids=users_to_notify.mapped("partner_id").ids
+                )
+                getattr(rec, post)(
+                    subtype_xmlid="mail.mt_comment",
+                    body=rec._notify_requested_review_body(),
+                )
+
+    def _notify_rejected_review_body(self):
+        return _("A review was rejected by %s.") % (self.env.user.name)
+
+    def _notify_rejected_review(self):
+        post = "message_post"
+        if hasattr(self, post):
+            getattr(self, post)(
+                subtype_xmlid="mail.mt_note", body=self._notify_rejected_review_body()
+            )
