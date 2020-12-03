@@ -3,3 +3,4 @@ access_tier_review,access.tier.review,model_tier_review,,1,1,1,1
 access_tier_definition_all,tier.definition.all,model_tier_definition,,1,0,0,0
 access_tier_definition_settings,tier.definition.settings,model_tier_definition,base.group_system,1,1,1,1
 access_tier_definition_review,tier.definition.review,model_tier_definition_review,,1,1,1,1
+access_tier_definition_model_reference,tier.definition_model_reference - all,model_tier_definition_reference_model,,1,1,1,1
