@@ -1,14 +1,14 @@
-# -*- coding: utf-8 -*-
 # Copyright 2018 Eficent Business and IT Consulting Services S.L.
 # Copyright 2020 OpenSynergy Indonesia
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 
 class TierDefinition(models.Model):
     _name = "tier.definition"
+    _description = "Tier Definition"
     _order = "sequence"
 
     @api.model
@@ -31,8 +31,8 @@ class TierDefinition(models.Model):
     python_code = fields.Text(
         string="Tier Definition Expression",
         help="Write Python code that defines when this tier confirmation "
-             "will be needed. The result of executing the expresion must be "
-             "a boolean.",
+        "will be needed. The result of executing the expresion must be "
+        "a boolean.",
         default="""# Available locals:\n#  - rec: current record""",
     )
     sequence = fields.Integer(
@@ -44,8 +44,7 @@ class TierDefinition(models.Model):
     company_id = fields.Many2one(
         string="Company",
         comodel_name="res.company",
-        default=lambda self: self.env["res.company"]._company_default_get(
-            "tier.definition"),
+        default=lambda self: self.env.company,
     )
     definition_review_ids = fields.One2many(
         string="Reviewer(s)",
@@ -60,15 +59,16 @@ class TierDefinition(models.Model):
         string="Special Validation",
         help="This validation can only be selected manually. ",
     )
-    email_template_id = fields.Many2one(
-        string="Email Template",
-        comodel_name="email.template",
+    notify_on_create = fields.Boolean(
+        string="Notify Reviewers on Creation",
+        help="If set, all possible reviewers will be notified by email when "
+        "this definition is triggered.",
     )
 
-    @api.onchange(
-        "model_id"
-    )
+    @api.onchange("model_id")
     def onchange_model_id(self):
-        return {"domain": {
-            "model_id": [
-                ("model", "in", self._get_tier_validation_model_names())]}}
+        return {
+            "domain": {
+                "model_id": [("model", "in", self._get_tier_validation_model_names())]
+            }
+        }

@@ -1,22 +1,21 @@
-# -*- coding: utf-8 -*-
 # Copyright 2018 Eficent Business and IT Consulting Services S.L.
 # Copyright 2020 OpenSynergy Indonesia
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    "name": "Base Multiple Approval",
+    "name": "Multiple Approval",
     "summary": "Implement a validation process based on tiers.",
-    "version": "8.0.2.4.0",
+    "version": "14.0.1.0.0",
     "category": "Tools",
-    "website": "https://simetri-sinergi.id",
+    "website": "https://github.com/OCA/ssi-mixin",
     "author": "Eficent, Odoo Community Association (OCA), "
-              "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
+    "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
     "depends": [
-        "base",
-        "email_template",
+        "web",
+        "bus",
     ],
     "data": [
         "security/ir.model.access.csv",
