@@ -4,6 +4,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from . import (
+    tier_definition_reference_model,
     tier_definition_review,
     tier_definition,
     tier_review,

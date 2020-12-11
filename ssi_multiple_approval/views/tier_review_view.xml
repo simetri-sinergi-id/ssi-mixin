@@ -14,7 +14,7 @@
             >
                 <field name="sequence" />
                 <field name="review_type" />
-                <field name="reviewer_ids" />
+                <field name="reviewer_ids" widget="many2many_tags_avatar" />
                 <field name="user_id" />
                 <field name="date" />
                 <field name="status" />

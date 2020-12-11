@@ -31,12 +31,15 @@ class TierReview(models.Model):
         index=True,
     )
     definition_id = fields.Many2one(
+        string="Definition",
         comodel_name="tier.definition",
     )
     definition_review_id = fields.Many2one(
+        string="Definition Review",
         comodel_name="tier.definition.review",
     )
     review_type = fields.Selection(
+        string="Review Type",
         related="definition_review_id.review_type",
         readonly=True,
     )
@@ -51,7 +54,10 @@ class TierReview(models.Model):
         comodel_name="res.partner",
         compute="_compute_reviewer_partner_ids",
     )
-    sequence = fields.Integer(string="Tier")
+    sequence = fields.Integer(
+        string="Sequence",
+        required=True,
+    )
     date = fields.Datetime(
         string="Date",
         readonly=True,

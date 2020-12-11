@@ -5,102 +5,162 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record id="tier_definition_view_tree" model="ir.ui.view">
-        <field name="name">tier.definition.tree</field>
+        <field name="name">tier.definition tree</field>
         <field name="model">tier.definition</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle" />
                 <field name="name" />
                 <field name="model_id" />
                 <field name="company_id" groups="base.group_multi_company" />
-                <field name="sequence" />
-                <field name="active" />
             </tree>
         </field>
     </record>
 
     <record id="tier_definition_view_form" model="ir.ui.view">
-        <field name="name">tier.definition.form</field>
+        <field name="name">tier.definition form</field>
         <field name="model">tier.definition</field>
         <field name="arch" type="xml">
             <form>
                 <header>
                 </header>
+                <sheet>
+                    <div name="div_smart_buttons" class="oe_right oe_button_box">
+                    </div>
 
-                <div name="div_smart_buttons" class="oe_right oe_button_box">
-                </div>
-
-                <group>
-                    <group name="left">
-                        <field name="name" />
-                        <field name="model_id" options="{'no_create': True}" />
-                        <field
-                            name="company_id"
-                            groups="base.group_multi_company"
-                            options="{'no_create': True}"
-                        />
+                    <group>
+                        <group name="left">
+                            <field name="name" />
+                            <field
+                                name="allowed_model_ids"
+                                widget="many2many_tags"
+                                invisible="1"
+                            />
+                            <field
+                                name="model_id"
+                                domain="[('id','in',allowed_model_ids)]"
+                                options="{'no_create': True}"
+                            />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                                options="{'no_create': True}"
+                            />
+                            <field name="sequence" />
+                            <field name="active" widget="boolean_toggle" />
+                        </group>
+                        <group name="right">
+                            <field name="validate_sequence" widget="boolean_toggle" />
+                            <field name="special_validation" widget="boolean_toggle" />
+                            <field name="notify_on_create" widget="boolean_toggle" />
+                        </group>
                     </group>
-                    <group name="right">
-                        <field name="validate_sequence" />
-                        <field name="special_validation" />
-                        <field name="notify_on_create" />
-                        <field name="sequence" />
-                        <field name="active" />
-                    </group>
-                </group>
-                <notebook>
-                    <page name="page_review_ids" string="Reviewer(s)">
-                        <field name="definition_review_ids" colspan="4" nolabel="1">
-                            <tree>
-                                <field name="sequence" widget="handle" />
-                                <field name="review_type" />
-                                <field name="reviewer_ids" />
-                                <field name="reviewer_group_ids" />
-                                <field name="python_code" />
-                            </tree>
-                            <form>
-                                <group name="grp_review_ids">
+                    <notebook>
+                        <page name="page_review_ids" string="Reviewer(s)">
+                            <field name="definition_review_ids" colspan="4" nolabel="1">
+                                <tree>
+                                    <field name="sequence" widget="handle" />
                                     <field name="review_type" />
                                     <field
                                         name="reviewer_ids"
-                                        widget="many2many_tags"
-                                        attrs="{
-                                                'invisible': [('review_type', '!=', 'individual'), ('review_type', '!=', 'both')],
-                                                'required': ['|', ('review_type', '=', 'individual'), ('review_type', '=', 'both')]}"
+                                        widget="many2many_tags_avatar"
                                     />
                                     <field
                                         name="reviewer_group_ids"
                                         widget="many2many_tags"
-                                        attrs="{
-                                                'invisible': [('review_type', '!=', 'group'), ('review_type', '!=', 'both')],
-                                                'required': ['|', ('review_type', '=', 'group'), ('review_type', '=', 'both')]}"
                                     />
-                                    <field
-                                        name="python_code"
-                                        attrs="{
-                                                'invisible': [('review_type', '!=', 'python')],
-                                                'required': [('review_type', '=', 'python')]}"
-                                    />
-                                   <field name="sequence" />
-                                </group>
-                            </form>
-                        </field>
-                    </page>
-                    <page
-                        name="page_python_expression"
-                        string="Tier Definition Expression"
-                    >
-                        <field name="python_code" nolabel="1" />
-                    </page>
-                </notebook>
+                                    <field name="python_code" />
+                                </tree>
+                                <form>
+                                    <group name="grp_review_ids">
+                                        <field name="review_type" />
+                                        <field
+                                            name="reviewer_ids"
+                                            widget="many2many_tags_avatar"
+                                            attrs="{
+                                                    'invisible': [('review_type', '!=', 'individual'), ('review_type', '!=', 'both')],
+                                                    'required': ['|', ('review_type', '=', 'individual'), ('review_type', '=', 'both')]}"
+                                        />
+                                        <field
+                                            name="reviewer_group_ids"
+                                            widget="many2many_tags"
+                                            attrs="{
+                                                    'invisible': [('review_type', '!=', 'group'), ('review_type', '!=', 'both')],
+                                                    'required': ['|', ('review_type', '=', 'group'), ('review_type', '=', 'both')]}"
+                                        />
+                                        <field
+                                            name="python_code"
+                                            widget="ace"
+                                            attrs="{
+                                                    'invisible': [('review_type', '!=', 'python')],
+                                                    'required': [('review_type', '=', 'python')]}"
+                                        />
+                                       <field name="sequence" />
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page
+                            name="page_python_expression"
+                            string="Tier Definition Expression"
+                        >
+                            <field name="python_code" nolabel="1" widget="ace" />
+                        </page>
+                    </notebook>
+                </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="tier_definition_view_search" model="ir.ui.view">
+        <field name="name">tier.definition search</field>
+        <field name="model">tier.definition</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="model_id" />
+                <field name="company_id" groups="base.group_multi_company" />
+                <group name="validate_sequence">
+                    <filter
+                        name="dom_validate_sequence"
+                        string="Serial Validation"
+                        domain="[('validate_sequence','=',True)]"
+                    />
+                    <filter
+                        name="dom_non_validate_sequence"
+                        string="Parallel Validation"
+                        domain="[('validate_sequence','=',False)]"
+                    />
+                </group>
+                <separator />
+                <group name="validate_type">
+                    <filter
+                        name="dom_normal_validation"
+                        string="Normal Validation"
+                        domain="[('special_validation','=',False)]"
+                    />
+                    <filter
+                        name="dom_special_validation"
+                        string="Special Validation"
+                        domain="[('validate_sequence','=',True)]"
+                    />
+                </group>
+                <group name="groupby">
+                    <filter
+                        name="grp_model"
+                        string="Model"
+                        context="{'group_by':'model_id'}"
+                    />
+                </group>
+            </search>
         </field>
     </record>
 
     <record id="tier_definition_action" model="ir.actions.act_window">
         <field name="name">Tier Definition</field>
         <field name="res_model">tier.definition</field>
-        <!-- <field name="view_id" ref="tier_definition_view_form"/> -->
         <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="tier_definition_view_search" />
     </record>
 
     <menuitem
@@ -108,9 +168,11 @@
         name="Tier Validations"
         parent="base.menu_custom"
     />
+
     <menuitem
         id="menu_tier_definition"
         parent="menu_tier_confirmation"
         action="tier_definition_action"
+        name="Definition"
     />
 </odoo>

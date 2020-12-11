@@ -3,21 +3,28 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class TierDefinition(models.Model):
     _name = "tier.definition"
     _description = "Tier Definition"
-    _order = "sequence"
+    _order = "sequence, id"
 
-    @api.model
-    def _get_tier_validation_model_names(self):
-        res = []
-        return res
+    def _compute_allowed_model_ids(self):
+        obj_model = self.env["tier.definition_reference_model"]
+        for record in self:
+            record.allowed_model_ids = obj_model.search([]).mapped("model_id.id")
 
     name = fields.Char(
         string="Name",
+        required=True,
+    )
+    allowed_model_ids = fields.Many2many(
+        string="Allowed Models",
+        comodel_name="ir.model",
+        compute="_compute_allowed_model_ids",
+        store=False,
     )
     model_id = fields.Many2one(
         string="Referenced Model",
@@ -37,6 +44,7 @@ class TierDefinition(models.Model):
     )
     sequence = fields.Integer(
         default=1,
+        required=True,
     )
     active = fields.Boolean(
         default=True,
@@ -64,11 +72,3 @@ class TierDefinition(models.Model):
         help="If set, all possible reviewers will be notified by email when "
         "this definition is triggered.",
     )
-
-    @api.onchange("model_id")
-    def onchange_model_id(self):
-        return {
-            "domain": {
-                "model_id": [("model", "in", self._get_tier_validation_model_names())]
-            }
-        }

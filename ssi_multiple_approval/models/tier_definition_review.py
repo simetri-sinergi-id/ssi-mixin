@@ -59,6 +59,7 @@ class TierDefinitionReview(models.Model):
     sequence = fields.Integer(
         string="Sequence",
         default=1,
+        required=True,
     )
 
     @api.onchange(

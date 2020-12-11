@@ -7,7 +7,13 @@ from odoo import api, fields, models, modules
 class Users(models.Model):
     _inherit = "res.users"
 
-    review_ids = fields.Many2many(string="Reviews", comodel_name="tier.review")
+    review_ids = fields.Many2many(
+        string="Reviews",
+        comodel_name="tier.review",
+        relation="rel_user_2_tier_review",
+        column1="user_id",
+        column2="tier_review_id",
+    )
 
     @api.model
     def review_user_count(self):
