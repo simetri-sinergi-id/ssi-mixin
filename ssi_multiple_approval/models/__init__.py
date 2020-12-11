@@ -8,4 +8,5 @@ from . import (
     tier_definition,
     tier_review,
     tier_validation,
+    res_users,
 )

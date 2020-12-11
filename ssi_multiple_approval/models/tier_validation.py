@@ -308,6 +308,7 @@ class TierValidationMixin(models.AbstractModel):
                         for definition in definition_ids:
                             if self.evaluate_tier(definition):
                                 rec.write({"definition_id": definition.id})
+                                break
                 reviewer_ids = rec.create_reviewer()
                 rec.set_active(reviewer_ids)
         self._notify_review_requested(reviewer_ids)
@@ -344,29 +345,27 @@ class TierValidationMixin(models.AbstractModel):
         return _("A review has been requested by %s.") % (self.env.user.name)
 
     def _notify_review_requested(self, tier_reviews):
-        if hasattr(self, "message_post") and hasattr(self, "message_subscribe"):
+        post = "message_post"
+        subscribe = "message_subscribe"
+        if hasattr(self, post) and hasattr(self, subscribe):
             for rec in self:
                 users_to_notify = tier_reviews.filtered(
                     lambda r: r.definition_id.notify_on_create and r.res_id == rec.id
                 ).mapped("reviewer_ids")
-                # Subscribe reviewers and notify
-                getattr(rec, "message_subscribe")(
+                getattr(rec, subscribe)(
                     partner_ids=users_to_notify.mapped("partner_id").ids
                 )
-                getattr(rec, "message_post")(
+                getattr(rec, post)(
                     subtype_xmlid="mail.mt_comment",
                     body=rec._notify_requested_review_body(),
                 )
 
     def _notify_rejected_review_body(self):
-        has_comment = self.review_ids.filtered(
-            lambda r: (self.env.user in r.reviewer_ids)
-        )
         return _("A review was rejected by %s.") % (self.env.user.name)
 
     def _notify_rejected_review(self):
-        if hasattr(self, "message_post"):
-            # Notify state change
-            getattr(self, "message_post")(
+        post = "message_post"
+        if hasattr(self, post):
+            getattr(self, post)(
                 subtype_xmlid="mail.mt_note", body=self._notify_rejected_review_body()
             )

@@ -97,7 +97,7 @@ class TierReview(models.Model):
                 python_condition, globals_dict=localdict, mode="exec", nocopy=True
             )
             result = localdict
-        except:
+        except ValueError:
             msg_err = "Error when execute python code"
             raise UserError(_(msg_err))
 

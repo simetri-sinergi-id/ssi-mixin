@@ -35,7 +35,7 @@ class TierValidationTester(models.Model):
     def action_confirm(self):
         for document in self:
             document.write({"state": "confirm"})
-            # document.request_validation()
+            document.request_validation()
 
     def action_open(self):
         for document in self:
@@ -47,7 +47,7 @@ class TierValidationTester(models.Model):
             document.restart_validation()
 
     def validate_tier(self):
-        _super = super(TieValidationTester, self)
+        _super = super(TierValidationTester, self)
         _super.validate_tier()
         for document in self:
             if document.validated:

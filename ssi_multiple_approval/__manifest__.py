@@ -14,12 +14,17 @@
     "application": False,
     "installable": True,
     "depends": [
-        "web",
+        "mail",
         "bus",
     ],
     "data": [
         "security/ir.model.access.csv",
         "views/tier_definition_view.xml",
         "views/tier_review_view.xml",
+        "views/assets_backend.xml",
+    ],
+    "qweb": [
+        "static/src/xml/systray.xml",
+        "static/src/xml/tier_review_template.xml",
     ],
 }
