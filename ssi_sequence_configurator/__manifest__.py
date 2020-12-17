@@ -1,13 +1,13 @@
-# -*- coding: utf-8 -*-
-# Copyright 2018 OpenSynergy Indonesia
+# Copyright 2020 OpenSynergy Indonesia
+# Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Configurable Sequence Generator",
-    "version": "8.0.1.0.1",
-    "category": "Administration",
-    "website": "https://opensynergy-indonesia.com/",
-    "author": "OpenSynergy Indonesia",
+    "version": "14.0.1.0.0",
+    "category": "Tools",
+    "website": "https://github.com/OCA/ssi-mixin",
+    "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "license": "AGPL-3",
     "installable": True,
     "depends": [
