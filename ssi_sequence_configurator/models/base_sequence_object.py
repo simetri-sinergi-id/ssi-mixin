@@ -1,16 +1,15 @@
-# -*- coding: utf-8 -*-
-# Copyright 2016 OpenSynergy Indonesia
+# Copyright 2020 OpenSynergy Indonesia
+# Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, api, _
-from openerp.exceptions import Warning as UserError
+from odoo import _, models
+from odoo.exceptions import UserError
 
 
-class BaseSequenceDocument(models.AbstractModel):
-    _name = "base.sequence_document"
+class SequenceConfiguratorMixin(models.AbstractModel):
+    _name = "sequence.configurator.mixin"
     _description = "Sequence Document"
 
-    @api.multi
     def _create_sequence(self):
         self.ensure_one()
         configurator = self._get_configurator()
@@ -20,13 +19,16 @@ class BaseSequenceDocument(models.AbstractModel):
         result = configurator.initial_string
 
         if getattr(self, configurator.sequence_field_id.name) == result:
-            result = configurator._create_sequence(self)
+            sequence_date = False
+            if configurator.date_field_id:
+                sequence_date = getattr(self, configurator.date_field_id.name)
+
+            result = configurator._create_sequence(self, sequence_date)
         else:
             result = getattr(self, configurator.sequence_field_id.name)
 
         return result
 
-    @api.multi
     def _get_configurator(self):
         self.ensure_one()
         result = False
