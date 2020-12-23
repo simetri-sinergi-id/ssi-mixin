@@ -2,16 +2,16 @@
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-simetri--sinergi--id%2Fssi--mixin-lightgray.png?logo=github
-    :target: https://github.com/simetri-sinergi-id/ssi-mixin/tree/8.0/ssi_cancel_state
+    :target: https://github.com/simetri-sinergi-id/ssi-mixin/tree/8.0/ssi_terminate_state
     :alt: simetri-sinergi-id/ssi-mixin
 
 |badge2| |badge3|
 
-=============
-Cancel Reason
-=============
+================
+Terminate Reason
+================
 
-General module for cancel reason
+General module for Terminate reason
 
 Installation
 ============
@@ -23,7 +23,7 @@ To install this module, you need to:
 3.  Update the module list
 4.  Go to menu *Apps*
 5.  Select categories *All*
-6.  Remove filter and search for *Cancel Reason*
+6.  Remove filter and search for *Terminate Reason*
 7.  Install the module
 
 Bug Tracker

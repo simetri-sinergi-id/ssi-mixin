@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data noupdate="1">
+
+        <record id="base_terminate_reason_01" model="base.terminate.reason">
+            <field name="name">Data Entry Mistakes</field>
+            <field name="default">1</field>
+            <field name="type">fixed</field>
+            <field
+                name="description"
+            >This data was terminate because user has a mistake when entering data</field>
+        </record>
+
+        <record id="base_terminate_reason_02" model="base.terminate.reason">
+            <field name="name">Duplicate Data</field>
+            <field name="default">1</field>
+            <field name="type">not_fixed</field>
+            <field
+                name="description"
+            >This data was terminate because it was a duplicate</field>
+        </record>
+
+        <record id="base_terminate_reason_03" model="base.terminate.reason">
+            <field name="name">Deadline</field>
+            <field name="default">1</field>
+            <field name="type">fixed</field>
+            <field
+                name="description"
+            >This data was terminate because it was unable to meet the deadline</field>
+        </record>
+
+        <record id="base_terminate_reason_04" model="base.terminate.reason">
+            <field name="name">Other</field>
+            <field name="default">1</field>
+            <field name="type">not_fixed</field>
+            <field
+                name="description"
+            >This data was terminate because user has other reason</field>
+        </record>
+    </data>
+</odoo>
