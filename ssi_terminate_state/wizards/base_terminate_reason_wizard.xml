@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="base_terminate_reason_wizard_view_form" model="ir.ui.view">
+        <field name="name">Terminate Reason</field>
+        <field name="model">base.terminate.reason_wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="group_1" colspan="4" col="2">
+                    <field name="model_id" invisible="1" />
+                    <field name="configurator_id" invisible="1" />
+                    <field
+                        name="allowed_terminate_reason_ids"
+                        widget="many2many_tags"
+                        invisible="1"
+                    />
+                    <field
+                        name="terminate_reason_id"
+                        widget="radio"
+                        domain="[('id','in',allowed_terminate_reason_ids)]"
+                    />
+                    <field name="type" invisible="1" />
+                    <field
+                        name="other_reason"
+                        attrs="{'required': [('type', '=', 'not_fixed')], 'invisible': [('type', 'in', ['fixed', False])]}"
+                    />
+                </group>
+                <footer>
+                    <button
+                        string="Confirm"
+                        name="action_confirm"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="base_terminate_reason_wizard_action" model="ir.actions.act_window">
+        <field name="name">Terminate Reason</field>
+        <field name="res_model">base.terminate.reason_wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

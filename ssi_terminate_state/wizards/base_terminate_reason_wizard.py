@@ -6,9 +6,9 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
-class BaseCancelReasonWizard(models.TransientModel):
-    _name = "base.cancel.reason_wizard"
-    _description = "Base Cancel Wizard"
+class BaseTerminateReasonWizard(models.TransientModel):
+    _name = "base.terminate.reason_wizard"
+    _description = "Base Terminate Wizard"
 
     @api.model
     def _default_model_id(self):
@@ -20,12 +20,12 @@ class BaseCancelReasonWizard(models.TransientModel):
         return result
 
     @api.depends("configurator_id")
-    def _compute_allowed_cancel_reason_ids(self):
+    def _compute_allowed_terminate_reason_ids(self):
         for document in self:
             result = []
             if document.configurator_id:
-                result = document.configurator_id.cancel_reason_ids.ids
-            document.allowed_cancel_reason_ids = result
+                result = document.configurator_id.terminate_reason_ids.ids
+            document.allowed_terminate_reason_ids = result
 
     model_id = fields.Many2one(
         string="Model",
@@ -33,23 +33,23 @@ class BaseCancelReasonWizard(models.TransientModel):
         default=lambda self: self._default_model_id(),
     )
     configurator_id = fields.Many2one(
-        string="Cancel Configurator",
-        comodel_name="base.cancel.reason_config",
+        string="Terminate Configurator",
+        comodel_name="base.terminate.reason_config",
         required=True,
     )
-    allowed_cancel_reason_ids = fields.Many2many(
-        string="Allowed Cancel Reasons",
-        comodel_name="base.cancel.reason",
-        compute="_compute_allowed_cancel_reason_ids",
+    allowed_terminate_reason_ids = fields.Many2many(
+        string="Allowed Terminate Reasons",
+        comodel_name="base.terminate.reason",
+        compute="_compute_allowed_terminate_reason_ids",
         store=False,
     )
-    cancel_reason_id = fields.Many2one(
+    terminate_reason_id = fields.Many2one(
         string="Reason",
-        comodel_name="base.cancel.reason",
+        comodel_name="base.terminate.reason",
         required=True,
     )
     type = fields.Selection(
-        related="cancel_reason_id.type",
+        related="terminate_reason_id.type",
     )
     other_reason = fields.Text(
         string="Additional Explanation",
@@ -57,35 +57,37 @@ class BaseCancelReasonWizard(models.TransientModel):
 
     @api.onchange("model_id")
     def _onchange_configurator_id(self):
-        obj_configurator = self.env["base.cancel.reason_config"]
+        obj_configurator = self.env["base.terminate.reason_config"]
         criteria = [
             ("name.id", "=", self.model_id.id),
         ]
         configurators = obj_configurator.search(criteria)
         if len(configurators) == 0:
-            raise UserError(_("Error! No cancel configurator defined"))
+            raise UserError(_("Error! No terminate configurator defined"))
         self.configurator_id = configurators[0]
 
     @api.model
-    def _prepare_cancel_reason_data(self):
+    def _prepare_terminate_reason_data(self):
         reason = ""
         if self.type == "fixed":
-            reason = self.cancel_reason_id.name
+            reason = self.terminate_reason_id.name
         else:
-            reason = ("[%s] %s") % (self.cancel_reason_id.name, self.other_reason)
+            reason = ("[%s] %s") % (self.terminate_reason_id.name, self.other_reason)
         return reason
 
     def action_confirm(self):
         for wiz in self:
-            wiz._confirm_cancel()
+            wiz._confirm_terminate()
 
-    def _confirm_cancel(self):
+    def _confirm_terminate(self):
         self.ensure_one()
-        method_cancel_name = self.configurator_id.method_cancel_name or "action_cancel"
+        method_terminate_name = (
+            self.configurator_id.method_terminate_name or "action_terminate"
+        )
         obj_mixin = self.env[self.model_id.model]
         ids = self.env.context.get("active_ids", [])
         mixin = obj_mixin.search([("id", "in", ids)])
-        if method_cancel_name and hasattr(mixin, method_cancel_name):
-            method_cancel = getattr(mixin, method_cancel_name)
-            other_reason = self._prepare_cancel_reason_data()
-            method_cancel(self.cancel_reason_id, other_reason)
+        if method_terminate_name and hasattr(mixin, method_terminate_name):
+            method_terminate = getattr(mixin, method_terminate_name)
+            other_reason = self._prepare_terminate_reason_data()
+            method_terminate(self.terminate_reason_id, other_reason)
