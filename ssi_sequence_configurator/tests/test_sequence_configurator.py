@@ -1,8 +1,10 @@
 # Copyright 2020 OpenSynergy Indonesia
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo.tests.common import SavepointCase, tagged
 from datetime import date
+
+from odoo.tests.common import SavepointCase, tagged
+
 from .common import setup_test_model, teardown_test_model
 from .model_configurator_tester import (
     ModelConfiguratorTester,
