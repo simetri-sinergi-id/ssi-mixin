@@ -2,7 +2,7 @@
 # Copyright 2021 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 from odoo.tools.safe_eval import safe_eval as eval
 
 
@@ -13,6 +13,7 @@ class BaseQrContentPolicy(models.Model):
     name = fields.Many2one(
         string="Model",
         comodel_name="ir.model",
+        ondelete="cascade",
         required=True,
     )
     use_standard_content = fields.Boolean(

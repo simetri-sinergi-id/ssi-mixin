@@ -4,10 +4,9 @@
 
 import logging
 from base64 import b64encode
+from io import BytesIO
 
-from cStringIO import StringIO
-
-from odoo import api, fields, models
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -33,7 +32,7 @@ class QrDocumentMixin(models.AbstractModel):
             qr.add_data(qrcode_content)
             qr.make(fit=True)
             qr_image = qr.make_image()
-            temp_file = StringIO()
+            temp_file = BytesIO()
             qr_image.save(temp_file)
             qr_image = b64encode(temp_file.getvalue())
             document.qr_image = qr_image
