@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <record id="base_qr_content_policy_search_tree" model="ir.ui.view">
+        <field name="name">base.qr_content_policy tree</field>
+        <field name="model">base.qr_content_policy</field>
+        <field name="arch" type="xml">
+            <tree create="false" delete="false">
+                <field name="name" />
+                <field name="use_standard_content" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="base_qr_content_policy_search_form" model="ir.ui.view">
+        <field name="name">base.qr_content_policy form</field>
+        <field name="model">base.qr_content_policy</field>
+        <field name="arch" type="xml">
+            <form create="false" delete="false">
+                <header />
+                <sheet>
+                    <group name="main_1" colspan="4" col="2">
+                        <field name="name" />
+                    </group>
+                    <notebook>
+                        <page name="content" string="QR Content">
+                            <group name="content" colspan="4" col="2">
+                                <field
+                                    name="use_standard_content"
+                                    widget="boolean_toggle"
+                                />
+                                <field
+                                    name="python_code"
+                                    colspan="2"
+                                    nolabel="1"
+                                    widget="ace"
+                                />
+                            </group>
+                        </page>
+                        <page name="note" string="Note">
+                            <field name="note" colspan="4" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="base_qr_content_policy_action" model="ir.actions.act_window">
+        <field name="name">QR Barcode Content Policy</field>
+        <field name="res_model">base.qr_content_policy</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="base_qr_content_policy_menu"
+        name="QR Barcode Content Policy"
+        parent="base.next_id_9"
+        action="base_qr_content_policy_action"
+        sequence="100"
+    />
+</odoo>

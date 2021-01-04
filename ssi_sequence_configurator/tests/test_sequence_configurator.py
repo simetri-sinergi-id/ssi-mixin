@@ -1,6 +1,8 @@
 # Copyright 2020 OpenSynergy Indonesia
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+from datetime import date
+
 from odoo.tests.common import SavepointCase, tagged
 
 from .common import setup_test_model, teardown_test_model
@@ -150,6 +152,7 @@ class ConfiguratorTester(SavepointCase):
 
     def test_03(self):
         """ With Prefix Suffix Computation """
+        year = date.today().year
         self.sequence.write({"prefix": ""})
         str_code = "prefix = 'TEST/' + document.tester_type_id.code + '/'"
         self.configurator_line_id.write(
@@ -165,7 +168,8 @@ class ConfiguratorTester(SavepointCase):
                 "tester_type_id": self.test_data_type.id,
             }
         )
+        result = "TEST/TYPE01/00002/%s" % (year)
         self.assertEqual(
             test_data.name,
-            "TEST/TYPE01/00002/2020",
+            result,
         )
