@@ -1,12 +1,14 @@
-# -*- coding: utf-8 -*-
-# Copyright 2019 OpenSynergy Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
-from openerp import models, api, fields
-from base64 import b64encode
-from cStringIO import StringIO
+# Copyright 2021 OpenSynergy Indonesia
+# Copyright 2021 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import logging
+from base64 import b64encode
+
+from cStringIO import StringIO
+
+from odoo import api, fields, models
+
 _logger = logging.getLogger(__name__)
 
 try:
@@ -15,13 +17,11 @@ except (ImportError, IOError) as err:
     _logger.debug(err)
 
 
-class BaseQrDocument(models.AbstractModel):
-    _name = "base.qr_document"
+class QrDocumentMixin(models.AbstractModel):
+    _name = "qr.document.mixin"
     _description = "QR Document"
 
-    @api.multi
     def _compute_qr_image(self):
-
         for document in self:
             qrcode_content = document._get_qrcode_content()
             qr = QRCode(
@@ -44,7 +44,6 @@ class BaseQrDocument(models.AbstractModel):
         store=False,
     )
 
-    @api.multi
     def _get_qrcode_content(self):
         self.ensure_one()
         criteria = [
@@ -58,7 +57,6 @@ class BaseQrDocument(models.AbstractModel):
             content = self._get_standard_content()
         return content
 
-    @api.multi
     def _get_standard_content(self):
         self.ensure_one()
         odoo_url = self.env["ir.config_parameter"].get_param("web.base.url")
