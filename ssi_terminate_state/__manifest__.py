@@ -6,7 +6,7 @@
     "name": "Mixin Class for Terminate State",
     "version": "14.0.1.0.0",
     "category": "Tools",
-    "website": "https://github.com/OCA/ssi-mixin",
+    "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "license": "AGPL-3",
     "installable": True,

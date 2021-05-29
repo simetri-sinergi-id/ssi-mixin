@@ -7,7 +7,7 @@
     "summary": "Implement a validation process based on tiers.",
     "version": "14.0.1.0.0",
     "category": "Tools",
-    "website": "https://github.com/OCA/ssi-mixin",
+    "website": "https://simetri-sinergi.id",
     "author": "Eficent, Odoo Community Association (OCA), "
     "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "license": "AGPL-3",
