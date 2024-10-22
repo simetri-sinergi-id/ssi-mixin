@@ -236,7 +236,7 @@ class MixinTransactionCancel(models.AbstractModel):
 
     @ssi_decorator.insert_on_tree_view()
     def _01_view_add_tree_cancel_button(self, view_arch):
-        if self._automatically_insert_confirm_button:
+        if self._automatically_insert_cancel_button:
             view_arch = self._add_view_element(
                 view_arch,
                 "ssi_transaction_cancel_mixin.tree_button_cancel",
