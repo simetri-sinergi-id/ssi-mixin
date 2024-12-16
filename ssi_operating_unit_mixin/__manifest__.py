@@ -11,5 +11,8 @@
     "depends": [
         "operating_unit",
     ],
-    "data": [],
+    "data": [
+        "security/ir_rule_data.xml",
+        "views/ir_sequence_views.xml",
+    ],
 }

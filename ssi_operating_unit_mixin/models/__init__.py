@@ -4,4 +4,6 @@
 
 from . import (
     mixin_single_operating_unit,
+    mixin_multiple_operating_unit,
+    ir_sequence,
 )
