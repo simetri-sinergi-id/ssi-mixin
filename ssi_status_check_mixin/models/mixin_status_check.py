@@ -115,7 +115,6 @@ class MixinStatusCheck(models.AbstractModel):
 
     def action_reload_status_check_template(self):
         for record in self:
-            # record.status_check_template_id = False
             record.write(
                 {
                     "status_check_template_id": self._get_template_status_check(),
@@ -137,14 +136,14 @@ class MixinStatusCheck(models.AbstractModel):
                 )
                 self.status_check_ids.create(data)
 
-    @api.onchange(
-        "status_check_template_id",
-    )
-    def onchange_status_check_ids(self):
-        res = []
-        if self.status_check_template_id:
-            res = self.create_status_check_ids()
-        self.status_check_ids = res
+    # @api.onchange(
+    #     "status_check_template_id",
+    # )
+    # def onchange_status_check_ids(self):
+    #     res = []
+    #     if self.status_check_template_id:
+    #         res = self.create_status_check_ids()
+    #     self.status_check_ids = res
 
     def create_status_check_ids(self):
         self.ensure_one()
@@ -164,7 +163,6 @@ class MixinStatusCheck(models.AbstractModel):
         _super = super(MixinStatusCheck, self)
         results = _super.create(vals_list)
         results.action_reload_status_check_template()
-        results.onchange_status_check_ids()
         return results
 
     def write(self, values):
@@ -181,5 +179,4 @@ class MixinStatusCheck(models.AbstractModel):
                     and include_field
                 ):
                     record.action_reload_status_check_template()
-                    record.onchange_status_check_ids()
         return True
