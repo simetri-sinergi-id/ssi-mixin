@@ -11,6 +11,19 @@
             <field name="id" />
             <field name="name" />
             <field name="code" />
+            <group name="dom_active">
+                <filter
+                        name="dom_active"
+                        string="Active"
+                        domain="[('active','=',True)]"
+                    />
+                <filter
+                        name="dom_inactive"
+                        string="Archived"
+                        domain="[('active','=',False)]"
+                    />
+                <separator />
+            </group>
         </search>
     </field>
 </record>
@@ -58,6 +71,12 @@
             </header>
             <sheet>
                 <div name="div_smart_buttons" class="oe_button_box" />
+                <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
                 <group name="group_1" colspan="4" col="2">
                     <field name="name" />
                     <field name="code" />
