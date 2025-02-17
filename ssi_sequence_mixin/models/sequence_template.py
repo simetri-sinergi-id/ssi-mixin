@@ -97,7 +97,7 @@ class SequenceTemplate(models.Model):
         string="Python Code",
         default=DEFAULT_PYTHON_CODE
         + "\n#  - result: Return result, the value is boolean."
-        + "\nreturn = True",
+        + "\nresult = True",
         copy=True,
     )
     sequence_selection_method = fields.Selection(
@@ -117,7 +117,7 @@ class SequenceTemplate(models.Model):
     sequence_python_code = fields.Text(
         string="Python Code",
         default=DEFAULT_PYTHON_CODE
-        + "\n#  - result: Return sequence, the value is recordset of sequence.",
+        + "\n#  - sequence: Return sequence, the value is recordset of sequence.",
         copy=True,
     )
     add_custom_prefix = fields.Boolean(
