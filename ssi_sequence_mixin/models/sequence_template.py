@@ -149,6 +149,18 @@ class SequenceTemplate(models.Model):
         copy=True,
     )
 
+    @api.onchange(
+        "model_id",
+    )
+    def onchange_sequence_field_id(self):
+        self.sequence_field_id = False
+
+    @api.onchange(
+        "model_id",
+    )
+    def onchange_date_field_id(self):
+        self.date_field_id = False
+
     @api.model
     def create_sequence(self, document):
         self.ensure_one()
