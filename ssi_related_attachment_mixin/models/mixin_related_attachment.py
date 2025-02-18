@@ -92,8 +92,10 @@ class MixinRelatedAttachment(models.AbstractModel):
             num_of_attachment = (
                 num_of_verified_attachment
             ) = num_of_unverified_attachment = 0
+            criteria = [("model", "=", self._name), ("res_id", "=", record.id)]
+            RelatedAttachment = self.env["attachment.related_attachment"]
 
-            for attachment in record.related_attachment_ids:
+            for attachment in RelatedAttachment.search(criteria):
                 num_of_attachment += 1
                 if attachment.verified:
                     num_of_verified_attachment += 1
@@ -178,37 +180,30 @@ Error: %s
                 return result
         return result
 
-    @api.onchange(
-        "related_attachment_template_id",
-    )
-    def onchange_related_attachment_ids(self):
-        res = []
-        if self.related_attachment_ids:
-            to_check = self.related_attachment_ids.mapped("attachment_id")
-            if to_check:
-                error_msg = _("Attachment already exist")
-                raise UserError(_("%s") % (error_msg))
-        self.related_attachment_ids = [(5, 0, 0)]
-        if self.related_attachment_template_id:
-            res = self.create_related_attachment_ids()
-        self.related_attachment_ids = res
+    # @api.onchange(
+    #     "related_attachment_template_id",
+    # )
+    # def onchange_related_attachment_ids(self):
+    #     res = []
+    #     if self.related_attachment_ids:
+    #         to_check = self.related_attachment_ids.mapped("attachment_id")
+    #         if to_check:
+    #             error_msg = _("Attachment already exist")
+    #             raise UserError(_("%s") % (error_msg))
+    #     self.related_attachment_ids = [(5, 0, 0)]
+    #     if self.related_attachment_template_id:
+    #         res = self.create_related_attachment_ids()
+    #     self.related_attachment_ids = res
 
     def create_related_attachment_ids(self):
         self.ensure_one()
-        obj_related_attachment_template_detail = self.env[
-            "attachment.related_attachment_template_detail"
-        ]
-        obj_related_attachment = res = self.env["attachment.related_attachment"]
-        sequence = 0
-
+        TemplateDetail = self.env["attachment.related_attachment_template_detail"]
+        RelatedAttachment = res = self.env["attachment.related_attachment"]
         criteria = [("template_id", "=", self.related_attachment_template_id.id)]
-        related_attachment_ids = obj_related_attachment_template_detail.search(
-            criteria, order="sequence"
-        )
+        related_attachment_ids = TemplateDetail.search(criteria, order="sequence")
         if related_attachment_ids:
             for related_attachment in related_attachment_ids:
-                sequence += 1
-                res += obj_related_attachment.create(
+                RelatedAttachment.create(
                     {
                         "model": self._name,
                         "res_id": self.id,
@@ -243,16 +238,13 @@ Error: %s
                 "template_detail_id"
             )
             for detail in to_be_added:
-                # TODO
                 data = {
                     "model": self._name,
                     "res_id": self.id,
                     "template_id": template.id,
                     "template_detail_id": detail.id,
                 }
-                self.env["attachment.related_attachment"].create(data)
-
-                self.related_attachment_ids.create(data)
+                self.write({"related_attachment_ids": [(0, 0, data)]})
         else:
             self.related_attachment_ids.unlink()
         self._compute_num_of_related_attachment()
@@ -272,6 +264,6 @@ Error: %s
             template_id = result._get_template_related_attachment()
             if template_id:
                 result.sudo().write({"related_attachment_template_id": template_id})
-                result.sudo().action_reload_rel_attachment_detail()
-                result.sudo()._compute_num_of_related_attachment()
+        if result.related_attachment_template_id:
+            result.sudo().action_reload_rel_attachment_detail()
         return result
