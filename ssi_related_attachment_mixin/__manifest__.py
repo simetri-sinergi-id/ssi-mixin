@@ -18,6 +18,7 @@
         "menu.xml",
         "templates/related_attachment_templates.xml",
         "wizards/attachment_related_attachment_import.xml",
+        "views/ir_model_views.xml",
         "views/attachment_related_attachment_category_views.xml",
         "views/attachment_related_attachment_template_detail_views.xml",
         "views/attachment_related_attachment_template_views.xml",
