@@ -34,6 +34,7 @@
                 nolabel="1"
                 readonly="1"
                 force_save="1"
+                options="{'always_reload': True}"
             />
             <button
                 name="action_reload_rel_attachment_detail"
