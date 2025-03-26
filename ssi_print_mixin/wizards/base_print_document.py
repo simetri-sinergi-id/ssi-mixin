@@ -70,10 +70,10 @@ class BasePrintDocument(models.TransientModel):
             if report_ids:
                 if print_multi:
                     report_ids = report_ids.filtered(lambda x: x.print_multi)
-                object = record._get_object()
+                recordset = record._get_recordset()
                 for report in report_ids:
                     allowed_print = record._check_allowed_print(report)
-                    policy = report._evaluate_print_python_code(object)
+                    policy = report._evaluate_print_python_code(recordset)
                     if allowed_print and policy:
                         result.append(report.id)
             record.allowed_print_action_ids = result
@@ -92,33 +92,33 @@ class BasePrintDocument(models.TransientModel):
         comodel_name="ir.actions.report",
     )
 
-    def _check_allowed_print(self, object):
+    def _check_allowed_print(self, recordset):
         result = False
         user = self.env.user
         is_superuser = self.env.is_superuser()
         if is_superuser:
             result = True
-        if object.groups_id:
+        if recordset.groups_id:
             user_group_ids = user.groups_id.ids
-            if set(object.groups_id.ids) & set(user_group_ids):
+            if set(recordset.groups_id.ids) & set(user_group_ids):
                 result = True
         else:
             result = True
         return result
 
-    def _get_object(self):
+    def _get_recordset(self):
         self.env.context.get("active_id", False)
         active_ids = self.env.context.get("active_ids", False)
         active_model = self.env.context.get("active_model", "")
         self.env.context.get("print_multi")
         # TODO: Assert when invalid active_id or active_model
-        object = self.env[active_model].browse(active_ids)
-        return object
+        result = self.env[active_model].browse(active_ids)
+        return result
 
     def action_print(self):
         if self.report_action_id:
-            object = self._get_object()
-            report_action = self.report_action_id.report_action(object)
+            recordset = self._get_recordset()
+            report_action = self.report_action_id.report_action(recordset)
             report_action.update({"close_on_report_download": True})
             return report_action
         else:
