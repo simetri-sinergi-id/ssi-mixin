@@ -7,6 +7,8 @@
     <field name="arch" type="xml">
         <form>
             <group name="group_1" colspan="4" col="2">
+                <field name="allowed_type_ids" widget="many2many_tags" invisible="1" />
+                <field name="type_id" domain="[('id','in',allowed_type_ids)]" />
                 <field
                         name="allowed_print_action_ids"
                         widget="many2many_tags"

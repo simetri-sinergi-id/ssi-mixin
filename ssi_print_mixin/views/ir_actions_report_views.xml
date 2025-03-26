@@ -11,6 +11,10 @@
         <data>
             <xpath expr="//notebook" position="inside">
                 <page name="page_print_policy" string="Print Policy">
+                    <group>
+                        <field name="print_document_type_ids" widget="many2many_tags" />
+                        <field name="print_multi" />
+                    </group>
                     <group name="grp_print_policy" colspan="4">
                         <field name="print_python_code" colspan="2" widget="ace" />
                     </group>

@@ -2,7 +2,7 @@
 # Copyright 2022 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from lxml import etree
+from lxml import etree, html
 
 from odoo import api, models
 
@@ -20,31 +20,64 @@ class MixinPrintDocument(models.AbstractModel):
     def fields_view_get(
         self, view_id=None, view_type="form", toolbar=False, submenu=False
     ):
-        res = super().fields_view_get(
+        result = super().fields_view_get(
             view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu
         )
-        if view_type == "form" and self._automatically_insert_print_button:
-            doc = etree.XML(res["arch"])
-            node_xpath = doc.xpath(self._print_button_xpath)
-            if node_xpath:
-                str_element = self.env["ir.qweb"]._render(
-                    "ssi_print_mixin.button_ssi_print"
-                )
-                for node in node_xpath:
-                    new_node = etree.fromstring(str_element)
-                    if self._print_button_position == "after":
-                        node.addnext(new_node)
-                    elif self._print_button_position == "before":
-                        node.addprevious(new_node)
-                    elif self._print_button_position == "inside":
-                        node.append(new_node)
+        View = self.env["ir.ui.view"]
 
-            View = self.env["ir.ui.view"]
+        view_arch = etree.XML(result["arch"])
 
-            if view_id and res.get("base_model", self._name) != self._name:
-                View = View.with_context(base_model_name=res["base_model"])
-            new_arch, new_fields = View.postprocess_and_fields(doc, self._name)
-            res["arch"] = new_arch
-            new_fields.update(res["fields"])
-            res["fields"] = new_fields
-        return res
+        if view_type == "form":
+            view_arch = self._view_add_form_print_button(view_arch)
+        elif view_type == "tree":
+            view_arch = self._view_add_tree_print_button(view_arch)
+
+        if view_id and result.get("base_model", self._name) != self._name:
+            View = View.with_context(base_model_name=result["base_model"])
+        new_arch, new_fields = View.postprocess_and_fields(view_arch, self._name)
+        result["arch"] = new_arch
+        new_fields.update(result["fields"])
+        result["fields"] = new_fields
+
+        return result
+
+    @api.model
+    def _add_view_element(
+        self, view_arch, qweb_template_xml_id, xpath, position="after", order=False
+    ):
+        additional_element = self.env["ir.qweb"]._render(qweb_template_xml_id)
+        if len(view_arch.xpath(xpath)) == 0:
+            return view_arch
+        node_xpath = view_arch.xpath(xpath)[0]
+        for frag in html.fragments_fromstring(additional_element):
+            if order:
+                frag.set("order", str(order))
+            if position == "after":
+                node_xpath.addnext(frag)
+            elif position == "before":
+                node_xpath.addprevious(frag)
+            elif position == "inside":
+                node_xpath.insert(0, frag)
+        return view_arch
+
+    @api.model
+    def _view_add_tree_print_button(self, view_arch):
+        if self._automatically_insert_print_button:
+            view_arch = self._add_view_element(
+                view_arch,
+                "ssi_print_mixin.tree_button_print",
+                "/tree/header",
+                "inside",
+            )
+        return view_arch
+
+    @api.model
+    def _view_add_form_print_button(self, view_arch):
+        if self._automatically_insert_print_button:
+            view_arch = self._add_view_element(
+                view_arch,
+                "ssi_print_mixin.button_ssi_print",
+                self._print_button_xpath,
+                self._print_button_position,
+            )
+        return view_arch

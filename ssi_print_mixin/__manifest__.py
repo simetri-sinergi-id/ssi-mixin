@@ -11,11 +11,13 @@
     "installable": True,
     "depends": [
         "base",
+        "mail",
     ],
     "data": [
         "security/ir.model.access.csv",
         "wizards/base_print_document.xml",
         "templates/mixin_print_templates.xml",
+        "views/print_document_type_views.xml",
         "views/ir_actions_report_views.xml",
     ],
 }
