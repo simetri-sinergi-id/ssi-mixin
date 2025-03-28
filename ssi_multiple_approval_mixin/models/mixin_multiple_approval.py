@@ -36,6 +36,7 @@ class MixinMultipleApproval(models.AbstractModel):
         string="Approval Template",
         comodel_name="approval.template",
         copy=False,
+        help="Approval Configuration",
     )
     approval_ids = fields.One2many(
         string="Approvals",
@@ -73,6 +74,7 @@ class MixinMultipleApproval(models.AbstractModel):
         comodel_name="res.users",
         compute="_compute_approver_user_ids",
         search="_search_approver_user_ids",
+        help="""Users that can approve/reject document""",
     )
     active_approver_partner_ids = fields.Many2many(
         string="Active Partners",
