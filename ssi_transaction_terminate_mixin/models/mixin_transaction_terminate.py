@@ -45,6 +45,9 @@ class MixinTransactionTerminate(models.AbstractModel):
         string="Can Terminate",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Terminate policy
+
+* If active user can see and execute 'Terminate' button""",
     )
     state = fields.Selection(
         selection_add=[
