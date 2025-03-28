@@ -53,24 +53,24 @@ addon | version | maintainers | summary
 [ssi_status_check_mixin](ssi_status_check_mixin/) | 14.0.2.3.2 |  | Status Check Mixin
 [ssi_tag_mixin](ssi_tag_mixin/) | 14.0.1.0.0 |  | Tag Mixin
 [ssi_term_condition_mixin](ssi_term_condition_mixin/) | 14.0.1.1.0 |  | Terms and Conditions Mixin
-[ssi_transaction_cancel_mixin](ssi_transaction_cancel_mixin/) | 14.0.1.12.1 |  | Transaction Mixin - Cancel State
-[ssi_transaction_confirm_mixin](ssi_transaction_confirm_mixin/) | 14.0.2.9.0 |  | Transaction Mixin - Waiting for Approval State
+[ssi_transaction_cancel_mixin](ssi_transaction_cancel_mixin/) | 14.0.1.13.0 |  | Transaction Mixin - Cancel State
+[ssi_transaction_confirm_mixin](ssi_transaction_confirm_mixin/) | 14.0.2.10.0 |  | Transaction Mixin - Waiting for Approval State
 [ssi_transaction_date_due_mixin](ssi_transaction_date_due_mixin/) | 14.0.1.0.0 |  | Transaction Mixin - Date Due
 [ssi_transaction_date_duration_mixin](ssi_transaction_date_duration_mixin/) | 14.0.1.0.0 |  | Transaction Date Duration Mixin
-[ssi_transaction_done_mixin](ssi_transaction_done_mixin/) | 14.0.1.12.0 |  | Transaction Mixin - Done State
-[ssi_transaction_mixin](ssi_transaction_mixin/) | 14.0.4.12.0 |  | Transaction Mixin
-[ssi_transaction_open_mixin](ssi_transaction_open_mixin/) | 14.0.1.12.0 |  | Transaction Mixin - In Progress State
+[ssi_transaction_done_mixin](ssi_transaction_done_mixin/) | 14.0.1.13.0 |  | Transaction Mixin - Done State
+[ssi_transaction_mixin](ssi_transaction_mixin/) | 14.0.4.13.0 |  | Transaction Mixin
+[ssi_transaction_open_mixin](ssi_transaction_open_mixin/) | 14.0.1.13.0 |  | Transaction Mixin - In Progress State
 [ssi_transaction_partner_mixin](ssi_transaction_partner_mixin/) | 14.0.1.0.0 |  | Transaction + Partner Mixin
 [ssi_transaction_pricelist_mixin](ssi_transaction_pricelist_mixin/) | 14.0.1.1.0 |  | Transaction + Pricelist Mixin
 [ssi_transaction_queue_cancel_mixin](ssi_transaction_queue_cancel_mixin/) | 14.0.1.1.0 |  | Transaction Mixin - Queue To Cancel State
 [ssi_transaction_queue_done_mixin](ssi_transaction_queue_done_mixin/) | 14.0.1.1.0 |  | Transaction Mixin - Queue To Done State
 [ssi_transaction_queue_mixin](ssi_transaction_queue_mixin/) | 14.0.1.0.0 |  | Transaction Mixin - Queue
-[ssi_transaction_ready_mixin](ssi_transaction_ready_mixin/) | 14.0.1.10.0 |  | Transaction Mixin - Ready to Process State
+[ssi_transaction_ready_mixin](ssi_transaction_ready_mixin/) | 14.0.1.11.0 |  | Transaction Mixin - Ready to Process State
 [ssi_transaction_salesperson_mixin](ssi_transaction_salesperson_mixin/) | 14.0.1.1.0 |  | Transaction + Salesperson Mixin
 [ssi_transaction_tax_address_mixin](ssi_transaction_tax_address_mixin/) | 14.0.1.0.0 |  | Transaction + Tax Address Mixin
-[ssi_transaction_terminate_mixin](ssi_transaction_terminate_mixin/) | 14.0.1.11.0 |  | Transaction Mixin - Terminate State
+[ssi_transaction_terminate_mixin](ssi_transaction_terminate_mixin/) | 14.0.1.12.0 |  | Transaction Mixin - Terminate State
 [ssi_transaction_total_mixin](ssi_transaction_total_mixin/) | 14.0.1.0.1 |  | Transaction Mixin - Total
-[ssi_transaction_win_lost_mixin](ssi_transaction_win_lost_mixin/) | 14.0.1.8.0 |  | Transaction Mixin - Win & Lost State
+[ssi_transaction_win_lost_mixin](ssi_transaction_win_lost_mixin/) | 14.0.1.9.0 |  | Transaction Mixin - Win & Lost State
 [test_ssi_accounting_entry_mixin](test_ssi_accounting_entry_mixin/) | 14.0.2.1.0 |  | Test Module: Accounting Entry Mixin
 [test_ssi_custom_information_mixin](test_ssi_custom_information_mixin/) | 14.0.2.1.0 |  | Test Module: Custom Information Mixin
 [test_ssi_duration_mixin](test_ssi_duration_mixin/) | 14.0.1.1.0 |  | Test Module: Duration Mixin
