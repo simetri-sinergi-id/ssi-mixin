@@ -47,7 +47,7 @@ class MixinMasterData(models.AbstractModel):
 * Inactive data can not be selected when creating new transaction
 * Transaction with inactive master data can still be viewed
 * Set master data as inactive if master data no longger needed,
-  but master data already used on transaction""",
+but master data already used on transaction""",
     )
     note = fields.Text(
         string="Note",
