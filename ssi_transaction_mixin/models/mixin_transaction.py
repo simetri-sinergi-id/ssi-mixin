@@ -53,6 +53,14 @@ class MixinTransaction(models.AbstractModel):
         copy=False,
         readonly=True,
         states={"draft": [("readonly", False)]},
+        help="""Transaction/document number
+
+* Unique indentifer of transaction
+* Leave '/' to automatically generate number
+* Change '/' into any number/identifier to manually assign number.
+  Manual number assignment can be done in 'Draft' state
+  Only user with 'Can Manualy Assign Number' policy can manually assign number.
+* Transaction with number other than '/' can not be deleted.""",
     )
 
     company_id = fields.Many2one(
@@ -61,6 +69,10 @@ class MixinTransaction(models.AbstractModel):
         required=True,
         default=lambda self: self._default_company_id(),
         copy=True,
+        help="""Company that own the document
+
+* Automatically filled with user's company.
+  Default company can be changed""",
     )
     company_partner_id = fields.Many2one(
         string="Company Partner",
@@ -76,6 +88,11 @@ class MixinTransaction(models.AbstractModel):
         copy=False,
         readonly=True,
         states={"draft": [("readonly", False)]},
+        help="""User that responsible for document
+
+* Create user can be different with responsible user
+* Automatically filled with user that initiate document creation.
+  Default responsible can be changed.""",
     )
 
     note = fields.Text(
@@ -98,11 +115,17 @@ class MixinTransaction(models.AbstractModel):
         string="Can Restart",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Restart policy
+
+* If active user can see and execute 'Restart' button""",
     )
     manual_number_ok = fields.Boolean(
         string="Can Input Manual Document Number",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Manual number assignment policy
+
+* If active user can edit document number""",
     )
     display_name = fields.Char(
         string="Display Name", compute="_compute_display_name", store=True, index=True

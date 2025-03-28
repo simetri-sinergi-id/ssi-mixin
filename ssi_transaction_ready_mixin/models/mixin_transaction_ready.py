@@ -38,6 +38,9 @@ class MixinTransactionReady(models.AbstractModel):
         string="Can Stagged",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Ready policy
+
+* If active user can see and execute 'Staged' button""",
     )
     state = fields.Selection(
         selection_add=[

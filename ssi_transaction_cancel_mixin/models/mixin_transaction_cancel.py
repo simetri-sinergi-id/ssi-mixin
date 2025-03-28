@@ -47,6 +47,9 @@ class MixinTransactionCancel(models.AbstractModel):
         string="Can Cancel",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Cancel policy
+
+* If active user can see and execute 'Cancel' button""",
     )
     state = fields.Selection(
         selection_add=[

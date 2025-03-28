@@ -44,21 +44,33 @@ class MixinTransactionConfirm(models.AbstractModel):
         string="Can Confirm",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Confirm policy
+
+* If active user can see and execute 'Confirm' button""",
     )
     approve_ok = fields.Boolean(
         string="Can Approve",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Approve policy
+
+* If active user can see and execute 'Approve' button""",
     )
     reject_ok = fields.Boolean(
         string="Can Reject",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Reject policy
+
+* If active user can see and execute 'Reject' button""",
     )
     restart_approval_ok = fields.Boolean(
         string="Can Restart Approval",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Restart approval policy
+
+* If active user can see and execute 'Restart Approval' button""",
     )
     state = fields.Selection(
         selection_add=[

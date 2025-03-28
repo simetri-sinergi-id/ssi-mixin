@@ -38,6 +38,9 @@ class MixinTransactionOpen(models.AbstractModel):
         string="Can Start",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Start policy
+
+* If active user can see and execute 'Start' button""",
     )
     state = fields.Selection(
         selection_add=[

@@ -51,11 +51,17 @@ class MixinTransactionWinLost(models.AbstractModel):
         string="Can Mark as Win",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Win policy
+
+* If active user can see and execute 'Win' button""",
     )
     lost_ok = fields.Boolean(
         string="Can Mark as Lost",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Lost policy
+
+* If active user can see and execute 'Lost' button""",
     )
     real_win_date = fields.Date(
         string="Real Win Date",
