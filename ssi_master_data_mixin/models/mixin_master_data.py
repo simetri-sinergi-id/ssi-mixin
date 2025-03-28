@@ -32,10 +32,22 @@ class MixinMasterData(models.AbstractModel):
     code = fields.Char(
         string="Code",
         required=True,
+        help="""Master data unique identifier.
+
+* Fill with '/' if You do not need unique identifier
+* Click 'Generate Code' button to automatically assign code.
+  Sequence template mush be set to perform this action
+  Only master data with '/' code will be assign automatic code""",
     )
     active = fields.Boolean(
         string="Active",
         default=True,
+        help="""Master data status
+
+* Inactive data can not be selected when creating new transaction
+* Transaction with inactive master data can still be viewed
+* Set master data as inactive if master data no longger needed,
+  but master data already used on transaction""",
     )
     note = fields.Text(
         string="Note",
