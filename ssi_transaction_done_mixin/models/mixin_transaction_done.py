@@ -38,6 +38,9 @@ class MixinTransactionDone(models.AbstractModel):
         string="Can Finished",
         compute="_compute_policy",
         compute_sudo=True,
+        help="""Done policy
+
+* If active user can see and execute 'Done' button""",
     )
     state = fields.Selection(
         selection_add=[
