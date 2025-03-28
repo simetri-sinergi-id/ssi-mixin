@@ -15,11 +15,17 @@ class ApprovalApproval(models.Model):
         string="Status",
         selection=[
             ("draft", "Draft"),
-            ("pending", "Pending"),
+            ("pending", "Active"),
             ("rejected", "Rejected"),
             ("approved", "Approved"),
         ],
         default="draft",
+        help="""Approval status
+
+* Draft: Approval tier still no active
+* Active: Approval tier is active
+* Rejected: Approval tier is rejected
+* Approved: Approval tier is approve""",
     )
     model = fields.Char(
         string="Related Document Model",
@@ -75,6 +81,7 @@ class ApprovalApproval(models.Model):
         comodel_name="res.users",
         compute="_compute_approver_user_ids",
         store=True,
+        help="""Users that can approve/reject document""",
     )
 
     @api.depends(
@@ -102,6 +109,7 @@ class ApprovalApproval(models.Model):
     date = fields.Datetime(
         string="Date",
         readonly=True,
+        help="Date approve/reject",
     )
     user_id = fields.Many2one(
         string="Approved/Rejected By",

@@ -4,7 +4,12 @@
     <page string="Approvals" name="tier_validation">
         <group>
             <field name="approval_template_id" groups="base.group_system" />
-            <field name="active_approver_partner_ids" widget="many2many_tags" />
+            <field
+                    name="active_approver_partner_ids"
+                    widget="many2many_tags"
+                    invisible="1"
+                />
+            <field name="active_approver_user_ids" widget="many2many_tags_avatar" />
         </group>
         <field
                 name="approval_ids"
