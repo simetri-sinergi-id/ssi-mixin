@@ -10,15 +10,22 @@ class MixinProductLine(models.AbstractModel):
     _description = "Product Line Mixin"
     _field_for_name = "display_name"
 
+    sequence = fields.Integer(
+        string="Sequence",
+        required=True,
+        default=5,
+    )
     product_id = fields.Many2one(
         string="Product",
         comodel_name="product.product",
+    )
+    product_category_id = fields.Many2one(
+        string="Product Category", related="product_id.categ_id", store=True
     )
     name = fields.Char(
         string="Description",
         required=True,
     )
-
     uom_quantity = fields.Float(
         string="UoM Quantity",
         required=True,
@@ -88,3 +95,11 @@ class MixinProductLine(models.AbstractModel):
         self.uom_id = False
         if self.product_id:
             self.uom_id = self.product_id.uom_id
+
+    @api.onchange(
+        "product_id",
+    )
+    def onchange_sequence(self):
+        self.sequence = 0
+        if self.product_id:
+            self.sequence = self.product_id.sequence
