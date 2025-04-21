@@ -71,3 +71,33 @@ class StatusCheckTemplateDetail(models.Model):
     active = fields.Boolean(
         default=True,
     )
+    # Bypass
+    bypass_method = fields.Selection(
+        string="Bypass Method",
+        selection=[
+            ("use_user", "Users"),
+            ("use_group", "Groups"),
+            ("use_both", "Both specific user and group."),
+            ("use_python", "Python Code"),
+        ],
+        default="use_user",
+        required=True,
+    )
+    bypass_user_ids = fields.Many2many(
+        string="Users",
+        comodel_name="res.users",
+        relation="rel_status_check_template_detail_2_user",
+        column1="detail_id",
+        column2="user_id",
+    )
+    bypass_group_ids = fields.Many2many(
+        string="Groups",
+        comodel_name="res.groups",
+        relation="rel_status_check_template_detail_2_group",
+        column1="detail_id",
+        column2="group_id",
+    )
+    python_code = fields.Text(
+        string="Python Code",
+        default="""# Available locals:\n#  - rec: current record""",
+    )

@@ -45,6 +45,35 @@
                             <field name="active" widget="boolean_toggle" />
                         </group>
                     </group>
+                    <notebook>
+                        <page name="page_bypass" string="Bypass">
+                            <group name="group_bypass_1" colspan="4" col="2">
+                                <field name="bypass_method" colspan="4" />
+                                <field
+                                    name="bypass_user_ids"
+                                    colspan="4"
+                                    attrs="{
+                                         'invisible': [('bypass_method', '!=', 'use_user'), ('bypass_method', '!=', 'use_both')],
+                                         'required': ['|', ('bypass_method', '=', 'use_user'), ('bypass_method', '=', 'use_both')]}"
+                                    widget="many2many_tags"
+                                />
+                                <field
+                                    name="bypass_group_ids"
+                                    colspan="4"
+                                    attrs="{
+                                         'invisible': [('bypass_method', '!=', 'use_group'), ('bypass_method', '!=', 'use_both')],
+                                         'required': ['|', ('bypass_method', '=', 'use_group'), ('bypass_method', '=', 'use_both')]}"
+                                    widget="many2many_tags"
+                                />
+                                <field
+                                    name="python_code"
+                                    colspan="4"
+                                    widget="ace"
+                                    attrs="{'invisible': [('bypass_method', '&lt;&gt;', 'use_python')]}"
+                                />
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

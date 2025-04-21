@@ -2,7 +2,7 @@
 # Copyright 2022 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0-standalone.html).
 # pylint: disable=W0622
-from odoo import _, fields, models, tools
+from odoo import _, api, fields, models, tools
 from odoo.exceptions import Warning as UserError
 from odoo.tools.safe_eval import safe_eval
 
@@ -39,17 +39,108 @@ class StatusCheck(models.Model):
         related="status_check_item_id.resolution_instruction",
     )
 
+    # Bypass
+    allowed_bypass_user_ids = fields.Many2many(
+        string="Users Allowed To Bypass",
+        comodel_name="res.users",
+        compute="_compute_allowed_bypass_user_ids",
+        store=False,
+    )
+    date = fields.Datetime(
+        string="Date",
+        readonly=True,
+    )
+    bypass_ok = fields.Boolean(
+        string="can Bypass?",
+        compute="_compute_bypass_ok",
+    )
+    bypass_user_id = fields.Many2one(
+        string="Bypassed By",
+        comodel_name="res.users",
+        readonly=True,
+    )
+
     def _compute_status_ok(self):
         for document in self:
             document.status_ok = False
-            result = document._evaluate_status_check()
-            if result:
-                document.status_ok = result
+            if document.bypass_user_id:
+                document.status_ok = True
+            else:
+                result = document._evaluate_status_check()
+                if result:
+                    document.status_ok = result
 
     status_ok = fields.Boolean(
         string="Passed?",
         compute="_compute_status_ok",
     )
+
+    @api.depends(
+        "template_detail_id",
+    )
+    def _compute_allowed_bypass_user_ids(self):
+        for rec in self:
+            list_user = []
+            if rec.template_detail_id:
+                selection_method = rec.template_detail_id.bypass_method
+                user_ids = rec.template_detail_id.bypass_user_ids
+                if user_ids:
+                    list_user += user_ids.ids
+
+                group_ids = rec.template_detail_id.bypass_group_ids
+                if group_ids:
+                    for group in group_ids:
+                        list_user += group.users.ids
+
+                if selection_method == "use_python":
+                    python_code = rec.template_detail_id.python_code
+                    result = rec._evaluate_python_code(python_code)
+                    if result:
+                        if "user" in result:
+                            list_user += result["user"]
+                        else:
+                            msg_err = "No User defines on python code"
+                            raise UserError(_(msg_err))
+                rec.allowed_bypass_user_ids = list(set(list_user))
+
+    @api.depends(
+        "template_detail_id",
+    )
+    def _compute_bypass_ok(self):
+        for record in self:
+            result = False
+            if self.env.user.id in self.allowed_bypass_user_ids.ids:
+                result = True
+            record.bypass_ok = result
+
+    def action_bypass_status_check(self):
+        self.ensure_one()
+        for record in self.sudo():
+            record._bypass_status_check()
+
+    def _bypass_status_check(self):
+        self.ensure_one()
+        if self.env.user.id in self.allowed_bypass_user_ids.ids:
+            self.write(
+                {
+                    "date": fields.Datetime.now(),
+                    "bypass_user_id": self.env.user.id,
+                }
+            )
+
+    def action_reverse_bypass_status_check(self):
+        for record in self.sudo():
+            record._reverse_bypass_status_check()
+
+    def _reverse_bypass_status_check(self):
+        self.ensure_one()
+        if self.env.user.id in self.allowed_bypass_user_ids.ids:
+            self.write(
+                {
+                    "date": False,
+                    "bypass_user_id": False,
+                }
+            )
 
     def _get_document(self):
         document_id = self.res_id
