@@ -45,6 +45,7 @@ class StatusCheck(models.Model):
         comodel_name="res.users",
         compute="_compute_allowed_bypass_user_ids",
         store=False,
+        compute_sudo=True,
     )
     date = fields.Datetime(
         string="Date",
@@ -53,6 +54,7 @@ class StatusCheck(models.Model):
     bypass_ok = fields.Boolean(
         string="can Bypass?",
         compute="_compute_bypass_ok",
+        compute_sudo=True,
     )
     bypass_user_id = fields.Many2one(
         string="Bypassed By",
@@ -73,6 +75,7 @@ class StatusCheck(models.Model):
     status_ok = fields.Boolean(
         string="Passed?",
         compute="_compute_status_ok",
+        compute_sudo=True,
     )
 
     @api.depends(
@@ -107,9 +110,12 @@ class StatusCheck(models.Model):
         "template_detail_id",
     )
     def _compute_bypass_ok(self):
-        for record in self:
+        for record in self.sudo():
             result = False
-            if self.env.user.id in self.allowed_bypass_user_ids.ids:
+            if (
+                record.allowed_bypass_user_ids
+                and record.env.user.id in record.allowed_bypass_user_ids.ids
+            ):
                 result = True
             record.bypass_ok = result
 
