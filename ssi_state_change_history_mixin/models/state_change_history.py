@@ -45,6 +45,11 @@ class StateChangeHistory(models.Model):
         string="State To",
         required=True,
     )
+    reason = fields.Char(
+        string="Reason",
+        required=True,
+        default="-",
+    )
     date_change = fields.Datetime(
         string="Date Change",
         required=True,
