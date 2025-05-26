@@ -72,6 +72,11 @@ msgid "Model"
 msgstr ""
 
 #. module: ssi_state_change_history_mixin
+#: model:ir.model.fields,field_description:ssi_state_change_history_mixin.field_state_change_history__reason
+msgid "Reason"
+msgstr ""
+
+#. module: ssi_state_change_history_mixin
 #: model:ir.model.fields,field_description:ssi_state_change_history_mixin.field_state_change_history__model_id
 msgid "Referenced Model"
 msgstr ""
