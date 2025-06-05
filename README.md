@@ -57,7 +57,7 @@ addon | version | maintainers | summary
 [ssi_transaction_confirm_mixin](ssi_transaction_confirm_mixin/) | 14.0.2.10.1 |  | Transaction Mixin - Waiting for Approval State
 [ssi_transaction_date_due_mixin](ssi_transaction_date_due_mixin/) | 14.0.1.0.0 |  | Transaction Mixin - Date Due
 [ssi_transaction_date_duration_mixin](ssi_transaction_date_duration_mixin/) | 14.0.1.0.0 |  | Transaction Date Duration Mixin
-[ssi_transaction_done_mixin](ssi_transaction_done_mixin/) | 14.0.1.13.0 |  | Transaction Mixin - Done State
+[ssi_transaction_done_mixin](ssi_transaction_done_mixin/) | 14.0.1.13.1 |  | Transaction Mixin - Done State
 [ssi_transaction_mixin](ssi_transaction_mixin/) | 14.0.4.13.1 |  | Transaction Mixin
 [ssi_transaction_open_mixin](ssi_transaction_open_mixin/) | 14.0.1.13.0 |  | Transaction Mixin - In Progress State
 [ssi_transaction_partner_mixin](ssi_transaction_partner_mixin/) | 14.0.1.0.0 |  | Transaction + Partner Mixin
