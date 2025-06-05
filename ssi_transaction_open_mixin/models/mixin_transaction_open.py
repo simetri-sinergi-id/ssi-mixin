@@ -31,7 +31,7 @@ class MixinTransactionOpen(models.AbstractModel):
     _automatically_insert_open_state_badge_decorator = True
 
     def _compute_policy(self):
-        _super = super(MixinTransactionOpen, self)
+        _super = super()
         _super._compute_policy()
 
     open_ok = fields.Boolean(
@@ -108,6 +108,19 @@ class MixinTransactionOpen(models.AbstractModel):
             record.write(record._prepare_open_data())
             record._run_post_open_check()
             record._run_post_open_action()
+            record._notify_open_action()
+
+    def _notify_open_action(self):
+        self.ensure_one()
+        msg = self._prepare_open_action_notification()
+        self.message_post(
+            body=_(msg), message_type="notification", subtype_xmlid="mail.mt_note"
+        )
+
+    def _prepare_open_action_notification(self):
+        self.ensure_one()
+        msg = "%s %s started" % (self._description, self.display_name)
+        return msg
 
     def _check_open_policy(self):
         self.ensure_one()
