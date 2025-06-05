@@ -65,7 +65,7 @@ addon | version | maintainers | summary
 [ssi_transaction_queue_cancel_mixin](ssi_transaction_queue_cancel_mixin/) | 14.0.1.1.0 |  | Transaction Mixin - Queue To Cancel State
 [ssi_transaction_queue_done_mixin](ssi_transaction_queue_done_mixin/) | 14.0.1.1.0 |  | Transaction Mixin - Queue To Done State
 [ssi_transaction_queue_mixin](ssi_transaction_queue_mixin/) | 14.0.1.0.0 |  | Transaction Mixin - Queue
-[ssi_transaction_ready_mixin](ssi_transaction_ready_mixin/) | 14.0.1.11.0 |  | Transaction Mixin - Ready to Process State
+[ssi_transaction_ready_mixin](ssi_transaction_ready_mixin/) | 14.0.1.11.1 |  | Transaction Mixin - Ready to Process State
 [ssi_transaction_salesperson_mixin](ssi_transaction_salesperson_mixin/) | 14.0.1.1.0 |  | Transaction + Salesperson Mixin
 [ssi_transaction_tax_address_mixin](ssi_transaction_tax_address_mixin/) | 14.0.1.0.0 |  | Transaction + Tax Address Mixin
 [ssi_transaction_terminate_mixin](ssi_transaction_terminate_mixin/) | 14.0.1.12.0 |  | Transaction Mixin - Terminate State
