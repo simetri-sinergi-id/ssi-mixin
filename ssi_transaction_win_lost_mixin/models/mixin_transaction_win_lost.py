@@ -44,7 +44,7 @@ class MixinTransactionWinLost(models.AbstractModel):
     )
 
     def _compute_policy(self):
-        _super = super(MixinTransactionWinLost, self)
+        _super = super()
         _super._compute_policy()
 
     win_ok = fields.Boolean(
@@ -107,6 +107,7 @@ class MixinTransactionWinLost(models.AbstractModel):
             record.write(record._prepare_win_data(real_win_date=real_win_date))
             record._run_post_win_check()
             record._run_post_win_action()
+            record._notify_win_action()
 
     def action_lost(self, real_lost_date=False, lost_reason=False):
         for record in self.sudo():
@@ -120,6 +121,31 @@ class MixinTransactionWinLost(models.AbstractModel):
             )
             record._run_post_lost_check()
             record._run_post_lost_action()
+            record._notify_lost_action()
+
+    def _notify_win_action(self):
+        self.ensure_one()
+        msg = self._prepare_win_action_notification()
+        self.message_post(
+            body=_(msg), message_type="notification", subtype_xmlid="mail.mt_note"
+        )
+
+    def _prepare_win_action_notification(self):
+        self.ensure_one()
+        msg = "%s %s won" % (self._description, self.display_name)
+        return msg
+
+    def _notify_lost_action(self):
+        self.ensure_one()
+        msg = self._prepare_lost_action_notification()
+        self.message_post(
+            body=_(msg), message_type="notification", subtype_xmlid="mail.mt_note"
+        )
+
+    def _prepare_lost_action_notification(self):
+        self.ensure_one()
+        msg = "%s %s lost" % (self._description, self.display_name)
+        return msg
 
     def _run_pre_win_check(self):
         self.ensure_one()
@@ -247,7 +273,7 @@ class MixinTransactionWinLost(models.AbstractModel):
 
     def _prepare_restart_data(self):
         self.ensure_one()
-        _super = super(MixinTransactionWinLost, self)
+        _super = super()
         result = _super._prepare_restart_data()
         result.update(
             {
