@@ -31,7 +31,7 @@ class MixinTransactionReady(models.AbstractModel):
     _automatically_insert_ready_state_badge_decorator = True
 
     def _compute_policy(self):
-        _super = super(MixinTransactionReady, self)
+        _super = super()
         _super._compute_policy()
 
     ready_ok = fields.Boolean(
@@ -108,6 +108,19 @@ class MixinTransactionReady(models.AbstractModel):
             record.write(record._prepare_ready_data())
             record._run_post_ready_check()
             record._run_post_ready_action()
+            record._notify_ready_action()
+
+    def _notify_ready_action(self):
+        self.ensure_one()
+        msg = self._prepare_ready_action_notification()
+        self.message_post(
+            body=_(msg), message_type="notification", subtype_xmlid="mail.mt_note"
+        )
+
+    def _prepare_ready_action_notification(self):
+        self.ensure_one()
+        msg = "%s %s staged" % (self._description, self.display_name)
+        return msg
 
     def _check_ready_policy(self):
         self.ensure_one()
