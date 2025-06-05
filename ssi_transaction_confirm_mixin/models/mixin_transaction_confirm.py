@@ -37,7 +37,7 @@ class MixinTransactionConfirm(models.AbstractModel):
     _automatically_insert_reject_state_badge_decorator = True
 
     def _compute_policy(self):
-        _super = super(MixinTransactionConfirm, self)
+        _super = super()
         _super._compute_policy()
 
     confirm_ok = fields.Boolean(
@@ -132,6 +132,19 @@ class MixinTransactionConfirm(models.AbstractModel):
             record._run_post_confirm_check()
             record._run_post_confirm_action()
             record.action_request_approval()
+            record._notify_confirm_action()
+
+    def _notify_confirm_action(self):
+        self.ensure_one()
+        msg = self._prepare_confirm_action_notification()
+        self.message_post(
+            body=_(msg), message_type="notification", subtype_xmlid="mail.mt_note"
+        )
+
+    def _prepare_confirm_action_notification(self):
+        self.ensure_one()
+        msg = "%s %s confirmed" % (self._description, self.display_name)
+        return msg
 
     def _check_confirm_policy(self):
         self.ensure_one()

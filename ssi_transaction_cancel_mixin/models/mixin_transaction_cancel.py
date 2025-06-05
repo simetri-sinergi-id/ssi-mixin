@@ -40,7 +40,7 @@ class MixinTransactionCancel(models.AbstractModel):
     )
 
     def _compute_policy(self):
-        _super = super(MixinTransactionCancel, self)
+        _super = super()
         _super._compute_policy()
 
     cancel_ok = fields.Boolean(
@@ -113,6 +113,19 @@ class MixinTransactionCancel(models.AbstractModel):
             record.write(record._prepare_cancel_data(cancel_reason))
             record._run_post_cancel_check()
             record._run_post_cancel_action()
+            record._notify_cancel_action()
+
+    def _notify_cancel_action(self):
+        self.ensure_one()
+        msg = self._prepare_cancel_action_notification()
+        self.message_post(
+            body=_(msg), message_type="notification", subtype_xmlid="mail.mt_note"
+        )
+
+    def _prepare_cancel_action_notification(self):
+        self.ensure_one()
+        msg = "%s %s cancelled" % (self._description, self.display_name)
+        return msg
 
     def _check_cancel_policy(self):
         self.ensure_one()
@@ -138,7 +151,7 @@ class MixinTransactionCancel(models.AbstractModel):
 
     def _prepare_restart_data(self):
         self.ensure_one()
-        _super = super(MixinTransactionCancel, self)
+        _super = super()
         result = _super._prepare_restart_data()
         result.update(
             {
