@@ -70,7 +70,7 @@ addon | version | maintainers | summary
 [ssi_transaction_tax_address_mixin](ssi_transaction_tax_address_mixin/) | 14.0.1.0.0 |  | Transaction + Tax Address Mixin
 [ssi_transaction_terminate_mixin](ssi_transaction_terminate_mixin/) | 14.0.1.12.0 |  | Transaction Mixin - Terminate State
 [ssi_transaction_total_mixin](ssi_transaction_total_mixin/) | 14.0.1.0.1 |  | Transaction Mixin - Total
-[ssi_transaction_win_lost_mixin](ssi_transaction_win_lost_mixin/) | 14.0.1.9.0 |  | Transaction Mixin - Win & Lost State
+[ssi_transaction_win_lost_mixin](ssi_transaction_win_lost_mixin/) | 14.0.1.9.1 |  | Transaction Mixin - Win & Lost State
 [test_ssi_accounting_entry_mixin](test_ssi_accounting_entry_mixin/) | 14.0.2.1.0 |  | Test Module: Accounting Entry Mixin
 [test_ssi_custom_information_mixin](test_ssi_custom_information_mixin/) | 14.0.2.1.0 |  | Test Module: Custom Information Mixin
 [test_ssi_duration_mixin](test_ssi_duration_mixin/) | 14.0.1.1.0 |  | Test Module: Duration Mixin
