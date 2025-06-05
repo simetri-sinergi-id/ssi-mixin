@@ -310,8 +310,21 @@ class MixinMultipleApproval(models.AbstractModel):
             )
             if state == "approved":
                 self.set_active(self.next_approval_ids)
+                self._notify_approve_action()
             elif state == "rejected":
                 self.write({"state": "reject"})
+
+    def _notify_approve_action(self):
+        self.ensure_one()
+        msg = self._prepare_approve_action_notification()
+        self.message_post(
+            body=_(msg), message_type="notification", subtype_xmlid="mail.mt_note"
+        )
+
+    def _prepare_approve_action_notification(self):
+        self.ensure_one()
+        msg = "%s %s approved" % (self._description, self.display_name)
+        return msg
 
     def _check_all_approve(self):
         self.ensure_one()
@@ -445,6 +458,19 @@ class MixinMultipleApproval(models.AbstractModel):
             rec._action_approval("rejected")
             rec._run_post_reject_check()
             rec._run_post_reject_action()
+            rec._notify_reject_action()
+
+    def _notify_reject_action(self):
+        self.ensure_one()
+        msg = self._prepare_reject_action_notification()
+        self.message_post(
+            body=_(msg), message_type="notification", subtype_xmlid="mail.mt_note"
+        )
+
+    def _prepare_reject_action_notification(self):
+        self.ensure_one()
+        msg = "%s %s rejected" % (self._description, self.display_name)
+        return msg
 
     def _check_reject_policy(self):
         self.ensure_one()
@@ -552,7 +578,7 @@ class MixinMultipleApproval(models.AbstractModel):
             self.mapped("approval_ids").unlink()
             self.mapped("active_approver_partner_ids").unlink()
             self.sudo().approval_template_id = False
-        return super(MixinMultipleApproval, self).write(vals)
+        return super().write(vals)
 
     def action_request_approval(self):
         obj_approval_template = self.env["approval.template"]
@@ -607,7 +633,7 @@ class MixinMultipleApproval(models.AbstractModel):
     def unlink(self):
         for rec in self:
             rec.mapped("approval_ids").unlink()
-        return super(MixinMultipleApproval, self).unlink()
+        return super().unlink()
 
     @api.model
     def fields_view_get(
