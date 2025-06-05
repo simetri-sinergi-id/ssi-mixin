@@ -31,7 +31,7 @@ class MixinTransactionDone(models.AbstractModel):
     _automatically_insert_done_state_badge_decorator = True
 
     def _compute_policy(self):
-        _super = super(MixinTransactionDone, self)
+        _super = super()
         _super._compute_policy()
 
     done_ok = fields.Boolean(
@@ -108,6 +108,19 @@ class MixinTransactionDone(models.AbstractModel):
             record.write(record._prepare_done_data())
             record._run_post_done_check()
             record._run_post_done_action()
+            record._notify_done_action()
+
+    def _notify_done_action(self):
+        self.ensure_one()
+        msg = self._prepare_done_action_notification()
+        self.message_post(
+            body=_(msg), message_type="notification", subtype_xmlid="mail.mt_note"
+        )
+
+    def _prepare_done_action_notification(self):
+        self.ensure_one()
+        msg = "%s %s completed" % (self._description, self.display_name)
+        return msg
 
     def _check_done_policy(self):
         self.ensure_one()
