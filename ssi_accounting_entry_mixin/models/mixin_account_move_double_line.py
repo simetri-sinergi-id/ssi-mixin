@@ -291,7 +291,7 @@ class MixinAccountMoveDoubleLineWithField(models.AbstractModel):
         store=True,
     )
     credit_result_move_line_id = fields.Many2one(
-        string="Debit Journal Item",
+        string="Credit Journal Item",
         comodel_name="account.move.line",
         readonly=True,
     )
