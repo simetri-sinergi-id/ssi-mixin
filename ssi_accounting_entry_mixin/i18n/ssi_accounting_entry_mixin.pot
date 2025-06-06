@@ -130,6 +130,11 @@ msgid ""
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__credit_result_move_line_id
+msgid "Credit Journal Item"
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__credit_realized
 msgid "Credit Journal Item Realized"
 msgstr ""
@@ -141,7 +146,6 @@ msgid "Currency"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__credit_result_move_line_id
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__debit_result_move_line_id
 msgid "Debit Journal Item"
 msgstr ""
