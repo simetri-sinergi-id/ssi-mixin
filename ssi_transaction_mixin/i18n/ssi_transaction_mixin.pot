@@ -285,6 +285,12 @@ msgid "Reload Template Policy"
 msgstr ""
 
 #. module: ssi_transaction_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_form
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_tree
+msgid "Reset Document Number"
+msgstr ""
+
+#. module: ssi_transaction_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__user_id
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_search
 msgid "Responsible"
@@ -305,6 +311,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_form
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_tree
 msgid "Restart data. Are you sure?"
+msgstr ""
+
+#. module: ssi_transaction_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_form
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_tree
+msgid "Restart document number. Are you sure?"
 msgstr ""
 
 #. module: ssi_transaction_mixin
