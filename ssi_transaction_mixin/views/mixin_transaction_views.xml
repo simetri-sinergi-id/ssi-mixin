@@ -74,6 +74,12 @@
         <tree decoration-bf="message_unread==True">
             <header>
                 <button
+                        name="action_reset_document_number"
+                        string="Reset Document Number"
+                        type="object"
+                        confirm="Restart document number. Are you sure?"
+                    />
+                <button
                         name="action_restart"
                         type="object"
                         string="Restart"
@@ -102,6 +108,15 @@
     <field name="arch" type="xml">
         <form>
             <header>
+
+                <button
+                        name="action_reset_document_number"
+                        string="Reset Document Number"
+                        type="object"
+                        confirm="Restart document number. Are you sure?"
+                        attrs="{'invisible':[('manual_number_ok','!=',True)]}"
+                        order="99"
+                    />
                 <button
                         name="action_restart"
                         string="Restart"

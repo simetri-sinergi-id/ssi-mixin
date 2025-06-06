@@ -244,6 +244,38 @@ class MixinTransaction(models.AbstractModel):
             record._run_post_restart_action()
             record._notify_restart_action()
 
+    def action_reset_document_number(self):
+        for record in self.sudo():
+            record._check_reset_number_policy()
+            record._reset_document_number()
+
+    def _reset_document_number(self):
+        self.ensure_one()
+        self.write(
+            {
+                "name": "/",
+            }
+        )
+
+    def _check_reset_number_policy(self):
+        self.ensure_one()
+
+        if self.env.context.get("bypass_policy_check", False):
+            return True
+
+        if not self.manual_number_ok:
+            error_message = """
+            Document Type: %s
+            Context: Reset document number
+            Database ID: %s
+            Problem: Reset document is no allowed
+            Solution: Check restart policy prerequisite
+            """ % (
+                self._description,
+                self.id,
+            )
+            raise UserError(_(error_message))
+
     def _notify_restart_action(self):
         self.ensure_one()
         msg = self._prepare_restart_action_notification()
