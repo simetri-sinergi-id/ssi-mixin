@@ -110,6 +110,17 @@ msgid "Activity Type Icon"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.actions.act_window,name:ssi_data_requirement_mixin.add_data_requirement_action
+#: model:ir.model,name:ssi_data_requirement_mixin.model_add_data_requirement
+msgid "Add Data Requirement"
+msgstr ""
+
+#. module: ssi_data_requirement_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_data_requirement_mixin.data_requirement
+msgid "Add Data Requirements"
+msgstr ""
+
+#. module: ssi_data_requirement_mixin
 #: model:res.groups,name:ssi_data_requirement_mixin.data_requirement_all_group
 #: model:res.groups,name:ssi_data_requirement_mixin.data_requirement_package_all_group
 msgid "All"
@@ -163,6 +174,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__approved
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package__approved
 msgid "Approved"
+msgstr ""
+
+#. module: ssi_data_requirement_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_data_requirement_mixin.add_data_requirement_view_form
+msgid "Are you sure?"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
@@ -235,6 +251,11 @@ msgid "Can Start"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_data_requirement_mixin.add_data_requirement_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: ssi_data_requirement_mixin
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__cancel_reason_id
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package__cancel_reason_id
 msgid "Cancel Reason"
@@ -255,6 +276,7 @@ msgid "Categories"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_add_data_requirement__category_id
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__category_id
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_type__category_id
 #: model_terms:ir.ui.view,arch_db:ssi_data_requirement_mixin.data_requirement_view_search
@@ -310,6 +332,11 @@ msgid "Configuration"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_data_requirement_mixin.add_data_requirement_view_form
+msgid "Confirm"
+msgstr ""
+
+#. module: ssi_data_requirement_mixin
 #: model:ir.model.fields,help:ssi_data_requirement_mixin.field_data_requirement__confirm_ok
 #: model:ir.model.fields,help:ssi_data_requirement_mixin.field_data_requirement_package__confirm_ok
 msgid ""
@@ -335,6 +362,7 @@ msgid "Create Data Requirements"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_add_data_requirement__create_uid
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__create_uid
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_configurator__create_uid
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package__create_uid
@@ -347,6 +375,7 @@ msgid "Created by"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_add_data_requirement__create_date
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__create_date
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_configurator__create_date
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package__create_date
@@ -359,7 +388,9 @@ msgid "Created on"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__data_text
 #: model:ir.module.category,name:ssi_data_requirement_mixin.data_module_category
+#: model_terms:ir.ui.view,arch_db:ssi_data_requirement_mixin.data_requirement_view_form
 msgid "Data"
 msgstr ""
 
@@ -523,6 +554,7 @@ msgid "Details"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_add_data_requirement__display_name
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__display_name
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_configurator__display_name
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package__display_name
@@ -605,6 +637,14 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields.selection,name:ssi_data_requirement_mixin.selection__data_requirement__mode__text
+#: model:ir.model.fields.selection,name:ssi_data_requirement_mixin.selection__data_requirement_type__mode__text
+#: model_terms:ir.ui.view,arch_db:ssi_data_requirement_mixin.data_requirement_type_view_form
+msgid "Free Text"
+msgstr ""
+
+#. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_add_data_requirement__id
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__id
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_configurator__id
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package__id
@@ -681,6 +721,7 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_add_data_requirement____last_update
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement____last_update
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_configurator____last_update
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package____last_update
@@ -695,6 +736,7 @@ msgid "Last Modified on"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_add_data_requirement__write_uid
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__write_uid
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_configurator__write_uid
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package__write_uid
@@ -707,6 +749,7 @@ msgid "Last Updated by"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_add_data_requirement__write_date
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__write_date
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_configurator__write_date
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package__write_date
@@ -811,6 +854,7 @@ msgid "Mode"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_add_data_requirement__model_id
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_configurator__model_name
 msgid "Model"
 msgstr ""
@@ -973,6 +1017,11 @@ msgid "Report"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_add_data_requirement__res_id
+msgid "Res ID"
+msgstr ""
+
+#. module: ssi_data_requirement_mixin
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__user_id
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package__user_id
 msgid "Responsible"
@@ -1050,6 +1099,11 @@ msgid "Submit Date"
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_type__text_template
+msgid "Text Template"
+msgstr ""
+
+#. module: ssi_data_requirement_mixin
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__title
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_configurator__title
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package__title
@@ -1071,6 +1125,7 @@ msgid ""
 msgstr ""
 
 #. module: ssi_data_requirement_mixin
+#: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_add_data_requirement__type_id
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement__type_id
 #: model:ir.model.fields,field_description:ssi_data_requirement_mixin.field_data_requirement_package__type_id
 #: model_terms:ir.ui.view,arch_db:ssi_data_requirement_mixin.data_requirement_view_search
@@ -1182,4 +1237,9 @@ msgstr ""
 #: model:ir.model.fields,help:ssi_data_requirement_mixin.field_data_requirement_type__website_message_ids
 #: model:ir.model.fields,help:ssi_data_requirement_mixin.field_data_requirement_type_category__website_message_ids
 msgid "Website communication history"
+msgstr ""
+
+#. module: ssi_data_requirement_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_data_requirement_mixin.add_data_requirement_view_form
+msgid "or"
 msgstr ""
