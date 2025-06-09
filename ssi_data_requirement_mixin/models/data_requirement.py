@@ -39,7 +39,7 @@ class DataRequirement(models.Model):
     _mixin_partner_insert_search = True
     _mixin_partner_contact_id_required = True
 
-    _statusbar_visible_label = "draft,open,confirm,done"
+    _statusbar_visible_label = "draft,open,confirm"
     _policy_field_order = [
         "open_ok",
         "confirm_ok",
@@ -135,12 +135,25 @@ class DataRequirement(models.Model):
         selection=[
             ("url", "URL"),
             ("attachment", "Attachment"),
+            ("text", "Free Text"),
         ],
         required=True,
         readonly=True,
         default="url",
         states={
             "draft": [
+                ("readonly", False),
+            ],
+        },
+    )
+    data_text = fields.Text(
+        string="Data",
+        readonly=True,
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+            "open": [
                 ("readonly", False),
             ],
         },
@@ -180,7 +193,7 @@ class DataRequirement(models.Model):
 
     @api.model
     def _get_policy_field(self):
-        res = super(DataRequirement, self)._get_policy_field()
+        res = super()._get_policy_field()
         policy_field = [
             "open_ok",
             "confirm_ok",
@@ -226,6 +239,14 @@ class DataRequirement(models.Model):
         self.instruction_url = False
         if self.type_id.instruction_url:
             self.instruction_url = self.type_id.instruction_url
+
+    @api.onchange(
+        "mode",
+    )
+    def onchange_data_text(self):
+        self.data_text = ""
+        if self.type_id.text_template:
+            self.data_text = self.type_id.text_template
 
     @ssi_decorator.post_done_action()
     def _update_date_submit(self):

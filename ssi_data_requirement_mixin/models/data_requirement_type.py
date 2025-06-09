@@ -15,9 +15,13 @@ class DataRequirementType(models.Model):
         selection=[
             ("url", "URL"),
             ("attachment", "Attachment"),
+            ("text", "Free Text"),
         ],
         required=True,
         default="url",
+    )
+    text_template = fields.Text(
+        string="Text Template",
     )
     category_id = fields.Many2one(
         string="Category",

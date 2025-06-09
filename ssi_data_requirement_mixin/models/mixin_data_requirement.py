@@ -115,6 +115,18 @@ class MixinDataRequirement(models.AbstractModel):
             result = record._open_data_requirement()
         return result
 
+    def action_add_data_requirement(self):
+        for record in self.sudo():
+            result = record._add_data_requirement()
+        return result
+
+    def _add_data_requirement(self):
+        self.ensure_one()
+        waction = self.env.ref(
+            "ssi_data_requirement_mixin.add_data_requirement_action"
+        ).read()[0]
+        return waction
+
     def _open_data_requirement(self):
         self.ensure_one()
         waction = self.env.ref(

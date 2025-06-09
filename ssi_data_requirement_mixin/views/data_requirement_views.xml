@@ -94,6 +94,15 @@
             <xpath expr="//group[@name='header_center']" position="inside">
                 <field name="title" />
             </xpath>
+            <xpath expr="//notebook/page[1]" position="before">
+                <page
+                        name="data_text"
+                        string="Data"
+                        attrs="{'invisible':[('mode','!=','text')]}"
+                    >
+                    <field name="data_text" widget="ace" />
+                </page>
+            </xpath>
         </data>
     </field>
 </record>
