@@ -245,6 +245,11 @@ msgid ""
 msgstr ""
 
 #. module: ssi_transaction_salesperson_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_salesperson_mixin.field_mixin_transaction_salesperson__reviewer_id
+msgid "Reviewer"
+msgstr ""
+
+#. module: ssi_transaction_salesperson_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_salesperson_mixin.field_mixin_transaction_salesperson__sale_team_id
 msgid "Sale Team"
 msgstr ""
@@ -309,6 +314,14 @@ msgid ""
 "* Create user can be different with responsible user\n"
 "* Automatically filled with user that initiate document creation.\n"
 "  Default responsible can be changed."
+msgstr ""
+
+#. module: ssi_transaction_salesperson_mixin
+#: model:ir.model.fields,help:ssi_transaction_salesperson_mixin.field_mixin_transaction_salesperson__reviewer_id
+msgid ""
+"User that responsible to review document\n"
+"\n"
+"* Unless it configured to approve reviewer does not equal to approver"
 msgstr ""
 
 #. module: ssi_transaction_salesperson_mixin
