@@ -94,6 +94,17 @@ class MixinTransaction(models.AbstractModel):
 * Automatically filled with user that initiate document creation.
   Default responsible can be changed.""",
     )
+    reviewer_id = fields.Many2one(
+        string="Reviewer",
+        comodel_name="res.users",
+        required=False,
+        copy=False,
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+        help="""User that responsible to review document
+
+* Unless it configured to approve reviewer does not equal to approver""",
+    )
 
     note = fields.Text(
         string="Note",
