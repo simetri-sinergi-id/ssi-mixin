@@ -323,6 +323,12 @@ msgid ""
 msgstr ""
 
 #. module: ssi_transaction_tax_address_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_tax_address_mixin.field_mixin_transaction_tax_address__reviewer_id
+#: model:ir.model.fields,field_description:ssi_transaction_tax_address_mixin.field_mixin_transaction_tax_address_required__reviewer_id
+msgid "Reviewer"
+msgstr ""
+
+#. module: ssi_transaction_tax_address_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_tax_address_mixin.field_mixin_transaction_tax_address__state
 #: model:ir.model.fields,field_description:ssi_transaction_tax_address_mixin.field_mixin_transaction_tax_address_required__state
 msgid "State"
@@ -386,6 +392,15 @@ msgid ""
 "* Create user can be different with responsible user\n"
 "* Automatically filled with user that initiate document creation.\n"
 "  Default responsible can be changed."
+msgstr ""
+
+#. module: ssi_transaction_tax_address_mixin
+#: model:ir.model.fields,help:ssi_transaction_tax_address_mixin.field_mixin_transaction_tax_address__reviewer_id
+#: model:ir.model.fields,help:ssi_transaction_tax_address_mixin.field_mixin_transaction_tax_address_required__reviewer_id
+msgid ""
+"User that responsible to review document\n"
+"\n"
+"* Unless it configured to approve reviewer does not equal to approver"
 msgstr ""
 
 #. module: ssi_transaction_tax_address_mixin
