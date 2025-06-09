@@ -16,7 +16,17 @@
                 string="Create Data Requirements"
                 class="oe_highlight"
                 icon="fa-gears"
+                style="margin-right:4px"
             />
+        <button
+                name="action_add_data_requirement"
+                type="object"
+                string="Add Data Requirements"
+                class="oe_highlight"
+                icon="fa-plus"
+                style="margin-right:4px"
+            />
+
         <group>
             <field name="allowed_partner_id" />
             <field name="data_requirement_status" />

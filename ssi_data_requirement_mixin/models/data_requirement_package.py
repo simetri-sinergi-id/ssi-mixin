@@ -37,7 +37,7 @@ class DataRequirementPackage(models.Model):
     _mixin_partner_insert_search = True
     _mixin_partner_contact_id_required = True
 
-    _statusbar_visible_label = "draft,confirm,done"
+    _statusbar_visible_label = "draft,confirm"
     _policy_field_order = [
         "confirm_ok",
         "approve_ok",
@@ -141,7 +141,7 @@ class DataRequirementPackage(models.Model):
 
     @api.model
     def _get_policy_field(self):
-        res = super(DataRequirementPackage, self)._get_policy_field()
+        res = super()._get_policy_field()
         policy_field = [
             "confirm_ok",
             "approve_ok",

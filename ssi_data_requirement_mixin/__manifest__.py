@@ -31,6 +31,7 @@
         "data/approval_template_data.xml",
         "data/policy_template_data.xml",
         "menu.xml",
+        "wizards/add_data_requirement.xml",
         "templates/mixin_data_requirement_templates.xml",
         "views/data_requirement_type_category_views.xml",
         "views/data_requirement_type_views.xml",

@@ -45,6 +45,15 @@
                 <field name="duration_id" />
                 <field name="instruction_url" />
             </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page
+                        name="free_text"
+                        string="Free Text"
+                        attrs="{'invisible':[('mode','!=','text')]}"
+                    >
+                    <field name="text_template" widget="ace" />
+                </page>
+            </xpath>
         </data>
     </field>
 </record>
