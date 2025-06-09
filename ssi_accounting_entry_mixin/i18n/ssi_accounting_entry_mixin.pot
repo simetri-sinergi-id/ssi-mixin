@@ -372,6 +372,11 @@ msgid ""
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__reviewer_id
+msgid "Reviewer"
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_single_line_with_field__source_date
 msgid "Source Date"
 msgstr ""
@@ -461,6 +466,14 @@ msgid ""
 "* Create user can be different with responsible user\n"
 "* Automatically filled with user that initiate document creation.\n"
 "  Default responsible can be changed."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__reviewer_id
+msgid ""
+"User that responsible to review document\n"
+"\n"
+"* Unless it configured to approve reviewer does not equal to approver"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
