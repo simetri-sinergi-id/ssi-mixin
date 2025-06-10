@@ -81,7 +81,7 @@ class AttachmentRelatedAttachment(models.Model):
                         else:
                             msg_err = "No User defines on python code"
                             raise UserError(_(msg_err))
-                rec.verify_user_ids = list(set(list_user))
+            rec.verify_user_ids = list(set(list_user))
 
     verify_user_ids = fields.Many2many(
         string="Users",
@@ -209,7 +209,7 @@ class AttachmentRelatedAttachment(models.Model):
         attachment.unlink()
 
     def unlink(self):
-        _super = super(AttachmentRelatedAttachment, self)
+        _super = super()
         error_msg = _("Attachment already exist")
         for record in self:
             if record.attachment_id:
