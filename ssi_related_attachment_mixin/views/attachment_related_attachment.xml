@@ -84,8 +84,7 @@
             <tree string="Related Attachment" editable="bottom">
                 <field name="category_id" />
                 <field name="attachment_id" invisible="1" />
-                <field name="datas_fname" invisible="1" />
-                <field name="attachment_data" widget="binary" filename="datas_fname" />
+                <field name="datas_fname" invisible="0" />
                 <field name="verify_method" invisible="1" />
                 <field
                     name="verify_user_ids"
