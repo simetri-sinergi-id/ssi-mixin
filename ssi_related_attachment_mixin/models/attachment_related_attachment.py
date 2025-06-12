@@ -27,6 +27,7 @@ class AttachmentRelatedAttachment(models.Model):
     template_detail_id = fields.Many2one(
         string="# Template Detail",
         comodel_name="attachment.related_attachment_template_detail",
+        ondelete="restrict",
     )
     attachment_id = fields.Many2one(
         string="Attachment",
