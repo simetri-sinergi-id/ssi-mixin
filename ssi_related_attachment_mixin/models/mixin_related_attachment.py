@@ -89,10 +89,14 @@ class MixinRelatedAttachment(models.AbstractModel):
     )
     def _compute_num_of_related_attachment(self):
         for record in self:
-            num_of_attachment = (
-                num_of_verified_attachment
-            ) = num_of_unverified_attachment = 0
-            criteria = [("model", "=", self._name), ("res_id", "=", record.id)]
+            num_of_attachment = num_of_verified_attachment = (
+                num_of_unverified_attachment
+            ) = 0
+            criteria = [
+                ("model", "=", self._name),
+                ("res_id", "=", record.id),
+                ("category_id", "!=", False),
+            ]
             RelatedAttachment = self.env["attachment.related_attachment"]
 
             for attachment in RelatedAttachment.search(criteria):
@@ -251,14 +255,14 @@ Error: %s
 
     def unlink(self):
         related_attachments = self.mapped("related_attachment_ids")
-        res = super(MixinRelatedAttachment, self).unlink()
+        res = super().unlink()
         if res:
             related_attachments.unlink()
         return res
 
     @api.model
     def create(self, values):
-        _super = super(MixinRelatedAttachment, self)
+        _super = super()
         result = _super.create(values)
         if not result.related_attachment_template_id:
             template_id = result._get_template_related_attachment()
