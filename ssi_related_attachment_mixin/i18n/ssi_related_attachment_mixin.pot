@@ -350,6 +350,11 @@ msgid "Related Attachment Template Detail"
 msgstr ""
 
 #. module: ssi_related_attachment_mixin
+#: model:ir.actions.act_window,name:ssi_related_attachment_mixin.attachment_related_attachment_template_detail_action
+msgid "Related Attachment Template Details"
+msgstr ""
+
+#. module: ssi_related_attachment_mixin
 #: model:ir.actions.act_window,name:ssi_related_attachment_mixin.attachment_related_attachment_template_action
 msgid "Related Attachment Templates"
 msgstr ""
