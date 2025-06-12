@@ -10,6 +10,7 @@ from odoo.tools.safe_eval import safe_eval
 class AttachmentRelatedAttachment(models.Model):
     _name = "attachment.related_attachment"
     _description = "Related Attachment"
+    _order = "template_id, template_detail_id"
 
     model = fields.Char(
         string="Related Document Model",
@@ -22,10 +23,12 @@ class AttachmentRelatedAttachment(models.Model):
     template_id = fields.Many2one(
         string="# Template",
         comodel_name="attachment.related_attachment_template",
+        ondelete="restrict",
     )
     template_detail_id = fields.Many2one(
         string="# Template Detail",
         comodel_name="attachment.related_attachment_template_detail",
+        ondelete="restrict",
     )
     attachment_id = fields.Many2one(
         string="Attachment",
@@ -131,8 +134,8 @@ class AttachmentRelatedAttachment(models.Model):
         document_id = self.res_id
         document_model = self.model
 
-        object = self.env[document_model].browse([document_id])[0]
-        return object
+        mixin_record = self.env[document_model].browse([document_id])[0]
+        return mixin_record
 
     def _get_localdict(self):
         return {

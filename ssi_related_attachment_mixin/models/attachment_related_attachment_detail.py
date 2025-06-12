@@ -8,6 +8,7 @@ from odoo import fields, models
 class AttachmentRelatedAttachmentTemplateDetail(models.Model):
     _name = "attachment.related_attachment_template_detail"
     _description = "Related Attachment Template Detail"
+    _order = "template_id, sequence, id"
 
     template_id = fields.Many2one(
         string="# Template",

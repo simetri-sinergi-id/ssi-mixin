@@ -52,7 +52,8 @@ class AttachmentRelatedAttachmentTemplate(models.Model):
     )
     python_code = fields.Text(
         string="Python Code",
-        default="""# Available locals:\n#  - rec: current record""",
+        default="""# Available locals:\n#  - rec: current record
+result = True""",
     )
 
     def name_get(self):
