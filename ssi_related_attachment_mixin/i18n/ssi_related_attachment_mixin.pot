@@ -417,6 +417,11 @@ msgid "Template"
 msgstr ""
 
 #. module: ssi_related_attachment_mixin
+#: model:ir.ui.menu,name:ssi_related_attachment_mixin.attachment_related_attachment_template_detail_menu
+msgid "Template Details"
+msgstr ""
+
+#. module: ssi_related_attachment_mixin
 #: model:ir.ui.menu,name:ssi_related_attachment_mixin.attachment_related_attachment_template_menu
 msgid "Templates"
 msgstr ""
