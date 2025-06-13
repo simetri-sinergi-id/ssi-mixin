@@ -82,7 +82,7 @@
 </record>
 
 <menuitem
-        id="attachment_related_attachment_template_menu"
+        id="attachment_related_attachment_template_detail_menu"
         name="Template Details"
         parent="menu_related_attachment"
         action="attachment_related_attachment_template_detail_action"
