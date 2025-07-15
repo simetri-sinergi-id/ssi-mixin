@@ -6,8 +6,8 @@ from datetime import datetime
 import pytz
 
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
-from odoo.tools.safe_eval import safe_eval
+from odoo.exceptions import UserError, ValidationError
+from odoo.tools.safe_eval import safe_eval, test_python_expr
 
 
 class SequenceTemplate(models.Model):
@@ -313,3 +313,45 @@ class SequenceTemplate(models.Model):
     # @api.model_cr
     def _register_hook(self):
         return True
+
+    @api.constrains(
+        "python_code",
+    )
+    def _check_python_code(self):
+        for action in self.sudo().filtered("python_code"):
+            msg = test_python_expr(expr=action.python_code.strip(), mode="exec")
+            if msg:
+                msg1 = "Template:\n"
+                raise ValidationError(msg1 + msg)
+
+    @api.constrains(
+        "sequence_python_code",
+    )
+    def _check_sequence_python_code(self):
+        for action in self.sudo().filtered("sequence_python_code"):
+            msg = test_python_expr(
+                expr=action.sequence_python_code.strip(), mode="exec"
+            )
+            if msg:
+                msg1 = "Sequence:\n"
+                raise ValidationError(msg1 + msg)
+
+    @api.constrains(
+        "prefix_python_code",
+    )
+    def _check_prefix_python_code(self):
+        for action in self.sudo().filtered("prefix_python_code"):
+            msg = test_python_expr(expr=action.prefix_python_code.strip(), mode="exec")
+            if msg:
+                msg1 = "Prefix:\n"
+                raise ValidationError(msg1 + msg)
+
+    @api.constrains(
+        "suffix_python_code",
+    )
+    def _check_suffix_python_code(self):
+        for action in self.sudo().filtered("suffix_python_code"):
+            msg = test_python_expr(expr=action.suffix_python_code.strip(), mode="exec")
+            if msg:
+                msg1 = "Suffix:\n"
+                raise ValidationError(msg1 + msg)

@@ -1,10 +1,10 @@
 # Copyright 2022 OpenSynergy Indonesia
 # Copyright 2022 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
-
+# pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Related Attachment Mixin",
-    "version": "14.0.2.10.0",
+    "version": "14.0.2.10.1",
     "category": "Administration",
     "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
