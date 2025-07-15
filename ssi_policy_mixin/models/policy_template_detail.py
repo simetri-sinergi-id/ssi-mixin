@@ -3,8 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from odoo import SUPERUSER_ID, _, api, fields, models
-from odoo.exceptions import Warning as UserError
-from odoo.tools.safe_eval import safe_eval
+from odoo.exceptions import ValidationError, Warning as UserError
+from odoo.tools.safe_eval import safe_eval, test_python_expr
 
 
 class PolicyTemplateDetail(models.Model):
@@ -209,3 +209,25 @@ class PolicyTemplateDetail(models.Model):
     def onchange_computation_method(self):
         if not self.restrict_user:
             self.computation_method = False
+
+    @api.constrains(
+        "python_code",
+    )
+    def _check_python_code(self):
+        for action in self.sudo().filtered("python_code"):
+            msg = test_python_expr(expr=action.python_code.strip(), mode="exec")
+            if msg:
+                msg1 = "Template Detail:\n"
+                raise ValidationError(msg1 + msg)
+
+    @api.constrains(
+        "additional_python_code",
+    )
+    def _check_additional_python_code(self):
+        for action in self.sudo().filtered("additional_python_code"):
+            msg = test_python_expr(
+                expr=action.additional_python_code.strip(), mode="exec"
+            )
+            if msg:
+                msg1 = "Template Detail Additional:\n"
+                raise ValidationError(msg1 + msg)
