@@ -93,7 +93,7 @@ class PolicyTemplateDetail(models.Model):
     )
     python_code = fields.Text(
         string="Python Code",
-        default="""# Available locals:\n#  - rec: current record\n result = []""",
+        default="""# Available locals:\n#  - rec: current record\nresult = []""",
     )
     restrict_additional = fields.Boolean(
         string="Restriction Based on Additional Python Code",
