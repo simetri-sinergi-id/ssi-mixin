@@ -2,8 +2,9 @@
 # Copyright 2022 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import fields, models
-from odoo.tools.safe_eval import safe_eval
+from odoo import api, fields, models
+from odoo.exceptions import ValidationError
+from odoo.tools.safe_eval import safe_eval, test_python_expr
 
 
 class IrActionsReport(models.Model):
@@ -44,3 +45,12 @@ class IrActionsReport(models.Model):
         except:  # noqa: E722
             result = False
         return result
+
+    @api.constrains(
+        "print_python_code",
+    )
+    def _check_print_python_code(self):
+        for action in self.sudo().filtered("print_python_code"):
+            msg = test_python_expr(expr=action.print_python_code.strip(), mode="exec")
+            if msg:
+                raise ValidationError(msg)
