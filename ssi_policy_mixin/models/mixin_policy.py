@@ -56,6 +56,7 @@ class MixinPolicy(models.AbstractModel):
         return res
 
     def _get_template_policy(self):
+        self.ensure_one()
         result = False
         obj_policy_template = self.env["policy.template"]
         criteria = [
@@ -75,7 +76,7 @@ class MixinPolicy(models.AbstractModel):
         for record in self:
             record.write(
                 {
-                    "policy_template_id": self._get_template_policy(),
+                    "policy_template_id": record._get_template_policy(),
                 }
             )
 
@@ -106,7 +107,7 @@ class MixinPolicy(models.AbstractModel):
 
     @api.model
     def create(self, values):
-        _super = super(MixinPolicy, self)
+        _super = super()
         result = _super.create(values)
         if not result.policy_template_id:
             template_id = result._get_template_policy()
