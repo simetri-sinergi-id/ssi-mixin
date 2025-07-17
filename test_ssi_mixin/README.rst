@@ -10,9 +10,9 @@
 
 It is ideal for Odoo developers who want to ensure their mixin modules are robust, reusable, and easy to maintain.
 
-=======================
+===================
 🔧 **Key Features**
-=======================
+===================
 
 - **Testing Environment:** Controlled environment for testing mixin functionality.
 - **Development Support:** Tools and utilities for mixin development and validation.
@@ -46,17 +46,17 @@ To install this module:
 5.  Search for *Development Model for Testing Mixin*
 6.  Install the module
 
-==============================
+==========================
 � **Installation & Usage**
-==============================
+==========================
 
 1. **Add to Odoo:** Place `test_ssi_mixin` in your Odoo addons path.
 2. **Enable:** In Odoo Apps, search for `test_ssi_mixin` and install.
 3. **Test:** Use the provided test models and functionality to validate mixin behavior.
 
-=================
+=========
 ❓ **FAQ**
-=================
+=========
 
 - **Standalone?** *Yes, but it's designed to work with other mixin modules for testing purposes.*
 - **Odoo Version?** *Odoo 18 or above.*
