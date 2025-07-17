@@ -17,7 +17,14 @@ SSI Standard Mixin
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[ssi_master_data_mixin](ssi_master_data_mixin/) | 18.0.1.0.0 |  | Master Data Mixin
+[ssi_print_mixin](ssi_print_mixin/) | 18.0.1.0.0 |  | Print Policy Mixin
+[ssi_sequence_mixin](ssi_sequence_mixin/) | 18.0.1.0.0 |  | Sequence Mixin
+[test_ssi_mixin](test_ssi_mixin/) | 18.0.1.0.0 |  | Development Model for Testing Mixin
 
 [//]: # (end addons)
 
