@@ -54,9 +54,9 @@ To install this module:
 2. **Enable:** In Odoo Apps, search for `test_ssi_mixin` and install.
 3. **Test:** Use the provided test models and functionality to validate mixin behavior.
 
-=========
+==========
 ❓ **FAQ**
-=========
+==========
 
 - **Standalone?** *Yes, but it's designed to work with other mixin modules for testing purposes.*
 - **Odoo Version?** *Odoo 18 or above.*

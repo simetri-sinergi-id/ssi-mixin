@@ -54,9 +54,9 @@ To install this module:
 2. **Enable:** In Odoo Apps, search for `ssi_master_data_mixin` and install.
 3. **Extend:** Inherit this mixin in your custom modules to enable master data functionality.
 
-=========
+==========
 ❓ **FAQ**
-=========
+==========
 
 - **Standalone?** *No, it's a mixin foundation for other modules requiring master data functionality.*
 - **Odoo Version?** *Odoo 18 or above.*
