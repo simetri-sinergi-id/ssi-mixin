@@ -10,9 +10,9 @@
 
 It is ideal for Odoo developers who want to ensure their mixin modules are robust, reusable, and easy to maintain.
 
-=======================
+===================
 🔧 **Key Features**
-=======================
+===================
 
 - **Sequence Mixin Foundation:** Reusable sequence generation logic for Odoo modules.
 - **Mixin Design:** Built to be inherited by other modules for sequence functionality.
@@ -46,17 +46,17 @@ To install this module:
 5.  Search for *Sequence Mixin*
 6.  Install the module
 
-===============================
+==========================
 � **Installation & Usage**
-===============================
+==========================
 
 1. **Add to Odoo:** Place `ssi_sequence_mixin` in your Odoo addons path.
 2. **Enable:** In Odoo Apps, search for `ssi_sequence_mixin` and install.
 3. **Extend:** Inherit this mixin in your custom modules to enable sequence functionality.
 
-=================
+=========
 ❓ **FAQ**
-=================
+=========
 
 - **Standalone?** *No, it's a mixin foundation for other modules requiring sequence functionality.*
 - **Odoo Version?** *Odoo 18 or above.*
