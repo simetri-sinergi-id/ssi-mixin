@@ -46,9 +46,9 @@ To install this module:
 5.  Search for *Master Data Mixin*
 6.  Install the module
 
-========================
+==========================
 � **Installation & Usage**
-========================
+==========================
 
 1. **Add to Odoo:** Place `ssi_master_data_mixin` in your Odoo addons path.
 2. **Enable:** In Odoo Apps, search for `ssi_master_data_mixin` and install.
