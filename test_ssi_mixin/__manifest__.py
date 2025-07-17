@@ -4,7 +4,7 @@
 {
     "name": "Development Model for Testing Mixin",
     "summary": "Development Model for Testing Mixin",
-    "version": "18.0.1.0.1",
+    "version": "18.0.1.0.2",
     "website": "https://github.com/open-synergy/ssi-mixin",
     "category": "Tools",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
