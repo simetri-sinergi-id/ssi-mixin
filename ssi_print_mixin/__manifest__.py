@@ -5,7 +5,7 @@
 {
     "name": "Print Policy Mixin",
     "author": "PT. Simetri Sinergi Indonesia",
-    "version": "18.0.1.0.1",
+    "version": "18.0.1.0.2",
     "website": "https://github.com/open-synergy/ssi-mixin",
     "license": "AGPL-3",
     "installable": True,
