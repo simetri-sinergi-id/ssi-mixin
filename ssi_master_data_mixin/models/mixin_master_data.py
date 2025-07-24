@@ -33,6 +33,7 @@ class MixinMasterData(models.AbstractModel):
     code = fields.Char(
         string="Document Code",
         required=True,
+        default="/",
         help="""Master data unique identifier.
 
 * Fill with '/' if You do not need unique identifier
