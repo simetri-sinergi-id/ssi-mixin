@@ -19,9 +19,8 @@ class SequenceTemplate(models.Model):
 #  - env: Odoo Environment on which the action is triggered.
 #  - document: record on which the action is triggered; may be void."""
 
-    @api.model
     def _default_company_id(self):
-        return self.env["res.company"]._company_default_get("sequence.template")
+        return self.env.user.company_id
 
     name = fields.Char(
         string="Document Name",
