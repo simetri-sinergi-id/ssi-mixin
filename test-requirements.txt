@@ -1,4 +1,2 @@
 odoo14-addon-queue-job
 odoo14-addon-queue-job-batch
-qrcode
-yaml
