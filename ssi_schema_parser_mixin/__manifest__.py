@@ -7,7 +7,7 @@
     "category": "Technical",
     "license": "AGPL-3",
     "depends": ["base", "ssi_master_data_mixin"],
-    "external_dependencies": {"python": ["pyyaml"]},
+    "external_dependencies": {"python": ["yaml"]},
     "data": [
         "security/ir_model_access.xml",
         "menus.xml",
