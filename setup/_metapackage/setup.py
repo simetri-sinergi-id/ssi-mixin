@@ -37,6 +37,7 @@ setuptools.setup(
         'odoo14-addon-ssi_res_partner_m2o_configurator_mixin',
         'odoo14-addon-ssi_res_users_m2o_configurator_mixin',
         'odoo14-addon-ssi_salesperson_mixin',
+        'odoo14-addon-ssi_schema_parser_mixin',
         'odoo14-addon-ssi_sequence_mixin',
         'odoo14-addon-ssi_source_document_mixin',
         'odoo14-addon-ssi_state_change_constrain_mixin',
