@@ -52,7 +52,7 @@ class SchemaParser(models.Model):
             else:
                 record.result_example = False
 
-    def parse_specification(self, schema):
+    def parse_specification(self, schema, additional_dict={}):
         self.ensure_one()
         localdict = {
             "yaml_safe_load": yaml.safe_load,
@@ -65,6 +65,7 @@ class SchemaParser(models.Model):
             "Optional": Optional,
             "schema": schema,
         }
+        localdict += additional_dict
         try:
             safe_eval(self.parser, localdict, mode="exec", nocopy=True)
             result = localdict.get("result")
