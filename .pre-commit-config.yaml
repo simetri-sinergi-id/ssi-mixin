@@ -133,6 +133,9 @@ repos:
           - --rcfile=.pylintrc
           - --exit-zero
         verbose: true
+        types: [python]
       - id: pylint_odoo
         args:
           - --rcfile=.pylintrc-mandatory
+        verbose: true
+        types: [python]
