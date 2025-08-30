@@ -49,7 +49,7 @@ repos:
         args:
           - --addons-dir=.
           - --branch=14.0
-          - --org-name=OCA
+          - --org-name=open-synergy
           - --repo-name=
           - --if-source-changed
           - --keep-source-digest
