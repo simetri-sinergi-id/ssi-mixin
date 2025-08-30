@@ -138,21 +138,18 @@ repos:
       - id: pylint_odoo
         name: pylint with optional checks
         args:
+          - --load-plugins=pylint_odoo # ← DIPINDAH ke atas
           - --rcfile=.pylintrc
-          - --load-plugins=pylint_odoo # ← tambah ini agar plugin aktif saat parse RC
           - --exit-zero
-          - --ignore=.pylintrc,.pylintrc-mandatory # ← tambahkan ini
         verbose: true
         types: [python]
         files: ^.*\.py$
         exclude: ^\.(pylintrc|pylintrc-mandatory)$
         pass_filenames: true
-
       - id: pylint_odoo
         args:
+          - --load-plugins=pylint_odoo # ← DIPINDAH ke atas
           - --rcfile=.pylintrc-mandatory
-          - --load-plugins=pylint_odoo # ← tambah ini juga di mandatory
-          - --ignore=.pylintrc,.pylintrc-mandatory # ← tambahkan ini
         verbose: true
         types: [python]
         files: ^.*\.py$
