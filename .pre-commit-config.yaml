@@ -135,11 +135,13 @@ repos:
         verbose: true
         types: [python]
         files: ^.*\.py$
-        exclude: ^\.pylintrc(-mandatory)?$
+        exclude: ^\.(pylintrc|pylintrc-mandatory)$ # pastikan rc file TIDAK ikut
+        pass_filenames: true
       - id: pylint_odoo
         args:
           - --rcfile=.pylintrc-mandatory
         verbose: true
         types: [python]
         files: ^.*\.py$
-        exclude: ^\.pylintrc(-mandatory)?$
+        exclude: ^\.(pylintrc|pylintrc-mandatory)$ # pastikan rc file TIDAK ikut
+        pass_filenames: true
