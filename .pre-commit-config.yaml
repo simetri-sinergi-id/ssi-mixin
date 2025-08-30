@@ -134,10 +134,12 @@ repos:
           - --exit-zero
         verbose: true
         types: [python]
+        files: ^.*\.py$
         exclude: ^\.pylintrc(-mandatory)?$
       - id: pylint_odoo
         args:
           - --rcfile=.pylintrc-mandatory
         verbose: true
         types: [python]
+        files: ^.*\.py$
         exclude: ^\.pylintrc(-mandatory)?$
