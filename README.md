@@ -47,7 +47,7 @@ addon | version | maintainers | summary
 [ssi_res_partner_m2o_configurator_mixin](ssi_res_partner_m2o_configurator_mixin/) | 14.0.1.0.0 |  | res.partner Many2one Configurator Mixin
 [ssi_res_users_m2o_configurator_mixin](ssi_res_users_m2o_configurator_mixin/) | 14.0.1.0.0 |  | res.users Many2one Configurator Mixin
 [ssi_salesperson_mixin](ssi_salesperson_mixin/) | 14.0.1.1.0 |  | Salesperson Mixin
-[ssi_schema_parser_mixin](ssi_schema_parser_mixin/) | 14.0.1.0.0 |  | Generic schema parser mixin with validation support
+[ssi_schema_parser_mixin](ssi_schema_parser_mixin/) | 14.0.1.1.0 |  | Generic schema parser mixin with validation support
 [ssi_sequence_mixin](ssi_sequence_mixin/) | 14.0.2.0.2 |  | Sequence Mixin
 [ssi_source_document_mixin](ssi_source_document_mixin/) | 14.0.1.1.0 |  | Source Document Mixin
 [ssi_state_change_constrain_mixin](ssi_state_change_constrain_mixin/) | 14.0.1.7.2 |  | State Change Constrain Mixin
