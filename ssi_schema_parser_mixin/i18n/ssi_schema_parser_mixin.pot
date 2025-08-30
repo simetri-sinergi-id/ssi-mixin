@@ -84,6 +84,22 @@ msgid "Created on"
 msgstr ""
 
 #. module: ssi_schema_parser_mixin
+#: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
+#, python-format
+msgid ""
+"Data tidak sesuai JSON Schema:\n"
+"%s"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
+#, python-format
+msgid ""
+"Dependensi 'jsonschema' tidak tersedia. Instal paket 'jsonschema' untuk "
+"validasi."
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
 #: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser__display_name
 #: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser_category__display_name
 msgid "Display Name"
@@ -93,6 +109,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser__documentation
 #: model_terms:ir.ui.view,arch_db:ssi_schema_parser_mixin.schema_parser_view_form
 msgid "Documentation"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_schema_parser_mixin.schema_parser_view_form
+msgid "Error Message"
 msgstr ""
 
 #. module: ssi_schema_parser_mixin
@@ -107,6 +128,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser__schema_example
 #: model_terms:ir.ui.view,arch_db:ssi_schema_parser_mixin.schema_parser_view_form
 msgid "Example"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser__example_error_message
+msgid "Example Error Message"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser__example_is_valid
+msgid "Example Is Valid"
 msgstr ""
 
 #. module: ssi_schema_parser_mixin
@@ -131,6 +162,22 @@ msgstr ""
 #: model:ir.model.fields,help:ssi_schema_parser_mixin.field_schema_parser__activity_type_icon
 #: model:ir.model.fields,help:ssi_schema_parser_mixin.field_schema_parser_category__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
+#, python-format
+msgid ""
+"Gagal mem-parsing data/spec sebagai YAML.\n"
+"%s"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
+#, python-format
+msgid ""
+"Gagal mem-parsing schema sebagai JSON.\n"
+"%s"
 msgstr ""
 
 #. module: ssi_schema_parser_mixin
@@ -169,6 +216,15 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser__message_is_follower
 #: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser_category__message_is_follower
 msgid "Is Follower"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
+#: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
+#, python-format
+msgid ""
+"JSON Schema tidak valid:\n"
+"%s"
 msgstr ""
 
 #. module: ssi_schema_parser_mixin
@@ -314,6 +370,16 @@ msgid "Parsers"
 msgstr ""
 
 #. module: ssi_schema_parser_mixin
+#: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser__result_example_error_message
+msgid "Parsing Error Message"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser__result_example_is_valid
+msgid "Parsing Succeed"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
 #: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser__activity_user_id
 #: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser_category__activity_user_id
 msgid "Responsible User"
@@ -336,6 +402,17 @@ msgid "Schema"
 msgstr ""
 
 #. module: ssi_schema_parser_mixin
+#: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser__schema_error
+msgid "Schema Error message"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
+#, python-format
+msgid "Schema JSON harus berupa object/dict pada level teratas."
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
 #: model:ir.model,name:ssi_schema_parser_mixin.model_schema_parser
 #: model:ir.ui.menu,name:ssi_schema_parser_mixin.ssi_schema_parser_menu_root
 msgid "Schema Parser"
@@ -354,6 +431,17 @@ msgstr ""
 #. module: ssi_schema_parser_mixin
 #: model:ir.actions.act_window,name:ssi_schema_parser_mixin.schema_parser_action
 msgid "Schema Parsers"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_schema_parser_mixin.schema_parser_view_form
+msgid "Schema Validation"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
+#, python-format
+msgid "Schema harus JSON yang valid: %s"
 msgstr ""
 
 #. module: ssi_schema_parser_mixin
@@ -395,6 +483,21 @@ msgid "Unread Messages Counter"
 msgstr ""
 
 #. module: ssi_schema_parser_mixin
+#: model:ir.model.fields,field_description:ssi_schema_parser_mixin.field_schema_parser__schema_valid
+msgid "Valid Schema"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_schema_parser_mixin.schema_parser_view_form
+msgid "Valid?"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_schema_parser_mixin.schema_parser_view_form
+msgid "Validation"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
 #: model:ir.model.fields,help:ssi_schema_parser_mixin.field_schema_parser__schema
 msgid "Validation schema (JSON Schema). Supports JSON or YAML text."
 msgstr ""
@@ -415,4 +518,10 @@ msgstr ""
 #: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
 #, python-format
 msgid "`result` must be a dict, got: %s"
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
+#: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
+#, python-format
+msgid "bukan object"
 msgstr ""
