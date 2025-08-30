@@ -21,6 +21,8 @@ default_language_version:
 repos:
   - repo: local
     hooks:
+      # These files are most likely copier diff rejection junks; if found,
+      # review them manually, fix the problem (if needed) and remove them
       - id: forbidden-files
         name: forbidden files
         entry: found forbidden files; remove them
@@ -137,17 +139,19 @@ repos:
         name: pylint with optional checks
         args:
           - --rcfile=.pylintrc
+          - --load-plugins=pylint_odoo # ← tambah ini agar plugin aktif saat parse RC
           - --exit-zero
         verbose: true
         types: [python]
-        files: ^.*\.py$ # hanya lint file .py
-        exclude: ^\.(pylintrc|pylintrc-mandatory)$ # pastikan rc file TIDAK ikut
+        files: ^.*\.py$
+        exclude: ^\.(pylintrc|pylintrc-mandatory)$
         pass_filenames: true
       - id: pylint_odoo
         args:
           - --rcfile=.pylintrc-mandatory
+          - --load-plugins=pylint_odoo # ← tambah ini juga di mandatory
         verbose: true
         types: [python]
-        files: ^.*\.py$ # hanya lint file .py
-        exclude: ^\.(pylintrc|pylintrc-mandatory)$ # pastikan rc file TIDAK ikut
+        files: ^.*\.py$
+        exclude: ^\.(pylintrc|pylintrc-mandatory)$
         pass_filenames: true
