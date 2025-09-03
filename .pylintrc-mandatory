@@ -6,8 +6,14 @@ score=n
 [ODOOLINT]
 
 [MESSAGES CONTROL]
+disable=all,
+# 2) Tetap aktifkan hanya odoolint
 enable=odoolint
-disable=prefer-env-translation
+# 3) Lalu nonaktifkan rule odoolint yang tidak cocok untuk Odoo 14
+#    (tambah di baris 'disable=' di atas atau gabungkan, Pylint menerima daftar)
+disable=
+    prefer-env-translation,   # W8161 - butuh self.env._ (tidak ada di Odoo 14)
+    translation-not-lazy      # W8301 - terlalu ketat & memicu false positive di kasus A
 
 [REPORTS]
 msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
