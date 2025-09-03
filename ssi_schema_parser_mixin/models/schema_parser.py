@@ -26,7 +26,6 @@ class SchemaParser(models.Model):
         index=True,
     )
     schema = fields.Text(
-        string="Schema",
         help="Validation schema (JSON Schema). Supports JSON or YAML text.",
     )
     schema_valid = fields.Boolean(
@@ -45,22 +44,17 @@ class SchemaParser(models.Model):
         string="Specification",
         help="Specification to be validated and parsed. Supports JSON or YAML text.",
     )
-    documentation = fields.Text(
-        string="Documentation",
-    )
+    documentation = fields.Text()
     schema_example = fields.Text(
         string="Example",
     )
     example_is_valid = fields.Boolean(
-        string="Example Is Valid",
         compute="_compute_result_example",
     )
     example_error_message = fields.Text(
-        string="Example Error Message",
         compute="_compute_result_example",
     )
     result_example = fields.Text(
-        string="Result Example",
         compute="_compute_result_example",
     )
     result_example_is_valid = fields.Boolean(
@@ -94,8 +88,11 @@ class SchemaParser(models.Model):
                 record.example_is_valid = ex_valid
                 record.example_error_message = ex_err or ""
 
+            if record.parser and record.schema_example:
                 # 2) Parsing specification (tetap seperti perilaku sebelumnya)
-                (result, res_valid, res_err) = record.parse_specification(record.schema)
+                (result, res_valid, res_err) = record.parse_specification(
+                    record.schema_example
+                )
                 record.result_example_is_valid = res_valid
                 record.result_example_error_message = res_err or ""
                 if res_valid and result is not None:
@@ -207,7 +204,7 @@ class SchemaParser(models.Model):
 
     def parse_specification(
         self,
-        schema,
+        specification,
         additional_dict=None,
         supress_error=False,
     ):
@@ -223,7 +220,7 @@ class SchemaParser(models.Model):
             "Dict": Dict,
             "List": List,
             "Optional": Optional,
-            "schema": schema,
+            "specification": specification,
         }
         if additional_dict is not None:
             localdict.update(additional_dict)
