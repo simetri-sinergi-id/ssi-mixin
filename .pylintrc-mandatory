@@ -6,9 +6,17 @@ score=n
 [ODOOLINT]
 
 [MESSAGES CONTROL]
-disable=all,prefer-env-translation,translation-not-lazy
-# Aktifkan kembali hanya rule dari plugin odoolint
+# Aktifkan hanya odoolint (plugin OCA)
 enable=odoolint
+# Nonaktifkan rule odoolint yang tidak relevan untuk Odoo 14,
+# serta matikan beberapa pesan inti Pylint yang sempat muncul.
+disable=
+    W8161,                ; prefer-env-translation (butuh self.env._ yang tidak ada di Odoo 14)
+    W8301,                ; translation-not-lazy (terlalu ketat/FP di kasus ini)
+    C0114, C0115, C0116,  ; missing-module/class/function docstring
+    E0401,                ; import-error (yaml/odoo/jsonschema saat linting di luar env Odoo)
+    W0718,                ; broad-exception-caught
+    W0613                 ; unused-argument (mis. supress_error)
 
 [REPORTS]
 msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
