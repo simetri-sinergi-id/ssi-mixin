@@ -96,9 +96,12 @@ class SchemaParser(models.Model):
                 record.result_example_is_valid = res_valid
                 record.result_example_error_message = res_err or ""
                 if res_valid and result is not None:
-                    record.result_example = json.dumps(
-                        result, ensure_ascii=False, indent=2
-                    )
+                    if isinstance(result, (dict, list)):
+                        record.result_example = json.dumps(
+                            result, ensure_ascii=False, indent=2
+                        )
+                    else:
+                        record.result_example = str(result)
 
     def _json_try_load(self, text):
         """Parse JSON tanpa raise: kembalikan (obj, err_msg)."""
@@ -230,11 +233,6 @@ class SchemaParser(models.Model):
             if result is None:
                 is_valid = False
                 error_message = _("Parser did not set `result`.")
-            if not isinstance(result, dict):
-                is_valid = False
-                error_message = (
-                    _("`result` must be a dict, got: %s") % type(result).__name__
-                )
         except Exception as error:
             is_valid = False
             error_message = _("Error executing parser.\n%s") % error
