@@ -517,11 +517,5 @@ msgstr ""
 #. module: ssi_schema_parser_mixin
 #: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
 #, python-format
-msgid "`result` must be a dict, got: %s"
-msgstr ""
-
-#. module: ssi_schema_parser_mixin
-#: code:addons/ssi_schema_parser_mixin/models/schema_parser.py:0
-#, python-format
 msgid "bukan object"
 msgstr ""
