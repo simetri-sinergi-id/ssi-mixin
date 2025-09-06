@@ -54,7 +54,7 @@
                         <field name="parser" widget="ace" />
                     </page>
                     <page name="documentation" string="Documentation">
-                        <field name="documentation" widget="ace" />
+                        <field name="documentation" widget="bootstrap_markdown" />
                     </page>
                     <page name="example" string="Example">
                         <separator string="Schema" />
