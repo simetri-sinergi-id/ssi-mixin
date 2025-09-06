@@ -1,7 +1,11 @@
 import json
+import os
+import tempfile
 from typing import Any, Dict, List, Optional
 
 import yaml
+from json_schema_for_humans.generate import generate_from_schema
+from json_schema_for_humans.generation_configuration import GenerationConfiguration
 
 from odoo import _, api, fields, models
 from odoo.tools.safe_eval import safe_eval
@@ -44,7 +48,14 @@ class SchemaParser(models.Model):
         string="Specification",
         help="Specification to be validated and parsed. Supports JSON or YAML text.",
     )
-    documentation = fields.Text()
+    documentation = fields.Text(
+        string="Documentation",
+        compute="_compute_documentation",
+        store=True,
+        compute_sudo=True,
+        help="""Auto-generated (Markdown/HTML) from JSON Schema in the `schema`
+field using json-schema-for-humans when available; otherwise a minimal Markdown fallback.""",
+    )
     schema_example = fields.Text(
         string="Example",
     )
@@ -65,6 +76,53 @@ class SchemaParser(models.Model):
         string="Parsing Error Message",
         compute="_compute_result_example",
     )
+
+    @api.depends("schema", "schema_valid", "schema_error")
+    def _compute_documentation(self):
+        for rec in self:
+            rec.documentation = ""
+
+            schema_obj, err = rec._json_try_load(rec.schema or "")
+            if err or not isinstance(schema_obj, dict):
+                rec.documentation = "**Schema Documentation**\n\n" + (
+                    rec.schema_error
+                    or f"> Gagal mem-parsing schema sebagai JSON.\n> {err}"
+                )
+                continue
+
+            tmp_path = None
+            try:
+                # 1) Tulis schema ke file sementara
+                with tempfile.NamedTemporaryFile(
+                    "w", suffix=".json", delete=False, encoding="utf-8"
+                ) as tf:
+                    json.dump(schema_obj, tf, ensure_ascii=False, indent=2)
+                    tmp_path = tf.name
+
+                # 2) Konfigurasi output (Markdown). Gunakan "js"/"flat" untuk HTML.
+                cfg = GenerationConfiguration(
+                    template_name="md",  # "md" => Markdown; "js"/"flat" => HTML
+                    collapse_long_descriptions=False,
+                    description_is_markdown=True,  # relevan untuk template HTML
+                    show_toc=False,
+                )
+
+                # 3) Bangkitkan dokumentasi dari path file
+                doc_text = generate_from_schema(tmp_path, config=cfg)
+
+                rec.documentation = str(doc_text) if doc_text is not None else ""
+            except Exception as e:
+                rec.documentation = (
+                    "**Schema Documentation**\n\n"
+                    f"> Terjadi kesalahan saat menghasilkan dokumentasi: {e}"
+                )
+            finally:
+                if tmp_path and os.path.exists(tmp_path):
+                    try:
+                        os.unlink(tmp_path)
+                    except Exception:
+                        # Abaikan kegagalan hapus file temp
+                        pass
 
     @api.depends(
         "schema",

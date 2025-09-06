@@ -6,8 +6,8 @@
     "website": "https://simetri-sinergi.id",
     "category": "Technical",
     "license": "AGPL-3",
-    "depends": ["base", "ssi_master_data_mixin"],
-    "external_dependencies": {"python": ["pyyaml"]},
+    "depends": ["base", "ssi_master_data_mixin", "web_widget_text_markdown"],
+    "external_dependencies": {"python": ["pyyaml", "json-schema-for-humans"]},
     "data": [
         "security/ir_model_access.xml",
         "menus.xml",
