@@ -4,6 +4,7 @@ load-plugins=pylint_odoo
 score=n
 
 [ODOOLINT]
+manifest-required-author=PT. Simetri Sinergi Indonesia
 
 [MESSAGES CONTROL]
 # Aktifkan hanya odoolint (plugin OCA)
