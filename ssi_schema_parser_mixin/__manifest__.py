@@ -1,6 +1,6 @@
 {
     "name": "Schema Parser Mixin",
-    "version": "14.0.1.2.1",
+    "version": "14.0.2.0.0",
     "summary": "Generic schema parser mixin with validation support",
     "author": "PT. Simetri Sinergi Indonesia",
     "website": "https://simetri-sinergi.id",
