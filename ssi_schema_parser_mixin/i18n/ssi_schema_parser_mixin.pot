@@ -56,6 +56,13 @@ msgid "Attachment Count"
 msgstr ""
 
 #. module: ssi_schema_parser_mixin
+#: model:ir.model.fields,help:ssi_schema_parser_mixin.field_schema_parser__documentation
+msgid ""
+"Auto-generated (Markdown/HTML) from JSON Schema in the `schema`\n"
+"field using json-schema-for-humans when available; otherwise a minimal Markdown fallback."
+msgstr ""
+
+#. module: ssi_schema_parser_mixin
 #: model:ir.ui.menu,name:ssi_schema_parser_mixin.schema_parser_category_menu
 msgid "Categories"
 msgstr ""
