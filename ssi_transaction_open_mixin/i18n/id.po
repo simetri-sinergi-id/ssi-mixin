@@ -1,0 +1,469 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ssi_transaction_open_mixin
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-17 08:25+0000\n"
+"PO-Revision-Date: 2025-11-17 08:25+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__name
+msgid "# Document"
+msgstr "No. Dokumen"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_needaction
+msgid "Action Needed"
+msgstr "Tindakan Diperlukan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_ids
+msgid "Activities"
+msgstr "Aktivitas"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Dekorasi Pengecualian Aktivitas"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_state
+msgid "Activity State"
+msgstr "Status Aktivitas"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Ikon Jenis Aktivitas"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__allowed_policy_template_ids
+msgid "Allowed Policy Templates"
+msgstr "Templat Kebijakan yang Diizinkan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_attachment_count
+msgid "Attachment Count"
+msgstr "Jumlah Lampiran"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__manual_number_ok
+msgid "Can Input Manual Document Number"
+msgstr "Dapat Mengisi Nomor Dokumen Manual"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__restart_ok
+msgid "Can Restart"
+msgstr "Dapat Memulai Ulang"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__open_ok
+msgid "Can Start"
+msgstr "Dapat Memulai"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__company_partner_id
+msgid "Company Partner"
+msgstr "Mitra Perusahaan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__company_id
+msgid ""
+"Company that own the document\n"
+"\n"
+"* Automatically filled with user's company.\n"
+"  Default company can be changed"
+msgstr ""
+"Perusahaan yang memiliki dokumen\n"
+"\n"
+"* Terisi otomatis dengan perusahaan pengguna.\n"
+"  Perusahaan default dapat diubah"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_follower_ids
+msgid "Followers"
+msgstr "Pengikut"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Pengikut (Saluran)"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Pengikut (Mitra)"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Ikon Font Awesome mis. fa-tasks"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_exception_icon
+msgid "Icon"
+msgstr "Ikon"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Ikon untuk menandai aktivitas pengecualian."
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__message_needaction
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Jika dicentang, pesan baru memerlukan perhatian Anda."
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Jika dicentang, beberapa pesan mengalami kesalahan pengiriman."
+
+#. module: ssi_transaction_open_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_open_mixin.open_filter
+msgid "In Progress"
+msgstr "Dalam Proses"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_is_follower
+msgid "Is Follower"
+msgstr "Adalah Pengikut"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open____last_update
+msgid "Last Modified on"
+msgstr "Terakhir Diubah pada"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Lampiran Utama"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__manual_number_ok
+msgid ""
+"Manual number assignment policy\n"
+"\n"
+"* If active user can edit document number"
+msgstr ""
+"Kebijakan penetapan nomor manual\n"
+"\n"
+"* Jika aktif, pengguna dapat mengedit nomor dokumen"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_has_error
+msgid "Message Delivery error"
+msgstr "Kesalahan Pengiriman Pesan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_ids
+msgid "Messages"
+msgstr "Pesan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Batas Waktu Aktivitas Saya"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Batas Waktu Aktivitas Berikutnya"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_summary
+msgid "Next Activity Summary"
+msgstr "Ringkasan Aktivitas Berikutnya"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_type_id
+msgid "Next Activity Type"
+msgstr "Jenis Aktivitas Berikutnya"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__note
+msgid "Note"
+msgstr "Catatan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Jumlah Tindakan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_has_error_counter
+msgid "Number of errors"
+msgstr "Jumlah Kesalahan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Jumlah pesan yang memerlukan tindakan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Jumlah pesan dengan kesalahan pengiriman"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Jumlah pesan yang belum dibaca"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__client_account_mapping__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__client_trial_balance__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_worksheet__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_worksheet_mixin__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_0427d28__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_09253fe__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_1d9338d__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_369c5a5__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_437fc8f__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_6dcda0e__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_805d4d5__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_806c4e1__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_842f0d6__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_a025441__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_a0319a2__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_a033cc6__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_a13a30e__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_a418d89__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_a58e29c__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_a604795__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_a753ab9__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_a8c54f3__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_a8f4d88__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_ab19fd4__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_abd82ed__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_ae11f7e__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_ae48e68__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_ae598e6__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_b1f820c__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_b26d482__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_b32655a__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_b3ff42f__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_b555edd__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_b59b886__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_b66777d__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_b9d8a5c__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_ba9b2f0__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_bab9d32__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_bb33b94__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_bbbdfe7__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_bc3e272__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_bcc0d76__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_bdcdfc5__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_be62e79__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_bfb6dae__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_c0d0898__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_c0e0eec__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_c165170__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_c16abd7__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_c2375d8__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_c40cfd9__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_c435bcd__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_c8740d4__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_c94e287__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_cae598e__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_cb82c5f__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_cbbbaf4__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_cda3a68__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_d133f46__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_d33420f__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_d3d2719__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_d4289e4__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_d66d87a__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_d8aaebc__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_d9d2b44__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_dae9f3c__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_ddf034c__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_de417a6__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_de69c2f__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_e1f2d98__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_e301171__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_e51bb1c__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_e59c663__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_e78a3c6__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_eabdaad__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_ee819ae__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_f3a78de__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_f3ed115__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_f5a3cee__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_f5e7049__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_f63f569__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_f6a227__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_f87b2e1__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_f9f3299__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_fbbe0f8__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_fbf57ee__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_fc75636__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__general_audit_ws_ff42fdc__state__open
+#: model:ir.model.fields.selection,name:ssi_transaction_open_mixin.selection__mixin_transaction_open__state__open
+msgid "On Progress"
+msgstr "Dalam Proses"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__policy_template_id
+msgid "Policy Template"
+msgstr "Templat Kebijakan"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__user_id
+msgid "Responsible"
+msgstr "Penanggung Jawab"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_user_id
+msgid "Responsible User"
+msgstr "Pengguna Penanggung Jawab"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__restart_ok
+msgid ""
+"Restart policy\n"
+"\n"
+"* If active user can see and execute 'Restart' button"
+msgstr ""
+"Kebijakan mulai ulang\n"
+"\n"
+"* Jika aktif, pengguna dapat melihat dan mengeksekusi tombol 'Mulai Ulang'"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__reviewer_id
+msgid "Reviewer"
+msgstr "Pemeriksa"
+
+#. module: ssi_transaction_open_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_open_mixin.button_open
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_open_mixin.tree_button_open
+msgid "Start"
+msgstr "Mulai"
+
+#. module: ssi_transaction_open_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_open_mixin.button_open
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_open_mixin.tree_button_open
+msgid "Start data. Are you sure?"
+msgstr "Mulai data. Anda yakin?"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__open_ok
+msgid ""
+"Start policy\n"
+"\n"
+"* If active user can see and execute 'Start' button"
+msgstr ""
+"Kebijakan mulai\n"
+"\n"
+"* Jika aktif, pengguna dapat melihat dan mengeksekusi tombol 'Mulai'"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__state
+msgid "State"
+msgstr "Status"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Status berdasarkan aktivitas\n"
+"Terlambat: Tanggal jatuh tempo telah lewat\n"
+"Hari ini: Tanggal aktivitas adalah hari ini\n"
+"Terencana: Aktivitas mendatang."
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model,name:ssi_transaction_open_mixin.model_mixin_transaction_open
+msgid "Transaction Mixin - In Progress State Mixin"
+msgstr "Mixin Transaksi - Mixin Status Dalam Proses"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__name
+msgid ""
+"Transaction/document number\n"
+"\n"
+"* Unique indentifer of transaction\n"
+"* Leave '/' to automatically generate number\n"
+"* Change '/' into any number/identifier to manually assign number.\n"
+"  Manual number assignment can be done in 'Draft' state\n"
+"  Only user with 'Can Manualy Assign Number' policy can manually assign number.\n"
+"* Transaction with number other than '/' can not be deleted."
+msgstr ""
+"Nomor transaksi/dokumen\n"
+"\n"
+"* Pengenal unik transaksi\n"
+"* Biarkan '/' untuk menghasilkan nomor secara otomatis\n"
+"* Ubah '/' menjadi nomor/pengenal apa pun untuk menetapkan nomor secara manual.\n"
+"  Penetapan nomor manual dapat dilakukan pada status 'Draft'\n"
+"  Hanya pengguna dengan kebijakan 'Dapat Menetapkan Nomor Manual' yang dapat menetapkan nomor secara manual.\n"
+"* Transaksi dengan nomor selain '/' tidak dapat dihapus."
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Jenis aktivitas pengecualian pada catatan."
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_unread
+msgid "Unread Messages"
+msgstr "Pesan yang Belum Dibaca"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Penghitung Pesan yang Belum Dibaca"
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__user_id
+msgid ""
+"User that responsible for document\n"
+"\n"
+"* Create user can be different with responsible user\n"
+"* Automatically filled with user that initiate document creation.\n"
+"  Default responsible can be changed."
+msgstr ""
+"Pengguna yang bertanggung jawab atas dokumen\n"
+"\n"
+"* Pembuat dokumen dapat berbeda dengan pengguna penanggung jawab\n"
+"* Terisi otomatis dengan pengguna yang memulai pembuatan dokumen.\n"
+"  Penanggung jawab default dapat diubah."
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__reviewer_id
+msgid ""
+"User that responsible to review document\n"
+"\n"
+"* Unless it configured to approve reviewer does not equal to approver"
+msgstr ""
+"Pengguna yang bertanggung jawab meninjau dokumen\n"
+"\n"
+"* Kecuali dikonfigurasi untuk menyetujui, pemeriksa tidak sama dengan penyetuju"
