@@ -1,7 +1,7 @@
 # Copyright 2022 OpenSynergy Indonesia
 # Copyright 2022 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
-
+# pylint: disable=super-with-arguments,consider-using-f-string,deprecated-name-get
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
@@ -28,6 +28,7 @@ class MixinMasterData(models.AbstractModel):
     name = fields.Char(
         string="Name",
         required=True,
+        translate=True,
     )
     code = fields.Char(
         string="Code",
