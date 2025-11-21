@@ -18,8 +18,8 @@ disable=
     C0114, C0115, C0116,  ; missing-module/class/function docstring
     E0401,                ; import-error (yaml/odoo/jsonschema saat linting di luar env Odoo)
     W0718,                ; broad-exception-caught
-    W0613                 ; unused-argument (mis. supress_error)
-
+    W0613,                 ; unused-argument (mis. supress_error)
+    W8113                 ; attribute-string-redundant
 
 [REPORTS]
 msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
