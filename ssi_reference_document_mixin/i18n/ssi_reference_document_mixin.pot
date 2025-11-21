@@ -143,6 +143,51 @@ msgid "ID"
 msgstr ""
 
 #. module: ssi_reference_document_mixin
+#: model:reference_document_category,name:ssi_reference_document_mixin.reference_document_category1
+msgid "IFRS - (test)"
+msgstr ""
+
+#. module: ssi_reference_document_mixin
+#: model:reference_document,name:ssi_reference_document_mixin.ifrs_1
+msgid ""
+"IFRS 1 - First-time Adoption of International Financial Reporting Standards "
+"- (test)"
+msgstr ""
+
+#. module: ssi_reference_document_mixin
+#: model:reference_document,name:ssi_reference_document_mixin.ifrs_2
+msgid "IFRS 2 - Share-based Payment - (test)"
+msgstr ""
+
+#. module: ssi_reference_document_mixin
+#: model:reference_document,name:ssi_reference_document_mixin.ifrs_3
+msgid "IFRS 3 - Business Combinations - (test)"
+msgstr ""
+
+#. module: ssi_reference_document_mixin
+#: model:reference_document_category,name:ssi_reference_document_mixin.reference_document_category2
+msgid "ISA - (test)"
+msgstr ""
+
+#. module: ssi_reference_document_mixin
+#: model:reference_document,name:ssi_reference_document_mixin.isa_200
+msgid ""
+"ISA 200 - Overall Objectives of the Independent Auditor and the Conduct of "
+"an Audit inAccordance with International Standards on Auditing - (test)"
+msgstr ""
+
+#. module: ssi_reference_document_mixin
+#: model:reference_document,name:ssi_reference_document_mixin.isa_210
+msgid "ISA 210 - Agreeing the Terms of Audit Engagements - (test)"
+msgstr ""
+
+#. module: ssi_reference_document_mixin
+#: model:reference_document,name:ssi_reference_document_mixin.isa_220
+msgid ""
+"ISA 220 - Quality Control for an Audit of Financial Statements - (test)"
+msgstr ""
+
+#. module: ssi_reference_document_mixin
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document__activity_exception_icon
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_category__activity_exception_icon
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_set__activity_exception_icon
