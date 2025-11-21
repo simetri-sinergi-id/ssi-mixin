@@ -29,9 +29,9 @@ addon | version | maintainers | summary
 [ssi_field_date_callable_attribute](ssi_field_date_callable_attribute/) | 14.0.1.1.0 |  | Custom Date Field With Callable Attribute
 [ssi_localdict_mixin](ssi_localdict_mixin/) | 14.0.1.0.0 |  | Localdict Mixin
 [ssi_m2o_configurator_mixin](ssi_m2o_configurator_mixin/) | 14.0.2.1.0 |  | Many2one Configurator Mixin
-[ssi_master_data_mixin](ssi_master_data_mixin/) | 14.0.4.3.0 |  | Master Data Mixin
-[ssi_multiple_approval_mixin](ssi_multiple_approval_mixin/) | 14.0.1.10.2 |  | Multiple Approval
-[ssi_operating_unit_mixin](ssi_operating_unit_mixin/) | 14.0.1.2.0 |  | Operating Unit Mixin
+[ssi_master_data_mixin](ssi_master_data_mixin/) | 14.0.4.4.0 |  | Master Data Mixin
+[ssi_multiple_approval_mixin](ssi_multiple_approval_mixin/) | 14.0.1.11.0 |  | Multiple Approval
+[ssi_operating_unit_mixin](ssi_operating_unit_mixin/) | 14.0.1.3.0 |  | Operating Unit Mixin
 [ssi_partner_mixin](ssi_partner_mixin/) | 14.0.1.3.0 |  | Partner Mixin
 [ssi_policy_mixin](ssi_policy_mixin/) | 14.0.1.3.2 |  | Policy Mixin
 [ssi_pricelist_mixin](ssi_pricelist_mixin/) | 14.0.1.1.0 |  | Pricelist Mixin
@@ -55,14 +55,14 @@ addon | version | maintainers | summary
 [ssi_status_check_mixin](ssi_status_check_mixin/) | 14.0.2.4.2 |  | Status Check Mixin
 [ssi_tag_mixin](ssi_tag_mixin/) | 14.0.1.0.0 |  | Tag Mixin
 [ssi_term_condition_mixin](ssi_term_condition_mixin/) | 14.0.1.2.0 |  | Terms and Conditions Mixin
-[ssi_transaction_cancel_mixin](ssi_transaction_cancel_mixin/) | 14.0.1.13.1 |  | Transaction Mixin - Cancel State
-[ssi_transaction_confirm_mixin](ssi_transaction_confirm_mixin/) | 14.0.2.10.1 |  | Transaction Mixin - Waiting for Approval State
+[ssi_transaction_cancel_mixin](ssi_transaction_cancel_mixin/) | 14.0.1.14.0 |  | Transaction Mixin - Cancel State
+[ssi_transaction_confirm_mixin](ssi_transaction_confirm_mixin/) | 14.0.2.11.0 |  | Transaction Mixin - Waiting for Approval State
 [ssi_transaction_date_due_mixin](ssi_transaction_date_due_mixin/) | 14.0.1.0.0 |  | Transaction Mixin - Date Due
 [ssi_transaction_date_duration_mixin](ssi_transaction_date_duration_mixin/) | 14.0.1.0.0 |  | Transaction Date Duration Mixin
-[ssi_transaction_done_mixin](ssi_transaction_done_mixin/) | 14.0.1.13.1 |  | Transaction Mixin - Done State
-[ssi_transaction_mixin](ssi_transaction_mixin/) | 14.0.4.15.0 |  | Transaction Mixin
-[ssi_transaction_open_mixin](ssi_transaction_open_mixin/) | 14.0.1.13.1 |  | Transaction Mixin - In Progress State
-[ssi_transaction_partner_mixin](ssi_transaction_partner_mixin/) | 14.0.1.0.0 |  | Transaction + Partner Mixin
+[ssi_transaction_done_mixin](ssi_transaction_done_mixin/) | 14.0.1.14.0 |  | Transaction Mixin - Done State
+[ssi_transaction_mixin](ssi_transaction_mixin/) | 14.0.4.16.0 |  | Transaction Mixin
+[ssi_transaction_open_mixin](ssi_transaction_open_mixin/) | 14.0.1.14.0 |  | Transaction Mixin - In Progress State
+[ssi_transaction_partner_mixin](ssi_transaction_partner_mixin/) | 14.0.1.1.0 |  | Transaction + Partner Mixin
 [ssi_transaction_pricelist_mixin](ssi_transaction_pricelist_mixin/) | 14.0.1.1.0 |  | Transaction + Pricelist Mixin
 [ssi_transaction_queue_cancel_mixin](ssi_transaction_queue_cancel_mixin/) | 14.0.1.1.0 |  | Transaction Mixin - Queue To Cancel State
 [ssi_transaction_queue_done_mixin](ssi_transaction_queue_done_mixin/) | 14.0.1.1.0 |  | Transaction Mixin - Queue To Done State
