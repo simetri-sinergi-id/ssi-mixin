@@ -58,9 +58,7 @@
                     </group>
                     <notebook>
                         <page name="page_detail" string="Details">
-                            <group name="group_detail_1" colspan="4" col="2">
-                                <field name="detail_ids" colspan="4" nolabel="1" />
-                            </group>
+                            <field name="detail_ids" colspan="4" nolabel="1" />
                         </page>
                         <page name="page_computation" string="Computation">
                             <group name="group_computation_1" colspan="4" col="2">
