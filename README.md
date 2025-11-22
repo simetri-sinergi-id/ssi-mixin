@@ -33,7 +33,7 @@ addon | version | maintainers | summary
 [ssi_multiple_approval_mixin](ssi_multiple_approval_mixin/) | 14.0.1.11.0 |  | Multiple Approval
 [ssi_operating_unit_mixin](ssi_operating_unit_mixin/) | 14.0.1.3.0 |  | Operating Unit Mixin
 [ssi_partner_mixin](ssi_partner_mixin/) | 14.0.1.3.0 |  | Partner Mixin
-[ssi_policy_mixin](ssi_policy_mixin/) | 14.0.1.3.2 |  | Policy Mixin
+[ssi_policy_mixin](ssi_policy_mixin/) | 14.0.1.4.0 |  | Policy Mixin
 [ssi_pricelist_mixin](ssi_pricelist_mixin/) | 14.0.1.1.0 |  | Pricelist Mixin
 [ssi_print_mixin](ssi_print_mixin/) | 14.0.1.3.1 |  | Print Policy Mixin
 [ssi_product_line_account_mixin](ssi_product_line_account_mixin/) | 14.0.2.4.0 |  | Product Line Mixin - With Accounting
