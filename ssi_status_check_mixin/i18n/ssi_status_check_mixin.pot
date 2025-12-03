@@ -323,6 +323,12 @@ msgid "Templates"
 msgstr ""
 
 #. module: ssi_status_check_mixin
+#: code:addons/ssi_status_check_mixin/models/status_check.py:0
+#, python-format
+msgid "The bypass has been reversed."
+msgstr ""
+
+#. module: ssi_status_check_mixin
 #: model:ir.model.fields,field_description:ssi_status_check_mixin.field_status_check_template_detail__bypass_user_ids
 #: model:ir.model.fields.selection,name:ssi_status_check_mixin.selection__status_check_template_detail__bypass_method__use_user
 msgid "Users"
