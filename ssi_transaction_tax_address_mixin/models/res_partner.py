@@ -7,6 +7,12 @@ from odoo import fields, models
 
 
 class ResPartner(models.AbstractModel):
+    """
+    Extends ``res.partner`` to add ``'tax'`` as a valid contact type in the
+    ``type`` selection field, making it possible to mark a partner contact
+    as a dedicated tax address used by ``mixin.transaction_tax_address``.
+    """
+
     _name = "res.partner"
     _inherit = [
         "res.partner",

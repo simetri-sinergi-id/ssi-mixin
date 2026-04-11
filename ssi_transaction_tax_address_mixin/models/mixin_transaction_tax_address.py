@@ -7,6 +7,16 @@ from odoo import api, fields, models
 
 
 class MixinTransactionTaxAddess(models.AbstractModel):
+    """
+    Extends ``mixin.transaction`` to add a ``tax_address_id`` field based on
+    the selected ``partner_id``. The tax address is a child contact of the
+    partner with type ``'tax'`` (see ``res_partner.py`` extension in this
+    module).
+
+    ``MixinTransactionTaxAddressRequired`` is a variant that forces
+    ``tax_address_id`` to be mandatory.
+    """
+
     _name = "mixin.transaction_tax_address"
     _inherit = [
         "mixin.transaction",
