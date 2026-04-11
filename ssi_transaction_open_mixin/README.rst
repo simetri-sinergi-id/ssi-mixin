@@ -6,6 +6,14 @@
 Transaction Mixin - In Progress State
 =====================================
 
+``ssi_transaction_open_mixin`` extends ``mixin.transaction`` with an
+*in-progress* / *open* workflow state.
+
+* Adds ``open_ok`` policy field and auto-injects the open (start) button
+  and policy fields into the form view.
+* Provides ``action_open`` lifecycle handler.
+* Configurable via ``_open_state`` class attribute.
+
 
 Installation
 ============
