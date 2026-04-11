@@ -6,6 +6,14 @@
 Transaction Mixin - Done State
 ==============================
 
+``ssi_transaction_done_mixin`` extends ``mixin.transaction`` with a
+*done* terminal state.
+
+* Adds ``done_ok`` policy field and auto-injects the done button and
+  policy fields into the form view.
+* Provides ``action_done`` lifecycle handler.
+* Configurable via ``_done_state`` class attribute.
+
 
 Installation
 ============
