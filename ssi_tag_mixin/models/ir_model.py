@@ -6,6 +6,13 @@ from odoo import fields, models
 
 
 class IrModel(models.Model):
+    """
+    Extends ``ir.model`` with ``global_tag_category_ids`` — the explicit set
+    of tag categories available for a model — and provides a computed
+    ``all_global_tag_category_ids`` that merges global categories with the
+    model-specific ones.
+    """
+
     _name = "ir.model"
     _inherit = "ir.model"
 

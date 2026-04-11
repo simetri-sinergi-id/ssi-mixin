@@ -6,6 +6,16 @@ from odoo import fields, models
 
 
 class GlobalTagCategory(models.Model):
+    """
+    Master-data model (inheriting ``mixin.master_data``) that groups
+    ``global_tag`` records into named categories.
+
+    The ``exclusive`` flag indicates that only one tag from this category may
+    be applied to a document at a time. Setting ``global_use`` makes the
+    category automatically available for all models without explicit
+    model-level assignment.
+    """
+
     _name = "global_tag_category"
     _inherit = [
         "mixin.master_data",
