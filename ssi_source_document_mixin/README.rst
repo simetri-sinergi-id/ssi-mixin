@@ -6,6 +6,20 @@
 Source Document Mixin
 =====================
 
+``ssi_source_document_mixin`` provides an abstract Odoo model —
+``mixin.source_document`` — that adds a lightweight polymorphic source-
+document reference to any model.
+
+Rather than using Odoo’s schema-heavy ``fields.Reference`` column, the mixin
+stores the reference as two fields:
+
+* ``source_document_model_id`` (``ir.model``) — the model of the source.
+* ``source_document_res_id`` (Integer) — the ID of the source record.
+
+A computed ``source_document_id`` (``fields.Reference``) assembles those two
+values into a navigable reference displayed in the UI, avoiding extra schema
+migrations while still supporting cross-model linking.
+
 
 Installation
 ============
