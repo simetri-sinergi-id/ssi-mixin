@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class BaseTerminateReason(models.Model):
+    """
+    Master-data model that stores the available reasons for terminating a
+    transaction. Linked to models via ``ir.model.terminate_reason_ids`` and
+    used as a required field by ``mixin.transaction_terminate``.
+    """
+
     _name = "base.terminate_reason"
     _description = "Terminate Reason"
 
