@@ -5,7 +5,19 @@
 ====================================
 Product Line Mixin - With Accounting
 ====================================
+``ssi_product_line_account_mixin`` extends ``mixin.product_line_price`` with
+accounting fields.
 
+Any model that inherits from ``mixin.product_line_account`` additionally
+gains:
+
+* ``tax_ids`` (``account.tax``) and a computed tri-amount breakdown:
+  ``price_subtotal`` (excl. tax), ``price_tax``, and ``price_total``
+  (incl. tax) using Odoo’s ``compute_all`` mechanism.
+* ``account_id`` (``account.account``) and ``analytic_account_id`` for
+  journal-entry posting.
+* ``usage_id`` (``product.usage_type``) with onchange handlers that
+  auto-fill ``account_id`` and ``tax_ids`` from the product’s configuration.
 
 Installation
 ============
