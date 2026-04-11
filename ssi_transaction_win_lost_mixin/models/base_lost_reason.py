@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class BaseLostReason(models.Model):
+    """
+    Master-data model that stores the available reasons for marking a
+    transaction as lost. Linked to models via ``ir.model.lost_reason_ids`` and
+    used as a required field by ``mixin.transaction_win_lost``.
+    """
+
     _name = "base.lost_reason"
     _description = "Lost Reason"
 
