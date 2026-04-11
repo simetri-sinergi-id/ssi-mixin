@@ -6,6 +6,11 @@ from odoo import models
 
 
 class IrSequence(models.Model):
+    """
+    Extends ``ir.sequence`` with ``mixin.multiple_operating_unit`` so that
+    sequences can optionally be restricted to specific operating units.
+    """
+
     _name = "ir.sequence"
     _inherit = [
         "ir.sequence",

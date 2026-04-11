@@ -5,7 +5,17 @@
 ====================
 Operating Unit Mixin
 ====================
+``ssi_operating_unit_mixin`` provides two abstract Odoo models that add
+operating-unit awareness to any model.
 
+* **mixin.single_operating_unit** — adds a single ``operating_unit_id``
+  Many2one field, defaulting to the current user’s default operating unit.
+* **mixin.multiple_operating_unit** — adds an ``operating_unit_ids``
+  Many2many field for records that can span multiple operating units.
+
+The module also extends ``ir.sequence`` with
+``mixin.multiple_operating_unit`` so that sequences can be scoped to
+specific operating units.
 
 Installation
 ============
