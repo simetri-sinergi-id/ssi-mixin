@@ -9,6 +9,16 @@ from odoo.addons.ssi_decorator import ssi_decorator
 
 
 class MixinDataRequirement(models.AbstractModel):
+    """
+    Abstract mixin that adds data-requirement tracking capabilities to any
+    transactional model.
+
+    Inheriting models gain a ``data_requirement_ids`` One2many that surfaces
+    outstanding data requirements linked to the current record, together with
+    an optional automatically injected view page (controlled by a class-level
+    flag) so users can submit fulfilment data directly from the parent form.
+    """
+
     _name = "mixin.data_requirement"
     _inherit = [
         "mixin.decorator",

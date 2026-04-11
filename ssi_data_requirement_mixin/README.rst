@@ -6,6 +6,25 @@
 Data Requirement Mixin
 ======================
 
+``ssi_data_requirement_mixin`` provides a complete framework for managing
+document/data submission requirements between an organisation and its
+partners.
+
+The module ships the following components:
+
+* **data_requirement_type_category** / **data_requirement_type** —
+  master-data hierarchy that classifies required documents (e.g. KTP, NPWP,
+  SIUP).
+* **data_requirement_package_type** / **data_requirement_package** —
+  groups a set of required types into a package (e.g. “Onboarding Docs”)
+  and tracks the fulfilment workflow (draft → confirm → done / cancel).
+* **data_requirement** — a single requirement raised against a partner,
+  supporting submission via URL, file attachment, or free text.
+* **mixin.data_requirement** — adds requirement tracking to any document
+  model via a ``data_requirement_ids`` One2many.
+* **mixin.data_requirement_configurator** — configures which packages are
+  applicable for a given document type.
+
 
 Installation
 ============

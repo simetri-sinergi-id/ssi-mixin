@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class DataRequirementPackageType(models.Model):
+    """
+    Master-data model (inheriting ``mixin.master_data``) that classifies data
+    requirement packages into named types, each with an optional ordered list
+    of ``data_requirement_type`` records (``detail_ids``).
+    """
+
     _name = "data_requirement_package_type"
     _description = "Data Requirement Package Type"
     _inherit = ["mixin.master_data"]

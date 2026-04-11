@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class DataRequirementType(models.Model):
+    """
+    Master-data model (inheriting ``mixin.master_data``) that classifies data
+    requirements by type (e.g. “KTP”, “NPWP”) and associates them with a
+    ``data_requirement_type_category``.
+    """
+
     _name = "data_requirement_type"
     _description = "Data Requirement Type"
     _inherit = ["mixin.master_data"]

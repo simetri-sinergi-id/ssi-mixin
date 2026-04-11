@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class DataRequirementPackageDetail(models.Model):
+    """
+    Child-line model for ``data_requirement_package`` that links a
+    ``data_requirement`` record to its owning package and tracks basic
+    fulfilment metadata.
+    """
+
     _name = "data_requirement_package.detail"
     _description = "Data Requirement Package Detail"
     _order = "package_id, sequence"
