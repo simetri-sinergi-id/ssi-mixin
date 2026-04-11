@@ -6,6 +6,15 @@
 Transaction Mixin - Queue
 =========================
 
+``ssi_transaction_queue_mixin`` extends ``mixin.transaction`` with
+queue-processing support via the OCA ``queue_job`` module.
+
+* Adds an optional auto-injected form-view page listing queue jobs
+  (enabled by ``_queue_processing_create_page = True``).
+* Used as a base by ``mixin.transaction_queue_cancel`` and
+  ``mixin.transaction_queue_done`` for background cancellation and
+  completion workflows.
+
 
 Installation
 ============
