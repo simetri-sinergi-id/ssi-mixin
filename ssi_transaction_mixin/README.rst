@@ -6,6 +6,26 @@
 Transaction Mixin
 =================
 
+``ssi_transaction_mixin`` provides the foundational abstract model —
+``mixin.transaction`` — used by all SSI transactional documents.
+
+It composes the following base capabilities:
+
+* **mail.thread** / **mail.activity.mixin** — chatter and activity tracking.
+* **mixin.decorator** — form-view injection framework.
+* **mixin.sequence** — auto-generated document number.
+* **mixin.policy** — policy-template-driven button visibility.
+* **mixin.print_document** — print/download actions.
+
+And adds:
+
+* A ``name`` (document number) and ``date`` field with a configurable draft
+  sequence state.
+* Automatic form-view injection of status bar, policy fields, and action
+  buttons.
+* ``action_confirm``, ``action_restart``, and base lifecycle hooks that
+  sub-mixins (confirm, open, done, cancel) extend.
+
 
 Installation
 ============
