@@ -8,6 +8,15 @@ from odoo.addons.ssi_decorator import ssi_decorator
 
 
 class MixinResPartnerM2OConfigurator(models.AbstractModel):
+    """
+    Mixin that adds configurable filtering for ``res.partner`` Many2one
+    fields using the three-strategy pattern (manual, domain, or Python code).
+
+    Inherits ``mixin.decorator`` and optionally injects the configuration
+    widget into the form view when
+    ``_res_partner_m2o_configurator_insert_form_element_ok`` is ``True``.
+    """
+
     _name = "mixin.res_partner_m2o_configurator"
     _inherit = [
         "mixin.decorator",
