@@ -6,6 +6,34 @@
 Master Data Mixin
 =================
 
+Description
+===========
+
+``ssi_master_data_mixin`` provides an abstract Odoo model — ``mixin.master_data``
+— that serves as a reusable base for **master/reference data** records.
+
+Any model that inherits from ``mixin.master_data`` automatically gains:
+
+* **Standard fields** — ``name`` (translatable), ``code`` (unique identifier),
+  ``active`` (archive / restore), and ``note`` (free-text remarks).
+* **Sequence generation** — a *Generate Code* button that assigns a
+  sequence-based code from a configured sequence template.  Records whose
+  ``code`` is ``'/'`` are treated as "unassigned" and can receive an automatic
+  code at any time.
+* **Unique-code constraint** — a SQL-level constraint prevents two records of
+  the same model from sharing the same non-slash code.
+* **Chatter integration** — inherits ``mail.thread`` and
+  ``mail.activity.mixin``, giving the form view a full messaging thread and
+  activity scheduler.
+* **Print-document support** — inherits ``mixin.print_document`` and
+  automatically injects a *Print* button into the form header.
+* **Configurable display name** — by setting ``_show_code_on_display_name =
+  True`` on a concrete model, the display name is rendered as ``[code] name``
+  throughout the UI.
+
+Typical use-cases: product types, work-order categories, payment terms,
+school grades, or any static reference table that modules need to configure
+once and reuse across transactions.
 
 Installation
 ============
