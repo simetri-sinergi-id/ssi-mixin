@@ -6,6 +6,21 @@
 Print Policy Mixin
 ==================
 
+``ssi_print_mixin`` provides a standardised print-document framework that adds
+a configurable *Print* button to any Odoo model via an abstract mixin.
+
+The module ships the following components:
+
+* **mixin.print_document** \u2014 abstract mixin that automatically injects a
+  *Print* button into the form-view header and list-view header when
+  ``_automatically_insert_print_button = True`` on the subclass.
+* **print_document_type** \u2014 a named document type (scoped to a specific
+  model) that groups the reports available for printing; its ``code`` is
+  generated from a sequence.
+* **ir.actions.report** extension \u2014 adds ``print_document_type_ids`` to link
+  reports to types, a ``print_python_code`` condition evaluated at print time,
+  and a ``print_multi`` flag for batch printing.
+
 
 Installation
 ============

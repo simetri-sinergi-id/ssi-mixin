@@ -5,7 +5,20 @@
 =============
 Partner Mixin
 =============
+``ssi_partner_mixin`` provides an abstract Odoo model — ``mixin.partner``
+— that adds configurable partner and contact fields to any document model.
 
+Any model that inherits from ``mixin.partner`` automatically gains:
+
+* ``partner_id`` (``res.partner``) — top-level company/individual partner.
+* ``contact_partner_id`` (``res.partner``) — contact person under the
+  selected partner, filtered via a computed ``allowed_contact_ids``.
+* Computed boolean attributes (``mixin_partner_partner_id_required``,
+  ``mixin_partner_partner_id_readonly``, etc.) that expose the effective
+  required/readonly state of both partner fields, driven by class-level
+  configuration and the record’s current state.
+* Optional view injection into form, tree, and search views controlled by
+  class-level ``_mixin_partner_insert_*`` and ``_xpath_*`` attributes.
 
 Installation
 ============

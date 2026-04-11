@@ -6,6 +6,18 @@ from odoo import api, fields, models
 
 
 class MixinTransactionTotal(models.AbstractModel):
+    """
+    Extends ``mixin.transaction`` with a computed ``amount_total`` monetary
+    field and a ``currency_id``.
+
+    The amounts are aggregated from configurable detail-line fields controlled
+    by ``_amount_untaxed_field_name``, ``_amount_tax_field_name``, and
+    ``_amount_total_field_name`` class attributes.
+
+    ``MixinTransactionTotalWithField`` is a variant that adds the amount
+    fields to the underlying database columns.
+    """
+
     _name = "mixin.transaction_total"
     _inherit = [
         "mixin.transaction",

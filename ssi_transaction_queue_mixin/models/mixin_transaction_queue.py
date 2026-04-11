@@ -8,6 +8,15 @@ from odoo.addons.ssi_decorator import ssi_decorator
 
 
 class MixinTransactionQueue(models.AbstractModel):
+    """
+    Extends ``mixin.transaction`` with queue-processing support.
+
+    Models that inherit from ``mixin.transaction_queue`` gain an optional
+    auto-injected form-view page listing queue jobs (enabled by
+    ``_queue_processing_create_page = True``) for background processing
+    via the OCA ``queue_job`` module.
+    """
+
     _name = "mixin.transaction_queue"
     _inherit = [
         "mixin.transaction",

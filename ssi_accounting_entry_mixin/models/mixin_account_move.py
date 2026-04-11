@@ -6,6 +6,17 @@ from odoo import fields, models
 
 
 class MixinAccountMove(models.AbstractModel):
+    """
+    Base mixin for creating, posting, and deleting ``account.move`` (journal
+    entries) from transactional models.
+
+    Concrete models mix this in and configure behaviour through class-level
+    attribute names (e.g. ``_journal_id_field_name``, ``_move_id_field_name``).
+    The mixin delegates all read/write of actual field values via ``getattr``
+    so it never depends on a specific field being present on the inheriting
+    class.
+    """
+
     _name = "mixin.account_move"
     _description = "Accounting Entry Header Mixin"
 
@@ -149,6 +160,13 @@ class MixinAccountMove(models.AbstractModel):
 
 
 class MixinTransactionAccountMoveWithField(models.AbstractModel):
+    """
+    Combines ``mixin.account_move`` with ``mixin.transaction`` and adds the
+    concrete Odoo fields required to store a journal entry on a transactional
+    record (``journal_id``, ``account_id``, ``analytic_account_id``,
+    ``move_id``, ``move_line_id``, and a ``realized`` computed flag).
+    """
+
     _name = "mixin.transaction_account_move_with_field"
     _description = "Accounting Entry Header Mixin - With Field"
     _inherit = [

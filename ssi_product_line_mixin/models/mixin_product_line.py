@@ -6,6 +6,17 @@ from odoo import api, fields, models
 
 
 class MixinProductLine(models.AbstractModel):
+    """
+    Abstract mixin for product-line child records (detail rows) in a
+    transactional document.
+
+    Provides ``product_id``, ``name`` (description), ``uom_quantity``,
+    ``uom_id``, and a computed ``quantity`` (converted to the product’s base
+    UoM). Onchange handlers auto-fill the description and UoM from the
+    selected product. The ``_field_for_name`` attribute controls which product
+    field populates ``name``.
+    """
+
     _name = "mixin.product_line"
     _description = "Product Line Mixin"
     _field_for_name = "display_name"

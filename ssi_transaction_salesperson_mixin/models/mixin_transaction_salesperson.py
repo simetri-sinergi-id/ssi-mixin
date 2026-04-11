@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class MixinTransactionSalesperson(models.AbstractModel):
+    """
+    Composes ``mixin.transaction`` with ``mixin.salesperson`` to add
+    ``user_id`` (salesperson) and ``sale_team_id`` with draft-state
+    editability controls to transactional documents.
+    """
+
     _name = "mixin.transaction_salesperson"
     _inherit = [
         "mixin.transaction",

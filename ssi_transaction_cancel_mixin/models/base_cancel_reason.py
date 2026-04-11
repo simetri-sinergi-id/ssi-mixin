@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class BaseCancelReason(models.Model):
+    """
+    Master-data model that stores the available reasons for cancelling a
+    transaction. Linked to models via ``ir.model.cancel_reason_ids`` and used
+    as a required field by ``mixin.transaction_cancel``.
+    """
+
     _name = "base.cancel_reason"
     _description = "Cancel Reason"
 

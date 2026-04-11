@@ -5,7 +5,23 @@
 =============
 Backend Mixin
 =============
+``ssi_backend_mixin`` provides an abstract Odoo model — ``backend_mixin`` —
+that serves as a reusable base for *backend configuration* records scoped to a
+company (e.g. accounting settings, payroll parameters).
 
+Any model that inherits from ``backend_mixin`` automatically gains:
+
+* All standard fields from ``mixin.master_data`` (``name``, ``code``,
+  ``active``, ``note``, chatter, print-document support).
+* A mandatory ``company_id`` field.
+* A ``state`` selection (``draft`` / ``running``) for activating the record.
+* ``action_running`` — marks this record as *running* for the current company
+  and deactivates any previously running record of the same type.
+* ``action_restart`` — reverts the record to ``draft`` and clears the company
+  reference pointer.
+
+Subclasses configure ``_backend_company_field`` to the name of the
+``res.company`` field that should store the currently active backend ID.
 
 Installation
 ============

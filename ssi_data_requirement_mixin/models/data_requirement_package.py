@@ -8,6 +8,14 @@ from odoo.addons.ssi_decorator import ssi_decorator
 
 
 class DataRequirementPackage(models.Model):
+    """
+    Transactional model representing a *data requirement package* — a batch
+    request that groups multiple individual data requirements (``data_requirement``
+    records) to be fulfilled by a partner within a given period.
+
+    Lifecycle: draft → confirm → done / cancel.
+    """
+
     _name = "data_requirement_package"
     _inherit = [
         "mixin.transaction_cancel",

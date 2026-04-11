@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class IrModel(models.Model):
+    """
+    Extends ``ir.model`` with ``lost_reason_ids`` — the set of lost reasons
+    applicable for a model — and provides a computed ``all_lost_reason_ids``
+    that merges globally-applicable reasons with the model-specific ones.
+    """
+
     _name = "ir.model"
     _inherit = "ir.model"
 

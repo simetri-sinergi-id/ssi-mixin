@@ -6,6 +6,13 @@ from odoo import fields, models
 
 
 class MixinDatetimeDuration(models.AbstractModel):
+    """
+    Lightweight mixin that adds plain ``Datetime`` start and end fields
+    (``date_start`` and ``date_end``) to any model that needs to record a
+    datetime-level duration without the extended configuration overhead of
+    ``mixin.date_duration``.
+    """
+
     _name = "mixin.datetime_duration"
     _description = "Datetime Duration Mixin"
 

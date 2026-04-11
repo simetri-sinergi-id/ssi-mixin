@@ -6,6 +6,15 @@ from odoo import fields, models
 
 
 class CustomInfoOption(models.Model):
+    """
+    A single selectable value for a custom information property of type
+    ``Selection`` or ``Multiple Selection``.
+
+    Options are grouped into ``custom_info.option_set`` records, which are
+    then attached to ``custom_info.property`` records that require a
+    controlled vocabulary.
+    """
+
     _description = "Available options for a custom property"
     _name = "custom_info.option"
     _order = "name"

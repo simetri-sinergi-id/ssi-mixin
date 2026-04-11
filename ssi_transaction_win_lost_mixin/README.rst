@@ -6,6 +6,15 @@
 Transaction Mixin - Win & Lost State
 ====================================
 
+``ssi_transaction_win_lost_mixin`` extends ``mixin.transaction`` with
+win/lost outcome states (typically used in CRM/sales pipeline documents).
+
+* **base.lost_reason** — master-data model for loss reasons.
+* **ir.model** extension — links loss reasons to specific models.
+* **mixin.transaction_win_lost** — adds ``win_ok`` / ``lost_ok`` policy
+  fields, ``lost_reason_id``, and ``action_win`` / ``action_lost`` lifecycle
+  handlers.
+
 
 Installation
 ============

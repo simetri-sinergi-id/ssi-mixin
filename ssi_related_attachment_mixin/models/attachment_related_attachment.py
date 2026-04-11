@@ -8,6 +8,15 @@ from odoo.tools.safe_eval import safe_eval
 
 
 class AttachmentRelatedAttachment(models.Model):
+    """
+    Concrete record that links an ``ir.attachment`` file to a specific
+    document record (via ``model`` + ``res_id``) and a
+    ``attachment.related_attachment_template_detail``.
+
+    Supports an optional Python-code condition evaluated at creation time to
+    decide whether the attachment requirement is applicable.
+    """
+
     _name = "attachment.related_attachment"
     _description = "Related Attachment"
     _order = "template_id, template_detail_id"

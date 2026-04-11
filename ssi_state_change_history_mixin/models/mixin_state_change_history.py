@@ -8,6 +8,17 @@ from odoo.addons.ssi_decorator import ssi_decorator
 
 
 class MixinStateChangeHistory(models.AbstractModel):
+    """
+    Abstract mixin that records a history entry in ``state_change_history``
+    each time a supported state transition occurs on the inheriting model.
+
+    Models inheriting ``mixin.state_change_history`` gain:
+
+    * ``state_change_history_ids`` — One2many to ``state_change_history``.
+    * An optional auto-injected form-view page listing the history
+      (enabled by ``_automatically_insert_state_change_history_page = True``).
+    """
+
     _name = "mixin.state_change_history"
     _description = "Mixin Object for State Change History"
 
@@ -29,9 +40,7 @@ class MixinStateChangeHistory(models.AbstractModel):
         models = Model.search([("model", "=", self._name)])
         reason = "-"
         if cancel_reason_id:
-            reason_id = obj_base_cancel_reason.search([
-                ("id", "=", cancel_reason_id)
-            ])
+            reason_id = obj_base_cancel_reason.search([("id", "=", cancel_reason_id)])
             reason = reason_id.name
         values = {
             "model_id": models[0].id,
@@ -47,7 +56,9 @@ class MixinStateChangeHistory(models.AbstractModel):
     def create_state_change_history(self, state_to, cancel_reason_id=False):
         self.ensure_one()
         obj_state_change_history = self.env["state_change_history"]
-        obj_state_change_history.create(self._prepare_state_change_history(state_to, cancel_reason_id))
+        obj_state_change_history.create(
+            self._prepare_state_change_history(state_to, cancel_reason_id)
+        )
         return True
 
     def write(self, vals):
@@ -57,7 +68,7 @@ class MixinStateChangeHistory(models.AbstractModel):
                     rec.sudo().create_state_change_history(
                         vals.get("state", False),
                         vals.get("cancel_reason_id", False),
-                    )   
+                    )
                 else:
                     rec.sudo().create_state_change_history(vals.get("state", False))
         return super(MixinStateChangeHistory, self).write(vals)

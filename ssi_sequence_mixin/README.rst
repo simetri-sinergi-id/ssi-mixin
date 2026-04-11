@@ -6,6 +6,16 @@
 Sequence Mixin
 ==============
 
+``ssi_sequence_mixin`` provides a configurable document-numbering framework
+for any transactional model.
+
+* **sequence.template** — master-data template that maps a model and a set
+  of criteria (Python condition) to an ``ir.sequence`` with a configurable
+  computation method.
+* **mixin.sequence** — abstract mixin that adds ``_get_sequence`` to
+  auto-select the applicable ``ir.sequence`` and apply it to the document’s
+  name field at the configured state transition.
+
 
 Installation
 ============

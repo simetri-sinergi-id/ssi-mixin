@@ -5,7 +5,17 @@
 =========================================
 Custom Date Field With Callable Attribute
 =========================================
+``ssi_field_date_callable_attribute`` provides a custom Odoo field class
+— ``DateCallable`` (exposed as ``fields.DateCallable``) — that extends
+``fields.Date`` to accept callable values for the ``readonly``,
+``required``, ``string``, and ``states`` attributes.
 
+This allows those attributes to be set to ``@api.model`` methods on the
+model class so that subclasses can fully customise the field’s behaviour
+through class-level attribute overrides without redeclaring the field.
+
+The field is primarily used by ``ssi_duration_mixin`` to provide fully
+configurable ``date_start`` / ``date_end`` fields.
 
 Installation
 ============

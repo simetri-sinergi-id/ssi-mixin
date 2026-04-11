@@ -6,6 +6,15 @@ from odoo import api, fields, models
 
 
 class MixinPricelist(models.AbstractModel):
+    """
+    Abstract mixin that adds ``currency_id`` and ``pricelist_id`` fields with
+    a computed ``allowed_pricelist_ids`` helper that filters pricelists to
+    those matching the selected currency.
+
+    An ``onchange_pricelist_id`` handler clears the pricelist whenever the
+    currency changes, ensuring the selected pricelist always matches.
+    """
+
     _name = "mixin.pricelist"
     _description = "Pricelist Mixin"
 

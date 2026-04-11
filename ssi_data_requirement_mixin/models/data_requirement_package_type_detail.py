@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class DataRequirementPackageTypeDetail(models.Model):
+    """
+    Child-line model for ``data_requirement_package_type`` that defines the
+    ordered list of ``data_requirement_type`` records expected within a
+    package of that type.
+    """
+
     _name = "data_requirement_package_type.detail"
     _description = "Data Requirement Package Type - Detail"
     _order = "type_id, sequence"

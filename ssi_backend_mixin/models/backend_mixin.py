@@ -6,6 +6,24 @@ from odoo import api, fields, models
 
 
 class BackendMixin(models.AbstractModel):
+    """
+    Abstract mixin for *backend configuration* records — singleton-like master
+    objects (e.g. accounting settings, HR parameters) that are scoped to a
+    company and can be toggled between ``draft`` and ``running`` states.
+
+    Inherits ``mixin.master_data`` and adds:
+
+    * A mandatory ``company_id`` field.
+    * A ``state`` selection (``draft`` / ``running``).
+    * ``action_running`` — activates this record as the running backend for the
+      current company (and deactivates any previously running record).
+    * ``action_restart`` — reverts the record to ``draft`` and clears the
+      company pointer.
+
+    Subclasses set ``_backend_company_field`` to the name of the field on
+    ``res.company`` that should point to the currently active backend record.
+    """
+
     _name = "backend_mixin"
     _inherit = ["mixin.master_data"]
     _description = "Mixin for Backend"

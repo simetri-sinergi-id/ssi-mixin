@@ -6,6 +6,17 @@ from odoo import api, fields, models
 
 
 class MixinProductLineAccount(models.AbstractModel):
+    """
+    Extends ``mixin.product_line_price`` with accounting fields:
+    ``tax_ids``, ``account_id``, ``analytic_account_id``, and ``usage_id``.
+
+    Computed fields ``price_subtotal``, ``price_tax``, and ``price_total``
+    take applied taxes into account via ``account.tax.compute_all``.
+
+    Onchange handlers auto-fill ``account_id`` and ``tax_ids`` from the
+    product’s account/tax configuration for the selected ``usage_id``.
+    """
+
     _name = "mixin.product_line_account"
     _description = "Product Line Mixin - With Accounting"
     _inherit = [

@@ -8,6 +8,19 @@ from odoo import api, models
 
 
 class MixinPrintDocument(models.AbstractModel):
+    """
+    Abstract mixin that enables a standardised *Print* button on any document
+    model.
+
+    When ``_automatically_insert_print_button`` is set to ``True`` on a
+    subclass, the mixin injects the print button into the form header (at the
+    XPath configured by ``_print_button_xpath``) and into the list-view header
+    automatically during ``fields_view_get``.
+
+    The actual rendering and report selection is delegated to
+    ``print_document_type`` records linked via ``ir.actions.report``.
+    """
+
     _name = "mixin.print_document"
     _description = "Print Document Mixin"
 

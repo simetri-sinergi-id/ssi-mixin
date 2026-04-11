@@ -8,6 +8,14 @@ from odoo.tools.safe_eval import safe_eval, test_python_expr
 
 
 class IrModel(models.Model):
+    """
+    Extends ``ir.model`` with QR-code content configuration fields.
+
+    Each model can choose to use the standard content (the web URL of the
+    record) or supply custom Python code that must assign the desired
+    QR string to a local variable ``result``.
+    """
+
     _name = "ir.model"
     _inherit = "ir.model"
 

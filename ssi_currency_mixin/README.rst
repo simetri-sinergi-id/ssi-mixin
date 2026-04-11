@@ -5,7 +5,25 @@
 ==============
 Currency Mixin
 ==============
+``ssi_currency_mixin`` provides an abstract Odoo model — ``mixin.currency``
+— that standardises multi-currency handling on transactional documents.
 
+Any model that inherits from ``mixin.currency`` automatically gains:
+
+* ``currency_id`` — the transaction currency, defaulting to the company’s
+  currency.
+* ``company_id`` — the owning company.
+* ``rate_inverted`` — mirrors the ``rate_inverted`` flag from the currency
+  master.
+* ``rate`` — the exchange rate in use for the transaction date.
+* ``onchange_rate_mixin`` — auto-fills ``rate`` from the currency master
+  whenever ``currency_id`` or ``company_id`` changes.
+* ``_convert_amount_to_company_currency`` — helper that converts a
+  transaction-currency amount to the company currency using ``rate`` and
+  ``rate_inverted``.
+
+Subclasses set ``_exchange_date_field`` to the name of the date field used
+for historical rate look-ups.
 
 Installation
 ============

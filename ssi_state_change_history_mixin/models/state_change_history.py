@@ -6,6 +6,15 @@ from odoo import api, fields, models
 
 
 class StateChangeHistory(models.Model):
+    """
+    Concrete log record storing one state transition for any document model
+    that inherits ``mixin.state_change_history``.
+
+    Stores the referenced model (``model_id`` / ``model``), record id
+    (``res_id``), the date of change (``date_change``), the previous and new
+    state values, and an optional cancel/terminate reason.
+    """
+
     _name = "state_change_history"
     _description = "State Change History"
     _order = "model_id, res_id, date_change desc"

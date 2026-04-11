@@ -5,7 +5,17 @@
 ===============
 Localdict Mixin
 ===============
+``ssi_localdict_mixin`` provides an abstract Odoo model —
+``mixin.localdict`` — that supplies a standard ``_get_default_localdict``
+method.
 
+The method assembles a ready-to-use safe-eval context dictionary containing:
+``env``, ``document``, ``time``, ``datetime``, ``dateutil``, ``timezone``,
+``float_compare``, ``b64encode``, and ``b64decode``.
+
+Models that need to evaluate user-supplied Python code (e.g. domain filters,
+computed-by-code fields, or formula configurations) inherit this mixin to
+avoid duplicating the context-building boilerplate.
 
 Installation
 ============

@@ -5,6 +5,20 @@ from odoo import api, fields, models
 
 
 class MixingSourceDocument(models.AbstractModel):
+    """
+    Abstract mixin that adds a polymorphic source-document reference to any
+    model.
+
+    Rather than using Odoo’s native ``fields.Reference``, the mixin stores
+    the source as a pair of fields—``source_document_model_id``
+    (``ir.model``) and ``source_document_res_id`` (integer)—and exposes a
+    computed ``fields.Reference`` field (``source_document_id``) that
+    assembles them into a ``'model,id'`` string.
+
+    This approach avoids the schema-change overhead of a true Reference
+    column while still allowing navigation to the source record from the UI.
+    """
+
     _name = "mixin.source_document"
     _description = "Mixin Object for Source Document"
 

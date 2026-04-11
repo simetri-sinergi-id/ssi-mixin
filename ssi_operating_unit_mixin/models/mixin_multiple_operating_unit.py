@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class MixinMultipleOperatingUnit(models.AbstractModel):
+    """
+    Mixin that adds an ``operating_unit_ids`` Many2many field
+    (``operating.unit``) to any model, allowing a record to be associated
+    with one or more operating units simultaneously.
+    """
+
     _name = "mixin.multiple_operating_unit"
     _description = "Mixin for Object With Multiple Operating Unit"
 

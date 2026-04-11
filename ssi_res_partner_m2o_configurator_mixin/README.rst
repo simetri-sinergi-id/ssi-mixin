@@ -5,7 +5,12 @@
 =======================================
 res.partner Many2one Configurator Mixin
 =======================================
+``ssi_res_partner_m2o_configurator_mixin`` provides an abstract Odoo model
+— ``mixin.res_partner_m2o_configurator`` — that adds configurable
+filtering for ``res.partner`` Many2one fields.
 
+The three filter strategies (manual, domain, Python code) follow the same
+pattern as ``ssi_m2o_configurator_mixin``.
 
 Installation
 ============

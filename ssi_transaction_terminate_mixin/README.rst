@@ -6,6 +6,14 @@
 Transaction Mixin - Terminate State
 ===================================
 
+``ssi_transaction_terminate_mixin`` extends ``mixin.transaction`` with a
+*terminate* lifecycle state for premature closure (distinct from cancellation).
+
+* **base.terminate_reason** — master-data model for termination reasons.
+* **ir.model** extension — links termination reasons to specific models.
+* **mixin.transaction_terminate** — adds ``terminate_ok`` policy field,
+  ``terminate_reason_id``, and ``action_terminate`` lifecycle handler.
+
 
 Installation
 ============

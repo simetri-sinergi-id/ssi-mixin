@@ -6,6 +6,16 @@
 Transaction Mixin - Cancel State
 ================================
 
+``ssi_transaction_cancel_mixin`` extends ``mixin.transaction`` with a
+*cancel* lifecycle state.
+
+* **base.cancel_reason** — master-data model for cancellation reasons
+  (name, code, optional ``global_use`` flag).
+* **ir.model** extension — links cancellation reasons to specific models.
+* **mixin.transaction_cancel** — adds ``cancel_ok`` policy field,
+  ``cancel_reason_id``, ``action_cancel``, and ``action_restart`` to any
+  inheriting transaction document.
+
 
 Installation
 ============

@@ -6,6 +6,18 @@
 Product Line Mixin
 ==================
 
+``ssi_product_line_price_mixin`` extends ``mixin.product_line`` with pricing
+fields.
+
+Any model that inherits from ``mixin.product_line_price`` additionally gains:
+
+* ``currency_id``, ``pricelist_id`` (with ``allowed_pricelist_ids`` filtered
+  by the selected currency).
+* ``price_unit`` and computed ``price_subtotal`` (= price_unit × quantity).
+* Standard-price comparison fields (``standard_price_unit``,
+  ``standard_price_subtotal``, and their diff variants) derived from the
+  selected pricelist.
+
 
 Installation
 ============

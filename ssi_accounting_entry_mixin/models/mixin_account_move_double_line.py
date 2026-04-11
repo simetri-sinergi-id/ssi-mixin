@@ -6,6 +6,16 @@ from odoo import api, fields, models
 
 
 class MixinAccountMoveDoubleLine(models.AbstractModel):
+    """
+    Mixin that creates a balanced debit/credit pair of ``account.move.line``
+    records inside an existing ``account.move``.
+
+    Both the debit and credit sides are fully configurable through class-level
+    field-name attributes (e.g. ``_debit_account_id_field_name``,
+    ``_credit_amount_currency_field_name``), making the mixin useful in any
+    transactional model regardless of its exact field layout.
+    """
+
     _name = "mixin.account_move_double_line"
     _description = "Accounting Move Double Line Mixin"
 
@@ -274,6 +284,13 @@ class MixinAccountMoveDoubleLine(models.AbstractModel):
 
 
 class MixinAccountMoveDoubleLineWithField(models.AbstractModel):
+    """
+    Extends ``mixin.account_move_double_line`` with concrete storage fields
+    for the resulting debit and credit ``account.move.line`` records, plus a
+    convenience ``debit_credit_realized`` boolean that becomes ``True`` once
+    both lines are fully reconciled.
+    """
+
     _name = "mixin.account_move_double_line_with_field"
     _description = "Accounting Move Double Line With Field Mixin"
     _inherit = [

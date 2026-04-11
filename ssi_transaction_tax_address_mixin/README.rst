@@ -6,6 +6,15 @@
 Transaction + Tax Address Mixin
 ===============================
 
+``ssi_transaction_tax_address_mixin`` extends ``mixin.transaction`` with tax
+address support.
+
+* Extends ``res.partner`` to add a ``'tax'`` contact type.
+* Adds ``partner_id`` (company partner) and ``tax_address_id`` (a ``'tax'``
+  type contact of the selected partner).
+* ``MixinTransactionTaxAddressRequired`` variant makes ``tax_address_id``
+  mandatory.
+
 
 Installation
 ============

@@ -7,6 +7,15 @@ from odoo.exceptions import UserError
 
 
 class PrintDcoumentType(models.Model):
+    """
+    Represents a named *print document type* that groups related
+    ``ir.actions.report`` records for a specific Odoo model.
+
+    Each type defines which reports are available for a given model and
+    provides the ``Print`` button drop-down list on the form view. Codes are
+    generated via sequence and must be unique across all types.
+    """
+
     _name = "print_document_type"
     _inherit = [
         "mail.activity.mixin",

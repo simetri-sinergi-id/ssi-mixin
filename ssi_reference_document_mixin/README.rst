@@ -6,6 +6,20 @@
 Reference Document Mixin
 ========================
 
+``ssi_reference_document_mixin`` provides a framework for attaching reference
+documents (e.g. regulatory standards, guidelines, URLs) to any transactional
+document.
+
+* **reference_document_category** — master-data category for organising
+  reference documents.
+* **reference_document** — individual reference document with a URL, linked
+  to a category.
+* **reference_document_set** — named collection of reference documents;
+  sets are attached to documents.
+* **mixin.reference_document** — abstract mixin that adds
+  ``reference_document_set_ids`` and a computed flattened
+  ``reference_document_ids``, with optional auto-injected form-view page.
+
 
 Installation
 ============

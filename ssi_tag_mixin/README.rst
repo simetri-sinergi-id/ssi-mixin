@@ -6,6 +6,21 @@
 Tag Mixin
 =========
 
+``ssi_tag_mixin`` provides a global tagging framework for any Odoo model.
+
+The module ships the following components:
+
+* **global_tag_category** — master-data categories with optional
+  ``exclusive`` (at-most-one-tag) and ``global_use`` (auto-available for all
+  models) flags.
+* **global_tag** — individual tags linked to a category with a colour
+  index.
+* **ir.model** extension — adds ``global_tag_category_ids`` for model-
+  specific category assignments and ``all_global_tag_category_ids`` that
+  merges global + model-specific categories.
+* **mixin.tag** — abstract mixin that adds ``global_tag_ids`` and
+  ``allowed_global_tag_category_ids`` to any inheriting model.
+
 
 Installation
 ============

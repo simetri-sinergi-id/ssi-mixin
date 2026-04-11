@@ -6,6 +6,22 @@
 Policy Mixin
 ============
 
+``ssi_policy_mixin`` provides an abstract Odoo model — ``mixin.policy`` — that
+implements a *policy-template* mechanism for controlling which action buttons
+are available on a document at any given time.
+
+Each inheriting model declares boolean policy fields (e.g. ``confirm_ok``,
+``cancel_ok``) via ``_get_policy_field`` and links to a ``policy.template``
+that evaluates Python conditions against the current record to set those fields
+automatically.
+
+* **policy.template** — master-data record holding Python evaluation code
+  (matching criteria) and ordered detail lines.
+* **policy.template.detail** — maps a policy field to its computed value
+  for records that match the template.
+* ``action_reload_policy_template`` — manually re-selects the active
+  template based on the record’s current state.
+
 
 Installation
 ============

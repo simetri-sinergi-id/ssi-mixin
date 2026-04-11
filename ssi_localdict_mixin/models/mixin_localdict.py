@@ -11,6 +11,14 @@ from odoo.tools.float_utils import float_compare
 
 
 class MixinLocaldict(models.AbstractModel):
+    """
+    Mixin that provides a standard ``_get_default_localdict`` method which
+    assembles a safe-eval context dictionary (``env``, ``document``,
+    ``time``, ``datetime``, ``dateutil``, ``timezone``, ``float_compare``,
+    ``b64encode``, ``b64decode``) ready for use in computed fields or
+    Python-code configuration fields.
+    """
+
     _name = "mixin.localdict"
     _description = "Mixin for Object With Localdict"
 

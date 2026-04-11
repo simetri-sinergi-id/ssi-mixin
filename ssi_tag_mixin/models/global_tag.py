@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class GlobalTag(models.Model):
+    """
+    Master-data model (inheriting ``mixin.master_data``) representing a single
+    global tag with an optional colour (inherited from its category) and a
+    sequence for ordering.
+    """
+
     _name = "global_tag"
     _inherit = [
         "mixin.master_data",

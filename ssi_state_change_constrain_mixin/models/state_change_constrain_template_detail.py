@@ -6,6 +6,17 @@ from odoo import api, fields, models
 
 
 class StateChangeConstrainTemplateDetail(models.Model):
+    """
+    Line-level record of a ``state.change.constrain.template`` that defines
+    one allowed state transition:
+
+    * ``allowed_state_ids`` — computed from the template’s ``state_field_id``
+      selection values.
+    * ``from_state_ids`` / ``to_state_ids`` — source and target states.
+    * Optional ``python_code`` condition evaluated per record to further
+      restrict when the transition is permitted.
+    """
+
     _name = "state.change.constrain.template_detail"
     _description = "Status Check Template Detail"
     _order = "sequence, id"

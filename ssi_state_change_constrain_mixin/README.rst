@@ -6,6 +6,17 @@
 State Change Constrain Mixin
 ============================
 
+``ssi_state_change_constrain_mixin`` enforces allowable workflow state
+transitions on any transactional document.
+
+* **state.change.constrain.template** — master-data template that specifies
+  which state transitions are permitted for a model.
+* **state.change.constrain.template_detail** — one permitted transition
+  (``from_state_ids`` → ``to_state_ids``) with an optional Python condition.
+* **mixin.state_change_constrain** — abstract mixin that validates requested
+  state transitions against the active template and raises a ``UserError``
+  if the transition is not allowed.
+
 
 Installation
 ============

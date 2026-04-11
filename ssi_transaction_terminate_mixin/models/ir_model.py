@@ -6,6 +6,13 @@ from odoo import fields, models
 
 
 class IrModel(models.Model):
+    """
+    Extends ``ir.model`` with ``terminate_reason_ids`` — the set of terminate
+    reasons applicable for a model — and provides a computed
+    ``all_terminate_reason_ids`` that merges globally-applicable reasons with
+    the model-specific ones.
+    """
+
     _name = "ir.model"
     _inherit = "ir.model"
 

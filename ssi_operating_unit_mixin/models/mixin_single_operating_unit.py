@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class MixinSingleOperatingUnit(models.AbstractModel):
+    """
+    Lightweight mixin that adds a single ``operating_unit_id`` Many2one field
+    (``operating.unit``) to any model, defaulting to the current user’s
+    default operating unit.
+    """
+
     _name = "mixin.single_operating_unit"
     _description = "Mixin for Object With Single Operating Unit"
 

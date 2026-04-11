@@ -6,6 +6,13 @@
 Transaction + Salesperson Mixin
 ===============================
 
+``ssi_transaction_salesperson_mixin`` composes ``mixin.transaction`` with
+``mixin.salesperson`` to add salesperson and sales team fields to transactional
+documents.
+
+* Adds ``user_id`` (salesperson, required) and ``sale_team_id`` (optional),
+  both draft-editable.
+
 
 Installation
 ============

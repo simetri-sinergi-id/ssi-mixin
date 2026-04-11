@@ -6,6 +6,18 @@
 Salesperson Mixin
 =================
 
+``ssi_salesperson_mixin`` provides an abstract Odoo model —
+``mixin.salesperson`` — that adds sales team and salesperson selection to
+any model.
+
+Any model that inherits from ``mixin.salesperson`` automatically gains:
+
+* ``sale_team_id`` (``crm.team``) — the sales team.
+* ``salesperson_id`` (``res.users``) — the responsible salesperson.
+* ``allowed_salesperson_ids`` — a computed Many2many filtered to team members
+  (or all internal users if no team is selected).
+* ``onchange_salesperson_id`` — clears the salesperson when the team changes.
+
 
 Installation
 ============

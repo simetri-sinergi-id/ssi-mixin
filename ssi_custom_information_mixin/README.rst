@@ -5,7 +5,25 @@
 ========================
 Custom Information Mixin
 ========================
+``ssi_custom_information_mixin`` provides an extensible framework for
+attaching arbitrary user-defined fields to any Odoo model without altering
+the database schema.
 
+The module ships the following models:
+
+* **custom_info.category** — groups related properties for display.
+* **custom_info.property** — defines a single custom field: name, code, data
+  type (text, integer, decimal, boolean, date, datetime, selection, or
+  multiple-selection), and an optional controlled-vocabulary option set.
+* **custom_info.option** / **custom_info.option_set** — provide the
+  controlled-vocabulary values for selection-type properties.
+* **custom_info.template** — a set of properties that can be applied to
+  records of a specific model.
+* **custom_info.template_detail** — links a property to a template,
+  optionally within a category.
+
+Any model that inherits ``mixin.custom_information`` gains a configurable
+set of per-record custom data values driven by the assigned template.
 
 Installation
 ============

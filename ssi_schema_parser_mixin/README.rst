@@ -6,6 +6,15 @@
 Schema Parser Mixin
 ===================
 
+``ssi_schema_parser_mixin`` provides a JSON Schema validation and
+documentation framework for Odoo models.
+
+* **schema_parser_category** — master-data category for organising parsers.
+* **schema_parser** — stores a JSON Schema definition (as YAML or JSON
+  text) and exposes methods to validate data against it using
+  ``jsonschema.Draft202012Validator`` and to render human-readable
+  documentation via ``json_schema_for_humans``.
+
 
 Installation
 ============

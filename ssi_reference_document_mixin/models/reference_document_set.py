@@ -6,6 +6,15 @@ from odoo import fields, models
 
 
 class ReferenceDocumentSet(models.Model):
+    """
+    Master-data model (inheriting ``mixin.master_data``) that groups a
+    collection of ``reference_document`` records into a named set.
+
+    Sets are attached to documents via
+    ``mixin.reference_document.reference_document_set_ids`` and the mixin
+    flattens all documents across the linked sets for display.
+    """
+
     _name = "reference_document_set"
     _description = "Reference Document Set"
     _inherit = ["mixin.master_data"]

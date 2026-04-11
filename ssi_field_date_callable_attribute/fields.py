@@ -10,6 +10,20 @@ _logger = logging.getLogger(__name__)
 
 
 class DateCallable(fields.Date):
+    """
+    A subclass of ``fields.Date`` that evaluates callable values for the
+    ``readonly``, ``required``, ``string``, and ``states`` attributes at
+    field-setup time (``_setup_attrs``).
+
+    This allows these attributes to be specified as ``@api.model`` methods
+    (decorated with ``_get_date_*`` naming conventions) so that subclasses
+    can customise them through class-level attribute overrides without
+    redeclaring the field.
+
+    After registration the class is also exposed as ``fields.DateCallable``
+    for convenient import by other modules.
+    """
+
     def _setup_attrs(self, model, name):
         super()._setup_attrs(model, name)
         readonly_attr = self.readonly

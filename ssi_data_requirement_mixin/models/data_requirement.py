@@ -8,6 +8,16 @@ from odoo.addons.ssi_decorator import ssi_decorator
 
 
 class DataRequirement(models.Model):
+    """
+    Transactional model representing a single data-submission request raised
+    against a partner.
+
+    A data requirement captures what information is needed (type, title, mode)
+    and tracks the submission lifecycle: draft → open → confirm → done /
+    cancel. The record can store submitted data as a URL, a file attachment,
+    or free text depending on the ``mode`` field.
+    """
+
     _name = "data_requirement"
     _inherit = [
         "mixin.transaction_cancel",

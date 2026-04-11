@@ -6,6 +6,22 @@
 Related Attachment Mixin
 ========================
 
+``ssi_related_attachment_mixin`` provides a structured required-attachment
+framework for any Odoo model.
+
+* **attachment.related_attachment_category** — groups attachment requirements
+  by category.
+* **attachment.related_attachment_template** — defines which attachments are
+  expected for a given model, with ordered detail lines.
+* **attachment.related_attachment_template_detail** — one requirement entry
+  with an optional Python condition and category.
+* **attachment.related_attachment** — concrete attachment record linked to
+  a document (via ``model`` + ``res_id``) and a template detail line.
+* **ir.model** extension — specifies trigger fields that cause re-evaluation
+  of attachment requirements.
+* **mixin.related_attachment** — abstract mixin that injects the attachment
+  page into any form view.
+
 
 Installation
 ============

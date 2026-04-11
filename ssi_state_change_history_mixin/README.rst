@@ -6,6 +6,17 @@
 State Change History Mixin
 ==========================
 
+``ssi_state_change_history_mixin`` provides an automatic audit trail of
+workflow state transitions for any transactional document.
+
+* **state_change_history** — concrete log model storing one entry per
+  state transition: document model, record ID, date, previous state, new
+  state, and optional cancel/terminate reason.
+* **mixin.state_change_history** — abstract mixin that adds
+  ``state_change_history_ids`` and hooks into transition actions to create
+  log entries automatically. An optional form-view page can be injected
+  (``_automatically_insert_state_change_history_page = True``).
+
 
 Installation
 ============

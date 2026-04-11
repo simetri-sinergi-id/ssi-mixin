@@ -6,6 +6,16 @@ from odoo import fields, models
 
 
 class MixinTaxLine(models.AbstractModel):
+    """
+    Abstract child-record model representing a single tax line within a
+    transactional document.
+
+    Inherits ``mixin.account_move_single_line`` and pre-configures the field
+    name pointers so the tax amount is posted to the designated tax account.
+    Concrete implementations attach this as a ``One2many`` child on the parent
+    transactional model.
+    """
+
     _name = "mixin.tax_line"
     _description = "Tax Line Mixin"
     _inherit = [

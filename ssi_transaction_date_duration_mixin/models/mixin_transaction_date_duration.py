@@ -7,6 +7,12 @@ from odoo import fields, models
 
 
 class MixinTransactionDateDuration(models.AbstractModel):
+    """
+    Extends ``mixin.transaction`` with ``date_start`` and ``date_end`` fields
+    so that transactional documents can span a date range rather than a single
+    date.
+    """
+
     _name = "mixin.transaction_date_duration"
     _inherit = [
         "mixin.transaction",

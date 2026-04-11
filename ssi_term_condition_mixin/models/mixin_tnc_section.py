@@ -6,6 +6,14 @@ from odoo import fields, models
 
 
 class TncSectionMixin(models.AbstractModel):
+    """
+    Abstract base for T&C section records, providing ``name``, ``title``,
+    ``raw_content``, ``sequence``, and a ``clause_ids`` One2many.
+
+    Concretised by both ``tnc_section`` (document-instance sections) and
+    ``tnc_template.section`` (template-level sections).
+    """
+
     _name = "mixin.tnc_section"
     _description = "Mixin - Terms and Condition Section"
     _order = "sequence, id"

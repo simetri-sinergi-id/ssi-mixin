@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class IrModel(models.Model):
+    """
+    Extends ``ir.model`` with a ``related_attchment_include_field_ids`` field
+    that specifies which fields on a model should trigger re-evaluation of
+    related attachment requirements when their values change.
+    """
+
     _name = "ir.model"
     _inherit = "ir.model"
 

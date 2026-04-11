@@ -6,6 +6,20 @@
 Company Currency Mixin
 ======================
 
+``ssi_company_currency_mixin`` provides a lightweight abstract Odoo model —
+``mixin.company_currency`` — that adds a company field and its derived
+currency to any model.
+
+Any model that inherits from ``mixin.company_currency`` automatically gains:
+
+* A mandatory ``company_id`` (``res.company``) field defaulting to the
+  current user’s company.
+* A stored, related ``company_currency_id`` field that always reflects the
+  selected company’s currency.
+
+Monetary fields on child models can set ``currency_field='company_currency_id'``
+to format amounts in the company’s currency without extra boilerplate.
+
 
 Installation
 ============

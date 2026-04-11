@@ -5,7 +5,17 @@
 ===============
 Pricelist Mixin
 ===============
+``ssi_pricelist_mixin`` provides an abstract Odoo model — ``mixin.pricelist``
+— that adds currency and pricelist selection to any model.
 
+Any model that inherits from ``mixin.pricelist`` automatically gains:
+
+* ``currency_id`` (``res.currency``) — the transaction currency.
+* ``pricelist_id`` (``product.pricelist``) — the selected pricelist.
+* ``allowed_pricelist_ids`` — a computed Many2many that filters available
+  pricelists to those matching the selected currency.
+* ``onchange_pricelist_id`` — clears the pricelist whenever the currency
+  changes to prevent mismatches.
 
 Installation
 ============

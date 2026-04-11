@@ -6,6 +6,14 @@ from odoo import fields, models
 
 
 class TncClauseMixin(models.AbstractModel):
+    """
+    Abstract base for T&C clause records, providing ``name``, ``title``,
+    ``raw_content``, and ``sequence``.
+
+    Concretised by both ``tnc_clause`` (document-instance clauses) and
+    ``tnc_template.clause`` (template-level clauses).
+    """
+
     _name = "mixin.tnc_clause"
     _description = "Mixin - Terms and Condition Clause"
     _order = "sequence, id"

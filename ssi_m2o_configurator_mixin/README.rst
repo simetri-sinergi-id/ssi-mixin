@@ -5,7 +5,21 @@
 ===========================
 Many2one Configurator Mixin
 ===========================
+``ssi_m2o_configurator_mixin`` provides an abstract Odoo model —
+``mixin.many2one_configurator`` — that implements a three-strategy runtime
+filter for Many2one fields.
 
+The three strategies are:
+
+* **manual** — the allowed records are selected explicitly by the user.
+* **domain** — a domain string (evaluated with ``safe_eval``) determines which
+  records are allowed.
+* **code** — arbitrary Python code is evaluated in a local dictionary
+  (``env``, ``document``) and must assign a recordset to ``result``.
+
+Concrete configurator models inherit this mixin and expose the strategy
+fields to end users, enabling dynamic Many2one filtering without hard-coded
+domains.
 
 Installation
 ============

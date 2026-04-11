@@ -8,6 +8,21 @@ from odoo.tools.safe_eval import safe_eval
 
 
 class MixinPolicy(models.AbstractModel):
+    """
+    Abstract mixin that implements the *policy-template* workflow control
+    mechanism.
+
+    Each inheriting model declares a list of boolean policy fields (via
+    ``_get_policy_field``) such as ``confirm_ok``, ``cancel_ok``, etc. The
+    mixin evaluates the matching ``policy.template`` against the current record
+    (using safe-eval Python code) and writes the result booleans back to those
+    fields, effectively controlling which action buttons are visible/enabled.
+
+    The active template is auto-selected on record creation via
+    ``_get_template_policy`` and can be reloaded manually through
+    ``action_reload_policy_template``.
+    """
+
     _name = "mixin.policy"
     _description = "Mixin Object for Workflow Policy"
 

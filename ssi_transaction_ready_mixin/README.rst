@@ -6,6 +6,14 @@
 Transaction Mixin - Ready to Process State
 ==========================================
 
+``ssi_transaction_ready_mixin`` extends ``mixin.transaction`` with a
+*ready* intermediate state that sits between draft/confirm and in-progress.
+
+* Adds ``ready_ok`` policy field and auto-injects the ready button and
+  policy fields into the form view.
+* Provides ``action_ready`` lifecycle handler.
+* Configurable via ``_ready_state`` class attribute.
+
 
 Installation
 ============

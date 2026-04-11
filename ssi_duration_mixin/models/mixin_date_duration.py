@@ -6,6 +6,17 @@ from odoo.exceptions import UserError
 
 
 class MixinDateDuration(models.AbstractModel):
+    """
+    Abstract mixin that adds configurable ``date_start`` and ``date_end`` date
+    fields (using ``DateCallable`` for dynamic attribute passing) with a
+    constraint that ensures ``date_end >= date_start``.
+
+    Field labels, required flags, readonly flags, and state-based
+    ``states`` dictionaries are all driven by class-level attributes, so
+    subclasses can fully customise the behaviour without re-declaring the
+    fields.
+    """
+
     _name = "mixin.date_duration"
     _description = "Date Duration Mixin"
     _date_start_required = True

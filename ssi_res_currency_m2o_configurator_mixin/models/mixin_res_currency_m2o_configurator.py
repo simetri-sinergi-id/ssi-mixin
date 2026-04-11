@@ -8,6 +8,16 @@ from odoo.addons.ssi_decorator import ssi_decorator
 
 
 class MixinResCurrencyM2OConfigurator(models.AbstractModel):
+    """
+    Mixin that adds configurable filtering for ``res.currency`` Many2one
+    fields using the three-strategy pattern from ``mixin.many2one_configurator``
+    (manual, domain, or Python code).
+
+    Inherits ``mixin.decorator`` and optionally injects the configuration
+    widget into the form view when
+    ``_res_currency_m2o_configurator_insert_form_element_ok`` is ``True``.
+    """
+
     _name = "mixin.res_currency_m2o_configurator"
     _inherit = [
         "mixin.decorator",

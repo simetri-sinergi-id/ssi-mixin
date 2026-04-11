@@ -6,6 +6,14 @@ from odoo import fields, models
 
 
 class TncTemplateSection(models.Model):
+    """
+    Template-level T&C section (inheriting ``mixin.tnc_section``) linked to
+    a ``tnc_template`` record.
+
+    Provides ``_create_tnc_section`` to instantiate a ``tnc_section`` on a
+    document from the template content.
+    """
+
     _name = "tnc_template.section"
     _inherit = [
         "mixin.tnc_section",

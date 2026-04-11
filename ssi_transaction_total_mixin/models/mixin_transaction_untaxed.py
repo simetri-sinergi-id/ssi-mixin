@@ -6,6 +6,17 @@ from odoo import api, fields, models
 
 
 class MixinTransactionUntaxed(models.AbstractModel):
+    """
+    Extends ``mixin.transaction`` with a computed ``amount_untaxed`` monetary
+    field aggregated from product-line-detail records.
+
+    The detail object and amount field names are controlled by class attributes
+    ``_detail_object_name`` and ``_detail_amount_field_name``.
+
+    ``MixinTransactionUntaxedWithField`` is a variant that stores the amount
+    in a database column.
+    """
+
     _name = "mixin.transaction_untaxed"
     _inherit = [
         "mixin.transaction",

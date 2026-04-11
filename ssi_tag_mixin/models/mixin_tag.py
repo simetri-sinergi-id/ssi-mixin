@@ -6,6 +6,18 @@ from odoo import api, fields, models
 
 
 class MixinTag(models.AbstractModel):
+    """
+    Abstract mixin that adds global-tag support to any model.
+
+    Models inheriting ``mixin.tag`` gain:
+
+    * ``allowed_global_tag_category_ids`` — computed from the model’s
+      ``ir.model`` record (merging ``global_use`` categories with model-specific
+      ones).
+    * ``global_tag_ids`` — Many2many to ``global_tag`` for storing the
+      applied tags.
+    """
+
     _name = "mixin.tag"
     _description = "Tax Mixin"
 

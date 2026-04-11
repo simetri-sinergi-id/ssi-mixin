@@ -6,6 +6,13 @@ from odoo import api, fields, models
 
 
 class DataRequirementConfigurator(models.Model):
+    """
+    Child record that links a specific ``data_requirement_package`` to an
+    ``ir.model``, defining which data requirements apply to records of that
+    model. Used as the backing storage for
+    ``mixin.data_requirement_configurator``.
+    """
+
     _name = "data_requirement_configurator"
     _description = "Data Requirement Configurator"
 

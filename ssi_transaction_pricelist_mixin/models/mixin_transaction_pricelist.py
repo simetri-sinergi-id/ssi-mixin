@@ -6,6 +6,12 @@ from odoo import fields, models
 
 
 class MixinTransactionPricelist(models.AbstractModel):
+    """
+    Composes ``mixin.transaction`` with ``mixin.pricelist`` to add
+    ``currency_id`` and ``pricelist_id`` fields with draft-state editability
+    controls to transactional documents.
+    """
+
     _name = "mixin.transaction_pricelist"
     _inherit = [
         "mixin.transaction",

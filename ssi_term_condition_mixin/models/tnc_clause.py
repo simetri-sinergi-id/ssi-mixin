@@ -6,6 +6,14 @@ from odoo import api, fields, models
 
 
 class TncClause(models.Model):
+    """
+    Concrete instance of a T&C clause created from a ``tnc_template.clause``
+    and attached to a ``tnc_section`` on a specific document record.
+
+    Provides a computed ``content`` field rendered from ``raw_content``
+    (intended for future Jinja/QWeb rendering).
+    """
+
     _name = "tnc_clause"
     _inherit = [
         "mixin.tnc_clause",

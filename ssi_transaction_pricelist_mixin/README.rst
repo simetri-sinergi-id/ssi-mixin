@@ -6,6 +6,13 @@
 Transaction Mixin - Waiting for Approval State
 ==============================================
 
+``ssi_transaction_pricelist_mixin`` composes ``mixin.transaction`` with
+``mixin.pricelist`` to add pricelist and currency selection to transactional
+documents.
+
+* Adds ``currency_id`` and ``pricelist_id`` (both required, draft-editable).
+* ``allowed_pricelist_ids`` is computed based on the selected currency.
+
 
 Installation
 ============
