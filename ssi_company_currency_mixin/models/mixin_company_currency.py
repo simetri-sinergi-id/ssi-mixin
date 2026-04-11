@@ -6,6 +6,15 @@ from odoo import api, fields, models
 
 
 class MixinCompanyCurrency(models.AbstractModel):
+    """
+    Lightweight mixin that adds a ``company_id`` field and a related,
+    stored ``company_currency_id`` field to any model.
+
+    The currency is automatically derived from the selected company so that
+    monetary fields on the inheriting model can reference
+    ``company_currency_id`` as their ``currency_field``.
+    """
+
     _name = "mixin.company_currency"
     _description = "Company Currency Mixin"
 
