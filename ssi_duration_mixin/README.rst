@@ -5,7 +5,18 @@
 ==============
 Duration Mixin
 ==============
+``ssi_duration_mixin`` provides two abstract Odoo models for recording time
+spans on any document.
 
+* **mixin.date_duration** — adds ``date_start`` and ``date_end`` date fields
+  using ``DateCallable`` for fully configurable labels, required/readonly
+  states, and a built-in constraint that enforces ``date_end >= date_start``.
+  All field attributes (required, readonly, string, state overrides) are
+  driven by class-level attributes, so subclasses need no field re-declarations.
+
+* **mixin.datetime_duration** — a simpler variant that adds plain
+  ``Datetime`` start and end fields for cases where date-level precision is
+  sufficient and extended configurability is not needed.
 
 Installation
 ============
