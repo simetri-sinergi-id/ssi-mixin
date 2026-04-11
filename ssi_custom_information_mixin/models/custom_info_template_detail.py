@@ -6,6 +6,15 @@ from odoo import fields, models
 
 
 class CustomInfoTemplateDetail(models.Model):
+    """
+    Child record linking a ``custom_info.property`` to a
+    ``custom_info.template``, optionally grouped by a
+    ``custom_info.category``.
+
+    A unique constraint prevents the same property from appearing more than
+    once on a template.
+    """
+
     _description = "Custom Information Template Detail"
     _name = "custom_info.template_detail"
     _order = "template_id, property_id"

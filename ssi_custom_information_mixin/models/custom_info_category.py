@@ -6,6 +6,15 @@ from odoo import fields, models
 
 
 class CustomInfoCategory(models.Model):
+    """
+    Master-data model representing a category for grouping custom information
+    properties.
+
+    Categories are used to organise ``custom_info.property`` records on the
+    custom-information template so that related properties are visually grouped
+    together on the form view.
+    """
+
     _description = "Categorize custom info properties"
     _name = "custom_info.category"
     _order = "sequence, name"

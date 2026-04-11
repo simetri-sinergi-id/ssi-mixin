@@ -6,6 +6,15 @@ from odoo import fields, models
 
 
 class CustomInfoOptionSet(models.Model):
+    """
+    A named collection of ``custom_info.option`` records that can be
+    referenced by one or more ``custom_info.property`` records of type
+    ``Selection`` or ``Multiple Selection``.
+
+    Sharing an option set across multiple properties avoids duplicating the
+    option list and ensures consistent vocabulary.
+    """
+
     _description = "Option Sets for Custom Information"
     _name = "custom_info.option_set"
 

@@ -6,6 +6,15 @@ from odoo import fields, models
 
 
 class CustomInfoProperty(models.Model):
+    """
+    Defines a single custom-information property: its name, code, data type
+    (text, integer, decimal, boolean, selection, multiple-selection, date, or
+    datetime), and an optional option set for selection-type properties.
+
+    Properties are assigned to models through ``custom_info.template_detail``
+    records on a ``custom_info.template``.
+    """
+
     _description = "Custom information property"
     _name = "custom_info.property"
 
