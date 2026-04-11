@@ -5,7 +5,18 @@
 ==================
 Product Line Mixin
 ==================
+``ssi_product_line_mixin`` provides an abstract Odoo model —
+``mixin.product_line`` — for product-line child records in transactional
+documents.
 
+Any model that inherits from ``mixin.product_line`` automatically gains:
+
+* ``product_id`` (``product.product``) and ``name`` (description).
+* ``uom_quantity``, ``uom_id`` (with ``allowed_uom_ids`` filtered by the
+  product’s UoM category), and a computed ``quantity`` converted to the
+  product’s base UoM.
+* ``note`` — free-text line remark.
+* Onchange handlers to auto-fill description and UoM from the product.
 
 Installation
 ============
