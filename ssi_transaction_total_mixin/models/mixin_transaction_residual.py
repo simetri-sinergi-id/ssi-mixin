@@ -6,6 +6,18 @@ from odoo import api, fields, models
 
 
 class MixinTransactionResidual(models.AbstractModel):
+    """
+    Extends ``mixin.transaction`` with computed ``amount_residual`` and
+    ``amount_realized`` monetary fields derived from linked
+    ``account.move.line`` records.
+
+    The AML field name and sign are controlled by
+    ``_amount_residual_aml_field_name`` and ``_amount_residual_sign``.
+
+    ``MixinTransactionResidualWithField`` is a variant that stores the amounts
+    in database columns.
+    """
+
     _name = "mixin.transaction_residual"
     _inherit = [
         "mixin.transaction",

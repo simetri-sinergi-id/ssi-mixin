@@ -6,6 +6,21 @@
 Transaction Mixin - Total
 =========================
 
+``ssi_transaction_total_mixin`` extends ``mixin.transaction`` with computed
+monetary totals.
+
+Four complementary abstract mixins are provided:
+
+* **mixin.transaction_untaxed** — ``amount_untaxed`` aggregated from product
+  line details.
+* **mixin.transaction_tax** — ``amount_tax`` aggregated from tax-detail lines.
+* **mixin.transaction_total** — ``amount_total`` (untaxed + tax).
+* **mixin.transaction_residual** — ``amount_residual`` and
+  ``amount_realized`` derived from linked ``account.move.line`` records.
+
+Each mixin has a ``*WithField`` variant that persists the amounts to database
+columns.
+
 
 Installation
 ============
