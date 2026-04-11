@@ -6,6 +6,21 @@ from odoo import api, fields, models
 
 
 class MixinCurrency(models.AbstractModel):
+    """
+    Abstract mixin for multi-currency transactional documents.
+
+    Provides ``currency_id``, ``company_id``, ``rate_inverted``, and ``rate``
+    fields together with helper methods to:
+
+    * Automatically populate the exchange rate from the currency master when
+      the currency or company changes (``onchange_rate_mixin``).
+    * Convert amounts from the transaction currency to the company currency
+      (``_convert_amount_to_company_currency``).
+
+    Subclasses set ``_exchange_date_field`` to the name of the date field that
+    should be used when looking up the historical exchange rate.
+    """
+
     _name = "mixin.currency"
     _description = "Currency Mixin"
     _exchange_date_field = "date_transaction"
