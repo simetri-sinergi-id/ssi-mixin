@@ -8,6 +8,23 @@ from odoo import api, fields, models
 
 
 class MixinPartner(models.AbstractModel):
+    """
+    Abstract mixin that adds configurable ``partner_id`` and
+    ``contact_partner_id`` fields together with view-injection hooks.
+
+    Key features:
+
+    * ``partner_id`` (``res.partner``) filtered to top-level partners.
+    * ``contact_partner_id`` (``res.partner``) filtered to contacts of the
+      selected partner via a computed ``allowed_contact_ids`` Many2many.
+    * Computed boolean fields that expose the effective required/readonly
+      attributes of both partner fields based on class-level configuration
+      and the current record state — so views can use them in ``attrs``.
+    * Optional view injection into form, tree, and search views controlled
+      by class-level ``_mixin_partner_insert_*`` flags and ``_xpath_*``
+      attributes.
+    """
+
     _name = "mixin.partner"
     _description = "Mixin for Object With Partner"
 
