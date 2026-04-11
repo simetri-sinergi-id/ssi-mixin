@@ -6,6 +6,13 @@
 Transaction Mixin - Date Due
 ============================
 
+``ssi_transaction_date_due_mixin`` extends ``mixin.transaction`` with due-date
+fields.
+
+* Adds ``date`` (due date) and ``duration_id`` (``base.duration``) to compute
+  the due date relative to the document date.
+* State-dependent editability: both fields are read-only except in draft.
+
 
 Installation
 ============

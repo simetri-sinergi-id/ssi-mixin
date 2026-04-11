@@ -6,6 +6,12 @@ from odoo import api, fields, models
 
 
 class MixinTransactionDateDue(models.AbstractModel):
+    """
+    Extends ``mixin.transaction`` with a due-date field (``date``) and a
+    ``duration_id`` field (``base.duration``) that drives auto-calculation
+    of the due date relative to the document date.
+    """
+
     _name = "mixin.transaction_date_due"
     _inherit = [
         "mixin.transaction",
