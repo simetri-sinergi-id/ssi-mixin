@@ -6,6 +6,16 @@
 Transaction Mixin - Queue To Cancel State
 =========================================
 
+``ssi_transaction_queue_cancel_mixin`` extends both ``mixin.transaction_cancel``
+and ``mixin.transaction_queue`` to implement a *queued cancellation* workflow
+state.
+
+* Adds ``queue_to_cancel_ok`` policy field and auto-injects the queue-cancel
+  button into the form view.
+* Provides ``action_queue_cancel`` which creates a queue job that then
+  executes the actual cancel action in the background.
+* Configurable via ``_queue_to_cancel_state`` class attribute.
+
 
 Installation
 ============
