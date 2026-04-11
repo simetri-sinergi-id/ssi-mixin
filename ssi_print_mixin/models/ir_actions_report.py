@@ -8,6 +8,19 @@ from odoo.tools.safe_eval import safe_eval, test_python_expr
 
 
 class IrActionsReport(models.Model):
+    """
+    Extends ``ir.actions.report`` with print-policy fields.
+
+    Added fields:
+
+    * ``print_document_type_ids`` — links the report to one or more
+      ``print_document_type`` records, scoping it to specific document types.
+    * ``print_python_code`` — an optional Python condition evaluated at print
+      time; the report is only offered if ``result`` is truthy.
+    * ``print_multi`` — flag indicating that the report can be generated for
+      multiple selected records at once.
+    """
+
     _inherit = "ir.actions.report"
 
     print_document_type_ids = fields.Many2many(
