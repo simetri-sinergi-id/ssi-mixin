@@ -6,6 +6,16 @@ from odoo import api, fields, models
 
 
 class MixinProductLinePrice(models.AbstractModel):
+    """
+    Extends ``mixin.product_line`` with pricing fields: ``currency_id``,
+    ``pricelist_id``, ``price_unit``, ``price_subtotal``, and standard-price
+    comparison fields (``standard_price_unit``, ``standard_price_subtotal``,
+    and their diff variants).
+
+    A computed ``allowed_pricelist_ids`` filters available pricelists by the
+    selected currency, and ``price_subtotal`` = ``price_unit`` * quantity.
+    """
+
     _name = "mixin.product_line_price"
     _description = "Product Line Mixin - With Price"
     _inherit = [
