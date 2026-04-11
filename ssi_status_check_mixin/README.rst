@@ -6,6 +6,20 @@
 Status Check Mixin
 ==================
 
+``ssi_status_check_mixin`` provides a checklist-style status verification
+framework for any transactional document.
+
+* **status.check.template** — master-data template that defines the list of
+  status items applicable for a model.
+* **status.check.template.detail** — individual checklist item with a
+  Python condition that determines pending/completed state.
+* **status.check** — concrete instance of a template created for a document.
+* **status.check.item** — per-document evaluation result for each template
+  detail.
+* **mixin.status_check** — abstract mixin that adds ``status_check_ids`` and
+  an optional auto-injected form-view page, with auto-reload on state
+  changes.
+
 
 Installation
 ============
