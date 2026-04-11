@@ -8,6 +8,17 @@ from odoo.tools.safe_eval import safe_eval
 
 
 class MixinMany2oneConfigurator(models.AbstractModel):
+    """
+    Abstract mixin that implements a three-strategy filter for Many2one
+    field domains: ``manual`` (explicit recordset), ``domain`` (ORM domain
+    string evaluated with ``safe_eval``), or ``code`` (arbitrary Python code
+    evaluated in a local dictionary).
+
+    Concrete configurator models inherit this and expose the strategy fields
+    (``method_selection``, ``manual_ids``, ``domain``, ``python_code``) so
+    that users can pick the most appropriate filtering method at runtime.
+    """
+
     _name = "mixin.many2one_configurator"
     _description = "Many2one Configurator Mixin"
 
