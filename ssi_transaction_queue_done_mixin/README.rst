@@ -6,6 +6,16 @@
 Transaction Mixin - Queue To Done State
 =======================================
 
+``ssi_transaction_queue_done_mixin`` extends both ``mixin.transaction_done``
+and ``mixin.transaction_queue`` to implement a *queued completion* workflow
+state.
+
+* Adds ``queue_to_done_ok`` policy field and auto-injects the queue-done
+  button into the form view.
+* Provides ``action_queue_done`` which creates a queue job that then
+  executes the actual done action in the background.
+* Configurable via ``_queue_to_done_state`` class attribute.
+
 
 Installation
 ============
