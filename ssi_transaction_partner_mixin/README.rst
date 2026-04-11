@@ -6,6 +6,15 @@
 Transaction + Partner Mixin
 ===========================
 
+``ssi_transaction_partner_mixin`` extends ``mixin.transaction`` with partner
+fields.
+
+* Adds ``partner_id`` (company-level ``res.partner``), computed
+  ``allowed_contact_ids``, and optional ``contact_id`` for the specific
+  contact person.
+* ``MixinTransactionPartnerContactRequired`` variant makes ``contact_id``
+  mandatory.
+
 
 Installation
 ============

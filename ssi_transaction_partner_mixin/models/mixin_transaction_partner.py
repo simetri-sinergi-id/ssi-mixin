@@ -7,6 +7,14 @@ from odoo import api, fields, models
 
 
 class MixinTransactionPartner(models.AbstractModel):
+    """
+    Extends ``mixin.transaction`` with a ``partner_id`` (company-level
+    ``res.partner``) and an optional ``contact_id`` (contact belonging to that
+    partner).
+
+    ``allowed_contact_ids`` is computed dynamically from the selected partner.
+    """
+
     _name = "mixin.transaction_partner"
     _inherit = [
         "mixin.transaction",
