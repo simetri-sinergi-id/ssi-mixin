@@ -6,6 +6,11 @@ from odoo import fields, models
 
 
 class ReferenceDocument(models.Model):
+    """
+    Master-data model (inheriting ``mixin.master_data``) representing a single
+    reference document with a URL, ordered by category and sequence.
+    """
+
     _name = "reference_document"
     _description = "Reference Document"
     _inherit = ["mixin.master_data"]

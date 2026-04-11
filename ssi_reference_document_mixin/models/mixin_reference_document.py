@@ -9,6 +9,19 @@ from odoo.addons.ssi_decorator import ssi_decorator
 
 
 class MixinReferenceDocument(models.AbstractModel):
+    """
+    Abstract mixin that attaches reference-document sets to any model.
+
+    Models that inherit from ``mixin.reference_document`` gain:
+
+    * ``reference_document_set_ids`` — Many2many linking to
+      ``reference_document_set`` records.
+    * ``reference_document_ids`` — computed Many2many that flattens the
+      documents from all selected sets.
+    * An optional auto-injected form-view page listing the available
+      documents (enabled by ``_reference_document_create_page = True``).
+    """
+
     _name = "mixin.reference_document"
     _inherit = [
         "mixin.decorator",
