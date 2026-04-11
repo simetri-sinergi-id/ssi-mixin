@@ -6,6 +6,16 @@
 Transaction Mixin - Waiting for Approval State
 ==============================================
 
+``ssi_transaction_confirm_mixin`` extends ``mixin.transaction`` (via
+``mixin.multiple_approval``) with a *confirm* / *waiting for approval*
+workflow state.
+
+* Adds ``confirm_ok`` policy field and auto-injects the confirm button and
+  policy fields into the form view.
+* Integrates with ``mixin.multiple_approval`` so that multi-step approval
+  sequences can gate the confirm action.
+* Provides ``action_confirm`` and ``action_approve`` lifecycle handlers.
+
 
 Installation
 ============
