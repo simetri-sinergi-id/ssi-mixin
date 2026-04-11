@@ -6,6 +6,12 @@ from odoo import api, fields, models
 
 
 class TncSection(models.Model):
+    """
+    Concrete instance of a T&C section created from a ``tnc_template.section``
+    and attached to a specific document record (via ``model_id`` +
+    ``tnc_object_id``).
+    """
+
     _name = "tnc_section"
     _description = "Terms and Condition Section"
     _inherit = [

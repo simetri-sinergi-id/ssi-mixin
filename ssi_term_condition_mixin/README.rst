@@ -6,6 +6,21 @@
 Terms and Conditions Mixin
 ==========================
 
+``ssi_term_condition_mixin`` provides a full terms-and-conditions (T&C)
+framework for transactional documents.
+
+The module ships the following components:
+
+* **tnc_template** — master-data T&C template with section and clause lines.
+* **tnc_template.section** / **tnc_template.clause** — template-level
+  section and clause records (inheriting ``mixin.tnc_section`` /
+  ``mixin.tnc_clause``).
+* **tnc_section** / **tnc_clause** — document-instance records that are
+  created from the template when a document is confirmed.
+* **mixin.tnc** — abstract mixin that links a document to a T&C template
+  and instantiates section/clause records, with optional auto-injected
+  form-view page.
+
 
 Installation
 ============

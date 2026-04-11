@@ -8,6 +8,19 @@ from odoo.addons.ssi_decorator import ssi_decorator
 
 
 class MixinTnc(models.AbstractModel):
+    """
+    Abstract mixin that attaches terms-and-conditions sections and clauses to
+    any transactional model.
+
+    Models inheriting ``mixin.tnc`` gain:
+
+    * ``tnc_template_id`` — the selected T&C template.
+    * ``tnc_section_ids`` — instantiated sections (``tnc_section``) with
+      their nested clauses, created automatically when the template changes.
+    * An optional auto-injected form-view page
+      (enabled by ``_tnc_create_page = True``).
+    """
+
     _name = "mixin.tnc"
     _description = "Terms and Conditions Mixin"
     _tnc_create_page = False
