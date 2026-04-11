@@ -6,6 +6,11 @@ from odoo import fields, models
 
 
 class AttachmentRelatedAttachmentCategory(models.Model):
+    """
+    Master-data model that groups related-attachment template details into
+    named categories for display organisation on the attachment page.
+    """
+
     _name = "attachment.related_attachment_category"
     _description = "Related Attachment Category"
 
