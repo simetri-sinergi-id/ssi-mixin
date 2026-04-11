@@ -6,6 +6,16 @@ from odoo import fields, models
 
 
 class MixinAccountMoveSingleLine(models.AbstractModel):
+    """
+    Mixin that creates a single ``account.move.line`` inside an existing
+    ``account.move``.
+
+    Like ``mixin.account_move_double_line``, all source-field names are
+    configured via class-level attributes so the mixin adapts to any model.
+    The ``_normal_amount`` attribute controls whether a positive amount
+    becomes a debit (``'debit'``) or credit (``'credit'``) entry.
+    """
+
     _name = "mixin.account_move_single_line"
     _description = "Accounting Move Single Line Mixin"
 
@@ -165,6 +175,13 @@ class MixinAccountMoveSingleLine(models.AbstractModel):
 
 
 class MixinAccountMoveSingleLineWithField(models.AbstractModel):
+    """
+    Extends ``mixin.account_move_single_line`` with concrete fields that link
+    back to the source move line (``source_move_line_id``) and the resulting
+    move line (``move_line_id``), together with convenience related fields for
+    the source entry's move, partner, and date.
+    """
+
     _name = "mixin.account_move_single_line_with_field"
     _description = "Accounting Move Single Line With Field Mixin"
     _inherit = [

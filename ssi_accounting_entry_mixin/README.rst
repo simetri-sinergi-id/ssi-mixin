@@ -6,6 +6,27 @@
 Accounting Entry Mixin
 ======================
 
+``ssi_accounting_entry_mixin`` provides a set of abstract Odoo models that
+standardise the creation, posting, and deletion of accounting entries
+(``account.move`` and ``account.move.line``) from transactional documents.
+
+The module ships four composable mixins:
+
+* **mixin.account_move** — high-level helper for the journal-entry *header*:
+  creates, posts, and cancels an ``account.move`` record with configurable
+  field-name pointers and optional tax computation support.
+* **mixin.account_move_single_line** — creates one ``account.move.line``
+  inside an existing move; the normal direction (debit vs. credit) and all
+  source fields are driven by class-level attributes.
+* **mixin.account_move_double_line** — creates a balanced debit/credit pair
+  of move lines in one call; each side is independently configurable.
+* **mixin.tax_line** — ready-to-use child-record model for tax lines that
+  references the appropriate tax account.
+
+Concrete ``_with_field`` variants of each mixin add the actual Odoo storage
+fields (``move_id``, ``move_line_id``, ``realized``, etc.) for cases where the
+inheriting model needs to persist the generated entry references.
+
 
 Installation
 ============
