@@ -6,6 +6,12 @@
 Transaction Date Duration Mixin
 ===============================
 
+``ssi_transaction_date_duration_mixin`` extends ``mixin.transaction`` with a
+date-range span.
+
+* Adds ``date_start`` and ``date_end`` date fields, both required and
+  editable only in draft state.
+
 
 Installation
 ============
