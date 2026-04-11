@@ -5,7 +5,14 @@
 ========================================
 res.currency Many2one Configurator Mixin
 ========================================
+``ssi_res_currency_m2o_configurator_mixin`` provides an abstract Odoo model
+— ``mixin.res_currency_m2o_configurator`` — that adds configurable
+filtering for ``res.currency`` Many2one fields.
 
+The three filter strategies (manual, domain, Python code) follow the same
+pattern as ``ssi_m2o_configurator_mixin``. This mixin is used by type/category
+models that need to restrict which currencies a derived transactional record
+may choose.
 
 Installation
 ============
