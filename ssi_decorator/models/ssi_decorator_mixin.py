@@ -10,6 +10,21 @@ from odoo import api, models
 
 
 class MixinDecorator(models.AbstractModel):
+    """
+    View-decoration framework that allows methods on an Odoo model to
+    declaratively inject XML fragments into form, tree, and search views.
+
+    Methods decorated with the SSI decorator markers (``_insert_on_form_view``,
+    ``_insert_on_tree_view``, ``_insert_on_search_view``) are discovered via
+    introspection during ``fields_view_get`` and called in sequence to modify
+    the view architecture before it is returned to the client.
+
+    Concrete models inherit this mixin (and ``mixin.master_data`` or
+    ``mixin.transaction``) and then add decorator-marked methods to
+    programmatically extend views from other modules without writing XML
+    ``inherit`` records.
+    """
+
     _name = "mixin.decorator"
     _description = "SSI Decorator Mixin"
 
