@@ -6,6 +6,19 @@
 Multiple Approval Mixin
 =======================
 
+``ssi_multiple_approval_mixin`` provides a configurable multi-step approval
+workflow for any transactional document.
+
+* **approval.template** — master-data template that defines the approval
+  sequence for a model with ordered detail lines.
+* **approval.template.detail** — one approval step with an approver
+  (user/role) and configurable conditions.
+* **approval.approval** — concrete approval record created per step when a
+  document enters the approval flow.
+* **mixin.multiple_approval** — abstract mixin adding the approval page,
+  ``action_approve``, ``action_reject``, and auto form-view injection via
+  ``mixin.decorator``.
+
 
 Installation
 ============
