@@ -18,6 +18,18 @@ except (ImportError, IOError) as err:
 
 
 class MixinQRCode(models.AbstractModel):
+    """
+    Abstract mixin that adds a computed QR-code image (``qr_image``) to any
+    model.
+
+    The QR content is determined per-model via ``ir.model`` configuration:
+    if no custom content policy is found the mixin falls back to
+    ``_get_qr_standard_content`` which encodes the full web URL of the record.
+
+    Inherits ``mixin.decorator`` so that the QR-code page can be injected into
+    the form view automatically when ``_qr_code_create_page`` is ``True``.
+    """
+
     _name = "mixin.qr_code"
     _inherit = [
         "mixin.decorator",

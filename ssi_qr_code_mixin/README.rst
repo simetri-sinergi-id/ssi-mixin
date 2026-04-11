@@ -5,7 +5,21 @@
 =============
 QR Code Mixin
 =============
+``ssi_qr_code_mixin`` provides an abstract Odoo model — ``mixin.qr_code``
+— that adds a computed QR-code image to any model.
 
+Any model that inherits from ``mixin.qr_code`` automatically gains:
+
+* ``qr_image`` (Binary) — a computed QR-code image in PNG format encoded as
+  Base64.
+* Content strategy per model configured via the extended ``ir.model``:
+  either use the standard web URL of the record, or supply custom Python
+  code that builds the string to encode.
+* Optional automatic injection of a QR-code page into the form view
+  (enabled by setting ``_qr_code_create_page = True`` on the subclass).
+
+The module depends on the ``qrcode`` Python library (listed in
+``requirements.txt``) and on ``ssi_decorator`` for view injection.
 
 Installation
 ============
