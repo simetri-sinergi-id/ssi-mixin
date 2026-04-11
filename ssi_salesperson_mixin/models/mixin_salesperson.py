@@ -6,6 +6,16 @@ from odoo import api, fields, models
 
 
 class MixinSalesperson(models.AbstractModel):
+    """
+    Abstract mixin that adds ``sale_team_id`` and ``salesperson_id`` fields
+    with a computed ``allowed_salesperson_ids`` helper that limits the
+    selectable salespersons to the members of the chosen sales team (or all
+    internal users if no team is selected).
+
+    An ``onchange_salesperson_id`` handler clears the salesperson whenever
+    the sales team changes.
+    """
+
     _name = "mixin.salesperson"
     _description = "Salesperson Mixin"
 
