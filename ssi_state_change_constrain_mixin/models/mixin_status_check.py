@@ -6,6 +6,12 @@ from odoo import models
 
 
 class MixinStatusCheck(models.AbstractModel):
+    """
+    Extends ``mixin.status_check`` from ``ssi_status_check_mixin`` to reload
+    the state-change constrain template alongside the status-check template
+    when ``action_reload_status_check_template`` is triggered.
+    """
+
     _inherit = "mixin.status_check"
 
     def action_reload_status_check_template(self):
