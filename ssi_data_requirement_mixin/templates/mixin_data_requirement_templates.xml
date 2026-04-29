@@ -31,10 +31,11 @@
             <field name="allowed_partner_id" />
             <field name="data_requirement_status" />
         </group>
-        <field
-                name="data_requirement_ids"
-                domain="[('partner_id','=',allowed_partner_id)]"
-            />
+        <field name="data_requirement_document_ids">
+            <tree>
+                <field name="data_requirement_id" />
+            </tree>
+        </field>
     </page>
 </template>
 <template id="data_requirement_filter">

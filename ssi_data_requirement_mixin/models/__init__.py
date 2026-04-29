@@ -2,10 +2,11 @@
 # Copyright 2022 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from . import (
+from . import (  # noqa: F401
     data_requirement_type_category,
     data_requirement_type,
     data_requirement,
+    data_requirement_document,
     data_requirement_package_type,
     data_requirement_package_type_detail,
     data_requirement_package,

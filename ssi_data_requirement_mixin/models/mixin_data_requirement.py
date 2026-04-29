@@ -35,9 +35,12 @@ class MixinDataRequirement(models.AbstractModel):
     _data_requirement_partner_field_name = False
     _data_requirement_contact_field_name = False
 
-    data_requirement_ids = fields.Many2many(
+    data_requirement_document_ids = fields.One2many(
         string="Data Requirements",
-        comodel_name="data_requirement",
+        comodel_name="data_requirement.document",
+        inverse_name="res_id",
+        domain=lambda self: [("res_model", "=", self._name)],
+        auto_join=True,
     )
     data_requirement_status = fields.Selection(
         string="Data Requirement Status",
@@ -70,18 +73,20 @@ class MixinDataRequirement(models.AbstractModel):
             record.allowed_partner_id = result
 
     @api.depends(
-        "data_requirement_ids",
-        "data_requirement_ids.state",
+        "data_requirement_document_ids",
+        "data_requirement_document_ids.data_requirement_id",
+        "data_requirement_document_ids.data_requirement_id.state",
     )
     def _compute_data_requirement_status(self):
         for record in self:
             result = "not_needed"
-            num_of_data_requirement = len(record.data_requirement_ids)
+            drs = record.data_requirement_document_ids.mapped("data_requirement_id")
+            num_of_data_requirement = len(drs)
             num_of_done_data_requirement = len(
-                record.data_requirement_ids.filtered(lambda r: r.state == "done")
+                drs.filtered(lambda r: r.state == "done")
             )
 
-            if (
+            if (  # pylint: disable=consider-using-in
                 num_of_data_requirement != 0
                 and num_of_data_requirement != num_of_done_data_requirement
             ):
@@ -142,9 +147,10 @@ class MixinDataRequirement(models.AbstractModel):
         waction = self.env.ref(
             "ssi_data_requirement_mixin.data_requirement_action"
         ).read()[0]
+        dr_ids = self.data_requirement_document_ids.mapped("data_requirement_id").ids
         waction.update(
             {
-                "domain": [("id", "in", self.data_requirement_ids.ids)],
+                "domain": [("id", "in", dr_ids)],
             }
         )
         return waction
@@ -171,7 +177,10 @@ class MixinDataRequirement(models.AbstractModel):
 
         return getattr(self, self._data_requirement_contact_field_name)
 
-    def _create_data_requirement(self):
+    # pylint: disable=inconsistent-return-statements
+    def _create_data_requirement(
+        self,
+    ):
         self.ensure_one()
         if not hasattr(self, self._data_requirement_configurator_field_name):
             return True
@@ -195,4 +204,10 @@ class MixinDataRequirement(models.AbstractModel):
                 }
             )
 
-            self.write({"data_requirement_ids": [(4, dr.id)]})
+            self.env["data_requirement.document"].create(
+                {
+                    "res_id": self.id,
+                    "res_model": self._name,
+                    "data_requirement_id": dr.id,
+                }
+            )
