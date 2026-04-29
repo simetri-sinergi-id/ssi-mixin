@@ -20,7 +20,7 @@ class AddDataRequirement(models.TransientModel):
             criteria = [
                 ("model", "=", model_name),
             ]
-            models = obj_model.search(criteria)
+            models = obj_model.search(criteria)  # pylint: disable=redefined-outer-name
             if len(models) > 0:
                 result = models[0]
 
@@ -87,32 +87,36 @@ class AddDataRequirement(models.TransientModel):
         mixin = self.env[self.model_id.model].browse([self.res_id])[0]
         commercial_partner = getattr(mixin, mixin._data_requirement_partner_field_name)
         contact = getattr(mixin, mixin._data_requirement_contact_field_name)
-        if self.type_id.duration_id:
-            date_commitment = self.type_id.duration_id.get_duration(
-                datetime_date.today()
+        if self.type_id.duration_id:  # pylint: disable=no-member
+            date_commitment = (
+                self.type_id.duration_id.get_duration(  # pylint: disable=no-member
+                    datetime_date.today()
+                )
             )
         else:
             date_commitment = datetime_date.today()
         return {
-            "partner_id": commercial_partner.id,
-            "contact_partner_id": contact.id,
-            "type_id": self.type_id.id,
+            "partner_id": commercial_partner.id,  # pylint: disable=no-member
+            "contact_partner_id": contact.id,  # pylint: disable=no-member
+            "type_id": self.type_id.id,  # pylint: disable=no-member
             "date": datetime_date.today(),
             "date_commitment": date_commitment,
-            "mode": self.type_id.mode,
-            "title": self.type_id.name,
+            "mode": self.type_id.mode,  # pylint: disable=no-member
+            "title": self.type_id.name,  # pylint: disable=no-member
         }
 
     def _create_data_requirement(self):
         self.ensure_one()
         data = self._prepare_data_requirement()
-        DR = self.env["data_requirement"]
+        DR = self.env["data_requirement"]  # pylint: disable=invalid-name
         data_requirement = DR.create(data)
         data_requirement.onchange_data_text()
         mixin = self.env[self.model_id.model].browse([self.res_id])[0]
-        mixin.write(
+        self.env["data_requirement.document"].create(
             {
-                "data_requirement_ids": [(4, data_requirement.id)],
+                "res_id": mixin.id,
+                "res_model": mixin._name,
+                "data_requirement_id": data_requirement.id,
             }
         )
         return data_requirement
