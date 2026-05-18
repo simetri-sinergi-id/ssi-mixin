@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2025 OpenSynergy Indonesia
-     Copyright 2025 PT. Simetri Sinergi Indonesia
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<!-- Copyright 2026 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
 <record id="print_document_type_view_search" model="ir.ui.view">
     <field name="name">print_document_type - search</field>

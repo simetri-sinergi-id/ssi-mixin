@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
@@ -30,15 +29,17 @@ class IrActionsReport(models.Model):
         column1="report_id",
         column2="type_id",
         domain="[('model', '=', model)]",
+        help="Print document types this report belongs to.",
     )
     print_python_code = fields.Text(
         string="Condition",
-        help="The result of executing the expresion must be " "a boolean.",
+        help="Python code evaluated at print time; must set 'result' to a boolean.",
         default="""# Available locals:\n#  - document: current recordset\nresult = True""",
     )
     print_multi = fields.Boolean(
         string="Multiple Records",
         default=False,
+        help="When enabled, this report can be generated for multiple selected records.",
     )
 
     def _get_print_localdict(self, document):
@@ -55,7 +56,7 @@ class IrActionsReport(models.Model):
         try:
             safe_eval(self.print_python_code, localdict, mode="exec", nocopy=True)
             result = localdict["result"]
-        except:  # noqa: E722
+        except Exception:  # noqa: BLE001
             result = False
         return result
 

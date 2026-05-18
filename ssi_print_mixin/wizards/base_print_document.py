@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -34,6 +33,7 @@ class BasePrintDocument(models.TransientModel):
         relation="rel_print_document_2_print_type",
         column1="wizard_id",
         column2="type_id",
+        help="Print document types available for the active record.",
     )
 
     @api.model
@@ -45,6 +45,7 @@ class BasePrintDocument(models.TransientModel):
         string="Type",
         comodel_name="print_document_type",
         default=lambda self: self._default_type_id(),
+        help="Selected print document type to filter available reports.",
     )
 
     @api.depends(
@@ -85,11 +86,13 @@ class BasePrintDocument(models.TransientModel):
         relation="rel_print_document_2_action_report",
         column1="wizard_id",
         column2="report_action_id",
+        help="Reports allowed for the current user and active record.",
     )
 
     report_action_id = fields.Many2one(
         string="Report Template",
         comodel_name="ir.actions.report",
+        help="The report to print.",
     )
 
     def _check_allowed_print(self, recordset):

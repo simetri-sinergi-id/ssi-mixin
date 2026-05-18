@@ -1,6 +1,5 @@
-# Copyright 2025 OpenSynergy Indonesia
-# Copyright 2025 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -26,11 +25,13 @@ class PrintDcoumentType(models.Model):
     name = fields.Char(
         string="Type",
         required=True,
+        help="Name of this print document type.",
     )
     code = fields.Char(
         string="Code",
         default="/",
         required=True,
+        help="Unique code for this print document type, generated via sequence.",
     )
     model_id = fields.Many2one(
         string="Referenced Model",
@@ -38,11 +39,13 @@ class PrintDcoumentType(models.Model):
         index=True,
         required=True,
         ondelete="cascade",
+        help="Odoo model this print document type applies to.",
     )
     model = fields.Char(
         related="model_id.model",
         index=True,
         store=True,
+        help="Technical model name (auto-computed from Referenced Model).",
     )
     report_ids = fields.Many2many(
         string="Reports",
@@ -51,13 +54,16 @@ class PrintDcoumentType(models.Model):
         column1="type_id",
         column2="report_id",
         domain="[('model', '=', model)]",
+        help="Reports available for this document type.",
     )
     active = fields.Boolean(
         string="Active",
         default=True,
+        help="Inactive types are excluded from the print selection.",
     )
     note = fields.Text(
         string="Note",
+        help="Additional notes or remarks about this print document type.",
     )
 
     @api.returns("self", lambda value: value.id)
@@ -79,15 +85,12 @@ class PrintDcoumentType(models.Model):
             ]
             count_duplicate = self.search_count(criteria)
             if count_duplicate > 0:
-                error_message = """
-                Document Type: %s
-                Context: Create or update document
-                Database ID: %s
-                Problem: Dupilicate code
-                Solution: Change code
-                """ % (
-                    self._description.lower(),
-                    self.id,
+                error_message = (
+                    f"Document Type: {self._description.lower()}\n"
+                    f"Context: Create or update document\n"
+                    f"Database ID: {self.id}\n"
+                    "Problem: Duplicate code\n"
+                    "Solution: Change code"
                 )
                 raise UserError(error_message)
 
