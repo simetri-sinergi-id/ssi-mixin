@@ -86,6 +86,7 @@ addon | version | maintainers | summary
 [test_ssi_state_change_constrain_mixin](test_ssi_state_change_constrain_mixin/) | 14.0.1.3.0 |  | Test Module: State Change Constrain Mixin
 [test_ssi_status_check_mixin](test_ssi_status_check_mixin/) | 14.0.1.2.0 |  | Test Module: Status Check Mixin
 [test_ssi_transaction_mixin](test_ssi_transaction_mixin/) | 14.0.1.1.0 |  | Test Module: Transaction Mixin
+[test_ssi_master_data_mixin](test_ssi_master_data_mixin/) | 15.0.1.0.0 |  | Test Module: Master Data Mixin
 
 [//]: # (end addons)
 
