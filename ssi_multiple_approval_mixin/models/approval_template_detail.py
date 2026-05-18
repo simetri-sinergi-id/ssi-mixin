@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
@@ -64,5 +63,4 @@ class ApprovalTemplateDetail(models.Model):
         for action in self.sudo().filtered("python_code"):
             msg = test_python_expr(expr=action.python_code.strip(), mode="exec")
             if msg:
-                msg1 = "Template Detail:\n"
-                raise ValidationError(msg1 + msg)
+                raise ValidationError(f"Template Detail:\n{msg}")

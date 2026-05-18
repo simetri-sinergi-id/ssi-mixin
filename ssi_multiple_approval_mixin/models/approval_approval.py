@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 # pylint: disable=W0622
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -72,8 +71,7 @@ class ApprovalApproval(models.Model):
                         if "user" in result:
                             list_user += result["user"]
                         else:
-                            msg_err = "No User defines on python code"
-                            raise UserError(_(msg_err))
+                            raise UserError(_("No User defines on python code"))
                 rec.approver_user_ids = list(set(list_user))
 
     approver_user_ids = fields.Many2many(
@@ -138,9 +136,8 @@ class ApprovalApproval(models.Model):
                 python_condition, globals_dict=localdict, mode="exec", nocopy=True
             )
             result = localdict
-        except Exception:
-            msg_err = "Error when execute python code"
-            raise UserError(_(msg_err))
+        except Exception as error:
+            raise UserError(_("Error when execute python code")) from error
 
         return result
 
