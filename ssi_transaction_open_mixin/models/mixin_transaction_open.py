@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from inspect import getmembers
 
@@ -119,7 +118,7 @@ class MixinTransactionOpen(models.AbstractModel):
 
     def _prepare_open_action_notification(self):
         self.ensure_one()
-        msg = "%s %s started" % (self._description, self.display_name)
+        msg = f"{self._description} {self.display_name} started"
         return msg
 
     def _check_open_policy(self):
@@ -131,17 +130,19 @@ class MixinTransactionOpen(models.AbstractModel):
             return True
 
         if not self.open_ok:
-            error_message = """
-                Document: %s
-                Context: Start document
-                Database ID: %s
-                Problem: Document is not allowed to start
-                Solution: Check start policy prerequisite
-                """ % (
-                self._description.lower(),
-                self.id,
+            raise UserError(
+                _(
+                    "Document: %(description)s\n"
+                    "Context: Start document\n"
+                    "Database ID: %(id)s\n"
+                    "Problem: Document is not allowed to start\n"
+                    "Solution: Check start policy prerequisite"
+                )
+                % {
+                    "description": self._description.lower(),
+                    "id": self.id,
+                }
             )
-            raise UserError(_(error_message))
 
     @api.model
     def fields_view_get(
