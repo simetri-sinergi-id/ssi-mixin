@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sequence Mixin</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0f172a;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2.2rem;
+			color: #10b981;
+			margin-bottom: 8px;
+		}
+		h2 {
+			font-size: 1.2rem;
+			color: #10b981;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 0;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+		}
+		.section {
+			background: #1e293b;
+			border-radius: 10px;
+			padding: 20px 24px;
+			margin-bottom: 20px;
+		}
+		a {
+			color: #10b981;
+		}
+		ul, ol {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+		}
+		code {
+			background: #0f172a;
+			border-radius: 4px;
+			padding: 1px 6px;
+			font-size: 0.92em;
+		}
+		hr.tech-divider {
+			border: none;
+			border-top: 1px solid #334155;
+			margin: 32px 0 16px;
+		}
+		.footer {
+			text-align: center;
+			color: #64748b;
+			font-size: 0.9rem;
+			line-height: 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Sequence Mixin</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>Sequence Mixin</b> is a core mixin module in the
+				<b>@simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It provides a configurable, reusable document-numbering framework
+				that can be mixed into any transactional model to automatically
+				generate document numbers (codes) based on flexible criteria and
+				sequence templates.
+			</p>
+			<p>
+				The module ships two main components:
+				<b>sequence.template</b> — a master-data record that maps a model
+				and a set of applicability criteria (Python expression or domain
+				filter) to an <code>ir.sequence</code> with optional custom
+				prefix/suffix computation; and <b>mixin.sequence</b> — an abstract
+				mixin that adds <code>_create_sequence()</code> to auto-select the
+				applicable template and apply the generated number to the
+				configured field.
+			</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Template-Based Numbering:</b> Define multiple sequence templates per model; the first matching template is used.</li>
+				<li><b>Flexible Applicability:</b> Determine which template applies via a Python expression or an Odoo domain filter.</li>
+				<li><b>Sequence Selection Methods:</b> Use a standard <code>ir.sequence</code> or a Python expression to pick the sequence.</li>
+				<li><b>Custom Prefix &amp; Suffix:</b> Optionally compute and prepend/append dynamic strings (e.g. year, month) around the sequence number.</li>
+				<li><b>Date-Aware:</b> Passes the document date to <code>ir.sequence</code> so date-based reset periods work correctly.</li>
+				<li><b>Mixin Design:</b> Zero-intrusion — inherit <code>mixin.sequence</code> in any model to get the full capability.</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>
+				Use this mixin whenever you need automatic, rule-based document
+				numbering in a custom Odoo module:
+			</p>
+			<ul>
+				<li><b>Sales Orders / Invoices:</b> Generate numbers like <code>SO/2025/001</code> with date-based reset.</li>
+				<li><b>HR Documents:</b> Different numbering sequences per department or contract type.</li>
+				<li><b>Multi-Company:</b> Separate sequences per company entity using the company field.</li>
+				<li><b>Custom Transactional Models:</b> Any model requiring structured reference numbers.</li>
+			</ul>
+			<p>Simply inherit <code>mixin.sequence</code>, configure a <b>Sequence Template</b> via the menu, and call <code>_create_sequence()</code> at the appropriate state transition.</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>Clone branch <b>15.0</b> of the repository: <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">https://github.com/simetri-sinergi-id/ssi-mixin</a></li>
+				<li>Add the path to this repository in your Odoo configuration (<code>addons-path</code>).</li>
+				<li>Update the module list (ensure you are in developer mode).</li>
+				<li>Go to menu <i>Apps → Apps → Main Apps</i>.</li>
+				<li>Search for <i>Sequence Mixin</i> and install.</li>
+				<li>Go to <i>Sequence → Templates</i> to create your sequence templates.</li>
+				<li>In your custom model, inherit <code>mixin.sequence</code> and call <code>self._create_sequence()</code> when the document number should be generated.</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Standalone?</b>
+					<span style="color:#f59e0b;">No — it is a mixin foundation. Install it as a dependency of your custom module.</span>
+				</li>
+				<li>
+					<b>Odoo Version?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>Can I have multiple templates for one model?</b>
+					<span style="color:#f59e0b;">Yes. Templates are evaluated in ascending <code>sequence</code> order; the first matching one wins.</span>
+				</li>
+				<li>
+					<b>Contribute?</b>
+					<span style="color:#f59e0b;">Fork, branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>Bugs are tracked on <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>. In case of trouble, please check there if your issue has already been reported. If you spotted it first, help us smash it by providing detailed and welcomed feedback.</p>
+			<ul>
+				<li><b>Report Issues:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">Create a new issue</a> with detailed description and steps to reproduce.</li>
+				<li><b>Search Existing:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">Browse existing issues</a> to see if your problem has already been reported.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<p>This module is developed and maintained by PT. Simetri Sinergi Indonesia.</p>
+			<ul>
+				<li><b>Core Development:</b>
+					<ul>
+						<li>Michael Viriyananda <a href="mailto:viriyananda.michael@gmail.com" style="color:#10b981;">&lt;viriyananda.michael@gmail.com&gt;</a></li>
+						<li>Andhitia Rama <a href="mailto:andhitia.r@gmail.com" style="color:#10b981;">&lt;andhitia.r@gmail.com&gt;</a></li>
+						<li>Nur Azmi <a href="mailto:azmimr67@gmail.com" style="color:#10b981;">&lt;azmimr67@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b> <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for the development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a>
+			<br>
+			<span>
+				Released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.
+			</span>
+		</div>
+	</div>
+</body>
+</html>

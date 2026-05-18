@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from datetime import datetime
 
 import pytz
@@ -21,12 +20,13 @@ class SequenceTemplate(models.Model):
 
     @api.model
     def _default_company_id(self):
-        return self.env["res.company"]._company_default_get("sequence.template")
+        return self.env.company
 
     name = fields.Char(
         string="Name",
         required=True,
         copy=True,
+        help="Name of the sequence template.",
     )
     model_id = fields.Many2one(
         string="Referenced Model",
@@ -35,27 +35,32 @@ class SequenceTemplate(models.Model):
         required=True,
         copy=True,
         ondelete="cascade",
+        help="Model that this sequence template applies to.",
     )
     model = fields.Char(
         related="model_id.model",
         index=True,
         store=True,
+        help="Technical model name (auto-computed from Referenced Model).",
     )
     company_id = fields.Many2one(
         string="Company",
         comodel_name="res.company",
         default=lambda self: self._default_company_id(),
         copy=True,
+        help="Company this sequence template belongs to.",
     )
     sequence = fields.Integer(
         default=5,
         required=True,
         copy=True,
+        help="Priority order of this template; lower number = higher priority.",
     )
     initial_string = fields.Char(
         string="Initial String",
         required=True,
         default="/",
+        help="Placeholder value used before the sequence number is generated.",
     )
     sequence_field_id = fields.Many2one(
         string="Sequence Field",
@@ -63,6 +68,7 @@ class SequenceTemplate(models.Model):
         ondelete="cascade",
         required=True,
         domain="[('model_id', '=', model_id),('ttype','=','char')]",
+        help="Char field on the target model where the generated sequence will be stored.",
     )
     date_field_id = fields.Many2one(
         string="Date Field",
@@ -70,6 +76,7 @@ class SequenceTemplate(models.Model):
         ondelete="cascade",
         required=True,
         domain="[('model_id', '=', model_id),('ttype','in',['date','datetime'])]",
+        help="Date or datetime field used to compute the sequence period.",
     )
     state = fields.Selection(
         string="States",
@@ -78,6 +85,7 @@ class SequenceTemplate(models.Model):
             ("apply", "Sequence Applied"),
         ],
         default="draft",
+        help="Current state of the sequence template.",
     )
     computation_method = fields.Selection(
         string="Computation Method",
@@ -88,10 +96,12 @@ class SequenceTemplate(models.Model):
         default="use_python",
         required=True,
         copy=True,
+        help="Method used to determine whether this template applies to a document.",
     )
     domain = fields.Char(
         string="Domain",
         copy=True,
+        help="Domain filter to determine if this template applies to the document.",
     )
     python_code = fields.Text(
         string="Python Code",
@@ -109,10 +119,12 @@ class SequenceTemplate(models.Model):
         default="use_python",
         required=True,
         copy=True,
+        help="Method used to select the ir.sequence to use for numbering.",
     )
     sequence_id = fields.Many2one(
         string="Sequence",
         comodel_name="ir.sequence",
+        help="The ir.sequence used when sequence selection method is 'Sequence'.",
     )
     sequence_python_code = fields.Text(
         string="Python Code",
@@ -123,6 +135,7 @@ class SequenceTemplate(models.Model):
     add_custom_prefix = fields.Boolean(
         string="Add Custom Prefix",
         default=False,
+        help="When enabled, a custom prefix is prepended to the generated sequence number.",
     )
     prefix_python_code = fields.Text(
         string="Python Code",
@@ -133,6 +146,7 @@ class SequenceTemplate(models.Model):
     add_custom_suffix = fields.Boolean(
         string="Add Custom Suffix",
         default=False,
+        help="When enabled, a custom suffix is appended to the generated sequence number.",
     )
     suffix_python_code = fields.Text(
         string="Python Code",
@@ -143,10 +157,12 @@ class SequenceTemplate(models.Model):
     active = fields.Boolean(
         default=True,
         copy=True,
+        help="Inactive templates are excluded from sequence generation.",
     )
     note = fields.Text(
         string="Note",
         copy=True,
+        help="Additional notes or remarks about this sequence template.",
     )
 
     @api.onchange(
@@ -198,8 +214,8 @@ class SequenceTemplate(models.Model):
             method_name = "_evaluate_sequence_" + self.sequence_selection_method
             result = getattr(self, method_name)(document)
         except Exception as error:
-            msg_err = _("Error evaluating conditions.\n %s") % error
-            raise UserError(msg_err)
+            msg_err = _("Error evaluating conditions.\n %(error)s") % {"error": error}
+            raise UserError(msg_err) from error
         return result
 
     def _evaluate_sequence_use_python(self, document):
@@ -210,7 +226,9 @@ class SequenceTemplate(models.Model):
             safe_eval(self.sequence_python_code, localdict, mode="exec", nocopy=True)
             res = localdict["sequence"]
         except Exception as error:
-            raise UserError(_("Error evaluating conditions.\n %s") % error)
+            raise UserError(
+                _("Error evaluating conditions.\n %(error)s") % {"error": error}
+            ) from error
         return res
 
     def _evaluate_sequence_use_sequence(self, document):
@@ -228,7 +246,9 @@ class SequenceTemplate(models.Model):
             safe_eval(self.prefix_python_code, localdict, mode="exec", nocopy=True)
             res = localdict["result"]
         except Exception as error:
-            raise UserError(_("Error on get prefix.\n %s") % error)
+            raise UserError(
+                _("Error on get prefix.\n %(error)s") % {"error": error}
+            ) from error
         return res
 
     def _get_suffix(self, document):
@@ -239,7 +259,9 @@ class SequenceTemplate(models.Model):
             safe_eval(self.suffix_python_code, localdict, mode="exec", nocopy=True)
             result = localdict["result"]
         except Exception as error:
-            raise UserError(_("Error on get suffix.\n %s") % error)
+            raise UserError(
+                _("Error on get suffix.\n %(error)s") % {"error": error}
+            ) from error
         return result
 
     def _interpolate(self, s, d):
@@ -290,7 +312,9 @@ class SequenceTemplate(models.Model):
         try:
             interpolated_prefix = self._interpolate(prefix, d)
         except Exception as error:
-            raise UserError(_("Error on convert prefix.\n %s") % error)
+            raise UserError(
+                _("Error on convert prefix.\n %(error)s") % {"error": error}
+            ) from error
 
         result = interpolated_prefix
         return result
@@ -305,7 +329,9 @@ class SequenceTemplate(models.Model):
         try:
             interpolated_suffix = self._interpolate(suffix, d)
         except Exception as error:
-            raise UserError(_("Error on convert suffix.\n %s") % error)
+            raise UserError(
+                _("Error on convert suffix.\n %(error)s") % {"error": error}
+            ) from error
 
         result = interpolated_suffix
         return result
