@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from inspect import getmembers
 
@@ -35,10 +34,11 @@ class MixinTransactionTerminate(models.AbstractModel):
         string="Terminate Reason",
         comodel_name="base.terminate_reason",
         readonly=True,
+        help="Reason for terminating this document.",
     )
 
     def _compute_policy(self):
-        _super = super(MixinTransactionTerminate, self)
+        _super = super()
         _super._compute_policy()
 
     terminate_ok = fields.Boolean(
@@ -124,21 +124,23 @@ class MixinTransactionTerminate(models.AbstractModel):
             return True
 
         if not self.terminate_ok:
-            error_message = """
-            Document Type: %s
-            Context: Terminate document
-            Database ID: %s
-            Problem: Document is not allowed to terminate
-            Solution: Check terminate policy prerequisite
-            """ % (
-                self._description.lower(),
-                self.id,
+            raise UserError(
+                _(
+                    "Document Type: %(description)s\n"
+                    "Context: Terminate document\n"
+                    "Database ID: %(id)s\n"
+                    "Problem: Document is not allowed to terminate\n"
+                    "Solution: Check terminate policy prerequisite"
+                )
+                % {
+                    "description": self._description.lower(),
+                    "id": self.id,
+                }
             )
-            raise UserError(_(error_message))
 
     def _prepare_restart_data(self):
         self.ensure_one()
-        _super = super(MixinTransactionTerminate, self)
+        _super = super()
         result = _super._prepare_restart_data()
         result.update(
             {

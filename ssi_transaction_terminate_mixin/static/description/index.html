@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaction Mixin - Terminate State</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #0f172a;
+            border-bottom: 3px solid #10b981;
+            padding: 40px 48px 32px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            color: #10b981;
+            margin: 0 0 8px;
+        }
+        .header p {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin: 0;
+        }
+        .content {
+            padding: 40px 48px;
+        }
+        h2 {
+            color: #10b981;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 8px;
+            margin-top: 32px;
+        }
+        p, li {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+        ul {
+            padding-left: 24px;
+        }
+        code {
+            background-color: #1e293b;
+            color: #10b981;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #10b981;
+            color: #0f172a;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        .footer {
+            background-color: #0f172a;
+            border-top: 1px solid #1e293b;
+            padding: 24px 48px;
+            color: #475569;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Transaction Mixin - Terminate State <span class="badge">15.0</span></h1>
+        <p>PT. Simetri Sinergi Indonesia &mdash; AGPL-3</p>
+    </div>
+    <div class="content">
+        <p>
+            Extends <code>mixin.transaction</code> with a <strong>terminate</strong>
+            lifecycle state for premature closure — distinct from cancellation —
+            with reason tracking and policy-based access control.
+        </p>
+
+        <h2>Models</h2>
+        <ul>
+            <li>
+                <code>base.terminate_reason</code> &mdash; Master-data model for
+                termination reasons (name, code, optional <code>global_use</code> flag).
+            </li>
+            <li>
+                <code>ir.model</code> extension &mdash; Links termination reasons to
+                specific models via <code>terminate_reason_ids</code>.
+            </li>
+            <li>
+                <code>mixin.transaction_terminate</code> &mdash; Adds
+                <code>terminate_ok</code> policy field, <code>terminate_reason_id</code>,
+                and <code>action_terminate</code> lifecycle handler to any inheriting
+                transaction document.
+            </li>
+        </ul>
+
+        <h2>Features</h2>
+        <ul>
+            <li>Policy-controlled terminate button auto-injected into form views.</li>
+            <li>Terminate reason selection wizard (<code>base.select_terminate_reason</code>).</li>
+            <li>Pre/post terminate check and action hooks via <code>ssi_decorator</code>.</li>
+            <li>Terminate state badge auto-injected into tree views.</li>
+            <li>Terminate filter auto-injected into search views.</li>
+        </ul>
+
+        <h2>Installation</h2>
+        <ul>
+            <li>Clone branch <strong>15.0</strong> of
+                <a href="https://github.com/simetri-sinergi-id/ssi-mixin" style="color:#10b981;">
+                    https://github.com/simetri-sinergi-id/ssi-mixin
+                </a>
+            </li>
+            <li>Add the path to your Odoo <code>addons_path</code> configuration.</li>
+            <li>Update the module list and install <em>Transaction Mixin - Terminate State</em>.</li>
+        </ul>
+
+        <h2>Bug Tracker</h2>
+        <p>
+            Bugs are tracked on
+            <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" style="color:#10b981;">
+                GitHub Issues
+            </a>.
+        </p>
+    </div>
+    <div class="footer">
+        &copy; 2026 PT. Simetri Sinergi Indonesia &mdash; Licensed under AGPL-3.0 or later.
+    </div>
+</body>
+</html>
