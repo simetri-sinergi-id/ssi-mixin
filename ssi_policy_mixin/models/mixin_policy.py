@@ -1,9 +1,8 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError
 from odoo.tools.safe_eval import safe_eval
 
 
@@ -67,7 +66,9 @@ class MixinPolicy(models.AbstractModel):
             safe_eval(template.python_code, localdict, mode="exec", nocopy=True)
             res = localdict["result"]
         except Exception as error:
-            raise UserError(_("Error evaluating conditions.\n %s") % error)
+            raise UserError(
+                _("Error evaluating conditions.\n %(error)s") % {"error": error}
+            )
         return res
 
     def _get_template_policy(self):
@@ -120,12 +121,13 @@ class MixinPolicy(models.AbstractModel):
                     data.get(key),
                 )
 
-    @api.model
-    def create(self, values):
+    @api.model_create_multi
+    def create(self, vals_list):
         _super = super()
-        result = _super.create(values)
-        if not result.policy_template_id:
-            template_id = result._get_template_policy()
-            if template_id:
-                result.write({"policy_template_id": template_id})
-        return result
+        results = _super.create(vals_list)
+        for result in results:
+            if not result.policy_template_id:
+                template_id = result._get_template_policy()
+                if template_id:
+                    result.write({"policy_template_id": template_id})
+        return results

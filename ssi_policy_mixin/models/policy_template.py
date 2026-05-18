@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
@@ -19,7 +18,7 @@ class PolicyTemplate(models.Model):
 
     @api.model
     def _default_company_id(self):
-        return self.env["res.company"]._company_default_get("policy.template")
+        return self.env.company.id
 
     name = fields.Char(
         string="Name",
@@ -83,7 +82,7 @@ class PolicyTemplate(models.Model):
     def name_get(self):
         result = []
         for record in self:
-            name = "[{}] {}".format(record.model, record.name)
+            name = f"[{record.model}] {record.name}"
             result.append((record.id, name))
         return result
 
@@ -94,5 +93,4 @@ class PolicyTemplate(models.Model):
         for action in self.sudo().filtered("python_code"):
             msg = test_python_expr(expr=action.python_code.strip(), mode="exec")
             if msg:
-                msg1 = "Template:\n"
-                raise ValidationError(msg1 + msg)
+                raise ValidationError(f"Template:\n{msg}")
