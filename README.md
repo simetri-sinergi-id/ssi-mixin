@@ -29,13 +29,13 @@ addon | version | maintainers | summary
 [ssi_field_date_callable_attribute](ssi_field_date_callable_attribute/) | 14.0.1.1.0 |  | Custom Date Field With Callable Attribute
 [ssi_localdict_mixin](ssi_localdict_mixin/) | 14.0.1.0.0 |  | Localdict Mixin
 [ssi_m2o_configurator_mixin](ssi_m2o_configurator_mixin/) | 14.0.2.1.0 |  | Many2one Configurator Mixin
-[ssi_master_data_mixin](ssi_master_data_mixin/) | 14.0.4.4.0 |  | Master Data Mixin
+[ssi_master_data_mixin](ssi_master_data_mixin/) | 15.0.1.0.0 |  | Master Data Mixin
 [ssi_multiple_approval_mixin](ssi_multiple_approval_mixin/) | 14.0.1.11.0 |  | Multiple Approval
 [ssi_operating_unit_mixin](ssi_operating_unit_mixin/) | 14.0.1.3.0 |  | Operating Unit Mixin
 [ssi_partner_mixin](ssi_partner_mixin/) | 14.0.1.3.0 |  | Partner Mixin
 [ssi_policy_mixin](ssi_policy_mixin/) | 14.0.1.4.0 |  | Policy Mixin
 [ssi_pricelist_mixin](ssi_pricelist_mixin/) | 14.0.1.1.0 |  | Pricelist Mixin
-[ssi_print_mixin](ssi_print_mixin/) | 14.0.1.3.1 |  | Print Policy Mixin
+[ssi_print_mixin](ssi_print_mixin/) | 15.0.1.0.0 |  | Print Policy Mixin
 [ssi_product_line_account_mixin](ssi_product_line_account_mixin/) | 14.0.2.4.0 |  | Product Line Mixin - With Accounting
 [ssi_product_line_mixin](ssi_product_line_mixin/) | 14.0.1.3.0 |  | Product Line Mixin
 [ssi_product_line_price_mixin](ssi_product_line_price_mixin/) | 14.0.1.4.0 |  | Product Line Mixin - With Price
@@ -48,7 +48,7 @@ addon | version | maintainers | summary
 [ssi_res_users_m2o_configurator_mixin](ssi_res_users_m2o_configurator_mixin/) | 14.0.1.0.0 |  | res.users Many2one Configurator Mixin
 [ssi_salesperson_mixin](ssi_salesperson_mixin/) | 14.0.1.1.0 |  | Salesperson Mixin
 [ssi_schema_parser_mixin](ssi_schema_parser_mixin/) | 14.0.2.0.0 |  | Generic schema parser mixin with validation support
-[ssi_sequence_mixin](ssi_sequence_mixin/) | 14.0.2.0.2 |  | Sequence Mixin
+[ssi_sequence_mixin](ssi_sequence_mixin/) | 15.0.1.0.0 |  | Sequence Mixin
 [ssi_source_document_mixin](ssi_source_document_mixin/) | 14.0.1.1.0 |  | Source Document Mixin
 [ssi_state_change_constrain_mixin](ssi_state_change_constrain_mixin/) | 14.0.1.7.2 |  | State Change Constrain Mixin
 [ssi_state_change_history_mixin](ssi_state_change_history_mixin/) | 14.0.1.2.0 |  | State Change History Mixin
