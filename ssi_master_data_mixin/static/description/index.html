@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Master Data Mixin</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0f172a;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2.2rem;
+			color: #10b981;
+			margin-bottom: 8px;
+		}
+		h2 {
+			font-size: 1.2rem;
+			color: #10b981;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 0;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+		}
+		.section {
+			background: #1e293b;
+			border-radius: 10px;
+			padding: 20px 24px;
+			margin-bottom: 20px;
+		}
+		a {
+			color: #10b981;
+		}
+		ul, ol {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+		}
+		code {
+			background: #0f172a;
+			border-radius: 4px;
+			padding: 1px 6px;
+			font-size: 0.92em;
+		}
+		hr.tech-divider {
+			border: none;
+			border-top: 1px solid #334155;
+			margin: 32px 0 16px;
+		}
+		.footer {
+			text-align: center;
+			color: #64748b;
+			font-size: 0.9rem;
+			line-height: 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Master Data Mixin</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>Master Data Mixin</b> is a foundational mixin module in the
+				<b>@simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It provides a reusable abstract model — <code>mixin.master_data</code> —
+				that serves as a standardised base for <b>master/reference data</b> records.
+			</p>
+			<p>Any model that inherits from <code>mixin.master_data</code> automatically gains:</p>
+			<ul>
+				<li>
+					<b>Standard fields</b> — <code>name</code> (translatable),
+					<code>code</code> (unique identifier), <code>active</code>
+					(archive / restore), and <code>note</code> (free-text remarks).
+				</li>
+				<li>
+					<b>Sequence generation</b> — a <i>Generate Code</i> button
+					that assigns a sequence-based code from a configured sequence
+					template. Records whose <code>code</code> is <code>'/'</code>
+					are treated as "unassigned" and can receive an automatic code
+					at any time.
+				</li>
+				<li>
+					<b>Unique-code constraint</b> — prevents two records of the same
+					model from sharing the same non-slash code.
+				</li>
+				<li>
+					<b>Chatter integration</b> — inherits <code>mail.thread</code> and
+					<code>mail.activity.mixin</code>, giving the form view a full
+					messaging thread and activity scheduler.
+				</li>
+				<li>
+					<b>Print-document support</b> — inherits
+					<code>mixin.print_document</code> and automatically injects a
+					<i>Print</i> button into the form header.
+				</li>
+				<li>
+					<b>Configurable display name</b> — set
+					<code>_show_code_on_display_name = True</code> on a concrete model
+					to render the display name as <code>[code] name</code> throughout
+					the UI.
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Abstract Mixin Design:</b> Inherit <code>mixin.master_data</code> in any model — no structural view changes required.</li>
+				<li><b>Auto Sequence Code:</b> Click <i>Generate Code</i> to assign a unique, sequence-based code from a configured template.</li>
+				<li><b>Duplicate Code Guard:</b> Built-in constraint prevents duplicate codes across records of the same model.</li>
+				<li><b>Archive / Restore:</b> The <code>active</code> flag allows archiving obsolete master data without deleting it.</li>
+				<li><b>Chatter &amp; Activities:</b> Full messaging thread and activity scheduling on every inheriting model.</li>
+				<li><b>Integrated Print Button:</b> Auto-injected Print button via <code>mixin.print_document</code>.</li>
+				<li><b>Display Name Toggle:</b> Optionally show <code>[code] name</code> format via a single class attribute.</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>Use this mixin for any static reference table that modules configure once and reuse across transactions:</p>
+			<ul>
+				<li><b>Product Types / Categories:</b> Define categories with codes and reuse across sale/purchase orders.</li>
+				<li><b>Work-Order Categories:</b> Standardise work-order types with unique codes for reporting.</li>
+				<li><b>School Grades / Levels:</b> Manage academic grade structures as archivable master data.</li>
+				<li><b>Payment Terms:</b> Custom payment term types with sequence-generated codes.</li>
+				<li><b>Any Reference Table:</b> Any lookup/configuration table that benefits from codes, archiving, and chatter.</li>
+			</ul>
+			<p>Simply set <code>_inherit = ["mixin.master_data"]</code> on your model and configure the rest via the UI.</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>Clone branch <b>15.0</b> of the repository: <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">https://github.com/simetri-sinergi-id/ssi-mixin</a></li>
+				<li>Add the path to this repository in your Odoo configuration (<code>addons-path</code>).</li>
+				<li>Update the module list (ensure you are in developer mode).</li>
+				<li>Go to <i>Apps → Apps → Main Apps</i>, search for <i>Master Data Mixin</i>, and install.</li>
+				<li>In your custom model:<br>
+					<code>_inherit = ["mixin.master_data"]</code>
+				</li>
+				<li>Optionally set <code>_show_code_on_display_name = True</code> to show <code>[code] name</code> format.</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Standalone?</b>
+					<span style="color:#f59e0b;">No — it is a mixin foundation. Install it as a dependency of your custom module.</span>
+				</li>
+				<li>
+					<b>Odoo Version?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>What if I don't need sequence codes?</b>
+					<span style="color:#f59e0b;">Leave <code>code</code> as <code>'/'</code>. The constraint ignores slash codes.</span>
+				</li>
+				<li>
+					<b>Can I hide the code field from the view?</b>
+					<span style="color:#f59e0b;">Yes — override the inherited view via XPath in your custom module.</span>
+				</li>
+				<li>
+					<b>Contribute?</b>
+					<span style="color:#f59e0b;">Fork, branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>Bugs are tracked on <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>. In case of trouble, please check there if your issue has already been reported. If you spotted it first, help us smash it by providing detailed and welcomed feedback.</p>
+			<ul>
+				<li><b>Report Issues:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">Create a new issue</a> with detailed description and steps to reproduce.</li>
+				<li><b>Search Existing:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">Browse existing issues</a> to see if your problem has already been reported.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<p>This module is developed and maintained by PT. Simetri Sinergi Indonesia.</p>
+			<ul>
+				<li><b>Core Development:</b>
+					<ul>
+						<li>Michael Viriyananda <a href="mailto:viriyananda.michael@gmail.com" style="color:#10b981;">&lt;viriyananda.michael@gmail.com&gt;</a></li>
+						<li>Andhitia Rama <a href="mailto:andhitia.r@gmail.com" style="color:#10b981;">&lt;andhitia.r@gmail.com&gt;</a></li>
+						<li>Asrul Bastian Yunas <a href="mailto:asrulbastianyunas@gmail.com" style="color:#10b981;">&lt;asrulbastianyunas@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b> <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for the development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a>
+			<br>
+			<span>
+				Released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.
+			</span>
+		</div>
+	</div>
+</body>
+</html>

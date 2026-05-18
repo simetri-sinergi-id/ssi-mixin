@@ -1,7 +1,6 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
-# pylint: disable=super-with-arguments,consider-using-f-string,deprecated-name-get
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+# pylint: disable=deprecated-name-get
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
@@ -57,6 +56,7 @@ class MixinMasterData(models.AbstractModel):
         string="Name",
         required=True,
         translate=True,
+        help="Nama master data.",
     )
     code = fields.Char(
         string="Code",
@@ -80,6 +80,7 @@ but master data already used on transaction""",
     )
     note = fields.Text(
         string="Note",
+        help="Catatan tambahan untuk master data ini.",
     )
 
     @api.returns("self", lambda value: value.id)
@@ -118,15 +119,12 @@ but master data already used on transaction""",
             ]
             count_duplicate = self.search_count(criteria)
             if count_duplicate > 0:
-                error_message = """
-                Document Type: %s
-                Context: Create or update document
-                Database ID: %s
-                Problem: Dupilicate code
-                Solution: Change code
-                """ % (
-                    self._description.lower(),
-                    self.id,
+                error_message = (
+                    f"Document Type: {self._description.lower()}\n"
+                    "Context: Create or update document\n"
+                    f"Database ID: {record.id}\n"
+                    "Problem: Duplicate code\n"
+                    "Solution: Change code"
                 )
                 raise UserError(error_message)
 
@@ -165,7 +163,7 @@ but master data already used on transaction""",
         result = []
         for record in self:
             if self._show_code_on_display_name:
-                name = "[%s] %s" % (record.code, record.name)
+                name = f"[{record.code}] {record.name}"
             else:
                 name = record.name
             result.append((record.id, name))
