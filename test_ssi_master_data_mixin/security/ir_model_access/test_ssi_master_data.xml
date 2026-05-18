@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Semua user bisa baca -->
+    <record id="test_ssi_master_data_access_all" model="ir.model.access">
+        <field name="name">test_ssi_master_data - all</field>
+        <field name="model_id" ref="model_test_ssi_master_data" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_write" eval="0" />
+        <field name="perm_create" eval="0" />
+        <field name="perm_unlink" eval="0" />
+    </record>
+
+    <!-- Configurator punya akses penuh -->
+    <record id="test_ssi_master_data_access_configurator" model="ir.model.access">
+        <field name="name">test_ssi_master_data - configurator</field>
+        <field name="model_id" ref="model_test_ssi_master_data" />
+        <field name="group_id" ref="test_ssi_master_data_configurator_group" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+</odoo>

@@ -1,18 +1,19 @@
 # Copyright 2026 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    "name": "Master Data Mixin",
+    "name": "Test: Master Data Mixin",
     "version": "15.0.1.0.0",
     "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
     "installable": True,
     "depends": [
-        "mail",
-        "ssi_print_mixin",
-        "ssi_sequence_mixin",
+        "ssi_master_data_mixin",
     ],
     "data": [
-        "views/mixin_master_data_views.xml",
+        "security/res_groups/test_ssi_master_data.xml",
+        "security/ir_model_access/test_ssi_master_data.xml",
+        "menu.xml",
+        "views/test_ssi_master_data.xml",
     ],
 }
