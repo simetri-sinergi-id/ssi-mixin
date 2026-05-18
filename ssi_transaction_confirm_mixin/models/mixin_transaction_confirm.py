@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from inspect import getmembers
 
@@ -143,7 +142,7 @@ class MixinTransactionConfirm(models.AbstractModel):
 
     def _prepare_confirm_action_notification(self):
         self.ensure_one()
-        msg = "%s %s confirmed" % (self._description, self.display_name)
+        msg = f"{self._description} {self.display_name} confirmed"
         return msg
 
     def _check_confirm_policy(self):
@@ -155,17 +154,19 @@ class MixinTransactionConfirm(models.AbstractModel):
             return True
 
         if not self.confirm_ok:
-            error_message = """
-                Document Type: %s
-                Context: Confirm document
-                Database ID: %s
-                Problem: Document is not allowed to confirm
-                Solution: Check confirm policy prerequisite
-                """ % (
-                self._description.lower(),
-                self.id,
+            raise UserError(
+                _(
+                    "Document Type: %(description)s\n"
+                    "Context: Confirm document\n"
+                    "Database ID: %(id)s\n"
+                    "Problem: Document is not allowed to confirm\n"
+                    "Solution: Check confirm policy prerequisite"
+                )
+                % {
+                    "description": self._description.lower(),
+                    "id": self.id,
+                }
             )
-            raise UserError(_(error_message))
 
     def _prepare_confirm_data(self):
         self.ensure_one()
