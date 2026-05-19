@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -90,36 +90,12 @@ msgid "Display Name"
 msgstr ""
 
 #. module: ssi_transaction_mixin
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__data_requirement__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__data_requirement_package__state__draft
 #: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_account_move_with_field__state__draft
 #: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_cancel__state__draft
 #: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_confirm__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_date_due__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_date_duration__state__draft
 #: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_done__state__draft
 #: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_open__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_partner__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_partner_contact_required__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_pricelist__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_queue__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_queue_cancel__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_queue_done__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_ready__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_residual__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_residual_with_field__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_salesperson__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_tax__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_tax_address__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_tax_address_required__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_tax_with_field__state__draft
 #: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_terminate__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_total__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_total_with_field__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_untaxed__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_untaxed_with_field__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_win_lost__state__draft
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_search
 msgid "Draft"
 msgstr ""
@@ -127,11 +103,6 @@ msgstr ""
 #. module: ssi_transaction_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__message_follower_ids
 msgid "Followers"
-msgstr ""
-
-#. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__message_channel_ids
-msgid "Followers (Channels)"
 msgstr ""
 
 #. module: ssi_transaction_mixin
@@ -150,8 +121,8 @@ msgid "Future Activities"
 msgstr ""
 
 #. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__id
-msgid "ID"
+#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__has_message
+msgid "Has Message"
 msgstr ""
 
 #. module: ssi_transaction_mixin
@@ -178,11 +149,6 @@ msgstr ""
 #. module: ssi_transaction_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__message_is_follower
 msgid "Is Follower"
-msgstr ""
-
-#. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction____last_update
-msgid "Last Modified on"
 msgstr ""
 
 #. module: ssi_transaction_mixin
@@ -412,14 +378,4 @@ msgid ""
 "User that responsible to review document\n"
 "\n"
 "* Unless it configured to approve reviewer does not equal to approver"
-msgstr ""
-
-#. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: ssi_transaction_mixin
-#: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__website_message_ids
-msgid "Website communication history"
 msgstr ""
