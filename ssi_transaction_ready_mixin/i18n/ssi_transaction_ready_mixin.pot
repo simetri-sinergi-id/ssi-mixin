@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -93,13 +93,19 @@ msgid "Display Name"
 msgstr ""
 
 #. module: ssi_transaction_ready_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_ready_mixin.field_mixin_transaction_ready__message_follower_ids
-msgid "Followers"
+#: code:addons/ssi_transaction_ready_mixin/models/mixin_transaction_ready.py:0
+#, python-format
+msgid ""
+"Document Type: %(type)s\n"
+"Context: Stage document\n"
+"Database ID: %(id)s\n"
+"Problem: Document is not allowed to stage\n"
+"Solution: Check stage policy prerequisite"
 msgstr ""
 
 #. module: ssi_transaction_ready_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_ready_mixin.field_mixin_transaction_ready__message_channel_ids
-msgid "Followers (Channels)"
+#: model:ir.model.fields,field_description:ssi_transaction_ready_mixin.field_mixin_transaction_ready__message_follower_ids
+msgid "Followers"
 msgstr ""
 
 #. module: ssi_transaction_ready_mixin
@@ -113,8 +119,8 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
 #. module: ssi_transaction_ready_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_ready_mixin.field_mixin_transaction_ready__id
-msgid "ID"
+#: model:ir.model.fields,field_description:ssi_transaction_ready_mixin.field_mixin_transaction_ready__has_message
+msgid "Has Message"
 msgstr ""
 
 #. module: ssi_transaction_ready_mixin
@@ -141,11 +147,6 @@ msgstr ""
 #. module: ssi_transaction_ready_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_ready_mixin.field_mixin_transaction_ready__message_is_follower
 msgid "Is Follower"
-msgstr ""
-
-#. module: ssi_transaction_ready_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_ready_mixin.field_mixin_transaction_ready____last_update
-msgid "Last Modified on"
 msgstr ""
 
 #. module: ssi_transaction_ready_mixin
@@ -342,14 +343,4 @@ msgid ""
 "User that responsible to review document\n"
 "\n"
 "* Unless it configured to approve reviewer does not equal to approver"
-msgstr ""
-
-#. module: ssi_transaction_ready_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_ready_mixin.field_mixin_transaction_ready__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: ssi_transaction_ready_mixin
-#: model:ir.model.fields,help:ssi_transaction_ready_mixin.field_mixin_transaction_ready__website_message_ids
-msgid "Website communication history"
 msgstr ""
