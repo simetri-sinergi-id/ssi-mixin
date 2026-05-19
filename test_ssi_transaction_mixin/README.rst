@@ -9,57 +9,57 @@ Test Module: Transaction Mixin
 Description
 ===========
 
-Test Module: Transaction Mixin adalah modul pengujian untuk memvalidasi perilaku
-mixin transaksi pada ekosistem SSI. Modul ini memanfaatkan berbagai mixin
-workflow transaksi (confirm, open, done, cancel, terminate) untuk memastikan
-hook decorator, approval, dan alur status berjalan sesuai ekspektasi.
+Test Module: Transaction Mixin is a test module for validating the behaviour
+of the transaction mixin within the SSI ecosystem. It leverages various
+transaction workflow mixins (confirm, open, done, cancel, terminate) to ensure
+that decorator hooks, approvals, and status flows work as expected.
 
 Key Features
 ============
 
-* Pengujian alur state transaksi dari draft sampai terminate.
-* Pengujian hook decorator pre/post pada action dan check.
-* Integrasi dengan approval policy dan template sequence.
-* Contoh transaksi dengan detail line dan perhitungan harga produk.
+* Testing the transaction state flow from draft to terminate.
+* Testing pre/post decorator hooks on actions and checks.
+* Integration with approval policy and sequence templates.
+* Example transaction with detail lines and product price computation.
 
 Use Cases / Context
 ===================
 
-* Dipakai sebagai modul referensi saat mengembangkan mixin transaksi baru.
-* Membantu regression test untuk perubahan pada modul `ssi_transaction_*_mixin`.
-* Menjadi contoh implementasi inheritance terhadap model transaksi mixin.
+* Used as a reference module when developing new transaction mixins.
+* Helps with regression testing for changes to ``ssi_transaction_*_mixin`` modules.
+* Serves as an implementation example for inheriting from transaction mixin models.
 
 Installation
 ============
 
-1. Clone branch 15.0 dari repository:
+1. Clone the 15.0 branch of the repository:
    https://github.com/simetri-sinergi-id/ssi-mixin
-2. Tambahkan path repository ini ke konfigurasi Odoo Anda (`addons-path`).
-3. Update daftar modul dalam mode developer.
-4. Buka menu *Apps -> Apps -> Main Apps*.
-5. Cari modul *Test Module: Transaction Mixin*.
-6. Install modul.
+2. Add the repository path to your Odoo configuration (``addons-path``).
+3. Update the module list in developer mode.
+4. Open the menu *Apps -> Apps -> Main Apps*.
+5. Search for *Test Module: Transaction Mixin*.
+6. Install the module.
 
 Installation & Usage
 ====================
 
-1. Pastikan dependency modul mixin transaksi SSI sudah tersedia.
-2. Install modul `test_ssi_transaction_mixin` dari Apps.
-3. Buat data transaksi uji dan jalankan action confirm/open/done/cancel untuk
-   memverifikasi hook pre/post.
-4. Gunakan form view untuk melihat hasil field penanda check/action yang
-   terisi otomatis oleh decorator.
+1. Make sure the SSI transaction mixin module dependencies are available.
+2. Install the ``test_ssi_transaction_mixin`` module from Apps.
+3. Create test transaction records and run the confirm/open/done/cancel actions
+   to verify pre/post hooks.
+4. Use the form view to inspect the check/action marker fields that are
+   automatically populated by the decorator.
 
 FAQ
 ===
 
-* **Apakah modul ini untuk produksi?**
-  Tidak, modul ini ditujukan untuk pengujian dan validasi perilaku mixin.
-* **Versi Odoo berapa yang didukung?**
-  Modul ini ditargetkan untuk Odoo 15.0.
-* **Bagaimana berkontribusi?**
-  Buat fork, lakukan perubahan di branch terpisah, lalu kirim pull request ke
-  repository GitHub.
+* **Is this module intended for production use?**
+  No, this module is intended for testing and validating mixin behaviour.
+* **Which Odoo version is supported?**
+  This module targets Odoo 15.0.
+* **How can I contribute?**
+  Fork the repository, make your changes in a separate branch, then submit
+  a pull request to the GitHub repository.
 
 Bug Tracker
 ===========
