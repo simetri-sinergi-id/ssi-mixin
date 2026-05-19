@@ -7,7 +7,6 @@
     <field name="model">mixin.transaction</field>
     <field name="arch" type="xml">
         <search>
-            <field name="id" />
             <field name="name" />
             <field name="company_id" groups="base.group_multi_company" />
             <field name="user_id" />
@@ -93,7 +92,6 @@
                     />
             </header>
             <field name="message_unread" invisible="1" />
-            <field name="id" optional="hide" />
             <field name="display_name" string="# Document" />
             <field
                     name="company_id"
