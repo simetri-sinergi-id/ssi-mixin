@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -143,6 +143,36 @@ msgid "Computation Method"
 msgstr ""
 
 #. module: ssi_multiple_approval_mixin
+#: code:addons/ssi_multiple_approval_mixin/models/mixin_multiple_approval.py:0
+#, python-format
+msgid ""
+"Context: Approve %(description)s\n"
+"Database ID: %(id)s\n"
+"Problem: Document is not allowed to approve\n"
+"Solution: Check approve policy prerequisite"
+msgstr ""
+
+#. module: ssi_multiple_approval_mixin
+#: code:addons/ssi_multiple_approval_mixin/models/mixin_multiple_approval.py:0
+#, python-format
+msgid ""
+"Context: Reject %(description)s\n"
+"Database ID: %(id)s\n"
+"Problem: Document is not allowed to reject\n"
+"Solution: Check reject policy prerequisite"
+msgstr ""
+
+#. module: ssi_multiple_approval_mixin
+#: code:addons/ssi_multiple_approval_mixin/models/mixin_multiple_approval.py:0
+#, python-format
+msgid ""
+"Context: Restart approval %(description)s\n"
+"Database ID: %(id)s\n"
+"Problem: Document is not allowed to restart approval\n"
+"Solution: Check restart approval policy prerequisite"
+msgstr ""
+
+#. module: ssi_multiple_approval_mixin
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_approval__create_uid
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_template__create_uid
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_template_detail__create_uid
@@ -176,7 +206,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_approval__display_name
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_template__display_name
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_template_detail__display_name
-#: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_mixin_multiple_approval__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -201,7 +230,7 @@ msgstr ""
 #, python-format
 msgid ""
 "Error evaluating approval conditions.\n"
-" %s"
+" %(error)s"
 msgstr ""
 
 #. module: ssi_multiple_approval_mixin
@@ -209,7 +238,13 @@ msgstr ""
 #, python-format
 msgid ""
 "Error evaluating conditions.\n"
-" %s"
+" %(error)s"
+msgstr ""
+
+#. module: ssi_multiple_approval_mixin
+#: code:addons/ssi_multiple_approval_mixin/models/approval_approval.py:0
+#, python-format
+msgid "Error when execute python code"
 msgstr ""
 
 #. module: ssi_multiple_approval_mixin
@@ -223,7 +258,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_approval__id
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_template__id
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_template_detail__id
-#: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_mixin_multiple_approval__id
 msgid "ID"
 msgstr ""
 
@@ -231,7 +265,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_approval____last_update
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_template____last_update
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_approval_template_detail____last_update
-#: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_mixin_multiple_approval____last_update
 msgid "Last Modified on"
 msgstr ""
 
@@ -262,7 +295,6 @@ msgstr ""
 
 #. module: ssi_multiple_approval_mixin
 #: model:ir.ui.menu,name:ssi_multiple_approval_mixin.menu_multiple_approval
-#: model_terms:ir.ui.view,arch_db:ssi_multiple_approval_mixin.approval_approval_view_tree
 msgid "Multiple Approval"
 msgstr ""
 
@@ -279,6 +311,12 @@ msgstr ""
 #. module: ssi_multiple_approval_mixin
 #: model:ir.model.fields,field_description:ssi_multiple_approval_mixin.field_mixin_multiple_approval__next_approval_ids
 msgid "Next Approvals"
+msgstr ""
+
+#. module: ssi_multiple_approval_mixin
+#: code:addons/ssi_multiple_approval_mixin/models/approval_approval.py:0
+#, python-format
+msgid "No User defines on python code"
 msgstr ""
 
 #. module: ssi_multiple_approval_mixin
