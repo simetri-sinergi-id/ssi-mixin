@@ -3,7 +3,7 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Sequence Mixin",
-    "version": "15.0.1.1.0",
+    "version": "15.0.1.1.1",
     "category": "Administration",
     "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "PT. Simetri Sinergi Indonesia",

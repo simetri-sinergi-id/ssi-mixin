@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from inspect import getmembers
 
@@ -114,12 +113,12 @@ class MixinTransactionReady(models.AbstractModel):
         self.ensure_one()
         msg = self._prepare_ready_action_notification()
         self.message_post(
-            body=_(msg), message_type="notification", subtype_xmlid="mail.mt_note"
+            body=msg, message_type="notification", subtype_xmlid="mail.mt_note"
         )
 
     def _prepare_ready_action_notification(self):
         self.ensure_one()
-        msg = "%s %s staged" % (self._description, self.display_name)
+        msg = f"{self._description} {self.display_name} staged"
         return msg
 
     def _check_ready_policy(self):
@@ -132,17 +131,17 @@ class MixinTransactionReady(models.AbstractModel):
             return True
 
         if not self.ready_ok:
-            error_message = """
-            Document Type: %s
-            Context: Stage document
-            Database ID: %s
-            Problem: Document is not allowed to stage
-            Solution: Check stage policy prerequisite
-            """ % (
-                self._description.lower(),
-                self.id,
-            )
-            raise UserError(_(error_message))
+            error_message = _(
+                "Document Type: %(type)s\n"
+                "Context: Stage document\n"
+                "Database ID: %(id)s\n"
+                "Problem: Document is not allowed to stage\n"
+                "Solution: Check stage policy prerequisite"
+            ) % {
+                "type": self._description.lower(),
+                "id": self.id,
+            }
+            raise UserError(error_message)
 
     @api.model
     def fields_view_get(

@@ -1,5 +1,5 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
+   :target: https://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
 ==========================================
@@ -11,7 +11,10 @@ Transaction Mixin - Ready to Process State
 
 * Adds ``ready_ok`` policy field and auto-injects the ready button and
   policy fields into the form view.
-* Provides ``action_ready`` lifecycle handler.
+* Auto-injects ready state badge decorator on tree views.
+* Auto-injects *Ready to Process* filter on search views.
+* Provides ``action_ready`` lifecycle handler with pre/post check and
+  pre/post action decorator hooks.
 * Configurable via ``_ready_state`` class attribute.
 
 
@@ -20,7 +23,7 @@ Installation
 
 To install this module, you need to:
 
-1.  Clone the branch 14.0 of the repository https://github.com/open-synergy/ssi-mixin
+1.  Clone the branch 15.0 of the repository https://github.com/simetri-sinergi-id/ssi-mixin
 2.  Add the path to this repository in your configuration (addons-path)
 3.  Update the module list (Must be on developer mode)
 4.  Go to menu *Apps -> Apps -> Main Apps*
@@ -31,7 +34,7 @@ Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues
-<https://github.com/open-synergy/ssi-mixin/issues>`_. In case of trouble, please
+<https://github.com/simetri-sinergi-id/ssi-mixin/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
 help us smash it by providing detailed and welcomed feedback.
 
