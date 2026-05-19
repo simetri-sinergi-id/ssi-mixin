@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -137,19 +137,24 @@ msgstr ""
 #. module: ssi_transaction_terminate_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_base_select_terminate_reason__display_name
 #: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_base_terminate_reason__display_name
-#: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_ir_model__display_name
 #: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_mixin_transaction_terminate__display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: ssi_transaction_terminate_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_mixin_transaction_terminate__message_follower_ids
-msgid "Followers"
+#: code:addons/ssi_transaction_terminate_mixin/models/mixin_transaction_terminate.py:0
+#, python-format
+msgid ""
+"Document Type: %(description)s\n"
+"Context: Terminate document\n"
+"Database ID: %(id)s\n"
+"Problem: Document is not allowed to terminate\n"
+"Solution: Check terminate policy prerequisite"
 msgstr ""
 
 #. module: ssi_transaction_terminate_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_mixin_transaction_terminate__message_channel_ids
-msgid "Followers (Channels)"
+#: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_mixin_transaction_terminate__message_follower_ids
+msgid "Followers"
 msgstr ""
 
 #. module: ssi_transaction_terminate_mixin
@@ -168,10 +173,13 @@ msgid "Global Use"
 msgstr ""
 
 #. module: ssi_transaction_terminate_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_mixin_transaction_terminate__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: ssi_transaction_terminate_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_base_select_terminate_reason__id
 #: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_base_terminate_reason__id
-#: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_ir_model__id
-#: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_mixin_transaction_terminate__id
 msgid "ID"
 msgstr ""
 
@@ -204,8 +212,6 @@ msgstr ""
 #. module: ssi_transaction_terminate_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_base_select_terminate_reason____last_update
 #: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_base_terminate_reason____last_update
-#: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_ir_model____last_update
-#: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_mixin_transaction_terminate____last_update
 msgid "Last Modified on"
 msgstr ""
 
@@ -314,6 +320,11 @@ msgstr ""
 #. module: ssi_transaction_terminate_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_base_select_terminate_reason__terminate_reason_id
 msgid "Reason"
+msgstr ""
+
+#. module: ssi_transaction_terminate_mixin
+#: model:ir.model.fields,help:ssi_transaction_terminate_mixin.field_mixin_transaction_terminate__terminate_reason_id
+msgid "Reason for terminating this document."
 msgstr ""
 
 #. module: ssi_transaction_terminate_mixin
@@ -456,16 +467,6 @@ msgid ""
 "User that responsible to review document\n"
 "\n"
 "* Unless it configured to approve reviewer does not equal to approver"
-msgstr ""
-
-#. module: ssi_transaction_terminate_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_terminate_mixin.field_mixin_transaction_terminate__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: ssi_transaction_terminate_mixin
-#: model:ir.model.fields,help:ssi_transaction_terminate_mixin.field_mixin_transaction_terminate__website_message_ids
-msgid "Website communication history"
 msgstr ""
 
 #. module: ssi_transaction_terminate_mixin
