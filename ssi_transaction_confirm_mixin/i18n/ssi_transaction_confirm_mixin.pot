@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -183,13 +183,19 @@ msgid "Display Name"
 msgstr ""
 
 #. module: ssi_transaction_confirm_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm__message_follower_ids
-msgid "Followers"
+#: code:addons/ssi_transaction_confirm_mixin/models/mixin_transaction_confirm.py:0
+#, python-format
+msgid ""
+"Document Type: %(description)s\n"
+"Context: Confirm document\n"
+"Database ID: %(id)s\n"
+"Problem: Document is not allowed to confirm\n"
+"Solution: Check confirm policy prerequisite"
 msgstr ""
 
 #. module: ssi_transaction_confirm_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm__message_channel_ids
-msgid "Followers (Channels)"
+#: model:ir.model.fields,field_description:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm__message_follower_ids
+msgid "Followers"
 msgstr ""
 
 #. module: ssi_transaction_confirm_mixin
@@ -203,8 +209,8 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
 #. module: ssi_transaction_confirm_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm__id
-msgid "ID"
+#: model:ir.model.fields,field_description:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm__has_message
+msgid "Has Message"
 msgstr ""
 
 #. module: ssi_transaction_confirm_mixin
@@ -231,11 +237,6 @@ msgstr ""
 #. module: ssi_transaction_confirm_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm__message_is_follower
 msgid "Is Follower"
-msgstr ""
-
-#. module: ssi_transaction_confirm_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm____last_update
-msgid "Last Modified on"
 msgstr ""
 
 #. module: ssi_transaction_confirm_mixin
@@ -349,8 +350,6 @@ msgstr ""
 
 #. module: ssi_transaction_confirm_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm__rejected
-#: model:ir.model.fields.selection,name:ssi_transaction_confirm_mixin.selection__data_requirement__state__reject
-#: model:ir.model.fields.selection,name:ssi_transaction_confirm_mixin.selection__data_requirement_package__state__reject
 #: model:ir.model.fields.selection,name:ssi_transaction_confirm_mixin.selection__mixin_transaction_confirm__state__reject
 msgid "Rejected"
 msgstr ""
@@ -469,19 +468,7 @@ msgid "Users that can approve/reject document"
 msgstr ""
 
 #. module: ssi_transaction_confirm_mixin
-#: model:ir.model.fields.selection,name:ssi_transaction_confirm_mixin.selection__data_requirement__state__confirm
-#: model:ir.model.fields.selection,name:ssi_transaction_confirm_mixin.selection__data_requirement_package__state__confirm
 #: model:ir.model.fields.selection,name:ssi_transaction_confirm_mixin.selection__mixin_transaction_confirm__state__confirm
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_confirm_mixin.confirm_filter
 msgid "Waiting for Approval"
-msgstr ""
-
-#. module: ssi_transaction_confirm_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: ssi_transaction_confirm_mixin
-#: model:ir.model.fields,help:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm__website_message_ids
-msgid "Website communication history"
 msgstr ""
