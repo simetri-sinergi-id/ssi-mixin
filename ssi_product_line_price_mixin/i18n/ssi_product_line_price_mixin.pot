@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,8 +24,18 @@ msgid "Allowed UoMs"
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__product_category_id
+msgid "Category of the selected product."
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
 #: model:ir.model.fields,field_description:ssi_product_line_price_mixin.field_mixin_product_line_price__currency_id
 msgid "Currency"
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__currency_id
+msgid "Currency used for all price fields on this line."
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
@@ -34,23 +44,34 @@ msgid "Description"
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
-#: model:ir.model.fields,field_description:ssi_product_line_price_mixin.field_mixin_product_line_price__display_name
-msgid "Display Name"
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__standard_price_subtotal_diff
+msgid ""
+"Difference between price_subtotal and the pricelist standard price subtotal."
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
-#: model:ir.model.fields,field_description:ssi_product_line_price_mixin.field_mixin_product_line_price__id
-msgid "ID"
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__standard_price_unit_diff
+msgid "Difference between price_unit and the pricelist standard price unit."
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
-#: model:ir.model.fields,field_description:ssi_product_line_price_mixin.field_mixin_product_line_price____last_update
-msgid "Last Modified on"
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__note
+msgid "Free-text remark for this line."
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__name
+msgid "Line description, auto-filled from the product's display name."
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
 #: model:ir.model.fields,field_description:ssi_product_line_price_mixin.field_mixin_product_line_price__note
 msgid "Note"
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__sequence
+msgid "Order of this line within the document."
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
@@ -66,6 +87,16 @@ msgstr ""
 #. module: ssi_product_line_price_mixin
 #: model:ir.model.fields,field_description:ssi_product_line_price_mixin.field_mixin_product_line_price__pricelist_id
 msgid "Pricelist"
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__pricelist_id
+msgid "Pricelist used to compute the standard price for comparison."
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__allowed_pricelist_ids
+msgid "Pricelists available for selection, filtered by the selected currency."
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
@@ -89,13 +120,23 @@ msgid "Product Line With Price"
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__product_id
+msgid "Product for this line."
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
 #: model:ir.model.fields,field_description:ssi_product_line_price_mixin.field_mixin_product_line_price__quantity
 msgid "Quantity"
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
-#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__product_category_id
-msgid "Select category for the current product"
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__quantity
+msgid "Quantity converted to the product's base unit of measure."
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__uom_quantity
+msgid "Quantity expressed in the selected unit of measure."
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
@@ -121,6 +162,40 @@ msgstr ""
 #. module: ssi_product_line_price_mixin
 #: model:ir.model.fields,field_description:ssi_product_line_price_mixin.field_mixin_product_line_price__standard_price_unit_diff
 msgid "Standard Price Unit Diff."
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__price_subtotal
+msgid "Subtotal = price_unit × quantity."
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__standard_price_subtotal
+msgid "Subtotal derived from the selected pricelist."
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__uom_id
+msgid ""
+"Unit of measure for this line. Must belong to the same category as the "
+"product's UoM."
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__standard_price_unit
+msgid "Unit price derived from the selected pricelist."
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__price_unit
+msgid "Unit selling price."
+msgstr ""
+
+#. module: ssi_product_line_price_mixin
+#: model:ir.model.fields,help:ssi_product_line_price_mixin.field_mixin_product_line_price__allowed_uom_ids
+msgid ""
+"Units of measure available for selection, filtered by the product's UoM "
+"category."
 msgstr ""
 
 #. module: ssi_product_line_price_mixin
