@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
@@ -13,66 +12,82 @@ class TestTransactionMixin(models.Model):
     str_pre_restart_2 = fields.Char(
         string="# Pre Restart 2",
         required=False,
+        help="Catatan tambahan aksi sebelum restart tahap 2.",
     )
     str_pre_restart_3 = fields.Char(
         string="# Pre Restart 3",
         required=False,
+        help="Catatan tambahan aksi sebelum restart tahap 3.",
     )
     str_pre_confirm_2 = fields.Char(
         string="# Pre Confirm 2",
         required=False,
+        help="Catatan tambahan aksi sebelum konfirmasi tahap 2.",
     )
     str_pre_confirm_3 = fields.Char(
         string="# Pre Confirm 3",
         required=False,
+        help="Catatan tambahan aksi sebelum konfirmasi tahap 3.",
     )
     str_pre_cancel_2 = fields.Char(
         string="# Pre Cancel 2",
         required=False,
+        help="Catatan tambahan aksi sebelum pembatalan tahap 2.",
     )
     str_pre_cancel_3 = fields.Char(
         string="# Pre Cancel 3",
         required=False,
+        help="Catatan tambahan aksi sebelum pembatalan tahap 3.",
     )
     str_pre_open_2 = fields.Char(
         string="# Pre Open 2",
         required=False,
+        help="Catatan tambahan aksi sebelum dibuka tahap 2.",
     )
     str_pre_open_3 = fields.Char(
         string="# Pre Open 3",
         required=False,
+        help="Catatan tambahan aksi sebelum dibuka tahap 3.",
     )
     str_pre_done_2 = fields.Char(
         string="# Pre Done 2",
         required=False,
+        help="Catatan tambahan aksi sebelum selesai tahap 2.",
     )
     str_pre_done_3 = fields.Char(
         string="# Pre Done 3",
         required=False,
+        help="Catatan tambahan aksi sebelum selesai tahap 3.",
     )
     str_pre_terminate_2 = fields.Char(
         string="# Pre Terminate 2",
         required=False,
+        help="Catatan tambahan aksi sebelum terminasi tahap 2.",
     )
     str_pre_terminate_3 = fields.Char(
         string="# Pre Terminate 3",
         required=False,
+        help="Catatan tambahan aksi sebelum terminasi tahap 3.",
     )
     str_pre_approve_2 = fields.Char(
         string="# Pre Approve 2",
         required=False,
+        help="Catatan tambahan aksi sebelum persetujuan tahap 2.",
     )
     str_pre_approve_3 = fields.Char(
         string="# Pre Approve 3",
         required=False,
+        help="Catatan tambahan aksi sebelum persetujuan tahap 3.",
     )
     str_pre_reject_2 = fields.Char(
         string="# Pre Reject 2",
         required=False,
+        help="Catatan tambahan aksi sebelum penolakan tahap 2.",
     )
     str_pre_reject_3 = fields.Char(
         string="# Pre Reject 3",
         required=False,
+        help="Catatan tambahan aksi sebelum penolakan tahap 3.",
     )
 
     @ssi_decorator.pre_restart_action()

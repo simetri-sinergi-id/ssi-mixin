@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 
@@ -90,134 +89,167 @@ class TestTransactionMixin(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
         copy=False,
+        help="Tanggal transaksi.",
     )
     chk_pre_restart = fields.Boolean(
         string="# Pre Restart",
         required=False,
+        help="Penanda bahwa validasi sebelum restart sudah dijalankan.",
     )
     str_pre_restart = fields.Char(
         string="# Pre Restart",
         required=False,
+        help="Catatan aksi sebelum restart.",
     )
     chk_post_restart = fields.Boolean(
         string="# Post Restart",
         required=False,
+        help="Penanda bahwa validasi setelah restart sudah dijalankan.",
     )
     str_post_restart = fields.Char(
         string="# Post Restart",
         required=False,
+        help="Catatan aksi setelah restart.",
     )
     chk_pre_confirm = fields.Boolean(
         string="# Pre Confirm",
         required=False,
+        help="Penanda bahwa validasi sebelum konfirmasi sudah dijalankan.",
     )
     str_pre_confirm = fields.Char(
         string="# Pre Confirm",
         required=False,
+        help="Catatan aksi sebelum konfirmasi.",
     )
     chk_post_confirm = fields.Boolean(
         string="# Post Confirm",
         required=False,
+        help="Penanda bahwa validasi setelah konfirmasi sudah dijalankan.",
     )
     str_post_confirm = fields.Char(
         string="# Post Confirm",
         required=False,
+        help="Catatan aksi setelah konfirmasi.",
     )
     chk_pre_cancel = fields.Boolean(
         string="# Pre Cancel",
         required=False,
+        help="Penanda bahwa validasi sebelum pembatalan sudah dijalankan.",
     )
     str_pre_cancel = fields.Char(
         string="# Pre Cancel",
         required=False,
+        help="Catatan aksi sebelum pembatalan.",
     )
     chk_post_cancel = fields.Boolean(
         string="# Post Cancel",
         required=False,
+        help="Penanda bahwa validasi setelah pembatalan sudah dijalankan.",
     )
     str_post_cancel = fields.Char(
         string="# Post Cancel",
         required=False,
+        help="Catatan aksi setelah pembatalan.",
     )
     chk_pre_open = fields.Boolean(
         string="# Pre Open",
         required=False,
+        help="Penanda bahwa validasi sebelum dibuka sudah dijalankan.",
     )
     str_pre_open = fields.Char(
         string="# Pre Open",
         required=False,
+        help="Catatan aksi sebelum dibuka.",
     )
     chk_post_open = fields.Boolean(
         string="# Post Open",
         required=False,
+        help="Penanda bahwa validasi setelah dibuka sudah dijalankan.",
     )
     str_post_open = fields.Char(
         string="# Post Open",
         required=False,
+        help="Catatan aksi setelah dibuka.",
     )
     chk_pre_done = fields.Boolean(
         string="# Pre Done",
         required=False,
+        help="Penanda bahwa validasi sebelum selesai sudah dijalankan.",
     )
     str_pre_done = fields.Char(
         string="# Pre Done",
         required=False,
+        help="Catatan aksi sebelum selesai.",
     )
     chk_post_done = fields.Boolean(
         string="# Post Done",
         required=False,
+        help="Penanda bahwa validasi setelah selesai sudah dijalankan.",
     )
     str_post_done = fields.Char(
         string="# Post Done",
         required=False,
+        help="Catatan aksi setelah selesai.",
     )
     chk_pre_terminate = fields.Boolean(
         string="# Pre Terminate",
         required=False,
+        help="Penanda bahwa validasi sebelum terminasi sudah dijalankan.",
     )
     str_pre_terminate = fields.Char(
         string="# Pre Terminate",
         required=False,
+        help="Catatan aksi sebelum terminasi.",
     )
     chk_post_terminate = fields.Boolean(
         string="# Post Terminate",
         required=False,
+        help="Penanda bahwa validasi setelah terminasi sudah dijalankan.",
     )
     str_post_terminate = fields.Char(
         string="# Post Terminate",
         required=False,
+        help="Catatan aksi setelah terminasi.",
     )
     chk_pre_approve = fields.Boolean(
         string="# Pre Approve",
         required=False,
+        help="Penanda bahwa validasi sebelum persetujuan sudah dijalankan.",
     )
     str_pre_approve = fields.Char(
         string="# Pre Approve",
         required=False,
+        help="Catatan aksi sebelum persetujuan.",
     )
     chk_post_approve = fields.Boolean(
         string="# Post Approve",
         required=False,
+        help="Penanda bahwa validasi setelah persetujuan sudah dijalankan.",
     )
     str_post_approve = fields.Char(
         string="# Post Approve",
         required=False,
+        help="Catatan aksi setelah persetujuan.",
     )
     chk_pre_reject = fields.Boolean(
         string="# Pre Reject",
         required=False,
+        help="Penanda bahwa validasi sebelum penolakan sudah dijalankan.",
     )
     str_pre_reject = fields.Char(
         string="# Pre Reject",
         required=False,
+        help="Catatan aksi sebelum penolakan.",
     )
     chk_post_reject = fields.Boolean(
         string="# Post Reject",
         required=False,
+        help="Penanda bahwa validasi setelah penolakan sudah dijalankan.",
     )
     str_post_reject = fields.Char(
         string="# Post Reject",
         required=False,
+        help="Catatan aksi setelah penolakan.",
     )
     detail_ids = fields.One2many(
         string="Details",
@@ -229,6 +261,7 @@ class TestTransactionMixin(models.Model):
                 ("readonly", False),
             ],
         },
+        help="Daftar detail transaksi.",
     )
     state = fields.Selection(
         string="State",
@@ -243,6 +276,7 @@ class TestTransactionMixin(models.Model):
         ],
         default="draft",
         copy=False,
+        help="Status dokumen transaksi.",
     )
 
     # CHECK
