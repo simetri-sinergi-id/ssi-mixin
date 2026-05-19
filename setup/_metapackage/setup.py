@@ -22,6 +22,7 @@ setuptools.setup(
         'odoo-addon-ssi_transaction_done_mixin>=15.0dev,<15.1dev',
         'odoo-addon-ssi_transaction_mixin>=15.0dev,<15.1dev',
         'odoo-addon-ssi_transaction_open_mixin>=15.0dev,<15.1dev',
+        'odoo-addon-ssi_transaction_ready_mixin>=15.0dev,<15.1dev',
         'odoo-addon-ssi_transaction_terminate_mixin>=15.0dev,<15.1dev',
         'odoo-addon-test_ssi_master_data_mixin>=15.0dev,<15.1dev',
         'odoo-addon-test_ssi_transaction_mixin>=15.0dev,<15.1dev',

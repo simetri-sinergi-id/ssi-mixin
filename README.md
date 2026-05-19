@@ -18,23 +18,24 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[ssi_company_currency_mixin](ssi_company_currency_mixin/) | 15.0.1.1.0 |  | Company Currency Mixin
-[ssi_decorator](ssi_decorator/) | 15.0.1.1.0 |  | SSI - Decorator
-[ssi_master_data_mixin](ssi_master_data_mixin/) | 15.0.1.1.0 |  | Master Data Mixin
-[ssi_multiple_approval_mixin](ssi_multiple_approval_mixin/) | 15.0.1.1.0 |  | Multiple Approval
-[ssi_policy_mixin](ssi_policy_mixin/) | 15.0.1.1.0 |  | Policy Mixin
-[ssi_print_mixin](ssi_print_mixin/) | 15.0.1.1.0 |  | Print Policy Mixin
-[ssi_product_line_mixin](ssi_product_line_mixin/) | 15.0.1.1.0 |  | Product Line Mixin
-[ssi_product_line_price_mixin](ssi_product_line_price_mixin/) | 15.0.1.1.0 |  | Product Line Mixin - With Price
-[ssi_sequence_mixin](ssi_sequence_mixin/) | 15.0.1.1.0 |  | Sequence Mixin
-[ssi_transaction_cancel_mixin](ssi_transaction_cancel_mixin/) | 15.0.1.1.0 |  | Transaction Mixin - Cancel State
-[ssi_transaction_confirm_mixin](ssi_transaction_confirm_mixin/) | 15.0.1.1.0 |  | Transaction Mixin - Waiting for Approval State
-[ssi_transaction_done_mixin](ssi_transaction_done_mixin/) | 15.0.1.1.0 |  | Transaction Mixin - Done State
-[ssi_transaction_mixin](ssi_transaction_mixin/) | 15.0.1.1.0 |  | Transaction Mixin
-[ssi_transaction_open_mixin](ssi_transaction_open_mixin/) | 15.0.1.1.0 |  | Transaction Mixin - In Progress State
-[ssi_transaction_terminate_mixin](ssi_transaction_terminate_mixin/) | 15.0.1.1.0 |  | Transaction Mixin - Terminate State
-[test_ssi_master_data_mixin](test_ssi_master_data_mixin/) | 15.0.1.1.0 |  | Test: Master Data Mixin
-[test_ssi_transaction_mixin](test_ssi_transaction_mixin/) | 15.0.1.1.0 |  | Test Module: Transaction Mixin
+[ssi_company_currency_mixin](ssi_company_currency_mixin/) | 15.0.1.1.1 |  | Company Currency Mixin
+[ssi_decorator](ssi_decorator/) | 15.0.1.1.1 |  | SSI - Decorator
+[ssi_master_data_mixin](ssi_master_data_mixin/) | 15.0.1.1.1 |  | Master Data Mixin
+[ssi_multiple_approval_mixin](ssi_multiple_approval_mixin/) | 15.0.1.1.1 |  | Multiple Approval
+[ssi_policy_mixin](ssi_policy_mixin/) | 15.0.1.1.1 |  | Policy Mixin
+[ssi_print_mixin](ssi_print_mixin/) | 15.0.1.1.1 |  | Print Policy Mixin
+[ssi_product_line_mixin](ssi_product_line_mixin/) | 15.0.1.1.1 |  | Product Line Mixin
+[ssi_product_line_price_mixin](ssi_product_line_price_mixin/) | 15.0.1.1.1 |  | Product Line Mixin - With Price
+[ssi_sequence_mixin](ssi_sequence_mixin/) | 15.0.1.1.1 |  | Sequence Mixin
+[ssi_transaction_cancel_mixin](ssi_transaction_cancel_mixin/) | 15.0.1.1.1 |  | Transaction Mixin - Cancel State
+[ssi_transaction_confirm_mixin](ssi_transaction_confirm_mixin/) | 15.0.1.1.1 |  | Transaction Mixin - Waiting for Approval State
+[ssi_transaction_done_mixin](ssi_transaction_done_mixin/) | 15.0.1.1.1 |  | Transaction Mixin - Done State
+[ssi_transaction_mixin](ssi_transaction_mixin/) | 15.0.1.1.1 |  | Transaction Mixin
+[ssi_transaction_open_mixin](ssi_transaction_open_mixin/) | 15.0.1.1.1 |  | Transaction Mixin - In Progress State
+[ssi_transaction_ready_mixin](ssi_transaction_ready_mixin/) | 15.0.1.0.0 |  | Transaction Mixin - Ready to Process State
+[ssi_transaction_terminate_mixin](ssi_transaction_terminate_mixin/) | 15.0.1.1.1 |  | Transaction Mixin - Terminate State
+[test_ssi_master_data_mixin](test_ssi_master_data_mixin/) | 15.0.1.1.1 |  | Test: Master Data Mixin
+[test_ssi_transaction_mixin](test_ssi_transaction_mixin/) | 15.0.1.1.1 |  | Test Module: Transaction Mixin
 
 
 Unported addons
@@ -76,7 +77,6 @@ addon | version | maintainers | summary
 [ssi_transaction_queue_cancel_mixin](ssi_transaction_queue_cancel_mixin/) | 14.0.1.1.0 (unported) |  | Transaction Mixin - Queue To Cancel State
 [ssi_transaction_queue_done_mixin](ssi_transaction_queue_done_mixin/) | 14.0.1.1.0 (unported) |  | Transaction Mixin - Queue To Done State
 [ssi_transaction_queue_mixin](ssi_transaction_queue_mixin/) | 14.0.1.0.0 (unported) |  | Transaction Mixin - Queue
-[ssi_transaction_ready_mixin](ssi_transaction_ready_mixin/) | 14.0.1.11.1 (unported) |  | Transaction Mixin - Ready to Process State
 [ssi_transaction_salesperson_mixin](ssi_transaction_salesperson_mixin/) | 14.0.1.1.0 (unported) |  | Transaction + Salesperson Mixin
 [ssi_transaction_tax_address_mixin](ssi_transaction_tax_address_mixin/) | 14.0.1.0.0 (unported) |  | Transaction + Tax Address Mixin
 [ssi_transaction_total_mixin](ssi_transaction_total_mixin/) | 14.0.1.0.1 (unported) |  | Transaction Mixin - Total
