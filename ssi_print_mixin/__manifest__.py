@@ -3,7 +3,7 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Print Policy Mixin",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.1.0",
     "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",

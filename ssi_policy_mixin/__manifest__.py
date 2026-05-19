@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Policy Mixin",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.1.0",
     "category": "Administration",
     "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "PT. Simetri Sinergi Indonesia",
