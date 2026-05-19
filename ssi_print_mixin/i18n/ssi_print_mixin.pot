@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,7 +14,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ssi_print_mixin
-#: code:addons/ssi_print_mixin/models/print_document_type.py:0
 #: code:addons/ssi_print_mixin/models/print_document_type.py:0
 #, python-format
 msgid "%s (copy)"
@@ -49,6 +48,11 @@ msgstr ""
 #. module: ssi_print_mixin
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__activity_type_icon
 msgid "Activity Type Icon"
+msgstr ""
+
+#. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_print_document_type__note
+msgid "Additional notes or remarks about this print document type."
 msgstr ""
 
 #. module: ssi_print_mixin
@@ -101,8 +105,6 @@ msgstr ""
 
 #. module: ssi_print_mixin
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_base_print_document__display_name
-#: model:ir.model.fields,field_description:ssi_print_mixin.field_ir_actions_report__display_name
-#: model:ir.model.fields,field_description:ssi_print_mixin.field_mixin_print_document__display_name
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__display_name
 msgid "Display Name"
 msgstr ""
@@ -110,11 +112,6 @@ msgstr ""
 #. module: ssi_print_mixin
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__message_follower_ids
 msgid "Followers"
-msgstr ""
-
-#. module: ssi_print_mixin
-#: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__message_channel_ids
-msgid "Followers (Channels)"
 msgstr ""
 
 #. module: ssi_print_mixin
@@ -143,9 +140,12 @@ msgid "Generate code. Are you sure?"
 msgstr ""
 
 #. module: ssi_print_mixin
+#: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: ssi_print_mixin
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_base_print_document__id
-#: model:ir.model.fields,field_description:ssi_print_mixin.field_ir_actions_report__id
-#: model:ir.model.fields,field_description:ssi_print_mixin.field_mixin_print_document__id
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__id
 msgid "ID"
 msgstr ""
@@ -172,14 +172,17 @@ msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_print_document_type__active
+msgid "Inactive types are excluded from the print selection."
+msgstr ""
+
+#. module: ssi_print_mixin
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__message_is_follower
 msgid "Is Follower"
 msgstr ""
 
 #. module: ssi_print_mixin
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_base_print_document____last_update
-#: model:ir.model.fields,field_description:ssi_print_mixin.field_ir_actions_report____last_update
-#: model:ir.model.fields,field_description:ssi_print_mixin.field_mixin_print_document____last_update
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type____last_update
 msgid "Last Modified on"
 msgstr ""
@@ -228,6 +231,11 @@ msgid "My Activity Deadline"
 msgstr ""
 
 #. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_print_document_type__name
+msgid "Name of this print document type."
+msgstr ""
+
+#. module: ssi_print_mixin
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr ""
@@ -243,7 +251,6 @@ msgid "Next Activity Type"
 msgstr ""
 
 #. module: ssi_print_mixin
-#: code:addons/ssi_print_mixin/wizards/base_print_document.py:0
 #: code:addons/ssi_print_mixin/wizards/base_print_document.py:0
 #, python-format
 msgid "No Report Selected"
@@ -281,6 +288,11 @@ msgid "Number of unread messages"
 msgstr ""
 
 #. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_print_document_type__model_id
+msgid "Odoo model this print document type applies to."
+msgstr ""
+
+#. module: ssi_print_mixin
 #: model_terms:ir.ui.view,arch_db:ssi_print_mixin.base_print_document_view_form
 #: model_terms:ir.ui.view,arch_db:ssi_print_mixin.button_ssi_print
 #: model_terms:ir.ui.view,arch_db:ssi_print_mixin.tree_button_print
@@ -309,6 +321,21 @@ msgid "Print Policy"
 msgstr ""
 
 #. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_base_print_document__allowed_type_ids
+msgid "Print document types available for the active record."
+msgstr ""
+
+#. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_ir_actions_report__print_document_type_ids
+msgid "Print document types this report belongs to."
+msgstr ""
+
+#. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_ir_actions_report__print_python_code
+msgid "Python code evaluated at print time; must set 'result' to a boolean."
+msgstr ""
+
+#. module: ssi_print_mixin
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__model_id
 msgid "Referenced Model"
 msgstr ""
@@ -328,6 +355,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__report_ids
 #: model_terms:ir.ui.view,arch_db:ssi_print_mixin.print_document_type_view_form
 msgid "Reports"
+msgstr ""
+
+#. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_base_print_document__allowed_print_action_ids
+msgid "Reports allowed for the current user and active record."
+msgstr ""
+
+#. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_print_document_type__report_ids
+msgid "Reports available for this document type."
 msgstr ""
 
 #. module: ssi_print_mixin
@@ -352,6 +389,11 @@ msgid "Select Report To Print"
 msgstr ""
 
 #. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_base_print_document__type_id
+msgid "Selected print document type to filter available reports."
+msgstr ""
+
+#. module: ssi_print_mixin
 #: model:ir.model.fields,help:ssi_print_mixin.field_print_document_type__activity_state
 msgid ""
 "Status based on activities\n"
@@ -361,8 +403,13 @@ msgid ""
 msgstr ""
 
 #. module: ssi_print_mixin
-#: model:ir.model.fields,help:ssi_print_mixin.field_ir_actions_report__print_python_code
-msgid "The result of executing the expresion must be a boolean."
+#: model:ir.model.fields,help:ssi_print_mixin.field_print_document_type__model
+msgid "Technical model name (auto-computed from Referenced Model)."
+msgstr ""
+
+#. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_base_print_document__report_action_id
+msgid "The report to print."
 msgstr ""
 
 #. module: ssi_print_mixin
@@ -377,6 +424,11 @@ msgid "Type of the exception activity on record."
 msgstr ""
 
 #. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_print_document_type__code
+msgid "Unique code for this print document type, generated via sequence."
+msgstr ""
+
+#. module: ssi_print_mixin
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__message_unread
 msgid "Unread Messages"
 msgstr ""
@@ -384,6 +436,12 @@ msgstr ""
 #. module: ssi_print_mixin
 #: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__message_unread_counter
 msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_ir_actions_report__print_multi
+msgid ""
+"When enabled, this report can be generated for multiple selected records."
 msgstr ""
 
 #. module: ssi_print_mixin
