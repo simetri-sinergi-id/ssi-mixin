@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Product Line Mixin - With Price</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0f172a;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2.2rem;
+			color: #10b981;
+			margin-bottom: 8px;
+		}
+		h2 {
+			font-size: 1.2rem;
+			color: #10b981;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 0;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+		}
+		.section {
+			background: #1e293b;
+			border-radius: 10px;
+			padding: 20px 24px;
+			margin-bottom: 20px;
+		}
+		a {
+			color: #10b981;
+		}
+		ul, ol {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+		}
+		code {
+			background: #0f172a;
+			border-radius: 4px;
+			padding: 1px 6px;
+			font-size: 0.92em;
+		}
+		hr.tech-divider {
+			border: none;
+			border-top: 1px solid #334155;
+			margin: 32px 0 16px;
+		}
+		.footer {
+			text-align: center;
+			color: #64748b;
+			font-size: 0.9rem;
+			line-height: 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Product Line Mixin - With Price</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>Product Line Mixin - With Price</b> is a mixin module in the
+				<b>@simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It extends <code>mixin.product_line</code> with a complete set of
+				<b>pricing fields</b> for use in transaction line models.
+			</p>
+			<p>Any model that inherits from <code>mixin.product_line_price</code> automatically gains:</p>
+			<ul>
+				<li>
+					<b>Currency &amp; Pricelist:</b> <code>currency_id</code> and
+					<code>pricelist_id</code>, with <code>allowed_pricelist_ids</code>
+					dynamically filtered by the selected currency.
+				</li>
+				<li>
+					<b>Selling price:</b> <code>price_unit</code> and computed
+					<code>price_subtotal</code> (= price_unit &times; quantity).
+				</li>
+				<li>
+					<b>Standard price comparison:</b> <code>standard_price_unit</code>,
+					<code>standard_price_subtotal</code>, and their diff variants
+					(<code>standard_price_unit_diff</code>,
+					<code>standard_price_subtotal_diff</code>) derived from the
+					selected pricelist.
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Abstract Mixin Design:</b> Inherit <code>mixin.product_line_price</code> in any transaction line model with no structural view changes required.</li>
+				<li><b>Currency-Filtered Pricelists:</b> <code>allowed_pricelist_ids</code> is computed on-the-fly, showing only pricelists matching the selected currency.</li>
+				<li><b>Auto Price from Pricelist:</b> <code>onchange_price_unit</code> automatically fills <code>price_unit</code> from the selected pricelist when product or quantity changes.</li>
+				<li><b>Standard Price Comparison:</b> Computed fields reveal the difference between the selling price and the pricelist standard price at unit and subtotal level.</li>
+				<li><b>Monetary Fields:</b> All price fields use <code>fields.Monetary</code> linked to <code>currency_id</code> for proper multi-currency display.</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>Use this mixin for any transaction model that requires product lines with pricing, pricelist integration, and cost comparison:</p>
+			<ul>
+				<li><b>Sales Quotations / Orders:</b> Add pricing fields to custom sale order line models.</li>
+				<li><b>Purchase Orders:</b> Compare purchase price against a reference pricelist.</li>
+				<li><b>Warehouse Transfers:</b> Track unit prices for stock movement valuation.</li>
+				<li><b>Custom Invoices:</b> Reuse pricing logic across different invoice line types.</li>
+				<li><b>Any Line Model:</b> Any model that needs product + quantity + price fields with pricelist support.</li>
+			</ul>
+			<p>Simply set <code>_inherit = ["mixin.product_line_price"]</code> on your line model and configure the rest via views.</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>Clone branch <b>15.0</b> of the repository: <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">https://github.com/simetri-sinergi-id/ssi-mixin</a></li>
+				<li>Add the path to this repository in your Odoo configuration (<code>addons-path</code>).</li>
+				<li>Update the module list (ensure you are in developer mode).</li>
+				<li>Go to <i>Apps &rarr; Apps &rarr; Main Apps</i>, search for <i>Product Line Mixin - With Price</i>, and install.</li>
+				<li>In your custom line model:<br>
+					<code>_inherit = ["mixin.product_line_price"]</code>
+				</li>
+				<li>Inherit the provided tree/form views via XPath to include pricing fields in your module's views.</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Standalone?</b>
+					<span style="color:#f59e0b;">No — it is a mixin foundation. Install it as a dependency of your custom module.</span>
+				</li>
+				<li>
+					<b>Odoo Version?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>Does it require a pricelist?</b>
+					<span style="color:#f59e0b;">No. <code>pricelist_id</code> is optional. If not set, standard price comparison fields will be 0.</span>
+				</li>
+				<li>
+					<b>Can I override the default currency?</b>
+					<span style="color:#f59e0b;">Yes — override <code>_default_currency_id</code> in your model to return the desired default currency.</span>
+				</li>
+				<li>
+					<b>Contribute?</b>
+					<span style="color:#f59e0b;">Fork, branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>Bugs are tracked on <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>. In case of trouble, please check there if your issue has already been reported. If you spotted it first, help us smash it by providing detailed and welcomed feedback.</p>
+			<ul>
+				<li><b>Report Issues:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">Create a new issue</a> with detailed description and steps to reproduce.</li>
+				<li><b>Search Existing:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">Browse existing issues</a> to see if your problem has already been reported.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<p>This module is developed and maintained by PT. Simetri Sinergi Indonesia.</p>
+			<ul>
+				<li><b>Core Development:</b>
+					<ul>
+						<li>Andhitia Rama <a href="mailto:andhitia.r@gmail.com" style="color:#10b981;">&lt;andhitia.r@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b> <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for the development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a>
+			<br>
+			<span>
+				Released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.
+			</span>
+		</div>
+	</div>
+</body>
+</html>

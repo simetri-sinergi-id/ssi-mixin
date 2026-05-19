@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 
@@ -27,28 +26,33 @@ class MixinProductLinePrice(models.AbstractModel):
         comodel_name="res.currency",
         required=True,
         default=lambda self: self._default_currency_id(),
+        help="Currency used for all price fields on this line.",
     )
     allowed_pricelist_ids = fields.Many2many(
         string="Allowed Pricelists",
         comodel_name="product.pricelist",
         compute="_compute_allowed_pricelist_ids",
         compute_sudo=True,
+        help="Pricelists available for selection, filtered by the selected currency.",
     )
     pricelist_id = fields.Many2one(
         string="Pricelist",
         comodel_name="product.pricelist",
+        help="Pricelist used to compute the standard price for comparison.",
     )
     price_unit = fields.Monetary(
         string="Price Unit",
         currency_field="currency_id",
         required=True,
         default=0.0,
+        help="Unit selling price.",
     )
     price_subtotal = fields.Monetary(
         string="Price Subtotal",
         currency_field="currency_id",
         compute="_compute_price",
         store=True,
+        help="Subtotal = price_unit × quantity.",
     )
     standard_price_unit = fields.Monetary(
         string="Standard Price Unit",
@@ -56,6 +60,7 @@ class MixinProductLinePrice(models.AbstractModel):
         compute="_compute_standard_price",
         store=True,
         compute_sudo=True,
+        help="Unit price derived from the selected pricelist.",
     )
     standard_price_subtotal = fields.Monetary(
         string="Standard Price Subtotal",
@@ -63,6 +68,7 @@ class MixinProductLinePrice(models.AbstractModel):
         compute="_compute_standard_price",
         store=True,
         compute_sudo=True,
+        help="Subtotal derived from the selected pricelist.",
     )
     standard_price_unit_diff = fields.Monetary(
         string="Standard Price Unit Diff.",
@@ -70,6 +76,7 @@ class MixinProductLinePrice(models.AbstractModel):
         compute="_compute_standard_price",
         store=True,
         compute_sudo=True,
+        help="Difference between price_unit and the pricelist standard price unit.",
     )
     standard_price_subtotal_diff = fields.Monetary(
         string="Standard Price Subtotal Diff.",
@@ -77,6 +84,7 @@ class MixinProductLinePrice(models.AbstractModel):
         compute="_compute_standard_price",
         store=True,
         compute_sudo=True,
+        help="Difference between price_subtotal and the pricelist standard price subtotal.",
     )
 
     @api.model

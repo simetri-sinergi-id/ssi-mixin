@@ -1,12 +1,11 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from inspect import getmembers
 
 from lxml import etree
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -167,17 +166,14 @@ class MixinTransaction(models.AbstractModel):
     def _constrains_duplicate_document_number(self):
         for record in self.sudo():
             if not record._check_duplicate_document_number():
-                error_message = """
-                Document Type: %s
-                Context: Change document number
-                Database ID: %s
-                Problem: Duplicate document number
-                Solution: Change document number into different number
-                """ % (
-                    self._description.lower(),
-                    record.id,
+                error_message = (
+                    f"Document Type: {self._description.lower()}\n"
+                    f"Context: Change document number\n"
+                    f"Database ID: {record.id}\n"
+                    f"Problem: Duplicate document number\n"
+                    f"Solution: Change document number into different number"
                 )
-                raise UserError(_(error_message))
+                raise UserError(error_message)
 
     def name_get(self):
         result = []
@@ -193,29 +189,23 @@ class MixinTransaction(models.AbstractModel):
         force_unlink = self.env.context.get("force_unlink", False)
         for record in self:
             if not record._check_state_unlink(force_unlink):
-                error_message = """
-                Document Type: %s
-                Context: Delete document
-                Database ID: %s
-                Problem: Document state is not draft
-                Solution: Cancel and restart document
-                """ % (
-                    self._description.lower(),
-                    record.id,
+                error_message = (
+                    f"Document Type: {self._description.lower()}\n"
+                    f"Context: Delete document\n"
+                    f"Database ID: {record.id}\n"
+                    f"Problem: Document state is not draft\n"
+                    f"Solution: Cancel and restart document"
                 )
-                raise UserError(_(error_message))
+                raise UserError(error_message)
             if not record._check_document_number_unlink(force_unlink):
-                error_message = """
-                Document Type: %s
-                Context: Delete document
-                Database ID: %s
-                Problem: Document number is not equal to /
-                Solution: Change document number into /
-                """ % (
-                    self._description.lower(),
-                    record.id,
+                error_message = (
+                    f"Document Type: {self._description.lower()}\n"
+                    f"Context: Delete document\n"
+                    f"Database ID: {record.id}\n"
+                    f"Problem: Document number is not equal to /\n"
+                    f"Solution: Change document number into /"
                 )
-                raise UserError(_(error_message))
+                raise UserError(error_message)
         _super = super()
         _super.unlink()
 
@@ -275,28 +265,25 @@ class MixinTransaction(models.AbstractModel):
             return True
 
         if not self.manual_number_ok:
-            error_message = """
-            Document Type: %s
-            Context: Reset document number
-            Database ID: %s
-            Problem: Reset document is no allowed
-            Solution: Check restart policy prerequisite
-            """ % (
-                self._description,
-                self.id,
+            error_message = (
+                f"Document Type: {self._description}\n"
+                f"Context: Reset document number\n"
+                f"Database ID: {self.id}\n"
+                f"Problem: Reset document is no allowed\n"
+                f"Solution: Check restart policy prerequisite"
             )
-            raise UserError(_(error_message))
+            raise UserError(error_message)
 
     def _notify_restart_action(self):
         self.ensure_one()
         msg = self._prepare_restart_action_notification()
         self.message_post(
-            body=_(msg), message_type="notification", subtype_xmlid="mail.mt_note"
+            body=msg, message_type="notification", subtype_xmlid="mail.mt_note"
         )
 
     def _prepare_restart_action_notification(self):
         self.ensure_one()
-        msg = "%s %s restarted" % (self._description, self.display_name)
+        msg = f"{self._description} {self.display_name} restarted"
         return msg
 
     def _check_restart_policy(self):
@@ -309,17 +296,14 @@ class MixinTransaction(models.AbstractModel):
             return True
 
         if not self.restart_ok:
-            error_message = """
-            Document Type: %s
-            Context: Restart document
-            Database ID: %s
-            Problem: Document is not allowed to restart
-            Solution: Check restart policy prerequisite
-            """ % (
-                self._description.lower(),
-                self.id,
+            error_message = (
+                f"Document Type: {self._description.lower()}\n"
+                f"Context: Restart document\n"
+                f"Database ID: {self.id}\n"
+                f"Problem: Document is not allowed to restart\n"
+                f"Solution: Check restart policy prerequisite"
             )
-            raise UserError(_(error_message))
+            raise UserError(error_message)
 
     def _run_pre_restart_check(self):
         self.ensure_one()

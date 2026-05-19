@@ -1,9 +1,8 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import SUPERUSER_ID, _, api, fields, models
-from odoo.exceptions import ValidationError, Warning as UserError
+from odoo.exceptions import UserError, ValidationError
 from odoo.tools.safe_eval import safe_eval, test_python_expr
 
 
@@ -129,8 +128,9 @@ class PolicyTemplateDetail(models.Model):
                     method_name = "_get_policy_" + self.computation_method
                     result_user = getattr(self, method_name)(document)
                 except Exception as error:
-                    msg_err = _("Error evaluating conditions.\n %s") % error
-                    raise UserError(msg_err)
+                    raise UserError(
+                        _("Error evaluating conditions.\n %(error)s") % {"error": error}
+                    )
 
         if self.restrict_additional:
             localdict = self._get_localdict(document)
@@ -140,8 +140,9 @@ class PolicyTemplateDetail(models.Model):
                 )
                 result_additional = localdict["result"]
             except Exception as error:
-                msg_err = _("Error evaluating conditions.\n %s") % error
-                raise UserError(msg_err)
+                raise UserError(
+                    _("Error evaluating conditions.\n %(error)s") % {"error": error}
+                )
 
         return result_state and result_user and result_additional
 
@@ -185,7 +186,9 @@ class PolicyTemplateDetail(models.Model):
             safe_eval(self.python_code, localdict, mode="exec", nocopy=True)
             result = localdict["result"]
         except Exception as error:
-            raise UserError(_("Error evaluating conditions.\n %s") % error)
+            raise UserError(
+                _("Error evaluating conditions.\n %(error)s") % {"error": error}
+            )
         return result
 
     def _evaluate_states(self, document):
@@ -217,8 +220,7 @@ class PolicyTemplateDetail(models.Model):
         for action in self.sudo().filtered("python_code"):
             msg = test_python_expr(expr=action.python_code.strip(), mode="exec")
             if msg:
-                msg1 = "Template Detail:\n"
-                raise ValidationError(msg1 + msg)
+                raise ValidationError(f"Template Detail:\n{msg}")
 
     @api.constrains(
         "additional_python_code",
@@ -229,5 +231,4 @@ class PolicyTemplateDetail(models.Model):
                 expr=action.additional_python_code.strip(), mode="exec"
             )
             if msg:
-                msg1 = "Template Detail Additional:\n"
-                raise ValidationError(msg1 + msg)
+                raise ValidationError(f"Template Detail Additional:\n{msg}")

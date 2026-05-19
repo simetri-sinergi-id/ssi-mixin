@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2022 OpenSynergy Indonesia
-     Copyright 2022 PT. Simetri Sinergi Indonesia
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<!-- Copyright 2026 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
 <record id="approval_approval_view_tree" model="ir.ui.view">
     <field name="name">approval.approval - tree</field>
     <field name="model">approval.approval</field>
     <field name="arch" type="xml">
         <tree
-                string="Multiple Approval"
                 decoration-danger="status=='rejected'"
                 decoration-success="status=='approved'"
                 create="false"

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Company Currency Mixin</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0f172a;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2.2rem;
+			color: #10b981;
+			margin-bottom: 8px;
+		}
+		h2 {
+			font-size: 1.2rem;
+			color: #10b981;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 0;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+		}
+		.section {
+			background: #1e293b;
+			border-radius: 10px;
+			padding: 20px 24px;
+			margin-bottom: 20px;
+		}
+		a {
+			color: #10b981;
+		}
+		ul, ol {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+		}
+		code {
+			background: #0f172a;
+			border-radius: 4px;
+			padding: 1px 6px;
+			font-size: 0.92em;
+		}
+		hr.tech-divider {
+			border: none;
+			border-top: 1px solid #334155;
+			margin: 32px 0 16px;
+		}
+		.footer {
+			text-align: center;
+			color: #64748b;
+			font-size: 0.9rem;
+			line-height: 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Company Currency Mixin</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>Company Currency Mixin</b> is a lightweight mixin module in the
+				<b>@simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It provides a reusable abstract model — <code>mixin.company_currency</code> —
+				that adds a <b>company field</b> and its derived <b>currency field</b> to any model.
+			</p>
+			<p>Any model that inherits from <code>mixin.company_currency</code> automatically gains:</p>
+			<ul>
+				<li>
+					<b>company_id</b> — a mandatory <code>res.company</code> field that defaults
+					to the current user's company.
+				</li>
+				<li>
+					<b>company_currency_id</b> — a stored, related <code>res.currency</code> field
+					that always reflects the selected company's currency.
+				</li>
+			</ul>
+			<p>
+				Monetary fields on inheriting models can set
+				<code>currency_field='company_currency_id'</code> to format amounts in the
+				company's currency without any extra boilerplate.
+			</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Abstract Mixin Design:</b> Inherit <code>mixin.company_currency</code> in any model — no structural view changes required.</li>
+				<li><b>Auto Company Default:</b> <code>company_id</code> defaults to the current user's company automatically.</li>
+				<li><b>Derived Currency:</b> <code>company_currency_id</code> is always in sync with the selected company's currency via a stored related field.</li>
+				<li><b>Monetary Field Ready:</b> Set <code>currency_field='company_currency_id'</code> on any monetary field to enable proper currency display.</li>
+				<li><b>Minimal Footprint:</b> Depends only on <code>base</code> — no heavy extra dependencies.</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>Use this mixin for any transactional or master-data model that needs multi-company currency awareness:</p>
+			<ul>
+				<li><b>Sale/Purchase Orders:</b> Ensure monetary fields are always displayed in the owning company's currency.</li>
+				<li><b>Invoices &amp; Payments:</b> Standardise company currency derivation across accounting documents.</li>
+				<li><b>Warehouse Transfers:</b> Attach cost fields with correct currency to stock transfer lines.</li>
+				<li><b>Custom Transactions:</b> Any model with monetary amounts that must respect multi-company currency settings.</li>
+			</ul>
+			<p>Simply set <code>_inherit = ["mixin.company_currency"]</code> on your model and reference <code>company_currency_id</code> in your monetary fields.</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>Clone branch <b>15.0</b> of the repository: <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">https://github.com/simetri-sinergi-id/ssi-mixin</a></li>
+				<li>Add the path to this repository in your Odoo configuration (<code>addons-path</code>).</li>
+				<li>Update the module list (ensure you are in developer mode).</li>
+				<li>Go to <i>Apps → Apps → Main Apps</i>, search for <i>Company Currency Mixin</i>, and install.</li>
+				<li>In your custom model:<br>
+					<code>_inherit = ["mixin.company_currency"]</code>
+				</li>
+				<li>On any monetary field, add:<br>
+					<code>currency_field="company_currency_id"</code>
+				</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Standalone?</b>
+					<span style="color:#f59e0b;">No — it is a mixin foundation. Install it as a dependency of your custom module.</span>
+				</li>
+				<li>
+					<b>Odoo Version?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>Is company_id required?</b>
+					<span style="color:#f59e0b;">Yes — it defaults to the current user's company but can be changed.</span>
+				</li>
+				<li>
+					<b>Is company_currency_id stored?</b>
+					<span style="color:#f59e0b;">Yes — it is a stored related field so it can be used in domain filters and reports.</span>
+				</li>
+				<li>
+					<b>Contribute?</b>
+					<span style="color:#f59e0b;">Fork, branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>Bugs are tracked on <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>. In case of trouble, please check there if your issue has already been reported. If you spotted it first, help us smash it by providing detailed and welcomed feedback.</p>
+			<ul>
+				<li><b>Report Issues:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">Create a new issue</a> with detailed description and steps to reproduce.</li>
+				<li><b>Search Existing:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">Browse existing issues</a> to see if your problem has already been reported.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<p>This module is developed and maintained by PT. Simetri Sinergi Indonesia.</p>
+			<ul>
+				<li><b>Core Development:</b>
+					<ul>
+						<li>Andhitia Rama <a href="mailto:andhitia.r@gmail.com" style="color:#10b981;">&lt;andhitia.r@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b> <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for the development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a>
+			<br>
+			<span>
+				Released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.
+			</span>
+		</div>
+	</div>
+</body>
+</html>

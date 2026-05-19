@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 
@@ -28,10 +27,13 @@ class MixinCompanyCurrency(models.AbstractModel):
         required=True,
         default=lambda self: self._default_company_id(),
         copy=True,
+        help="Company that owns this record.",
     )
     company_currency_id = fields.Many2one(
         string="Company Currency",
         comodel_name="res.currency",
         related="company_id.currency_id",
         store=True,
+        help="Currency of the selected company. "
+        "Used as the currency_field for monetary fields on inheriting models.",
     )

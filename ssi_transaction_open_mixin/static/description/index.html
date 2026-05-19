@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaction Mixin - In Progress State</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 32px;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #10b981;
+            color: #0f172a;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            margin-bottom: 24px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f8fafc;
+            margin: 0 0 16px 0;
+            line-height: 1.2;
+        }
+        .accent {
+            color: #10b981;
+        }
+        .description {
+            font-size: 1rem;
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #10b981;
+            margin-bottom: 16px;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px 0;
+        }
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #1e293b;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .feature-list li::before {
+            content: '✦';
+            color: #10b981;
+            font-size: 0.75rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .card-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 20px 24px;
+            flex: 1;
+            min-width: 200px;
+        }
+        .card .card-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .card .card-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+        .contributor-block {
+            background-color: #1e293b;
+            border-left: 4px solid #10b981;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 40px;
+        }
+        .contributor-block .name {
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 4px;
+        }
+        .contributor-block .email {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        .link-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .link-btn {
+            display: inline-block;
+            background-color: transparent;
+            border: 1px solid #10b981;
+            color: #10b981;
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .link-btn:hover {
+            background-color: #10b981;
+            color: #0f172a;
+        }
+        footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid #1e293b;
+            font-size: 0.8rem;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="badge">Odoo 15.0</div>
+        <h1>Transaction Mixin<br /><span class="accent">In Progress State</span></h1>
+        <p class="description">
+            Extends <code>mixin.transaction</code> with an <em>open</em> / <em>in-progress</em>
+            workflow state. Auto-injects the open (start) button and policy fields into form and list
+            views. Provides the <code>action_open</code> lifecycle handler with pre/post check and
+            pre/post action decorator hook points. The active state key is configurable via
+            the <code>_open_state</code> class attribute.
+        </p>
+
+        <div class="section-title">Features</div>
+        <ul class="feature-list">
+            <li>Adds <code>open_ok</code> policy field computed automatically for the active user</li>
+            <li>Auto-injects the <em>Start</em> button into the form header with inline visibility expression</li>
+            <li>Auto-injects <em>On Progress</em> state badge decorator (primary colour) on tree views</li>
+            <li>Auto-injects open state filter widget on search views</li>
+            <li>Provides <code>action_open</code> with pre/post check and pre/post action decorator hooks</li>
+            <li>Posts an automatic chatter notification on start action</li>
+            <li>Configurable sequence creation tied to the open state via <code>_create_sequence_state</code></li>
+        </ul>
+
+        <div class="card-row">
+            <div class="card">
+                <div class="card-label">Version</div>
+                <div class="card-value">15.0.1.0.0</div>
+            </div>
+            <div class="card">
+                <div class="card-label">License</div>
+                <div class="card-value">AGPL-3</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Author</div>
+                <div class="card-value">PT. Simetri Sinergi Indonesia</div>
+            </div>
+        </div>
+
+        <div class="section-title">Contributors</div>
+        <div class="contributor-block">
+            <div class="name">Andhitia Rama</div>
+            <div class="email">andhitia.r@gmail.com</div>
+        </div>
+
+        <div class="section-title">Links</div>
+        <div class="link-row">
+            <a class="link-btn" href="https://github.com/simetri-sinergi-id/ssi-mixin">Source Code</a>
+            <a class="link-btn" href="https://github.com/simetri-sinergi-id/ssi-mixin/issues">Bug Tracker</a>
+            <a class="link-btn" href="https://github.com/simetri-sinergi-id">PT. Simetri Sinergi Indonesia</a>
+        </div>
+
+        <footer>
+            Copyright &copy; 2026 PT. Simetri Sinergi Indonesia &mdash;
+            Licensed under <a href="https://www.gnu.org/licenses/agpl-3.0-standalone.html" style="color:#10b981;">AGPL-3.0</a>
+        </footer>
+    </div>
+</body>
+</html>

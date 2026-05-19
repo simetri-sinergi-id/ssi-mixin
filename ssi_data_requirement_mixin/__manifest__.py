@@ -5,10 +5,10 @@
 {
     "name": "Data Requirement Mixin",
     "version": "14.0.3.9.0",
-    "website": "https://simetri-sinergi.id",
+    "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
-    "installable": True,
+    "installable": False,
     "application": True,
     "depends": [
         "base",

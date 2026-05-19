@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiple Approval Mixin</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 24px;
+      }
+
+      .header {
+        text-align: center;
+        padding: 60px 0 40px;
+        border-bottom: 1px solid #1e293b;
+        margin-bottom: 48px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #10b981;
+        margin-bottom: 12px;
+      }
+
+      .header p {
+        font-size: 1.1rem;
+        color: #94a3b8;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .badge {
+        display: inline-block;
+        background-color: #10b981;
+        color: #0f172a;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        margin-bottom: 20px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        margin-bottom: 48px;
+      }
+
+      .section h2 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #10b981;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #1e293b;
+      }
+
+      .section p {
+        color: #cbd5e1;
+        margin-bottom: 12px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+        margin-top: 16px;
+      }
+
+      .feature-card {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .feature-card h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #10b981;
+        margin-bottom: 8px;
+      }
+
+      .feature-card p {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin: 0;
+      }
+
+      .model-list {
+        list-style: none;
+        margin-top: 12px;
+      }
+
+      .model-list li {
+        background-color: #1e293b;
+        border-left: 3px solid #10b981;
+        padding: 10px 16px;
+        margin-bottom: 8px;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .model-list li code {
+        color: #10b981;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+      }
+
+      .model-list li span {
+        color: #94a3b8;
+        font-size: 0.85rem;
+        display: block;
+        margin-top: 4px;
+      }
+
+      .contributors {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .contributor-tag {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        color: #94a3b8;
+      }
+
+      .maintainer {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 12px;
+      }
+
+      .maintainer-info h3 {
+        color: #e2e8f0;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .maintainer-info p {
+        color: #94a3b8;
+        font-size: 0.85rem;
+        margin: 0;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 32px 0;
+        border-top: 1px solid #1e293b;
+        color: #475569;
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="badge">Odoo 15.0</div>
+        <h1>Multiple Approval Mixin</h1>
+        <p>
+          Configurable multi-step approval workflow for any transactional
+          document. Define approval sequences, conditions, and approvers using
+          templates with domain or Python code.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Overview</h2>
+        <p>
+          The <strong>Multiple Approval Mixin</strong> provides a reusable
+          approval framework that can be applied to any Odoo transactional
+          document. Configure approval stages with ordered steps, specify
+          approvers by user or group, and optionally enforce sequential
+          approval.
+        </p>
+        <p>
+          The mixin automatically injects an approval page into form views and
+          provides action buttons (Approve, Reject, Restart Approval) based on
+          the document's policy state.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Template-Based Configuration</h3>
+            <p>
+              Define approval templates per model with ordered detail lines,
+              each specifying approvers and optional conditions.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3>Sequential or Parallel Approval</h3>
+            <p>
+              Choose between sequential approval (by tier order) or parallel
+              approval where all approvers can act simultaneously.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3>Flexible Approver Selection</h3>
+            <p>
+              Define approvers by specific users, groups, both, or via Python
+              code for dynamic runtime resolution.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3>Auto Form View Injection</h3>
+            <p>
+              Automatically injects the approvals page and action buttons into
+              any form view via the decorator mixin.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3>Condition Evaluation</h3>
+            <p>
+              Templates can be conditionally applied using domain filters or
+              Python expressions with full access to the document context.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3>Approval Lifecycle Hooks</h3>
+            <p>
+              Pre/post approve and reject hooks allow custom validation and
+              actions at each stage of the approval workflow.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Models</h2>
+        <ul class="model-list">
+          <li>
+            <code>approval.template</code>
+            <span>
+              Master template defining the approval sequence for a model.
+              Supports domain and Python computation methods.
+            </span>
+          </li>
+          <li>
+            <code>approval.template_detail</code>
+            <span>
+              One approval step within a template. Defines approvers (users,
+              groups, or Python code) and sequence order.
+            </span>
+          </li>
+          <li>
+            <code>approval.approval</code>
+            <span>
+              Concrete approval record created per step when a document enters
+              the approval flow. Tracks status and approver.
+            </span>
+          </li>
+          <li>
+            <code>mixin.multiple_approval</code>
+            <span>
+              Abstract mixin adding the approval page, approve/reject actions,
+              and automatic form view injection via mixin.decorator.
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Installation</h2>
+        <p>
+          Clone the branch <strong>15.0</strong> of the repository
+          <a
+            href="https://github.com/simetri-sinergi-id/ssi-mixin"
+            style="color: #10b981"
+            >https://github.com/simetri-sinergi-id/ssi-mixin</a
+          >, add the path to your Odoo configuration, update the module list,
+          and install <em>Multiple Approval Mixin</em> from the Apps menu.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Contributors</h2>
+        <div class="contributors">
+          <span class="contributor-tag"
+            >Michael Viriyananda &lt;viriyananda.michael@gmail.com&gt;</span
+          >
+          <span class="contributor-tag"
+            >Andhitia Rama &lt;andhitia.r@gmail.com&gt;</span
+          >
+          <span class="contributor-tag"
+            >Asrul Bastian Yunas &lt;asrulbastianyunas@gmail.com&gt;</span
+          >
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Maintainer</h2>
+        <div class="maintainer">
+          <div class="maintainer-info">
+            <h3>PT. Simetri Sinergi Indonesia</h3>
+            <p>
+              This module is maintained by PT. Simetri Sinergi Indonesia. Visit
+              us at
+              <a
+                href="https://github.com/simetri-sinergi-id"
+                style="color: #10b981"
+                >github.com/simetri-sinergi-id</a
+              >.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>
+          Copyright &copy; 2026 PT. Simetri Sinergi Indonesia &mdash; License
+          AGPL-3.0 or later
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

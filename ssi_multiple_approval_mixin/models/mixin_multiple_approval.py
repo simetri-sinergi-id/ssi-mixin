@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from inspect import getmembers
 
@@ -246,8 +245,10 @@ class MixinMultipleApproval(models.AbstractModel):
             method_name = "_evaluate_approval_" + template.computation_method
             result = getattr(self, method_name)(template)
         except Exception as error:
-            msg_err = _("Error evaluating approval conditions.\n %s") % error
-            raise UserError(msg_err)
+            raise UserError(
+                _("Error evaluating approval conditions.\n %(error)s")
+                % {"error": error}
+            ) from error
         return result
 
     def _evaluate_approval_use_python(self, template):
@@ -258,7 +259,9 @@ class MixinMultipleApproval(models.AbstractModel):
             safe_eval(template.python_code, localdict, mode="exec", nocopy=True)
             res = localdict["result"]
         except Exception as error:
-            raise UserError(_("Error evaluating conditions.\n %s") % error)
+            raise UserError(
+                _("Error evaluating conditions.\n %(error)s") % {"error": error}
+            ) from error
         return res
 
     def _evaluate_approval_use_domain(self, template):
@@ -323,7 +326,7 @@ class MixinMultipleApproval(models.AbstractModel):
 
     def _prepare_approve_action_notification(self):
         self.ensure_one()
-        msg = "%s %s approved" % (self._description, self.display_name)
+        msg = f"{self._description} {self.display_name} approved"
         return msg
 
     def _check_all_approve(self):
@@ -399,16 +402,18 @@ class MixinMultipleApproval(models.AbstractModel):
             return True
 
         if not self.approve_ok:
-            error_message = """
-            Context: Approve %s
-            Database ID: %s
-            Problem: Document is not allowed to approve
-            Solution: Check approve policy prerequisite
-            """ % (
-                self._description.lower(),
-                self.id,
+            raise UserError(
+                _(
+                    "Context: Approve %(description)s\n"
+                    "Database ID: %(id)s\n"
+                    "Problem: Document is not allowed to approve\n"
+                    "Solution: Check approve policy prerequisite"
+                )
+                % {
+                    "description": self._description.lower(),
+                    "id": self.id,
+                }
             )
-            raise UserError(_(error_message))
 
     def _run_pre_reject_check(self):
         self.ensure_one()
@@ -469,7 +474,7 @@ class MixinMultipleApproval(models.AbstractModel):
 
     def _prepare_reject_action_notification(self):
         self.ensure_one()
-        msg = "%s %s rejected" % (self._description, self.display_name)
+        msg = f"{self._description} {self.display_name} rejected"
         return msg
 
     def _check_reject_policy(self):
@@ -482,16 +487,18 @@ class MixinMultipleApproval(models.AbstractModel):
             return True
 
         if not self.reject_ok:
-            error_message = """
-            Context: Reject %s
-            Database ID: %s
-            Problem: Document is not allowed to reject
-            Solution: Check reject policy prerequisite
-            """ % (
-                self._description.lower(),
-                self.id,
+            raise UserError(
+                _(
+                    "Context: Reject %(description)s\n"
+                    "Database ID: %(id)s\n"
+                    "Problem: Document is not allowed to reject\n"
+                    "Solution: Check reject policy prerequisite"
+                )
+                % {
+                    "description": self._description.lower(),
+                    "id": self.id,
+                }
             )
-            raise UserError(_(error_message))
 
     def _check_restart_approval_policy_policy(self):
         self.ensure_one()
@@ -503,16 +510,18 @@ class MixinMultipleApproval(models.AbstractModel):
             return True
 
         if not self.restart_approval_ok:
-            error_message = """
-            Context: Restart approval %s
-            Database ID: %s
-            Problem: Document is not allowed to restart approval
-            Solution: Check restart approval policy prerequisite
-            """ % (
-                self._description.lower(),
-                self.id,
+            raise UserError(
+                _(
+                    "Context: Restart approval %(description)s\n"
+                    "Database ID: %(id)s\n"
+                    "Problem: Document is not allowed to restart approval\n"
+                    "Solution: Check restart approval policy prerequisite"
+                )
+                % {
+                    "description": self._description.lower(),
+                    "id": self.id,
+                }
             )
-            raise UserError(_(error_message))
 
     def action_reload_approval_template(self):
         for rec in self.sudo():

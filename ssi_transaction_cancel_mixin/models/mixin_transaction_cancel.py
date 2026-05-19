@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from inspect import getmembers
 
@@ -37,6 +36,7 @@ class MixinTransactionCancel(models.AbstractModel):
         string="Cancel Reason",
         comodel_name="base.cancel_reason",
         readonly=True,
+        help="Reason for cancelling this document.",
     )
 
     def _compute_policy(self):
@@ -124,7 +124,7 @@ class MixinTransactionCancel(models.AbstractModel):
 
     def _prepare_cancel_action_notification(self):
         self.ensure_one()
-        msg = "%s %s cancelled" % (self._description, self.display_name)
+        msg = f"{self._description} {self.display_name} cancelled"
         return msg
 
     def _check_cancel_policy(self):
@@ -137,17 +137,19 @@ class MixinTransactionCancel(models.AbstractModel):
             return True
 
         if not self.cancel_ok:
-            error_message = """
-                Document Type: %s
-                Context: Cancel document
-                Database ID: %s
-                Problem: Document is not allowed to cancel
-                Solution: Check cancel policy prerequisite
-                """ % (
-                self._description.lower(),
-                self.id,
+            raise UserError(
+                _(
+                    "Document Type: %(description)s\n"
+                    "Context: Cancel document\n"
+                    "Database ID: %(id)s\n"
+                    "Problem: Document is not allowed to cancel\n"
+                    "Solution: Check cancel policy prerequisite"
+                )
+                % {
+                    "description": self._description.lower(),
+                    "id": self.id,
+                }
             )
-            raise UserError(_(error_message))
 
     def _prepare_restart_data(self):
         self.ensure_one()

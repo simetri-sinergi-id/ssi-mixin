@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Policy Mixin</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0f172a;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2.2rem;
+			color: #10b981;
+			margin-bottom: 8px;
+		}
+		h2 {
+			font-size: 1.2rem;
+			color: #10b981;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 0;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+		}
+		.section {
+			background: #1e293b;
+			border-radius: 10px;
+			padding: 20px 24px;
+			margin-bottom: 20px;
+		}
+		a {
+			color: #10b981;
+		}
+		ul, ol {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+		}
+		code {
+			background: #0f172a;
+			border-radius: 4px;
+			padding: 1px 6px;
+			font-size: 0.92em;
+		}
+		hr.tech-divider {
+			border: none;
+			border-top: 1px solid #334155;
+			margin: 32px 0 16px;
+		}
+		.footer {
+			text-align: center;
+			color: #64748b;
+			font-size: 0.9rem;
+			line-height: 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Policy Mixin</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>Policy Mixin</b> is a core mixin module in the
+				<b>@simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It provides a reusable abstract model — <code>mixin.policy</code> —
+				that implements a <b>policy-template mechanism</b> for controlling which
+				action buttons are available on a document at any given time.
+			</p>
+			<p>Each inheriting model declares boolean policy fields (e.g. <code>confirm_ok</code>,
+			<code>cancel_ok</code>) via <code>_get_policy_field</code> and links to a
+			<code>policy.template</code> that evaluates Python conditions against the current
+			record to set those fields automatically.</p>
+			<ul>
+				<li>
+					<b>policy.template</b> — master-data record holding Python evaluation code
+					(matching criteria) and ordered detail lines.
+				</li>
+				<li>
+					<b>policy.template.detail</b> — maps a policy field to its computed value
+					for records that match the template.
+				</li>
+				<li>
+					<b>action_reload_policy_template</b> — manually re-selects the active
+					template based on the record's current state.
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Abstract Mixin Design:</b> Inherit <code>mixin.policy</code> in any transactional model — no structural changes required.</li>
+				<li><b>Policy Template Resolution:</b> Automatically selects the correct <code>policy.template</code> based on model and matching criteria.</li>
+				<li><b>Python-Based Conditions:</b> Template detail lines evaluate arbitrary Python expressions against the current record.</li>
+				<li><b>Dynamic Button Visibility:</b> Boolean policy fields are recomputed whenever the policy template is reloaded.</li>
+				<li><b>Company-Scoped Templates:</b> Each template is scoped to a company, allowing multi-company policy configurations.</li>
+				<li><b>Reload Action:</b> <code>action_reload_policy_template</code> allows manual policy re-evaluation from the form view.</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>Use this mixin for any transactional document where button availability depends on configurable business rules:</p>
+			<ul>
+				<li><b>Sales / Purchase Orders:</b> Control which approval or cancellation buttons appear based on order state and amount.</li>
+				<li><b>HR Leave / Attendance:</b> Allow or deny actions depending on employee type or leave balance.</li>
+				<li><b>Warehouse Transfers:</b> Restrict validate/cancel based on stock availability or user role.</li>
+				<li><b>Accounting Documents:</b> Fine-grained control over posting, resetting, and cancellation of journal entries.</li>
+				<li><b>Any Stateful Document:</b> Any model with states that needs configurable per-state button policies.</li>
+			</ul>
+			<p>Simply set <code>_inherit = ["mixin.policy"]</code> on your model and define your policy fields and templates via the UI.</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>Clone branch <b>15.0</b> of the repository: <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">https://github.com/simetri-sinergi-id/ssi-mixin</a></li>
+				<li>Add the path to this repository in your Odoo configuration (<code>addons-path</code>).</li>
+				<li>Update the module list (ensure you are in developer mode).</li>
+				<li>Go to <i>Apps → Apps → Main Apps</i>, search for <i>Policy Mixin</i>, and install.</li>
+				<li>In your custom model:<br>
+					<code>_inherit = ["mixin.policy"]</code>
+				</li>
+				<li>Declare your policy fields via <code>_get_policy_field()</code> and configure <code>policy.template</code> records through the UI.</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Standalone?</b>
+					<span style="color:#f59e0b;">No — it is a mixin foundation. Install it as a dependency of your custom module.</span>
+				</li>
+				<li>
+					<b>Odoo Version?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>Multiple templates per model?</b>
+					<span style="color:#f59e0b;">Yes — templates have matching criteria (Python conditions) and only the first matching template applies to a given record.</span>
+				</li>
+				<li>
+					<b>Can templates differ per company?</b>
+					<span style="color:#f59e0b;">Yes — each policy template is scoped to a company, enabling multi-company policy configurations.</span>
+				</li>
+				<li>
+					<b>Contribute?</b>
+					<span style="color:#f59e0b;">Fork, branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>Bugs are tracked on <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>. In case of trouble, please check there if your issue has already been reported. If you spotted it first, help us smash it by providing detailed and welcomed feedback.</p>
+			<ul>
+				<li><b>Report Issues:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">Create a new issue</a> with detailed description and steps to reproduce.</li>
+				<li><b>Search Existing:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">Browse existing issues</a> to see if your problem has already been reported.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<p>This module is developed and maintained by PT. Simetri Sinergi Indonesia.</p>
+			<ul>
+				<li><b>Core Development:</b>
+					<ul>
+						<li>Michael Viriyananda <a href="mailto:viriyananda.michael@gmail.com" style="color:#10b981;">&lt;viriyananda.michael@gmail.com&gt;</a></li>
+						<li>Andhitia Rama <a href="mailto:andhitia.r@gmail.com" style="color:#10b981;">&lt;andhitia.r@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b> <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for the development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a>
+			<br>
+			<span>
+				Released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.
+			</span>
+		</div>
+	</div>
+</body>
+</html>

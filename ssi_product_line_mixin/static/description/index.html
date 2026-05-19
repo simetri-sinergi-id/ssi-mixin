@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Product Line Mixin</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0f172a;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2.2rem;
+			color: #10b981;
+			margin-bottom: 8px;
+		}
+		h2 {
+			font-size: 1.2rem;
+			color: #10b981;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 0;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+		}
+		.section {
+			background: #1e293b;
+			border-radius: 10px;
+			padding: 20px 24px;
+			margin-bottom: 20px;
+		}
+		a {
+			color: #10b981;
+		}
+		ul, ol {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+		}
+		code {
+			background: #0f172a;
+			border-radius: 4px;
+			padding: 1px 6px;
+			font-size: 0.92em;
+		}
+		hr.tech-divider {
+			border: none;
+			border-top: 1px solid #334155;
+			margin: 32px 0 16px;
+		}
+		.footer {
+			text-align: center;
+			color: #64748b;
+			font-size: 0.9rem;
+			line-height: 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Product Line Mixin</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>Product Line Mixin</b> is a foundational mixin module in the
+				<b>@simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It provides a reusable abstract model — <code>mixin.product_line</code> —
+				for product-line child records (detail rows) in transactional documents.
+			</p>
+			<p>Any model that inherits from <code>mixin.product_line</code> automatically gains:</p>
+			<ul>
+				<li>
+					<b>Product &amp; Description:</b> <code>product_id</code>
+					(<code>product.product</code>) and <code>name</code> (description),
+					auto-filled via onchange from the selected product.
+				</li>
+				<li>
+					<b>Quantity &amp; UoM:</b> <code>uom_quantity</code>, <code>uom_id</code>
+					(with <code>allowed_uom_ids</code> filtered by the product's UoM category),
+					and a computed <code>quantity</code> converted to the product's base UoM.
+				</li>
+				<li>
+					<b>Sequence:</b> <code>sequence</code> field for ordering lines,
+					auto-filled from the product's sequence.
+				</li>
+				<li>
+					<b>Note:</b> <code>note</code> — free-text remark per line.
+				</li>
+				<li>
+					<b>Configurable name source:</b> set <code>_field_for_name</code> on a
+					concrete model to control which product field populates <code>name</code>
+					(default: <code>display_name</code>).
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Abstract Mixin Design:</b> Inherit <code>mixin.product_line</code> in any transaction line model — no structural view changes required.</li>
+				<li><b>Auto-fill Description &amp; UoM:</b> Onchange handlers automatically populate <code>name</code> and <code>uom_id</code> when a product is selected.</li>
+				<li><b>UoM Category Filter:</b> <code>allowed_uom_ids</code> limits UoM selection to the product's UoM category, preventing invalid conversions.</li>
+				<li><b>Base-UoM Quantity:</b> <code>quantity</code> is always computed in the product's base UoM for consistent downstream calculations.</li>
+				<li><b>Configurable Name Source:</b> Override <code>_field_for_name</code> to use any product field (e.g., <code>name</code>, <code>default_code</code>) as the line description.</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>Use this mixin for any transaction document that requires product detail lines:</p>
+			<ul>
+				<li><b>Sale Order Lines:</b> Standardise product + quantity + UoM on custom sale order line models.</li>
+				<li><b>Purchase Order Lines:</b> Reuse the same line structure on purchase or RFQ models.</li>
+				<li><b>Warehouse Transfer Lines:</b> Track product, quantity, and UoM for stock movements.</li>
+				<li><b>Work Order Lines:</b> Define material or service lines on manufacturing work orders.</li>
+				<li><b>Any Transaction Line:</b> Any child model that needs product + quantity + UoM fields.</li>
+			</ul>
+			<p>Simply set <code>_inherit = ["mixin.product_line"]</code> on your line model and extend further with price or account mixins as needed.</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>Clone branch <b>15.0</b> of the repository: <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">https://github.com/simetri-sinergi-id/ssi-mixin</a></li>
+				<li>Add the path to this repository in your Odoo configuration (<code>addons-path</code>).</li>
+				<li>Update the module list (ensure you are in developer mode).</li>
+				<li>Go to <i>Apps &rarr; Apps &rarr; Main Apps</i>, search for <i>Product Line Mixin</i>, and install.</li>
+				<li>In your custom line model:<br>
+					<code>_inherit = ["mixin.product_line"]</code>
+				</li>
+				<li>Optionally set <code>_field_for_name = "name"</code> (or another product field) to control the auto-filled description.</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Standalone?</b>
+					<span style="color:#f59e0b;">No — it is a mixin foundation. Install it as a dependency of your custom module.</span>
+				</li>
+				<li>
+					<b>Odoo Version?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>Can I change which product field fills the description?</b>
+					<span style="color:#f59e0b;">Yes — set <code>_field_for_name = "default_code"</code> (or any product field) on your concrete model.</span>
+				</li>
+				<li>
+					<b>Does it handle UoM conversion?</b>
+					<span style="color:#f59e0b;">Yes — <code>quantity</code> is always converted to the product's base UoM using Odoo's built-in <code>_compute_quantity</code>.</span>
+				</li>
+				<li>
+					<b>Contribute?</b>
+					<span style="color:#f59e0b;">Fork, branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>Bugs are tracked on <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>. In case of trouble, please check there if your issue has already been reported. If you spotted it first, help us smash it by providing detailed and welcomed feedback.</p>
+			<ul>
+				<li><b>Report Issues:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">Create a new issue</a> with detailed description and steps to reproduce.</li>
+				<li><b>Search Existing:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">Browse existing issues</a> to see if your problem has already been reported.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<p>This module is developed and maintained by PT. Simetri Sinergi Indonesia.</p>
+			<ul>
+				<li><b>Core Development:</b>
+					<ul>
+						<li>Andhitia Rama <a href="mailto:andhitia.r@gmail.com" style="color:#10b981;">&lt;andhitia.r@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b> <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for the development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a>
+			<br>
+			<span>
+				Released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.
+			</span>
+		</div>
+	</div>
+</body>
+</html>

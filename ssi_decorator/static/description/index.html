@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SSI - Decorator</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0f172a;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2.2rem;
+			color: #10b981;
+			margin-bottom: 8px;
+		}
+		h2 {
+			font-size: 1.2rem;
+			color: #10b981;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 0;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+		}
+		.section {
+			background: #1e293b;
+			border-radius: 10px;
+			padding: 20px 24px;
+			margin-bottom: 20px;
+		}
+		a {
+			color: #10b981;
+		}
+		ul, ol {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+		}
+		code {
+			background: #0f172a;
+			border-radius: 4px;
+			padding: 1px 6px;
+			font-size: 0.92em;
+		}
+		hr.tech-divider {
+			border: none;
+			border-top: 1px solid #334155;
+			margin: 32px 0 16px;
+		}
+		.footer {
+			text-align: center;
+			color: #64748b;
+			font-size: 0.9rem;
+			line-height: 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>SSI - Decorator</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>SSI - Decorator</b> is a foundational utility module in the
+				<b>@simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It provides two complementary tools: a <b>view-decoration framework</b>
+				and a collection of <b>Python method decorators</b> for declarative
+				business-action hooks.
+			</p>
+			<p>Any model that inherits from <code>mixin.decorator</code> can define methods
+			marked with the SSI decorator tags to programmatically inject XML fragments into
+			views at runtime, without writing XML <code>inherit</code> records:</p>
+			<ul>
+				<li>
+					<b><code>_insert_on_form_view</code></b> — called to modify the form-view XML.
+				</li>
+				<li>
+					<b><code>_insert_on_tree_view</code></b> — called to modify the list-view XML.
+				</li>
+				<li>
+					<b><code>_insert_on_search_view</code></b> — called to modify the search-view XML.
+				</li>
+			</ul>
+			<p>Additionally, <code>ssi_decorator.py</code> exports a full set of Python
+			decorator factories for hooking into transaction lifecycle actions (confirm,
+			approve, reject, open, ready, done, cancel, restart, terminate, win, lost, etc.).</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Runtime View Injection:</b> Inject XML fragments into form, list, and search views via Python methods — no XML inherit records needed.</li>
+				<li><b>Declarative Discovery:</b> The mixin auto-discovers decorated methods via introspection during <code>fields_view_get</code> and calls them in sequence.</li>
+				<li><b>QWeb Fragment Support:</b> <code>_add_view_element</code> renders a QWeb template and inserts it before, after, or inside a target xpath node.</li>
+				<li><b>Transaction Hook Decorators:</b> A full library of <code>pre_*/post_*</code> decorator factories for all standard transaction lifecycle stages.</li>
+				<li><b>Zero Dependencies:</b> Depends only on <code>base</code> — suitable as a lightweight foundation for all other SSI mixin modules.</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>Use this module as a building block for any SSI mixin that needs to dynamically extend views or hook into action pipelines:</p>
+			<ul>
+				<li><b>Dynamic Field Injection:</b> Add fields to a form view from a mixin without touching the base module's XML.</li>
+				<li><b>Conditional Button Rendering:</b> Insert action buttons into list or form views based on model-level logic.</li>
+				<li><b>Pre/Post Action Hooks:</b> Run validation or side-effect logic before and after confirm, approve, cancel, and other business actions.</li>
+				<li><b>Cross-Module View Extension:</b> Extend views from other modules entirely in Python — useful for mixin-based architectures.</li>
+			</ul>
+			<p>Inherit <code>mixin.decorator</code> in your model and mark methods with the appropriate decorator tags, or import the hook decorators from <code>ssi_decorator</code> directly.</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>Clone branch <b>15.0</b> of the repository: <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">https://github.com/simetri-sinergi-id/ssi-mixin</a></li>
+				<li>Add the path to this repository in your Odoo configuration (<code>addons-path</code>).</li>
+				<li>Update the module list (ensure you are in developer mode).</li>
+				<li>Go to <i>Apps → Apps → Main Apps</i>, search for <i>SSI - Decorator</i>, and install.</li>
+				<li>In your custom model:<br>
+					<code>_inherit = ["mixin.decorator"]</code>
+				</li>
+				<li>Define methods and mark them with <code>@insert_on_form_view()</code>, <code>@insert_on_tree_view()</code>, or <code>@insert_on_search_view()</code> from <code>ssi_decorator</code>.</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Standalone?</b>
+					<span style="color:#f59e0b;">No — it is a mixin foundation. Install it as a dependency of your custom module.</span>
+				</li>
+				<li>
+					<b>Odoo Version?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>Can I use the hook decorators without inheriting <code>mixin.decorator</code>?</b>
+					<span style="color:#f59e0b;">Yes — import <code>from odoo.addons.ssi_decorator import ssi_decorator</code> and use the decorator factories directly in any model.</span>
+				</li>
+				<li>
+					<b>What order are decorated methods called in?</b>
+					<span style="color:#f59e0b;">They are discovered via <code>inspect.getmembers</code> and called in the order returned, which is alphabetical by method name.</span>
+				</li>
+				<li>
+					<b>Contribute?</b>
+					<span style="color:#f59e0b;">Fork, branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>Bugs are tracked on <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>. In case of trouble, please check there if your issue has already been reported. If you spotted it first, help us smash it by providing detailed and welcomed feedback.</p>
+			<ul>
+				<li><b>Report Issues:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">Create a new issue</a> with detailed description and steps to reproduce.</li>
+				<li><b>Search Existing:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">Browse existing issues</a> to see if your problem has already been reported.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<p>This module is developed and maintained by PT. Simetri Sinergi Indonesia.</p>
+			<ul>
+				<li><b>Core Development:</b>
+					<ul>
+						<li>Michael Viriyananda <a href="mailto:viriyananda.michael@gmail.com" style="color:#10b981;">&lt;viriyananda.michael@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b> <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for the development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a>
+			<br>
+			<span>
+				Released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.
+			</span>
+		</div>
+	</div>
+</body>
+</html>
