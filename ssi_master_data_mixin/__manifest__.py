@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Master Data Mixin",
-    "version": "15.0.1.1.0",
+    "version": "15.0.1.1.1",
     "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
