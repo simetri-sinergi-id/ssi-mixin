@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -29,8 +29,24 @@ msgid "Add Custom Suffix"
 msgstr ""
 
 #. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__note
+msgid "Additional notes or remarks about this sequence template."
+msgstr ""
+
+#. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__sequence_field_id
+msgid ""
+"Char field on the target model where the generated sequence will be stored."
+msgstr ""
+
+#. module: ssi_sequence_mixin
 #: model:ir.model.fields,field_description:ssi_sequence_mixin.field_sequence_template__company_id
 msgid "Company"
+msgstr ""
+
+#. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__company_id
+msgid "Company this sequence template belongs to."
 msgstr ""
 
 #. module: ssi_sequence_mixin
@@ -49,12 +65,21 @@ msgid "Created on"
 msgstr ""
 
 #. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__state
+msgid "Current state of the sequence template."
+msgstr ""
+
+#. module: ssi_sequence_mixin
 #: model:ir.model.fields,field_description:ssi_sequence_mixin.field_sequence_template__date_field_id
 msgid "Date Field"
 msgstr ""
 
 #. module: ssi_sequence_mixin
-#: model:ir.model.fields,field_description:ssi_sequence_mixin.field_mixin_sequence__display_name
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__date_field_id
+msgid "Date or datetime field used to compute the sequence period."
+msgstr ""
+
+#. module: ssi_sequence_mixin
 #: model:ir.model.fields,field_description:ssi_sequence_mixin.field_sequence_template__display_name
 msgid "Display Name"
 msgstr ""
@@ -71,6 +96,11 @@ msgid "Domain Based Computation"
 msgstr ""
 
 #. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__domain
+msgid "Domain filter to determine if this template applies to the document."
+msgstr ""
+
+#. module: ssi_sequence_mixin
 #: model:ir.model.fields.selection,name:ssi_sequence_mixin.selection__sequence_template__state__draft
 msgid "Draft"
 msgstr ""
@@ -78,58 +108,54 @@ msgstr ""
 #. module: ssi_sequence_mixin
 #: code:addons/ssi_sequence_mixin/models/mixin_sequence.py:0
 #: code:addons/ssi_sequence_mixin/models/mixin_sequence.py:0
-#: code:addons/ssi_sequence_mixin/models/mixin_sequence.py:0
-#: code:addons/ssi_sequence_mixin/models/mixin_sequence.py:0
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #, python-format
 msgid ""
 "Error evaluating conditions.\n"
-" %s"
+" %(error)s"
 msgstr ""
 
 #. module: ssi_sequence_mixin
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #, python-format
 msgid ""
 "Error on convert prefix.\n"
-" %s"
+" %(error)s"
 msgstr ""
 
 #. module: ssi_sequence_mixin
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #, python-format
 msgid ""
 "Error on convert suffix.\n"
-" %s"
+" %(error)s"
 msgstr ""
 
 #. module: ssi_sequence_mixin
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #, python-format
 msgid ""
 "Error on get prefix.\n"
-" %s"
+" %(error)s"
 msgstr ""
 
 #. module: ssi_sequence_mixin
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #, python-format
 msgid ""
 "Error on get suffix.\n"
-" %s"
+" %(error)s"
 msgstr ""
 
 #. module: ssi_sequence_mixin
-#: model:ir.model.fields,field_description:ssi_sequence_mixin.field_mixin_sequence__id
 #: model:ir.model.fields,field_description:ssi_sequence_mixin.field_sequence_template__id
 msgid "ID"
+msgstr ""
+
+#. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__active
+msgid "Inactive templates are excluded from sequence generation."
 msgstr ""
 
 #. module: ssi_sequence_mixin
@@ -138,7 +164,6 @@ msgid "Initial String"
 msgstr ""
 
 #. module: ssi_sequence_mixin
-#: model:ir.model.fields,field_description:ssi_sequence_mixin.field_mixin_sequence____last_update
 #: model:ir.model.fields,field_description:ssi_sequence_mixin.field_sequence_template____last_update
 msgid "Last Modified on"
 msgstr ""
@@ -154,6 +179,16 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__computation_method
+msgid "Method used to determine whether this template applies to a document."
+msgstr ""
+
+#. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__sequence_selection_method
+msgid "Method used to select the ir.sequence to use for numbering."
+msgstr ""
+
+#. module: ssi_sequence_mixin
 #: model:ir.model,name:ssi_sequence_mixin.model_mixin_sequence
 msgid "Mixin Object for Sequence Policy"
 msgstr ""
@@ -165,14 +200,34 @@ msgid "Model"
 msgstr ""
 
 #. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__model_id
+msgid "Model that this sequence template applies to."
+msgstr ""
+
+#. module: ssi_sequence_mixin
 #: model:ir.model.fields,field_description:ssi_sequence_mixin.field_sequence_template__name
 msgid "Name"
+msgstr ""
+
+#. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__name
+msgid "Name of the sequence template."
 msgstr ""
 
 #. module: ssi_sequence_mixin
 #: model:ir.model.fields,field_description:ssi_sequence_mixin.field_sequence_template__note
 #: model_terms:ir.ui.view,arch_db:ssi_sequence_mixin.sequence_template_view_form
 msgid "Note"
+msgstr ""
+
+#. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__initial_string
+msgid "Placeholder value used before the sequence number is generated."
+msgstr ""
+
+#. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__sequence
+msgid "Priority order of this template; lower number = higher priority."
 msgstr ""
 
 #. module: ssi_sequence_mixin
@@ -239,6 +294,11 @@ msgid "States"
 msgstr ""
 
 #. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__model
+msgid "Technical model name (auto-computed from Referenced Model)."
+msgstr ""
+
+#. module: ssi_sequence_mixin
 #: model_terms:ir.ui.view,arch_db:ssi_sequence_mixin.sequence_template_view_form
 msgid "Template Computation"
 msgstr ""
@@ -246,4 +306,21 @@ msgstr ""
 #. module: ssi_sequence_mixin
 #: model:ir.ui.menu,name:ssi_sequence_mixin.sequence_template_menu
 msgid "Templates"
+msgstr ""
+
+#. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__sequence_id
+msgid "The ir.sequence used when sequence selection method is 'Sequence'."
+msgstr ""
+
+#. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__add_custom_prefix
+msgid ""
+"When enabled, a custom prefix is prepended to the generated sequence number."
+msgstr ""
+
+#. module: ssi_sequence_mixin
+#: model:ir.model.fields,help:ssi_sequence_mixin.field_sequence_template__add_custom_suffix
+msgid ""
+"When enabled, a custom suffix is appended to the generated sequence number."
 msgstr ""
