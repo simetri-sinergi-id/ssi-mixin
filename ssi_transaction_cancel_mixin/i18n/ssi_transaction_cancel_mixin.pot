@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -125,10 +125,7 @@ msgid "Cancellation reason:"
 msgstr ""
 
 #. module: ssi_transaction_cancel_mixin
-#: model:ir.model.fields.selection,name:ssi_transaction_cancel_mixin.selection__data_requirement__state__cancel
-#: model:ir.model.fields.selection,name:ssi_transaction_cancel_mixin.selection__data_requirement_package__state__cancel
 #: model:ir.model.fields.selection,name:ssi_transaction_cancel_mixin.selection__mixin_transaction_cancel__state__cancel
-#: model:ir.model.fields.selection,name:ssi_transaction_cancel_mixin.selection__mixin_transaction_queue_cancel__state__cancel
 msgid "Cancelled"
 msgstr ""
 
@@ -176,19 +173,24 @@ msgstr ""
 #. module: ssi_transaction_cancel_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_base_cancel_reason__display_name
 #: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_base_select_cancel_reason__display_name
-#: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_ir_model__display_name
 #: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: ssi_transaction_cancel_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__message_follower_ids
-msgid "Followers"
+#: code:addons/ssi_transaction_cancel_mixin/models/mixin_transaction_cancel.py:0
+#, python-format
+msgid ""
+"Document Type: %(description)s\n"
+"Context: Cancel document\n"
+"Database ID: %(id)s\n"
+"Problem: Document is not allowed to cancel\n"
+"Solution: Check cancel policy prerequisite"
 msgstr ""
 
 #. module: ssi_transaction_cancel_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__message_channel_ids
-msgid "Followers (Channels)"
+#: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__message_follower_ids
+msgid "Followers"
 msgstr ""
 
 #. module: ssi_transaction_cancel_mixin
@@ -207,10 +209,13 @@ msgid "Global Use"
 msgstr ""
 
 #. module: ssi_transaction_cancel_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: ssi_transaction_cancel_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_base_cancel_reason__id
 #: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_base_select_cancel_reason__id
-#: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_ir_model__id
-#: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__id
 msgid "ID"
 msgstr ""
 
@@ -243,8 +248,6 @@ msgstr ""
 #. module: ssi_transaction_cancel_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_base_cancel_reason____last_update
 #: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_base_select_cancel_reason____last_update
-#: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_ir_model____last_update
-#: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel____last_update
 msgid "Last Modified on"
 msgstr ""
 
@@ -356,6 +359,11 @@ msgid "Reason"
 msgstr ""
 
 #. module: ssi_transaction_cancel_mixin
+#: model:ir.model.fields,help:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__cancel_reason_id
+msgid "Reason for cancelling this document."
+msgstr ""
+
+#. module: ssi_transaction_cancel_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__user_id
 msgid "Responsible"
 msgstr ""
@@ -447,16 +455,6 @@ msgid ""
 "User that responsible to review document\n"
 "\n"
 "* Unless it configured to approve reviewer does not equal to approver"
-msgstr ""
-
-#. module: ssi_transaction_cancel_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: ssi_transaction_cancel_mixin
-#: model:ir.model.fields,help:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__website_message_ids
-msgid "Website communication history"
 msgstr ""
 
 #. module: ssi_transaction_cancel_mixin
