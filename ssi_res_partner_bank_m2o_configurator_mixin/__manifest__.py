@@ -5,10 +5,10 @@
 {
     "name": "res.partner.bank Many2one Configurator Mixin",
     "version": "14.0.1.0.0",
-    "website": "https://simetri-sinergi.id",
+    "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
-    "installable": True,
+    "installable": False,
     "depends": ["base", "ssi_decorator"],
     "data": [
         "templates/res_partner_bank_m2o_configurator_templates.xml",

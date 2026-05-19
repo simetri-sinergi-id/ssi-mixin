@@ -5,7 +5,7 @@
     "name": "Sequence Mixin",
     "version": "15.0.1.0.0",
     "category": "Administration",
-    "website": "https://simetri-sinergi.id",
+    "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
     "installable": True,

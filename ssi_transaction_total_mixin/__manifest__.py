@@ -4,10 +4,10 @@
 {
     "name": "Transaction Mixin - Total",
     "version": "14.0.1.0.1",
-    "website": "https://simetri-sinergi.id",
+    "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
-    "installable": True,
+    "installable": False,
     "depends": [
         "ssi_transaction_mixin",
     ],

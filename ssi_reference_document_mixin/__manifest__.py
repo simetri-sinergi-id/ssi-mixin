@@ -5,10 +5,10 @@
 {
     "name": "Reference Document Mixin",
     "version": "14.0.2.1.0",
-    "website": "https://simetri-sinergi.id",
+    "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
-    "installable": True,
+    "installable": False,
     "depends": [
         "ssi_master_data_mixin",
         "ssi_decorator",
