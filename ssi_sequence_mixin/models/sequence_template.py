@@ -177,18 +177,18 @@ class SequenceTemplate(models.Model):
     def onchange_date_field_id(self):
         self.date_field_id = False
 
-    @api.model
     def create_sequence(self, document):
         self.ensure_one()
-        ctx = {}
         result = False
         sequence_date = False
         sequence = self._evaluate_sequence(document)
         if sequence:
             if self.date_field_id:
                 sequence_date = getattr(document, self.date_field_id.name)
-                ctx = {"ir_sequence_date": sequence_date}
-            result = sequence.with_context(ctx).next_by_id()
+            if sequence_date:
+                result = sequence.next_by_id(sequence_date=sequence_date)
+            else:
+                result = sequence.next_by_id()
 
             if self.add_custom_prefix:
                 prefix = self._get_prefix_computation(document, sequence_date)
