@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2022 OpenSynergy Indonesia
-     Copyright 2022 PT. Simetri Sinergi Indonesia
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<!-- Copyright 2026 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
 <record id="reference_document_view_search" model="ir.ui.view">
     <field name="name">reference_document - search</field>
@@ -23,8 +22,9 @@
     <field name="mode">primary</field>
     <field name="arch" type="xml">
         <data>
-            <xpath expr="//field[1]" position="before">
+            <xpath expr="//field[@name='code']" position="before">
                 <field name="sequence" widget="handle" />
+                <field name="id" />
             </xpath>
             <xpath expr="//field[@name='name']" position="after">
                 <field name="category_id" />
