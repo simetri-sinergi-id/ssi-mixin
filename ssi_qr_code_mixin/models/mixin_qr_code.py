@@ -1,6 +1,6 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 OpenSynergy Indonesia
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import io
 import logging
 from base64 import b64encode
@@ -84,9 +84,6 @@ class MixinQRCode(models.AbstractModel):
     def _get_qr_standard_content(self):
         self.ensure_one()
         odoo_url = self.env["ir.config_parameter"].get_param("web.base.url")
-        document_url = "/web?#id=%d&view_type=form&model=%s" % (
-            self.id,
-            self._name,
-        )
+        document_url = f"/web?#id={self.id}&view_type=form&model={self._name}"
         full_url = odoo_url + document_url
         return full_url
