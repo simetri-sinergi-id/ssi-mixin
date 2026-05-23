@@ -18,7 +18,11 @@ class TestTransactionMixin(models.Model):
         "mixin.company_currency",
         "mixin.transaction_account_move_with_field",
         "mixin.account_move_single_line",
+        "mixin.custom_info",
     ]
+
+    # Custom Information Mixin attributes
+    _custom_info_create_page = True
 
     # Multiple Approval Attribute
     _approval_from_state = "draft"

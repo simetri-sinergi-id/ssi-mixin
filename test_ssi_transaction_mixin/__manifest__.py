@@ -18,6 +18,7 @@
         "ssi_product_line_price_mixin",
         "ssi_company_currency_mixin",
         "ssi_accounting_entry_mixin",
+        "ssi_custom_information_mixin",
     ],
     "data": [
         "security/ir.model.access.csv",
