@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Date Field With Callable Attribute</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 860px;
+            margin: 40px auto;
+            padding: 0 24px 48px;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #10b981;
+            border-bottom: 2px solid #1e293b;
+            padding-bottom: 12px;
+            margin-bottom: 32px;
+        }
+        .section {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin-bottom: 24px;
+        }
+        h2 {
+            font-size: 1.15rem;
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0;
+        }
+        .icon {
+            width: 22px;
+            height: 22px;
+            vertical-align: middle;
+        }
+        p, li {
+            line-height: 1.7;
+            color: #cbd5e1;
+        }
+        ul, ol {
+            padding-left: 1.4em;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        code {
+            background: #0f172a;
+            color: #10b981;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.92em;
+        }
+        a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .tech-divider {
+            border: none;
+            border-top: 1px solid #334155;
+            margin: 32px 0 16px;
+        }
+        .footer {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.88rem;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Custom Date Field With Callable Attribute</h1>
+
+        <div class="section">
+            <h2>
+                <img class="icon" src="../img/info.png" alt="Info">
+                Description
+            </h2>
+            <p>
+                <b>ssi_field_date_callable_attribute</b> provides a custom Odoo field class
+                — <code>DateCallable</code> (exposed as <code>fields.DateCallable</code>) — that extends
+                <code>fields.Date</code> to accept callable values for the <code>readonly</code>,
+                <code>required</code>, <code>string</code>, and <code>states</code> attributes.
+            </p>
+            <p>
+                This allows those attributes to be set to <code>@api.model</code> methods on the
+                model class so that subclasses can fully customise the field's behaviour
+                through class-level attribute overrides without redeclaring the field.
+                The field is primarily used by <code>ssi_duration_mixin</code> to provide fully
+                configurable <code>date_start</code> / <code>date_end</code> fields.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>
+                <img class="icon" src="../img/circuit.png" alt="Features">
+                Key Features
+            </h2>
+            <ul>
+                <li><b>Callable Attributes:</b> <code>readonly</code>, <code>required</code>, <code>string</code>, and
+                    <code>states</code> can be set to callable model methods.</li>
+                <li><b>Mixin-Friendly:</b> Enables subclasses to override field behaviour via
+                    class-level attribute overrides without redeclaring the field.</li>
+                <li><b>Drop-in Replacement:</b> <code>fields.DateCallable</code> is a direct subclass of
+                    <code>fields.Date</code> and behaves identically when no callable is used.</li>
+                <li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>
+                <img class="icon" src="../img/workflow.png" alt="Use Cases">
+                Use Cases / Context
+            </h2>
+            <ul>
+                <li><b>Duration Mixin:</b> Provides configurable <code>date_start</code> / <code>date_end</code>
+                    fields in <code>ssi_duration_mixin</code>.</li>
+                <li><b>Custom Modules:</b> Any module requiring dynamic field attribute resolution
+                    at setup time based on model-level methods.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>
+                <img class="icon" src="../img/download.png" alt="Install">
+                Installation &amp; Usage
+            </h2>
+            <ol>
+                <li>Clone the branch <b>15.0</b> of the repository:
+                    <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">
+                        https://github.com/simetri-sinergi-id/ssi-mixin
+                    </a>
+                </li>
+                <li>Add the path to this repository in your Odoo configuration
+                    (<code>addons-path</code>).</li>
+                <li>Update the module list (ensure you are in developer mode).</li>
+                <li>Go to menu <i>Apps → Apps → Main Apps</i>.</li>
+                <li>Search for <i>Custom Date Field With Callable Attribute</i> and install.</li>
+                <li>Declare a <code>fields.DateCallable</code> on your model and set
+                    <code>readonly</code>, <code>required</code>, <code>string</code>, or <code>states</code>
+                    to an <code>@api.model</code> method.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>
+                <img class="icon" src="../img/questions.png" alt="FAQs">
+                FAQ
+            </h2>
+            <ul>
+                <li>
+                    <b>Standalone?</b>
+                    <span style="color:#f59e0b;">Yes, but it is primarily intended as a dependency for
+                    <code>ssi_duration_mixin</code> and similar mixin modules.</span>
+                </li>
+                <li>
+                    <b>Odoo Version?</b>
+                    <span style="color:#f59e0b;">Odoo 15.0 or above.</span>
+                </li>
+                <li>
+                    <b>Contribute?</b>
+                    <span style="color:#f59e0b;">Fork, branch, and submit a pull request on
+                    <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>
+                <img class="icon" src="../img/bug.png" alt="Bug Tracker">
+                Bug Tracker
+            </h2>
+            <p>Bugs are tracked on
+                <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>.
+                In case of trouble, please check there if your issue has already been reported.
+                If you spotted it first, help us smash it by providing detailed and welcomed feedback.
+            </p>
+            <ul>
+                <li><b>Report Issues:</b>
+                    <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">
+                        Create a new issue
+                    </a> with detailed description and steps to reproduce.</li>
+                <li><b>Search Existing:</b>
+                    <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">
+                        Browse existing issues
+                    </a> to see if your problem has already been reported.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>
+                <img class="icon" src="../img/medal.png" alt="Credits">
+                Credits &amp; Contributors
+            </h2>
+            <ul>
+                <li><b>Core Development:</b>
+                    <ul>
+                        <li>Andhitia Rama <a href="mailto:andhitia.r@gmail.com" style="color:#10b981;">&lt;andhitia.r@gmail.com&gt;</a></li>
+                    </ul>
+                </li>
+                <li><b>Maintenance:</b>
+                    <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a>
+                </li>
+                <li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for the development
+                    guidelines and best practices.</li>
+            </ul>
+        </div>
+
+        <hr class="tech-divider">
+
+        <div class="footer">
+            &copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a>
+            <br>
+            <span>
+                Released under the
+                <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.
+            </span>
+        </div>
+    </div>
+</body>
+</html>
