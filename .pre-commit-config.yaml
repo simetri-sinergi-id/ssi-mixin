@@ -4,7 +4,6 @@ exclude: |
   ^ssi_currency_mixin/|
   ^ssi_data_requirement_mixin/|
   ^ssi_duration_mixin/|
-  ^ssi_partner_mixin/|
   ^ssi_pricelist_mixin/|
   ^ssi_product_line_account_mixin/|
   ^ssi_qr_code_mixin/|
