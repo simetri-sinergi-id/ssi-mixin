@@ -34,6 +34,13 @@
         <data>
             <xpath expr="//group[@name='header_right']" position="inside">
                 <field name="date" />
+                <field name="journal_id" />
+                <field name="currency_id" />
+                <field name="rate_inverted" />
+                <field name="rate" />
+                <field name="account_id" />
+                <field name="analytic_account_id" />
+                <field name="amount" />
             </xpath>
             <xpath expr="//page[1]" position="before">
                 <page name="page_detail" string="Details">
@@ -41,6 +48,19 @@
                             name="detail_ids"
                             context="{'tree_view_ref':'ssi_product_line_price_mixin.mixin_product_line_price_view_tree_editable'}"
                         />
+                </page>
+            </xpath>
+            <xpath expr="//page[@name='page_detail']" position="after">
+                <page name="page_accounting" string="Accounting Entry">
+                    <group name="accounting_entry" colspan="4" col="2">
+                        <group name="accounting_entry_left" colspan="1" col="2">
+                            <field name="move_id" />
+                            <field name="move_line_id" />
+                        </group>
+                        <group name="accounting_entry_right" colspan="1" col="2">
+                            <field name="realized" />
+                        </group>
+                    </group>
                 </page>
             </xpath>
             <xpath expr="//page[last()]" position="after">
