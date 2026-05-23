@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 
@@ -301,27 +300,32 @@ class MixinAccountMoveDoubleLineWithField(models.AbstractModel):
         string="Debit Journal Item",
         comodel_name="account.move.line",
         readonly=True,
+        help="Debit journal item generated from this document.",
     )
     debit_realized = fields.Boolean(
         related="debit_result_move_line_id.reconciled",
         string="Debit Journal Item Realized",
         store=True,
+        help="Indicates whether the debit journal item has been reconciled.",
     )
     credit_result_move_line_id = fields.Many2one(
         string="Credit Journal Item",
         comodel_name="account.move.line",
         readonly=True,
+        help="Credit journal item generated from this document.",
     )
     credit_realized = fields.Boolean(
         related="credit_result_move_line_id.reconciled",
         string="Credit Journal Item Realized",
         store=True,
+        help="Indicates whether the credit journal item has been reconciled.",
     )
     debit_credit_realized = fields.Boolean(
         string="Debit and Credit Journal Item Realized",
         compute="_compute_debit_credit_realized",
         store=True,
         compute_sudo=True,
+        help="True when both the debit and credit journal items are reconciled.",
     )
 
     @api.depends(
