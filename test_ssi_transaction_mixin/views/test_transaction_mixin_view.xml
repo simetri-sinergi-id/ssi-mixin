@@ -36,8 +36,6 @@
                 <field name="date" />
                 <field name="journal_id" />
                 <field name="currency_id" />
-                <field name="rate_inverted" />
-                <field name="rate" />
                 <field name="account_id" />
                 <field name="analytic_account_id" />
                 <field name="amount" />
