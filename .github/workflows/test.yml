@@ -51,8 +51,6 @@ jobs:
           - 5432:5432
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
       - name: Install addons and dependencies
         run: oca_install_addons
         env:
