@@ -5,7 +5,6 @@ exclude: |
   ^ssi_data_requirement_mixin/|
   ^ssi_duration_mixin/|
   ^ssi_product_line_account_mixin/|
-  ^ssi_reference_document_mixin/|
   ^ssi_related_attachment_mixin/|
   ^ssi_res_currency_m2o_configurator_mixin/|
   ^ssi_res_partner_bank_m2o_configurator_mixin/|
