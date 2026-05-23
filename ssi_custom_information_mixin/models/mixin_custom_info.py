@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools.safe_eval import safe_eval
@@ -22,6 +21,7 @@ class MixinCustomInfo(models.AbstractModel):
         string="Custom Information Template",
         comodel_name="custom_info.template",
         domain=lambda self: [("model", "=", self._name)],
+        help="Template that defines the custom properties shown on this record.",
     )
     custom_info_ids = fields.One2many(
         string="Custom Properties",
@@ -29,6 +29,7 @@ class MixinCustomInfo(models.AbstractModel):
         inverse_name="res_id",
         domain=lambda self: [("model", "=", self._name)],
         auto_join=True,
+        help="Custom property values for this record.",
     )
 
     @ssi_decorator.insert_on_form_view()
@@ -48,7 +49,7 @@ class MixinCustomInfo(models.AbstractModel):
             subfields = getattr(self, x2many_field)._fields.keys()
             for subfield in subfields:
                 field_onchange.setdefault(
-                    "{}.{}".format(x2many_field, subfield),
+                    f"{x2many_field}.{subfield}",
                     "",
                 )
         return super(MixinCustomInfo, self).onchange(
@@ -137,7 +138,7 @@ class MixinCustomInfo(models.AbstractModel):
             result = getattr(self, method_name)(template)
         except Exception as error:
             msg_err = _("Error evaluating conditions.\n %s") % error
-            raise UserError(msg_err)
+            raise UserError(msg_err) from error
         return result
 
     def _evaluate_custom_info_use_python(self, template):
@@ -148,7 +149,7 @@ class MixinCustomInfo(models.AbstractModel):
             safe_eval(template.python_code, localdict, mode="exec", nocopy=True)
             res = localdict["result"]
         except Exception as error:
-            raise UserError(_("Error evaluating conditions.\n %s") % error)
+            raise UserError(_("Error evaluating conditions.\n %s") % error) from error
         return res
 
     def _evaluate_custom_info_use_domain(self, template):

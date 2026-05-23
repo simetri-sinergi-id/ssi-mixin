@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Custom Information Mixin</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0f172a;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 860px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2rem;
+			color: #10b981;
+			border-bottom: 2px solid #10b981;
+			padding-bottom: 12px;
+			margin-bottom: 32px;
+		}
+		h2 {
+			font-size: 1.2rem;
+			color: #38bdf8;
+			margin-bottom: 12px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+			vertical-align: middle;
+		}
+		.section {
+			background: #1e293b;
+			border-radius: 8px;
+			padding: 20px 24px;
+			margin-bottom: 20px;
+		}
+		ul, ol {
+			margin: 8px 0 0 0;
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+			line-height: 1.6;
+		}
+		a {
+			color: #10b981;
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		code {
+			background: #0f172a;
+			padding: 2px 6px;
+			border-radius: 4px;
+			font-size: 0.9em;
+			color: #f59e0b;
+		}
+		.tech-divider {
+			border: none;
+			border-top: 1px solid #334155;
+			margin: 32px 0 16px;
+		}
+		.footer {
+			text-align: center;
+			color: #64748b;
+			font-size: 0.85rem;
+			line-height: 1.8;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Custom Information Mixin</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>Custom Information Mixin</b> is a core mixin module in the
+				<b>@simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It provides an extensible framework for attaching arbitrary
+				user-defined fields to any Odoo model without altering the database
+				schema.
+			</p>
+			<p>
+				Any model that inherits <code>mixin.custom_info</code> gains a
+				configurable set of per-record custom data values driven by the
+				assigned template.
+			</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Schema-free custom fields:</b> Add arbitrary properties to any model without database migrations.</li>
+				<li><b>Rich data types:</b> Supports text, integer, decimal, boolean, date, datetime, selection, and multiple-selection fields.</li>
+				<li><b>Template-driven:</b> Use <code>custom_info.template</code> to define which properties apply to each model, with domain or Python-code conditions.</li>
+				<li><b>Categorized properties:</b> Group related properties via <code>custom_info.category</code> for cleaner form layouts.</li>
+				<li><b>Controlled vocabulary:</b> Manage option sets (<code>custom_info.option_set</code>) for selection-type properties.</li>
+				<li><b>Mixin design:</b> Inheritable abstract model — zero boilerplate in consuming modules.</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>This mixin is ideal when you need dynamic, configurable attributes on business documents. Common use cases include:</p>
+			<ul>
+				<li><b>Customer profiles:</b> Attach industry-specific fields to partners without customising the partner model.</li>
+				<li><b>Product metadata:</b> Store supplier codes, certifications, or regulatory data per product.</li>
+				<li><b>Transaction documents:</b> Add contract-specific or project-specific fields to orders or invoices.</li>
+				<li><b>HR records:</b> Capture employee competencies, certificates, or custom HR attributes.</li>
+				<li><b>Multi-tenant setups:</b> Different companies can define different templates for the same model.</li>
+			</ul>
+			<p>Inherit <code>mixin.custom_info</code> in your model, set <code>_custom_info_create_page = True</code>, and the custom information tab is inserted automatically.</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>Clone the <b>15.0</b> branch of <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">https://github.com/simetri-sinergi-id/ssi-mixin</a>.</li>
+				<li>Add the repository path to your Odoo <code>addons-path</code> configuration.</li>
+				<li>Update the module list (enable developer mode first).</li>
+				<li>Go to <em>Apps → Apps → Main Apps</em>, search for <b>Custom Information Mixin</b>, and install.</li>
+				<li>To use in your module: add <code>ssi_custom_information_mixin</code> to <code>depends</code>, then inherit <code>mixin.custom_info</code> in your model and set <code>_custom_info_create_page = True</code>.</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Is this module standalone?</b>
+					<span style="color:#f59e0b;">No — it is a mixin foundation. Install it, then inherit it in your custom module.</span>
+				</li>
+				<li>
+					<b>Which Odoo version is required?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>Can multiple templates exist for the same model?</b>
+					<span style="color:#f59e0b;">Yes — templates are evaluated by sequence; the first matching template is applied.</span>
+				</li>
+				<li>
+					<b>How do I contribute?</b>
+					<span style="color:#f59e0b;">Fork the repository, create a branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>
+				Bugs are tracked on
+				<a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>.
+				In case of trouble, please check there if your issue has already been reported.
+				If you spotted it first, help us smash it by providing detailed and welcomed feedback.
+			</p>
+			<ul>
+				<li><b>Report:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">Create a new issue</a> with a description and steps to reproduce.</li>
+				<li><b>Search:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">Browse existing issues</a> before opening a duplicate.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<ul>
+				<li>
+					<b>Core Development:</b>
+					<ul>
+						<li>Andhitia Rama <a href="mailto:andhitia.r@gmail.com">&lt;andhitia.r@gmail.com&gt;</a></li>
+						<li>Nur Azmi <a href="mailto:azmimr67@gmail.com">&lt;azmimr67@gmail.com&gt;</a></li>
+						<li>Miftahussalam <a href="mailto:miftahussalam08@gmail.com">&lt;miftahussalam08@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b> <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Community:</b> Thanks to all community members who reported issues and provided feedback.</li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a><br>
+			<span>Released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.</span>
+		</div>
+	</div>
+</body>
+</html>

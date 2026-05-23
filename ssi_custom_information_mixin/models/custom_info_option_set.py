@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
@@ -19,20 +18,25 @@ class CustomInfoOptionSet(models.Model):
     _name = "custom_info.option_set"
 
     name = fields.Char(
+        string="Name",
         index=True,
         translate=True,
         required=True,
+        help="Option set name.",
     )
     code = fields.Char(
         string="Code",
         required=True,
+        help="Unique short code identifying this option set.",
     )
     active = fields.Boolean(
         string="Active",
         default=True,
+        help="Inactive option sets are hidden from selection.",
     )
     note = fields.Text(
         string="Note",
+        help="Internal notes about this option set.",
     )
     option_ids = fields.Many2many(
         string="Options",
@@ -40,4 +44,5 @@ class CustomInfoOptionSet(models.Model):
         relation="rel_option_set_2_option",
         column1="set_id",
         column2="option_id",
+        help="Options that belong to this set.",
     )
