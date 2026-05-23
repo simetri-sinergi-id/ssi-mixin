@@ -4,12 +4,12 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Custom Information Mixin",
-    "version": "14.0.3.2.2",
+    "version": "15.0.1.0.0",
     "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "category": "Tools",
     "license": "AGPL-3",
-    "installable": False,
+    "installable": True,
     "depends": [
         "ssi_decorator",
     ],

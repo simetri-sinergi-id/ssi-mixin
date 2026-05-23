@@ -2,7 +2,6 @@ exclude: |
   (?x)
   # NOT INSTALLABLE ADDONS
   ^ssi_currency_mixin/|
-  ^ssi_custom_information_mixin/|
   ^ssi_data_requirement_mixin/|
   ^ssi_duration_mixin/|
   ^ssi_field_date_callable_attribute/|
