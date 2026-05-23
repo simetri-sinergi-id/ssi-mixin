@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Backend Mixin</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0f172a;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2.2rem;
+			color: #10b981;
+			margin-bottom: 8px;
+		}
+		h2 {
+			font-size: 1.2rem;
+			color: #10b981;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 0;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+		}
+		.section {
+			background: #1e293b;
+			border-radius: 10px;
+			padding: 20px 24px;
+			margin-bottom: 20px;
+		}
+		a {
+			color: #10b981;
+		}
+		ul, ol {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+		}
+		code {
+			background: #0f172a;
+			border-radius: 4px;
+			padding: 1px 6px;
+			font-size: 0.92em;
+		}
+		hr.tech-divider {
+			border: none;
+			border-top: 1px solid #334155;
+			margin: 32px 0 16px;
+		}
+		.footer {
+			text-align: center;
+			color: #64748b;
+			font-size: 0.9rem;
+			line-height: 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Backend Mixin</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>Backend Mixin</b> is a core mixin module in the
+				<b>simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It provides a reusable abstract base — <code>backend_mixin</code> —
+				for <em>backend configuration</em> records that are scoped to a company
+				and can be toggled between <code>draft</code> and <code>running</code>
+				states (e.g. accounting settings, payroll parameters, HR configurations).
+			</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Company-Scoped Configuration:</b> Mandatory <code>company_id</code>
+					field ensures each backend record belongs to exactly one company.</li>
+				<li><b>State Management:</b> <code>draft</code> / <code>running</code>
+					state with <em>Running</em> and <em>Restart</em> lifecycle buttons.</li>
+				<li><b>Single Active Backend:</b> <code>action_running</code> automatically
+					deactivates any other running record of the same type for the same
+					company.</li>
+				<li><b>Company Pointer Integration:</b> Writes the active backend ID back
+					to a configurable field on <code>res.company</code> via
+					<code>_backend_company_field</code>.</li>
+				<li><b>Master Data Foundation:</b> Inherits <code>mixin.master_data</code>
+					for standardized <code>name</code>, <code>code</code>,
+					<code>active</code>, <code>note</code>, chatter, and print-document
+					support.</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven
+					improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>This mixin is ideal for developers who need a company-scoped, singleton-like
+				configuration object in their Odoo modules. Common use cases include:</p>
+			<ul>
+				<li><b>Accounting Backend:</b> Centralise accounting configuration per
+					company with a single "running" record at any time.</li>
+				<li><b>Payroll Backend:</b> Store payroll parameters and activate them
+					company-wide.</li>
+				<li><b>HR Backend:</b> Manage HR configuration objects that must be uniquely
+					active per company.</li>
+				<li><b>Custom Backends:</b> Any module requiring a singleton-like,
+					company-scoped configuration object can inherit this mixin.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>
+					<b>Clone the repository:</b>
+					<code>git clone https://github.com/simetri-sinergi-id/ssi-mixin -b 15.0</code>
+				</li>
+				<li>
+					<b>Add to addons path:</b> Include the cloned folder in your Odoo
+					<code>addons-path</code> configuration.
+				</li>
+				<li>
+					<b>Install:</b> In Odoo Apps, search for <em>Backend Mixin</em> and
+					install.
+				</li>
+				<li>
+					<b>Inherit in your module:</b>
+					<pre style="background:#0f172a;padding:10px;border-radius:6px;overflow:auto;"><code>class MyBackend(models.Model):
+    _name = "my.backend"
+    _inherit = ["backend_mixin"]
+    _description = "My Backend"
+    _backend_company_field = "my_backend_id"</code></pre>
+				</li>
+				<li>
+					<b>Add the company field:</b> Declare <code>my_backend_id</code> as a
+					<code>Many2one</code> to <code>my.backend</code> on
+					<code>res.company</code>.
+				</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Can multiple records be running simultaneously?</b>
+					<span style="color:#f59e0b;">No. <code>action_running</code> deactivates
+					all other running records for the same company before activating the
+					selected one.</span>
+				</li>
+				<li>
+					<b>What is <code>_backend_company_field</code>?</b>
+					<span style="color:#f59e0b;">The name of the field on
+					<code>res.company</code> that stores the currently active backend
+					record ID.</span>
+				</li>
+				<li>
+					<b>Is this module standalone?</b>
+					<span style="color:#f59e0b;">No, it is a mixin foundation intended to be
+					inherited by other modules.</span>
+				</li>
+				<li>
+					<b>Odoo Version?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>Contribute?</b>
+					<span style="color:#f59e0b;">Fork, branch, and submit a pull request on
+					<a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">
+					GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>Bugs are tracked on
+				<a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues"
+				target="_blank">GitHub Issues</a>. In case of trouble, please check there
+				if your issue has already been reported. If you spotted it first, help us
+				improve by providing detailed and welcomed feedback.
+			</p>
+			<ul>
+				<li><b>Report Issues:</b>
+					<a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new"
+					target="_blank">Create a new issue</a> with a detailed description and
+					steps to reproduce.</li>
+				<li><b>Search Existing:</b>
+					<a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues"
+					target="_blank">Browse existing issues</a> to see if your problem has
+					already been reported.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<ul>
+				<li><b>Core Development:</b>
+					<ul>
+						<li>Andhitia Rama
+							<a href="mailto:andhitia.r@gmail.com"
+							style="color:#10b981;">&lt;andhitia.r@gmail.com&gt;</a></li>
+						<li>Michael Viriyananda
+							<a href="mailto:viriyananda.michael@gmail.com"
+							style="color:#10b981;">&lt;viriyananda.michael@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b>
+					<a href="https://simetri-sinergi.id" target="_blank">
+					PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Community:</b> Thanks to all community members who reported issues
+					and provided feedback.</li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for
+					development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026
+			<a href="https://simetri-sinergi.id" style="color:#10b981;">
+				PT. Simetri Sinergi Indonesia</a>
+			<br>
+			<span>
+				Released under the
+				<a href="https://www.gnu.org/licenses/agpl-3.0.html"
+				style="color:#10b981;">AGPL-3.0 license</a>.
+			</span>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,7 +1,6 @@
 exclude: |
   (?x)
   # NOT INSTALLABLE ADDONS
-  ^ssi_backend_mixin/|
   ^ssi_currency_mixin/|
   ^ssi_custom_information_mixin/|
   ^ssi_data_requirement_mixin/|
