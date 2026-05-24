@@ -18,7 +18,10 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[ssi_accounting_entry_mixin](ssi_accounting_entry_mixin/) | 15.0.1.0.0 |  | Accounting Entry Mixin
+[ssi_backend_mixin](ssi_backend_mixin/) | 15.0.1.0.0 |  | Backend Mixin
 [ssi_company_currency_mixin](ssi_company_currency_mixin/) | 15.0.1.1.1 |  | Company Currency Mixin
+[ssi_custom_information_mixin](ssi_custom_information_mixin/) | 15.0.1.0.0 |  | Custom Information Mixin
 [ssi_decorator](ssi_decorator/) | 15.0.1.1.1 |  | SSI - Decorator
 [ssi_master_data_mixin](ssi_master_data_mixin/) | 15.0.1.1.1 |  | Master Data Mixin
 [ssi_multiple_approval_mixin](ssi_multiple_approval_mixin/) | 15.0.1.1.1 |  | Multiple Approval
@@ -42,10 +45,7 @@ Unported addons
 ---------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[ssi_accounting_entry_mixin](ssi_accounting_entry_mixin/) | 14.0.1.10.0 (unported) |  | Accounting Entry Mixin
-[ssi_backend_mixin](ssi_backend_mixin/) | 14.0.1.0.0 (unported) |  | Backend Mixin
 [ssi_currency_mixin](ssi_currency_mixin/) | 14.0.1.2.0 (unported) |  | Currency Mixin
-[ssi_custom_information_mixin](ssi_custom_information_mixin/) | 14.0.3.2.2 (unported) |  | Custom Information Mixin
 [ssi_data_requirement_mixin](ssi_data_requirement_mixin/) | 14.0.3.9.0 (unported) |  | Data Requirement Mixin
 [ssi_duration_mixin](ssi_duration_mixin/) | 14.0.2.1.0 (unported) |  | Duration Mixin
 [ssi_field_date_callable_attribute](ssi_field_date_callable_attribute/) | 14.0.1.1.0 (unported) |  | Custom Date Field With Callable Attribute

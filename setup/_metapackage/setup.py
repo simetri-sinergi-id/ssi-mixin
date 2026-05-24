@@ -8,7 +8,10 @@ setuptools.setup(
     description="Meta package for simetri-sinergi-id-ssi-mixin Odoo addons",
     version=version,
     install_requires=[
+        'odoo-addon-ssi_accounting_entry_mixin>=15.0dev,<15.1dev',
+        'odoo-addon-ssi_backend_mixin>=15.0dev,<15.1dev',
         'odoo-addon-ssi_company_currency_mixin>=15.0dev,<15.1dev',
+        'odoo-addon-ssi_custom_information_mixin>=15.0dev,<15.1dev',
         'odoo-addon-ssi_decorator>=15.0dev,<15.1dev',
         'odoo-addon-ssi_master_data_mixin>=15.0dev,<15.1dev',
         'odoo-addon-ssi_multiple_approval_mixin>=15.0dev,<15.1dev',
