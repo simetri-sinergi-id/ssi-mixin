@@ -281,3 +281,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:test_ssi_master_data_mixin.field_test_ssi_master_data__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr ""
+
+#. module: test_ssi_master_data_mixin
+#: model:ir.model.fields,field_description:test_ssi_master_data_mixin.field_test_ssi_master_data__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: test_ssi_master_data_mixin
+#: model:ir.model.fields,help:test_ssi_master_data_mixin.field_test_ssi_master_data__website_message_ids
+msgid "Website communication history"
+msgstr ""
