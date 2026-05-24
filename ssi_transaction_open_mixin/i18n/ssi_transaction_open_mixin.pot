@@ -344,3 +344,13 @@ msgid ""
 "\n"
 "* Unless it configured to approve reviewer does not equal to approver"
 msgstr ""
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_open_mixin.field_mixin_transaction_open__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: ssi_transaction_open_mixin
+#: model:ir.model.fields,help:ssi_transaction_open_mixin.field_mixin_transaction_open__website_message_ids
+msgid "Website communication history"
+msgstr ""
