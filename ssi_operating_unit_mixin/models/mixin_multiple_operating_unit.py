@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
@@ -19,4 +18,5 @@ class MixinMultipleOperatingUnit(models.AbstractModel):
         string="Operating Unit",
         comodel_name="operating.unit",
         column2="operating_unit_id",
+        help="Operating units associated with this record.",
     )
