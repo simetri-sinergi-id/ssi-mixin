@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -91,6 +91,16 @@ msgid "Analytic Account"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_tax_line__analytic_account_id
+msgid "Analytic account for cost/revenue allocation of this tax line."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__analytic_account_id
+msgid "Analytic account for cost/revenue allocation."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__message_attachment_count
 msgid "Attachment Count"
 msgstr ""
@@ -130,6 +140,11 @@ msgid ""
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_tax_line__tax_amount
+msgid "Computed tax amount for this tax line."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__credit_result_move_line_id
 msgid "Credit Journal Item"
 msgstr ""
@@ -140,9 +155,29 @@ msgid "Credit Journal Item Realized"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__credit_result_move_line_id
+msgid "Credit journal item generated from this document."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_tax_line__currency_id
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__currency_id
 msgid "Currency"
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__currency_id
+msgid "Currency used for this accounting entry."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_tax_line__currency_id
+msgid "Currency used for this tax line."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_account_move_single_line_with_field__source_date
+msgid "Date of the source journal item."
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
@@ -161,17 +196,16 @@ msgid "Debit and Credit Journal Item Realized"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__debit_result_move_line_id
+msgid "Debit journal item generated from this document."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_tax_line__name
 msgid "Description"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move__display_name
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_double_line__display_name
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__display_name
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_single_line__display_name
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_single_line_with_field__display_name
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_tax_line__display_name
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__display_name
 msgid "Display Name"
 msgstr ""
@@ -179,11 +213,6 @@ msgstr ""
 #. module: ssi_accounting_entry_mixin
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__message_follower_ids
 msgid "Followers"
-msgstr ""
-
-#. module: ssi_accounting_entry_mixin
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__message_channel_ids
-msgid "Followers (Channels)"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
@@ -197,14 +226,18 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move__id
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_double_line__id
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__id
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_single_line__id
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_single_line_with_field__id
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_tax_line__id
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__id
-msgid "ID"
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__account_id
+msgid "General ledger account for the accounting entry."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_tax_line__account_id
+msgid "General ledger account used to post the tax amount."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__has_message
+msgid "Has Message"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
@@ -229,6 +262,21 @@ msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__credit_realized
+msgid "Indicates whether the credit journal item has been reconciled."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__debit_realized
+msgid "Indicates whether the debit journal item has been reconciled."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__realized
+msgid "Indicates whether the linked journal item has been reconciled."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__message_is_follower
 msgid "Is Follower"
 msgstr ""
@@ -245,14 +293,33 @@ msgid "Journal Item"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move____last_update
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_double_line____last_update
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field____last_update
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_single_line____last_update
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_account_move_single_line_with_field____last_update
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_tax_line____last_update
-#: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field____last_update
-msgid "Last Modified on"
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_account_move_single_line_with_field__source_move_id
+msgid "Journal entry associated with the source journal item."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__move_id
+msgid "Journal entry generated from this document."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_account_move_single_line_with_field__move_line_id
+msgid "Journal item generated from this document."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_tax_line__move_line_id
+msgid "Journal item generated when this tax line is posted."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__move_line_id
+msgid "Journal item linked to this document."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__journal_id
+msgid "Journal used to post the accounting entry."
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
@@ -344,6 +411,11 @@ msgid "Number of unread messages"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_account_move_single_line_with_field__source_partner_id
+msgid "Partner from the source journal item."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__policy_template_id
 msgid "Policy Template"
 msgstr ""
@@ -374,6 +446,11 @@ msgstr ""
 #. module: ssi_accounting_entry_mixin
 #: model:ir.model.fields,field_description:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__reviewer_id
 msgid "Reviewer"
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_tax_line__name
+msgid "Short description of this tax line."
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
@@ -426,8 +503,18 @@ msgid "Tax Line Mixin"
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
-#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_account_move_single_line_with_field__source_move_id
-msgid "The move of this entry line."
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_tax_line__tax_id
+msgid "Tax applied on this line."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_tax_line__base_amount
+msgid "Taxable base amount for this tax line."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_account_move_single_line_with_field__source_move_line_id
+msgid "The original journal item that triggered the creation of this line."
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
@@ -441,6 +528,11 @@ msgid ""
 "  Manual number assignment can be done in 'Draft' state\n"
 "  Only user with 'Can Manualy Assign Number' policy can manually assign number.\n"
 "* Transaction with number other than '/' can not be deleted."
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_account_move_double_line_with_field__debit_credit_realized
+msgid "True when both the debit and credit journal items are reconciled."
 msgstr ""
 
 #. module: ssi_accounting_entry_mixin
@@ -484,4 +576,11 @@ msgstr ""
 #. module: ssi_accounting_entry_mixin
 #: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_transaction_account_move_with_field__website_message_ids
 msgid "Website communication history"
+msgstr ""
+
+#. module: ssi_accounting_entry_mixin
+#: model:ir.model.fields,help:ssi_accounting_entry_mixin.field_mixin_tax_line__manual
+msgid ""
+"When checked, this tax line is entered manually and not recomputed "
+"automatically."
 msgstr ""
