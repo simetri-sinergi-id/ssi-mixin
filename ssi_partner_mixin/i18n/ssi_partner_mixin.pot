@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -19,24 +19,47 @@ msgid "Allowed Contact"
 msgstr ""
 
 #. module: ssi_partner_mixin
+#: model:ir.model.fields,help:ssi_partner_mixin.field_mixin_partner__mixin_partner_contact_id_readonly
+msgid ""
+"Computed flag indicating whether contact_partner_id is read-only on this "
+"record."
+msgstr ""
+
+#. module: ssi_partner_mixin
+#: model:ir.model.fields,help:ssi_partner_mixin.field_mixin_partner__mixin_partner_contact_id_required
+msgid ""
+"Computed flag indicating whether contact_partner_id is required on this "
+"record."
+msgstr ""
+
+#. module: ssi_partner_mixin
+#: model:ir.model.fields,help:ssi_partner_mixin.field_mixin_partner__mixin_partner_partner_id_readonly
+msgid ""
+"Computed flag indicating whether partner_id is read-only on this record."
+msgstr ""
+
+#. module: ssi_partner_mixin
+#: model:ir.model.fields,help:ssi_partner_mixin.field_mixin_partner__mixin_partner_partner_id_required
+msgid ""
+"Computed flag indicating whether partner_id is required on this record."
+msgstr ""
+
+#. module: ssi_partner_mixin
 #: model:ir.model.fields,field_description:ssi_partner_mixin.field_mixin_partner__contact_partner_id
 #: model_terms:ir.ui.view,arch_db:ssi_partner_mixin.group_contact_id
 msgid "Contact"
 msgstr ""
 
 #. module: ssi_partner_mixin
-#: model:ir.model.fields,field_description:ssi_partner_mixin.field_mixin_partner__display_name
-msgid "Display Name"
+#: model:ir.model.fields,help:ssi_partner_mixin.field_mixin_partner__contact_partner_id
+msgid "Contact person under the selected partner."
 msgstr ""
 
 #. module: ssi_partner_mixin
-#: model:ir.model.fields,field_description:ssi_partner_mixin.field_mixin_partner__id
-msgid "ID"
-msgstr ""
-
-#. module: ssi_partner_mixin
-#: model:ir.model.fields,field_description:ssi_partner_mixin.field_mixin_partner____last_update
-msgid "Last Modified on"
+#: model:ir.model.fields,help:ssi_partner_mixin.field_mixin_partner__allowed_contact_ids
+msgid ""
+"Contacts belonging to the selected partner, available for selection as "
+"contact."
 msgstr ""
 
 #. module: ssi_partner_mixin
@@ -51,7 +74,7 @@ msgstr ""
 
 #. module: ssi_partner_mixin
 #: model:ir.model.fields,field_description:ssi_partner_mixin.field_mixin_partner__mixin_partner_partner_id_readonly
-msgid "Mixin Partner - parnter_id Readonly"
+msgid "Mixin Partner - partner_id Readonly"
 msgstr ""
 
 #. module: ssi_partner_mixin
@@ -73,4 +96,9 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_partner_mixin.field_mixin_partner__partner_id
 #: model_terms:ir.ui.view,arch_db:ssi_partner_mixin.group_partner_id
 msgid "Partner"
+msgstr ""
+
+#. module: ssi_partner_mixin
+#: model:ir.model.fields,help:ssi_partner_mixin.field_mixin_partner__partner_id
+msgid "Top-level partner (company or individual) associated with this record."
 msgstr ""
