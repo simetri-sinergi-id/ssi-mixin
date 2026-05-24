@@ -29,10 +29,15 @@ addon | version | maintainers | summary
 [ssi_master_data_mixin](ssi_master_data_mixin/) | 15.0.1.1.1 |  | Master Data Mixin
 [ssi_multiple_approval_mixin](ssi_multiple_approval_mixin/) | 15.0.1.1.1 |  | Multiple Approval
 [ssi_operating_unit_mixin](ssi_operating_unit_mixin/) | 15.0.1.0.0 |  | Operating Unit Mixin
+[ssi_partner_mixin](ssi_partner_mixin/) | 15.0.1.0.0 |  | Partner Mixin
 [ssi_policy_mixin](ssi_policy_mixin/) | 15.0.1.1.1 |  | Policy Mixin
+[ssi_pricelist_mixin](ssi_pricelist_mixin/) | 15.0.1.0.0 |  | Pricelist Mixin
 [ssi_print_mixin](ssi_print_mixin/) | 15.0.1.1.1 |  | Print Policy Mixin
 [ssi_product_line_mixin](ssi_product_line_mixin/) | 15.0.1.1.1 |  | Product Line Mixin
 [ssi_product_line_price_mixin](ssi_product_line_price_mixin/) | 15.0.1.1.1 |  | Product Line Mixin - With Price
+[ssi_qr_code_mixin](ssi_qr_code_mixin/) | 15.0.1.0.0 |  | QR Code Mixin
+[ssi_reference_document_mixin](ssi_reference_document_mixin/) | 15.0.1.0.0 |  | Reference Document Mixin
+[ssi_related_attachment_mixin](ssi_related_attachment_mixin/) | 15.0.1.0.0 |  | Related Attachment Mixin
 [ssi_sequence_mixin](ssi_sequence_mixin/) | 15.0.1.1.1 |  | Sequence Mixin
 [ssi_transaction_cancel_mixin](ssi_transaction_cancel_mixin/) | 15.0.1.1.1 |  | Transaction Mixin - Cancel State
 [ssi_transaction_confirm_mixin](ssi_transaction_confirm_mixin/) | 15.0.1.1.1 |  | Transaction Mixin - Waiting for Approval State
@@ -52,12 +57,7 @@ addon | version | maintainers | summary
 [ssi_currency_mixin](ssi_currency_mixin/) | 14.0.1.2.0 (unported) |  | Currency Mixin
 [ssi_data_requirement_mixin](ssi_data_requirement_mixin/) | 14.0.3.9.0 (unported) |  | Data Requirement Mixin
 [ssi_duration_mixin](ssi_duration_mixin/) | 14.0.2.1.0 (unported) |  | Duration Mixin
-[ssi_partner_mixin](ssi_partner_mixin/) | 14.0.1.3.0 (unported) |  | Partner Mixin
-[ssi_pricelist_mixin](ssi_pricelist_mixin/) | 14.0.1.1.0 (unported) |  | Pricelist Mixin
 [ssi_product_line_account_mixin](ssi_product_line_account_mixin/) | 14.0.2.4.0 (unported) |  | Product Line Mixin - With Accounting
-[ssi_qr_code_mixin](ssi_qr_code_mixin/) | 14.0.2.1.1 (unported) |  | QR Code Mixin
-[ssi_reference_document_mixin](ssi_reference_document_mixin/) | 14.0.2.1.0 (unported) |  | Reference Document Mixin
-[ssi_related_attachment_mixin](ssi_related_attachment_mixin/) | 14.0.2.10.1 (unported) |  | Related Attachment Mixin
 [ssi_res_currency_m2o_configurator_mixin](ssi_res_currency_m2o_configurator_mixin/) | 14.0.1.0.0 (unported) |  | res.currency Many2one Configurator Mixin
 [ssi_res_partner_bank_m2o_configurator_mixin](ssi_res_partner_bank_m2o_configurator_mixin/) | 14.0.1.0.0 (unported) |  | res.partner.bank Many2one Configurator Mixin
 [ssi_res_partner_m2o_configurator_mixin](ssi_res_partner_m2o_configurator_mixin/) | 14.0.1.0.0 (unported) |  | res.partner Many2one Configurator Mixin
@@ -81,8 +81,6 @@ addon | version | maintainers | summary
 [ssi_transaction_tax_address_mixin](ssi_transaction_tax_address_mixin/) | 14.0.1.0.0 (unported) |  | Transaction + Tax Address Mixin
 [ssi_transaction_total_mixin](ssi_transaction_total_mixin/) | 14.0.1.0.1 (unported) |  | Transaction Mixin - Total
 [ssi_transaction_win_lost_mixin](ssi_transaction_win_lost_mixin/) | 14.0.1.9.1 (unported) |  | Transaction Mixin - Win & Lost State
-[test_ssi_accounting_entry_mixin](test_ssi_accounting_entry_mixin/) | 14.0.2.1.0 (unported) |  | Test Module: Accounting Entry Mixin
-[test_ssi_custom_information_mixin](test_ssi_custom_information_mixin/) | 14.0.2.1.0 (unported) |  | Test Module: Custom Information Mixin
 [test_ssi_duration_mixin](test_ssi_duration_mixin/) | 14.0.1.1.0 (unported) |  | Test Module: Duration Mixin
 [test_ssi_related_attachment_mixin](test_ssi_related_attachment_mixin/) | 14.0.1.1.0 (unported) |  | Test Module: Related Attachment Mixin
 [test_ssi_state_change_constrain_mixin](test_ssi_state_change_constrain_mixin/) | 14.0.1.3.0 (unported) |  | Test Module: State Change Constrain Mixin
