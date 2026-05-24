@@ -14,28 +14,31 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ssi_res_users_m2o_configurator_mixin
-#: model:ir.model.fields,field_description:ssi_res_users_m2o_configurator_mixin.field_mixin_res_users_m2o_configurator__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: ssi_res_users_m2o_configurator_mixin
 #: model:ir.model.fields.selection,name:ssi_res_users_m2o_configurator_mixin.selection__mixin_res_users_m2o_configurator__user_selection_method__domain
 msgid "Domain"
 msgstr ""
 
 #. module: ssi_res_users_m2o_configurator_mixin
-#: model:ir.model.fields,field_description:ssi_res_users_m2o_configurator_mixin.field_mixin_res_users_m2o_configurator__id
-msgid "ID"
-msgstr ""
-
-#. module: ssi_res_users_m2o_configurator_mixin
-#: model:ir.model.fields,field_description:ssi_res_users_m2o_configurator_mixin.field_mixin_res_users_m2o_configurator____last_update
-msgid "Last Modified on"
+#: model:ir.model.fields,help:ssi_res_users_m2o_configurator_mixin.field_mixin_res_users_m2o_configurator__user_ids
+msgid "Explicit list of users available for selection when method is Manual."
 msgstr ""
 
 #. module: ssi_res_users_m2o_configurator_mixin
 #: model:ir.model.fields.selection,name:ssi_res_users_m2o_configurator_mixin.selection__mixin_res_users_m2o_configurator__user_selection_method__manual
 msgid "Manual"
+msgstr ""
+
+#. module: ssi_res_users_m2o_configurator_mixin
+#: model:ir.model.fields,help:ssi_res_users_m2o_configurator_mixin.field_mixin_res_users_m2o_configurator__user_selection_method
+msgid ""
+"Method used to filter selectable users: Manual (explicit list), Domain (Odoo"
+" domain expression), or Python Code (custom script)."
+msgstr ""
+
+#. module: ssi_res_users_m2o_configurator_mixin
+#: model:ir.model.fields,help:ssi_res_users_m2o_configurator_mixin.field_mixin_res_users_m2o_configurator__user_domain
+msgid ""
+"Odoo domain expression to filter selectable users when method is Domain."
 msgstr ""
 
 #. module: ssi_res_users_m2o_configurator_mixin
@@ -46,6 +49,13 @@ msgstr ""
 #. module: ssi_res_users_m2o_configurator_mixin
 #: model:ir.model.fields.selection,name:ssi_res_users_m2o_configurator_mixin.selection__mixin_res_users_m2o_configurator__user_selection_method__code
 msgid "Python Code"
+msgstr ""
+
+#. module: ssi_res_users_m2o_configurator_mixin
+#: model:ir.model.fields,help:ssi_res_users_m2o_configurator_mixin.field_mixin_res_users_m2o_configurator__user_python_code
+msgid ""
+"Python code to compute selectable users when method is Python Code. Must "
+"assign a list of user IDs to the variable `result`."
 msgstr ""
 
 #. module: ssi_res_users_m2o_configurator_mixin
