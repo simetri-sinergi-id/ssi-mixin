@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
@@ -31,14 +30,24 @@ class MixinResPartnerBankM2OConfigurator(models.AbstractModel):
         selection=[("manual", "Manual"), ("domain", "Domain"), ("code", "Python Code")],
         string="Partner Bank Selection Method",
         required=True,
+        help="Method used to filter partner bank accounts: manual selection,"
+        " domain filter, or Python code.",
     )
     partner_bank_ids = fields.Many2many(
         comodel_name="res.partner.bank",
         string="Partner Banks",
+        help="List of partner bank accounts available for manual selection.",
     )
-    partner_bank_domain = fields.Text(default="[]", string="Partner Bank Domain")
+    partner_bank_domain = fields.Text(
+        default="[]",
+        string="Partner Bank Domain",
+        help="Domain expression to filter available partner bank accounts.",
+    )
     partner_bank_python_code = fields.Text(
-        default="result = []", string="Partner Bank Python Code"
+        default="result = []",
+        string="Partner Bank Python Code",
+        help="Python code to compute the list of available partner bank accounts."
+        " Use 'result' to set the output.",
     )
 
     @ssi_decorator.insert_on_form_view()
