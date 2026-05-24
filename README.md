@@ -23,8 +23,12 @@ addon | version | maintainers | summary
 [ssi_company_currency_mixin](ssi_company_currency_mixin/) | 15.0.1.1.1 |  | Company Currency Mixin
 [ssi_custom_information_mixin](ssi_custom_information_mixin/) | 15.0.1.0.0 |  | Custom Information Mixin
 [ssi_decorator](ssi_decorator/) | 15.0.1.1.1 |  | SSI - Decorator
+[ssi_field_date_callable_attribute](ssi_field_date_callable_attribute/) | 15.0.1.0.0 |  | Custom Date Field With Callable Attribute
+[ssi_localdict_mixin](ssi_localdict_mixin/) | 15.0.1.0.0 |  | Localdict Mixin
+[ssi_m2o_configurator_mixin](ssi_m2o_configurator_mixin/) | 15.0.1.0.0 |  | Many2one Configurator Mixin
 [ssi_master_data_mixin](ssi_master_data_mixin/) | 15.0.1.1.1 |  | Master Data Mixin
 [ssi_multiple_approval_mixin](ssi_multiple_approval_mixin/) | 15.0.1.1.1 |  | Multiple Approval
+[ssi_operating_unit_mixin](ssi_operating_unit_mixin/) | 15.0.1.0.0 |  | Operating Unit Mixin
 [ssi_policy_mixin](ssi_policy_mixin/) | 15.0.1.1.1 |  | Policy Mixin
 [ssi_print_mixin](ssi_print_mixin/) | 15.0.1.1.1 |  | Print Policy Mixin
 [ssi_product_line_mixin](ssi_product_line_mixin/) | 15.0.1.1.1 |  | Product Line Mixin
@@ -48,10 +52,6 @@ addon | version | maintainers | summary
 [ssi_currency_mixin](ssi_currency_mixin/) | 14.0.1.2.0 (unported) |  | Currency Mixin
 [ssi_data_requirement_mixin](ssi_data_requirement_mixin/) | 14.0.3.9.0 (unported) |  | Data Requirement Mixin
 [ssi_duration_mixin](ssi_duration_mixin/) | 14.0.2.1.0 (unported) |  | Duration Mixin
-[ssi_field_date_callable_attribute](ssi_field_date_callable_attribute/) | 14.0.1.1.0 (unported) |  | Custom Date Field With Callable Attribute
-[ssi_localdict_mixin](ssi_localdict_mixin/) | 14.0.1.0.0 (unported) |  | Localdict Mixin
-[ssi_m2o_configurator_mixin](ssi_m2o_configurator_mixin/) | 14.0.2.1.0 (unported) |  | Many2one Configurator Mixin
-[ssi_operating_unit_mixin](ssi_operating_unit_mixin/) | 14.0.1.3.0 (unported) |  | Operating Unit Mixin
 [ssi_partner_mixin](ssi_partner_mixin/) | 14.0.1.3.0 (unported) |  | Partner Mixin
 [ssi_pricelist_mixin](ssi_pricelist_mixin/) | 14.0.1.1.0 (unported) |  | Pricelist Mixin
 [ssi_product_line_account_mixin](ssi_product_line_account_mixin/) | 14.0.2.4.0 (unported) |  | Product Line Mixin - With Accounting
