@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,28 +14,30 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ssi_res_partner_bank_m2o_configurator_mixin
-#: model:ir.model.fields,field_description:ssi_res_partner_bank_m2o_configurator_mixin.field_mixin_res_partner_bank_m2o_configurator__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: ssi_res_partner_bank_m2o_configurator_mixin
 #: model:ir.model.fields.selection,name:ssi_res_partner_bank_m2o_configurator_mixin.selection__mixin_res_partner_bank_m2o_configurator__partner_bank_selection_method__domain
 msgid "Domain"
 msgstr ""
 
 #. module: ssi_res_partner_bank_m2o_configurator_mixin
-#: model:ir.model.fields,field_description:ssi_res_partner_bank_m2o_configurator_mixin.field_mixin_res_partner_bank_m2o_configurator__id
-msgid "ID"
+#: model:ir.model.fields,help:ssi_res_partner_bank_m2o_configurator_mixin.field_mixin_res_partner_bank_m2o_configurator__partner_bank_domain
+msgid "Domain expression to filter available partner bank accounts."
 msgstr ""
 
 #. module: ssi_res_partner_bank_m2o_configurator_mixin
-#: model:ir.model.fields,field_description:ssi_res_partner_bank_m2o_configurator_mixin.field_mixin_res_partner_bank_m2o_configurator____last_update
-msgid "Last Modified on"
+#: model:ir.model.fields,help:ssi_res_partner_bank_m2o_configurator_mixin.field_mixin_res_partner_bank_m2o_configurator__partner_bank_ids
+msgid "List of partner bank accounts available for manual selection."
 msgstr ""
 
 #. module: ssi_res_partner_bank_m2o_configurator_mixin
 #: model:ir.model.fields.selection,name:ssi_res_partner_bank_m2o_configurator_mixin.selection__mixin_res_partner_bank_m2o_configurator__partner_bank_selection_method__manual
 msgid "Manual"
+msgstr ""
+
+#. module: ssi_res_partner_bank_m2o_configurator_mixin
+#: model:ir.model.fields,help:ssi_res_partner_bank_m2o_configurator_mixin.field_mixin_res_partner_bank_m2o_configurator__partner_bank_selection_method
+msgid ""
+"Method used to filter partner bank accounts: manual selection, domain "
+"filter, or Python code."
 msgstr ""
 
 #. module: ssi_res_partner_bank_m2o_configurator_mixin
@@ -66,6 +68,13 @@ msgstr ""
 #. module: ssi_res_partner_bank_m2o_configurator_mixin
 #: model:ir.model.fields.selection,name:ssi_res_partner_bank_m2o_configurator_mixin.selection__mixin_res_partner_bank_m2o_configurator__partner_bank_selection_method__code
 msgid "Python Code"
+msgstr ""
+
+#. module: ssi_res_partner_bank_m2o_configurator_mixin
+#: model:ir.model.fields,help:ssi_res_partner_bank_m2o_configurator_mixin.field_mixin_res_partner_bank_m2o_configurator__partner_bank_python_code
+msgid ""
+"Python code to compute the list of available partner bank accounts. Use "
+"'result' to set the output."
 msgstr ""
 
 #. module: ssi_res_partner_bank_m2o_configurator_mixin
