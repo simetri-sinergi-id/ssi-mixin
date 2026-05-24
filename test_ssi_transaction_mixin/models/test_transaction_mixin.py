@@ -16,7 +16,13 @@ class TestTransactionMixin(models.Model):
         "mixin.transaction_cancel",
         "mixin.transaction_terminate",
         "mixin.company_currency",
+        "mixin.transaction_account_move_with_field",
+        "mixin.account_move_single_line",
+        "mixin.custom_info",
     ]
+
+    # Custom Information Mixin attributes
+    _custom_info_create_page = True
 
     # Multiple Approval Attribute
     _approval_from_state = "draft"
@@ -66,6 +72,16 @@ class TestTransactionMixin(models.Model):
     # Sequence attribute
     _create_sequence_state = "open"
 
+    # Accounting single-line attributes
+    _account_id_field_name = "account_id"
+    _analytic_account_id_field_name = "analytic_account_id"
+    _amount_currency_field_name = "amount"
+    _label_field_name = "name"
+    _normal_amount = "debit"
+
+    # Currency mixin attribute
+    _exchange_date_field = "date"
+
     @api.model
     def _get_policy_field(self):
         res = super(TestTransactionMixin, self)._get_policy_field()
@@ -86,6 +102,7 @@ class TestTransactionMixin(models.Model):
 
     date = fields.Date(
         string="Date",
+        required=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
         copy=False,
@@ -251,6 +268,13 @@ class TestTransactionMixin(models.Model):
         required=False,
         help="Catatan aksi setelah penolakan.",
     )
+    amount = fields.Monetary(
+        string="Amount",
+        currency_field="currency_id",
+        compute="_compute_amount",
+        store=True,
+        help="Total jumlah dari baris detail transaksi.",
+    )
     detail_ids = fields.One2many(
         string="Details",
         comodel_name="test.transaction_detail_mixin",
@@ -278,6 +302,14 @@ class TestTransactionMixin(models.Model):
         copy=False,
         help="Status dokumen transaksi.",
     )
+
+    @api.depends(
+        "detail_ids",
+        "detail_ids.price_subtotal",
+    )
+    def _compute_amount(self):
+        for record in self:
+            record.amount = sum(record.detail_ids.mapped("price_subtotal"))
 
     # CHECK
     @ssi_decorator.pre_restart_check()
@@ -440,3 +472,31 @@ class TestTransactionMixin(models.Model):
     def _post_reject_1(self):
         for record in self:
             record.str_post_reject = "Post-Reject"
+
+    # ACCOUNTING ENTRY HOOKS
+    @ssi_decorator.post_open_action()
+    def _create_accounting_entry(self):
+        for record in self:
+            record._create_standard_move()
+            ml = record._create_standard_ml()
+            record.write({"move_line_id": ml.id})
+
+    @ssi_decorator.pre_done_action()
+    def _post_accounting_entry(self):
+        for record in self:
+            record._post_standard_move()
+
+    @ssi_decorator.pre_cancel_action()
+    def _delete_accounting_entry_on_cancel(self):
+        for record in self:
+            record._delete_standard_move()
+
+    @ssi_decorator.pre_terminate_action()
+    def _delete_accounting_entry_on_terminate(self):
+        for record in self:
+            record._delete_standard_move()
+
+    @ssi_decorator.pre_restart_action()
+    def _delete_accounting_entry_on_restart(self):
+        for record in self:
+            record._delete_standard_move()

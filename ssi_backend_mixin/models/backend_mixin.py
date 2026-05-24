@@ -1,6 +1,5 @@
-# Copyright 2025 OpenSynergy Indonesia
-# Copyright 2025 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 
@@ -41,10 +40,12 @@ class BackendMixin(models.AbstractModel):
         required=True,
         default=lambda self: self._default_company_id(),
         copy=True,
+        help="Company this backend configuration belongs to.",
     )
 
     code = fields.Char(
         default="/",
+        help="Unique code for this backend configuration.",
     )
 
     state = fields.Selection(
@@ -57,6 +58,7 @@ class BackendMixin(models.AbstractModel):
         default="draft",
         required=True,
         readonly=True,
+        help="Current activation state of this backend configuration.",
     )
 
     def _check_company_backend_field(self):

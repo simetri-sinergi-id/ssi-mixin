@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
@@ -192,26 +191,31 @@ class MixinAccountMoveSingleLineWithField(models.AbstractModel):
         string="Source Journal Item",
         comodel_name="account.move.line",
         readonly=True,
+        help="The original journal item that triggered the creation of this line.",
     )
     source_move_id = fields.Many2one(
         string="Source Journal Entry",
         comodel_name="account.move",
         related="source_move_line_id.move_id",
         store=True,
+        help="Journal entry associated with the source journal item.",
     )
     source_partner_id = fields.Many2one(
         string="Source Partner",
         comodel_name="res.partner",
         related="source_move_line_id.partner_id",
         store=True,
+        help="Partner from the source journal item.",
     )
     source_date = fields.Date(
         string="Source Date",
         related="source_move_line_id.date",
         store=True,
+        help="Date of the source journal item.",
     )
     move_line_id = fields.Many2one(
         string="Journal Item",
         comodel_name="account.move.line",
         readonly=True,
+        help="Journal item generated from this document.",
     )

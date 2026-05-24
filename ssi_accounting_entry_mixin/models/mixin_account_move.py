@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
@@ -188,6 +187,7 @@ class MixinTransactionAccountMoveWithField(models.AbstractModel):
         ondelete="restrict",
         readonly=True,
         states={"draft": [("readonly", False)]},
+        help="Currency used for this accounting entry.",
     )
     journal_id = fields.Many2one(
         comodel_name="account.journal",
@@ -196,6 +196,7 @@ class MixinTransactionAccountMoveWithField(models.AbstractModel):
         ondelete="restrict",
         readonly=True,
         states={"draft": [("readonly", False)]},
+        help="Journal used to post the accounting entry.",
     )
     analytic_account_id = fields.Many2one(
         comodel_name="account.analytic.account",
@@ -204,6 +205,7 @@ class MixinTransactionAccountMoveWithField(models.AbstractModel):
         ondelete="restrict",
         readonly=True,
         states={"draft": [("readonly", False)]},
+        help="Analytic account for cost/revenue allocation.",
     )
     account_id = fields.Many2one(
         comodel_name="account.account",
@@ -212,11 +214,23 @@ class MixinTransactionAccountMoveWithField(models.AbstractModel):
         ondelete="restrict",
         readonly=True,
         states={"draft": [("readonly", False)]},
+        help="General ledger account for the accounting entry.",
     )
-    move_id = fields.Many2one(comodel_name="account.move", string="Move", readonly=True)
+    move_id = fields.Many2one(
+        comodel_name="account.move",
+        string="Move",
+        readonly=True,
+        help="Journal entry generated from this document.",
+    )
     move_line_id = fields.Many2one(
-        comodel_name="account.move.line", string="Move Line", readonly=True
+        comodel_name="account.move.line",
+        string="Move Line",
+        readonly=True,
+        help="Journal item linked to this document.",
     )
     realized = fields.Boolean(
-        related="move_line_id.reconciled", string="Realized", store=True
+        related="move_line_id.reconciled",
+        string="Realized",
+        store=True,
+        help="Indicates whether the linked journal item has been reconciled.",
     )

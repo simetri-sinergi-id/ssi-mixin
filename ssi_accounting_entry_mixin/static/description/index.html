@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Accounting Entry Mixin</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0f172a;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2.2rem;
+			color: #10b981;
+			margin-bottom: 8px;
+		}
+		h2 {
+			font-size: 1.2rem;
+			color: #10b981;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 0;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+		}
+		.section {
+			background: #1e293b;
+			border-radius: 10px;
+			padding: 20px 24px;
+			margin-bottom: 20px;
+		}
+		a {
+			color: #10b981;
+		}
+		ul, ol {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+		}
+		code {
+			background: #0f172a;
+			border-radius: 4px;
+			padding: 1px 6px;
+			font-size: 0.92em;
+		}
+		hr.tech-divider {
+			border: none;
+			border-top: 1px solid #334155;
+			margin: 32px 0 16px;
+		}
+		.footer {
+			text-align: center;
+			color: #64748b;
+			font-size: 0.9rem;
+			line-height: 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Accounting Entry Mixin</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>Accounting Entry Mixin</b> is a core mixin module in the
+				<b>@simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It provides a set of composable abstract models that standardise the
+				creation, posting, and deletion of accounting entries
+				(<code>account.move</code> and <code>account.move.line</code>) from
+				transactional documents.
+			</p>
+			<p>The module ships four composable mixins:</p>
+			<ul>
+				<li>
+					<b>mixin.account_move</b> — high-level helper for the journal-entry
+					<em>header</em>: creates, posts, and cancels an
+					<code>account.move</code> record with configurable field-name pointers
+					and optional tax computation support.
+				</li>
+				<li>
+					<b>mixin.account_move_single_line</b> — creates one
+					<code>account.move.line</code> inside an existing move; the normal
+					direction (debit vs. credit) and all source fields are driven by
+					class-level attributes.
+				</li>
+				<li>
+					<b>mixin.account_move_double_line</b> — creates a balanced
+					debit/credit pair of move lines in one call; each side is
+					independently configurable.
+				</li>
+				<li>
+					<b>mixin.tax_line</b> — ready-to-use child-record model for tax lines
+					that references the appropriate tax account.
+				</li>
+			</ul>
+			<p>
+				Concrete <code>_with_field</code> variants of each mixin add the
+				actual Odoo storage fields (<code>move_id</code>,
+				<code>move_line_id</code>, <code>realized</code>, etc.) for cases
+				where the inheriting model needs to persist the generated entry
+				references.
+			</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Abstract Mixin Design:</b> Inherit any of the accounting mixins in your transactional model with zero structural view duplication.</li>
+				<li><b>Configurable Field Pointers:</b> All source field names are driven by class-level attributes so the mixin adapts to any model layout.</li>
+				<li><b>Single-Line Entry:</b> Post one journal item (debit or credit) via <code>mixin.account_move_single_line</code>.</li>
+				<li><b>Double-Line Entry:</b> Post a balanced debit/credit pair via <code>mixin.account_move_double_line</code>.</li>
+				<li><b>Tax Computation:</b> Built-in tax grouping and tax line creation via <code>mixin.account_move</code> and <code>mixin.tax_line</code>.</li>
+				<li><b>Realized Flag:</b> Related boolean that turns <code>True</code> when the linked journal item is fully reconciled.</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>Use these mixins whenever a transactional document needs to generate accounting entries automatically:</p>
+			<ul>
+				<li><b>Payment Documents:</b> Post a single move line when a payment is confirmed.</li>
+				<li><b>Accrual Documents:</b> Post debit/credit pairs for accrual and reversal entries.</li>
+				<li><b>Tax-Inclusive Transactions:</b> Compute and store tax lines alongside the main journal entry.</li>
+				<li><b>Custom Financial Documents:</b> Any document that creates <code>account.move</code> records and needs to track reconciliation status.</li>
+			</ul>
+			<p>Simply inherit the appropriate mixin in your model class and configure the field-name pointers according to your document's field layout.</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>Clone branch <b>15.0</b> of the repository: <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">https://github.com/simetri-sinergi-id/ssi-mixin</a></li>
+				<li>Add the path to this repository in your Odoo configuration (<code>addons-path</code>).</li>
+				<li>Update the module list (ensure you are in developer mode).</li>
+				<li>Go to <i>Apps → Apps → Main Apps</i>, search for <i>Accounting Entry Mixin</i>, and install.</li>
+				<li>Add <code>ssi_accounting_entry_mixin</code> to your module's <code>depends</code> list.</li>
+				<li>Inherit the relevant mixin(s) in your model and configure field-name attributes.</li>
+				<li>Call <code>_create_standard_move()</code> and <code>_create_standard_ml()</code> from your business logic to generate the accounting entry.</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Standalone?</b>
+					<span style="color:#f59e0b;">No — it is a mixin foundation. Install it as a dependency of your custom transactional module.</span>
+				</li>
+				<li>
+					<b>Odoo Version?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>Can I use only one line instead of two?</b>
+					<span style="color:#f59e0b;">Yes — inherit <code>mixin.account_move_single_line</code> for a single journal item.</span>
+				</li>
+				<li>
+					<b>Contribute?</b>
+					<span style="color:#f59e0b;">Fork, branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>Bugs are tracked on <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>. In case of trouble, please check there if your issue has already been reported. If you spotted it first, help us smash it by providing detailed and welcomed feedback.</p>
+			<ul>
+				<li><b>Report Issues:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">Create a new issue</a> with detailed description and steps to reproduce.</li>
+				<li><b>Search Existing:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">Browse existing issues</a> to see if your problem has already been reported.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<p>This module is developed and maintained by PT. Simetri Sinergi Indonesia.</p>
+			<ul>
+				<li><b>Core Development:</b>
+					<ul>
+						<li>Andhitia Rama <a href="mailto:andhitia.r@gmail.com" style="color:#10b981;">&lt;andhitia.r@gmail.com&gt;</a></li>
+						<li>Michael Viriyananda <a href="mailto:viriyananda.michael@gmail.com" style="color:#10b981;">&lt;viriyananda.michael@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b> <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for the development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a>
+			<br>
+			<span>
+				Released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.
+			</span>
+		</div>
+	</div>
+</body>
+</html>
