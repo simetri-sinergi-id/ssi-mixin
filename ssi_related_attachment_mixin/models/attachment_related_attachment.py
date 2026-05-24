@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -160,9 +159,9 @@ class AttachmentRelatedAttachment(models.Model):
                 python_condition, globals_dict=localdict, mode="exec", nocopy=True
             )
             result = localdict
-        except Exception:
+        except Exception as error:
             msg_err = "Error when execute python code"
-            raise UserError(_(msg_err))
+            raise UserError(_(msg_err)) from error
 
         return result
 

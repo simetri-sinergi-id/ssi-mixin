@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
@@ -14,7 +13,7 @@ class AttachmentRelatedAttachmentTemplate(models.Model):
 
     @api.model
     def _default_company_id(self):
-        return self.env["res.company"]._company_default_get(self._name)
+        return self.env.company
 
     name = fields.Char(
         string="Name",
@@ -61,7 +60,7 @@ result = True""",
     def name_get(self):
         result = []
         for record in self:
-            name = "[{}] {}".format(record.model, record.name)
+            name = f"[{record.model}] {record.name}"
             result.append((record.id, name))
         return result
 

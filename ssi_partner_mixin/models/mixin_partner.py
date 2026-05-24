@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from lxml import etree
 
@@ -54,11 +53,12 @@ class MixinPartner(models.AbstractModel):
     _mixin_partner_contact_id_readonly_exclude_state = ["draft"]
 
     partner_id = fields.Many2one(
-        string="Partner",
         comodel_name="res.partner",
+        string="Partner",
         domain=[
             ("parent_id", "=", False),
         ],
+        help="Top-level partner (company or individual) associated with this record.",
     )
 
     @api.depends(
@@ -78,38 +78,44 @@ class MixinPartner(models.AbstractModel):
             record.allowed_contact_ids = result
 
     allowed_contact_ids = fields.Many2many(
-        string="Allowed Contact",
         comodel_name="res.partner",
+        string="Allowed Contact",
         compute="_compute_allowed_contact_ids",
         store=False,
+        help="Contacts belonging to the selected partner, available for selection as contact.",
     )
     contact_partner_id = fields.Many2one(
-        string="Contact",
         comodel_name="res.partner",
+        string="Contact",
+        help="Contact person under the selected partner.",
     )
     mixin_partner_partner_id_required = fields.Boolean(
         string="Mixin Partner - partner_id Required",
         compute="_compute_mixin_partner_attribute",
         store=False,
         compute_sudo=True,
+        help="Computed flag indicating whether partner_id is required on this record.",
     )
     mixin_partner_partner_id_readonly = fields.Boolean(
-        string="Mixin Partner - parnter_id Readonly",
+        string="Mixin Partner - partner_id Readonly",
         compute="_compute_mixin_partner_attribute",
         store=False,
         compute_sudo=True,
+        help="Computed flag indicating whether partner_id is read-only on this record.",
     )
     mixin_partner_contact_id_required = fields.Boolean(
         string="Mixin Partner - contact_id Required",
         compute="_compute_mixin_partner_attribute",
         store=False,
         compute_sudo=True,
+        help="Computed flag indicating whether contact_partner_id is required on this record.",
     )
     mixin_partner_contact_id_readonly = fields.Boolean(
         string="Mixin Partner - contact_id Readonly",
         compute="_compute_mixin_partner_attribute",
         store=False,
         compute_sudo=True,
+        help="Computed flag indicating whether contact_partner_id is read-only on this record.",
     )
 
     @api.depends(
