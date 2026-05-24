@@ -472,3 +472,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_confirm_mixin.confirm_filter
 msgid "Waiting for Approval"
 msgstr ""
+
+#. module: ssi_transaction_confirm_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: ssi_transaction_confirm_mixin
+#: model:ir.model.fields,help:ssi_transaction_confirm_mixin.field_mixin_transaction_confirm__website_message_ids
+msgid "Website communication history"
+msgstr ""
