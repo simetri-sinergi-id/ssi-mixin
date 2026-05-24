@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
@@ -32,14 +31,27 @@ class MixinResCurrencyM2OConfigurator(models.AbstractModel):
         selection=[("manual", "Manual"), ("domain", "Domain"), ("code", "Python Code")],
         string="Currency Selection Method",
         required=True,
+        help="Method used to filter available currencies: manual selection, "
+        "domain expression, or Python code.",
     )
     currency_ids = fields.Many2many(
         comodel_name="res.currency",
         string="Currencies",
+        help="Manually selected currencies available for selection (used when "
+        "Currency Selection Method is 'Manual').",
     )
-    currency_domain = fields.Text(default="[]", string="Currency Domain")
+    currency_domain = fields.Text(
+        default="[]",
+        string="Currency Domain",
+        help="Domain expression to filter available currencies (used when "
+        "Currency Selection Method is 'Domain').",
+    )
     currency_python_code = fields.Text(
-        default="result = []", string="Currency Python Code"
+        default="result = []",
+        string="Currency Python Code",
+        help="Python code evaluated to produce the list of available currencies. "
+        "Must assign a recordset to 'result' "
+        "(used when Currency Selection Method is 'Python Code').",
     )
 
     @ssi_decorator.insert_on_form_view()
