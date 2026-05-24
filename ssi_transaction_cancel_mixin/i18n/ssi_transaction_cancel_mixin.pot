@@ -458,6 +458,16 @@ msgid ""
 msgstr ""
 
 #. module: ssi_transaction_cancel_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: ssi_transaction_cancel_mixin
+#: model:ir.model.fields,help:ssi_transaction_cancel_mixin.field_mixin_transaction_cancel__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: ssi_transaction_cancel_mixin
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_cancel_mixin.base_select_cancel_reason_view_form
 msgid "or"
 msgstr ""
