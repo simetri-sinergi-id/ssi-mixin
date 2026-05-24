@@ -439,6 +439,16 @@ msgid "Unread Messages Counter"
 msgstr ""
 
 #. module: ssi_print_mixin
+#: model:ir.model.fields,field_description:ssi_print_mixin.field_print_document_type__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: ssi_print_mixin
+#: model:ir.model.fields,help:ssi_print_mixin.field_print_document_type__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: ssi_print_mixin
 #: model:ir.model.fields,help:ssi_print_mixin.field_ir_actions_report__print_multi
 msgid ""
 "When enabled, this report can be generated for multiple selected records."
