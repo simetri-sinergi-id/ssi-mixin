@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <template id="res_currency_m2o_configurator_template">
         <group name="currency_1" col="2" colspan="4" string="Currency">

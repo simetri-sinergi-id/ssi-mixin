@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>res.users Many2one Configurator Mixin</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0a1628;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 860px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2rem;
+			font-weight: 700;
+			color: #10b981;
+			border-bottom: 2px solid #10b981;
+			padding-bottom: 12px;
+			margin-bottom: 32px;
+		}
+		.section {
+			background: #111e36;
+			border-radius: 8px;
+			padding: 24px 28px;
+			margin-bottom: 24px;
+			border-left: 4px solid #10b981;
+		}
+		h2 {
+			font-size: 1.15rem;
+			font-weight: 600;
+			color: #10b981;
+			margin: 0 0 14px;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+			vertical-align: middle;
+		}
+		p, li {
+			font-size: 0.97rem;
+			line-height: 1.7;
+			color: #cbd5e1;
+		}
+		ul, ol {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+		}
+		a {
+			color: #10b981;
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		code {
+			background: #1e3a5f;
+			color: #93c5fd;
+			padding: 2px 7px;
+			border-radius: 4px;
+			font-size: 0.9em;
+		}
+		.tech-divider {
+			border: none;
+			border-top: 1px solid #1e3a5f;
+			margin: 32px 0 20px;
+		}
+		.footer {
+			text-align: center;
+			font-size: 0.88rem;
+			color: #64748b;
+			line-height: 1.8;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>res.users Many2one Configurator Mixin</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>res.users Many2one Configurator Mixin</b> is part of the
+				<b>@simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It provides the abstract model <code>mixin.res_users_m2o_configurator</code>,
+				which adds configurable filtering for <code>res.users</code> Many2one
+				fields using a three-strategy pattern: Manual list, Odoo Domain, or
+				Python Code. It integrates with <code>ssi_decorator</code> to optionally
+				inject a ready-made configuration widget into the parent form view.
+			</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Three selection strategies:</b> Manual (explicit user list), Domain (Odoo domain expression), or Python Code (custom script).</li>
+				<li><b>Auto form injection:</b> Configuration widget is automatically injected into the parent form view via <code>ssi_decorator</code>.</li>
+				<li><b>Reusable mixin design:</b> Inherit once; get full user-selection configurability in any Odoo model.</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>This mixin is intended for developers building modules where end-users need to configure which <code>res.users</code> records are selectable in a Many2one field. Common use cases include:</p>
+			<ul>
+				<li><b>Approval workflows:</b> Restrict which users can be selected as approvers.</li>
+				<li><b>Task assignment:</b> Limit assignable users based on a domain or team membership.</li>
+				<li><b>Custom dialogs:</b> Dynamically compute available users via Python code at runtime.</li>
+			</ul>
+			<p>Simply inherit <code>mixin.res_users_m2o_configurator</code> and set the two class attributes to enable automatic form injection.</p>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>Clone branch <code>15.0</code> of <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">simetri-sinergi-id/ssi-mixin</a> and add it to your <code>addons_path</code>.</li>
+				<li>In Odoo Apps, search for <b>res.users Many2one Configurator Mixin</b> and install it.</li>
+				<li>In your custom model, inherit the mixin and configure the class attributes:
+					<br><code>_inherit = ["mixin.res_users_m2o_configurator"]</code><br>
+					<code>_res_users_m2o_configurator_insert_form_element_ok = True</code><br>
+					<code>_res_users_m2o_configurator_form_xpath = "//field[@name='my_field']"</code>
+				</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Standalone?</b>
+					<span style="color:#f59e0b;">No — it is a mixin library module. Install it as a dependency of your custom module.</span>
+				</li>
+				<li>
+					<b>Odoo version?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>Python Code strategy?</b>
+					<span style="color:#f59e0b;">Write Python code in the <code>user_python_code</code> field. Assign a list of <code>res.users</code> IDs to the variable <code>result</code>.</span>
+				</li>
+				<li>
+					<b>Contribute?</b>
+					<span style="color:#f59e0b;">Fork, branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>Bugs are tracked on <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>. In case of trouble, please check there if your issue has already been reported. If you spotted it first, help us smash it by providing detailed and welcomed feedback.</p>
+			<ul>
+				<li><b>Report Issues:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">Create a new issue</a> with detailed description and steps to reproduce.</li>
+				<li><b>Search Existing:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">Browse existing issues</a> to see if your problem has already been reported.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<p>This module is developed and maintained by PT. Simetri Sinergi Indonesia.</p>
+			<ul>
+				<li><b>Core Development:</b>
+					<ul>
+						<li>Andhitia Rama <a href="mailto:andhitia.r@gmail.com" style="color:#10b981;">&lt;andhitia.r@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b> <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a>
+			<br>
+			<span>
+				Released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.
+			</span>
+		</div>
+	</div>
+</body>
+</html>

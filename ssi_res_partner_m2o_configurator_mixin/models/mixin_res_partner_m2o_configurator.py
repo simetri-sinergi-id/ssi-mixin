@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
@@ -31,14 +30,22 @@ class MixinResPartnerM2OConfigurator(models.AbstractModel):
         selection=[("manual", "Manual"), ("domain", "Domain"), ("code", "Python Code")],
         string="Partner Selection Method",
         required=True,
+        help="Strategy used to filter the list of selectable partners.",
     )
     partner_ids = fields.Many2many(
         comodel_name="res.partner",
         string="Partners",
+        help="Manually selected partners available for selection.",
     )
-    partner_domain = fields.Text(default="[]", string="Partner Domain")
+    partner_domain = fields.Text(
+        default="[]",
+        string="Partner Domain",
+        help="Domain expression used to filter partners dynamically.",
+    )
     partner_python_code = fields.Text(
-        default="result = []", string="Partner Python Code"
+        default="result = []",
+        string="Partner Python Code",
+        help="Python code that evaluates to a list of partner IDs for selection.",
     )
 
     @ssi_decorator.insert_on_form_view()

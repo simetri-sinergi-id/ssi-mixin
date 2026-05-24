@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
@@ -31,13 +30,25 @@ class MixinResUsersM2OConfigurator(models.AbstractModel):
         selection=[("manual", "Manual"), ("domain", "Domain"), ("code", "Python Code")],
         string="User Selection Method",
         required=True,
+        help="Method used to filter selectable users: Manual (explicit list), "
+        "Domain (Odoo domain expression), or Python Code (custom script).",
     )
     user_ids = fields.Many2many(
         comodel_name="res.users",
         string="Users",
+        help="Explicit list of users available for selection when method is Manual.",
     )
-    user_domain = fields.Text(default="[]", string="User Domain")
-    user_python_code = fields.Text(default="result = []", string="User Python Code")
+    user_domain = fields.Text(
+        default="[]",
+        string="User Domain",
+        help="Odoo domain expression to filter selectable users when method is Domain.",
+    )
+    user_python_code = fields.Text(
+        default="result = []",
+        string="User Python Code",
+        help="Python code to compute selectable users when method is Python Code. "
+        "Must assign a list of user IDs to the variable `result`.",
+    )
 
     @ssi_decorator.insert_on_form_view()
     def _res_users_m2o_configurator_insert_form_element(self, view_arch):
