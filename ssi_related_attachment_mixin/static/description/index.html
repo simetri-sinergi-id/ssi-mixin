@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Related Attachment Mixin</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Arial, sans-serif;
+			background: #0f172a;
+			color: #e2e8f0;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 900px;
+			margin: 40px auto;
+			padding: 0 24px 48px;
+		}
+		h1 {
+			font-size: 2.2rem;
+			color: #10b981;
+			margin-bottom: 8px;
+		}
+		h2 {
+			font-size: 1.2rem;
+			color: #10b981;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 0;
+		}
+		.icon {
+			width: 22px;
+			height: 22px;
+		}
+		.section {
+			background: #1e293b;
+			border-radius: 10px;
+			padding: 20px 24px;
+			margin-bottom: 20px;
+		}
+		a {
+			color: #10b981;
+		}
+		ul, ol {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 6px;
+		}
+		code {
+			background: #0f172a;
+			border-radius: 4px;
+			padding: 1px 6px;
+			font-size: 0.92em;
+		}
+		hr.tech-divider {
+			border: none;
+			border-top: 1px solid #334155;
+			margin: 32px 0 16px;
+		}
+		.footer {
+			text-align: center;
+			color: #64748b;
+			font-size: 0.9rem;
+			line-height: 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Related Attachment Mixin</h1>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/info.png" alt="Info">
+				Description
+			</h2>
+			<p>
+				<b>Related Attachment Mixin</b> is a core mixin module in the
+				<b>@simetri-sinergi-id/ssi-mixin</b> technology suite for Odoo 15.
+				It provides a structured required-attachment framework that can be mixed into
+				any Odoo model to enforce document attachment requirements, verification
+				workflows, and categorised attachment tracking.
+			</p>
+			<p>Key models provided:</p>
+			<ul>
+				<li><code>attachment.related_attachment_category</code> — groups attachment requirements by category.</li>
+				<li><code>attachment.related_attachment_template</code> — defines which attachments are required for a given model with ordered detail lines.</li>
+				<li><code>attachment.related_attachment_template_detail</code> — one requirement entry with optional Python condition, category, and verification rules.</li>
+				<li><code>attachment.related_attachment</code> — concrete attachment record linked to a document (via <code>model</code> + <code>res_id</code>) and a template detail line.</li>
+				<li><code>mixin.related_attachment</code> — abstract mixin that injects the attachment page into any form view.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/circuit.png" alt="Features">
+				Key Features
+			</h2>
+			<ul>
+				<li><b>Attachment Templates:</b> Define required attachments per model using ordered detail lines with optional Python conditions.</li>
+				<li><b>Attachment Categories:</b> Group requirements into named categories for clear display organisation on the document form.</li>
+				<li><b>Flexible Verification:</b> Supports user-based, group-based, combined, or Python-code-based verification methods per requirement.</li>
+				<li><b>Mixin Design:</b> Inherit <code>mixin.related_attachment</code> to automatically inject the attachment page into any form view.</li>
+				<li><b>Import Wizard:</b> Upload new files or select existing <code>ir.attachment</code> records via a dedicated wizard.</li>
+				<li><b>Trigger Fields:</b> Specify model fields on <code>ir.model</code> that trigger re-evaluation of attachment requirements.</li>
+				<li><b>Status Tracking:</b> Computes counts (all / verified / unverified) and an overall status (Not Needed / In Progress / Done).</li>
+				<li><b>Open Source:</b> AGPL-3.0 license with community-driven improvements.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/workflow.png" alt="Use Cases">
+				Use Cases / Context
+			</h2>
+			<p>This mixin is ideal for any workflow that requires structured, verifiable document attachments:</p>
+			<ul>
+				<li><b>Procurement:</b> Enforce mandatory supporting documents (e.g. quotations, approval memos) for purchase orders before they are confirmed.</li>
+				<li><b>HR Onboarding:</b> Require employees to attach identity documents and contracts before onboarding is marked complete.</li>
+				<li><b>Finance:</b> Ensure all invoices have valid supporting evidence (receipts, PO references) before approval.</li>
+				<li><b>Compliance:</b> Track and verify regulatory documents per transaction type.</li>
+				<li><b>Custom Workflows:</b> Add structured attachment requirements to any custom module by simply inheriting the mixin.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/download.png" alt="Install">
+				Installation &amp; Usage
+			</h2>
+			<ol>
+				<li>Clone branch <b>15.0</b> of the repository: <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">https://github.com/simetri-sinergi-id/ssi-mixin</a></li>
+				<li>Add the path to this repository in your Odoo configuration (<code>addons-path</code>).</li>
+				<li>Update the module list (ensure you are in developer mode).</li>
+				<li>Go to <i>Apps → Apps → Main Apps</i>, search for <i>Related Attachment Mixin</i>, and install.</li>
+				<li>Go to <i>Related Attachment → Templates</i> and create a template for the target model.</li>
+				<li>Add detail lines specifying the required categories and verifiers.</li>
+				<li>In your custom model:<br>
+					<code>_inherit = ["mixin.related_attachment"]</code><br>
+					<code>_related_attachment_create_page = True</code>
+				</li>
+				<li>On the document form, use the <i>Related Attachment</i> page to manage and verify attachments.</li>
+			</ol>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/questions.png" alt="FAQs">
+				FAQ
+			</h2>
+			<ul>
+				<li>
+					<b>Standalone?</b>
+					<span style="color:#f59e0b;">No — it is a mixin foundation. Install it as a dependency of your custom module.</span>
+				</li>
+				<li>
+					<b>Odoo Version?</b>
+					<span style="color:#f59e0b;">Odoo 15.0.</span>
+				</li>
+				<li>
+					<b>Can I have multiple templates per model?</b>
+					<span style="color:#f59e0b;">Yes — templates are filtered by model name and the user selects the applicable template on the document.</span>
+				</li>
+				<li>
+					<b>How does verification work?</b>
+					<span style="color:#f59e0b;">Each template detail line defines allowed verifiers (users, groups, or Python-evaluated). Only those users see the Verify button for that attachment.</span>
+				</li>
+				<li>
+					<b>Contribute?</b>
+					<span style="color:#f59e0b;">Fork, branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin" target="_blank">GitHub</a>.</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/bug.png" alt="Bug Tracker">
+				Bug Tracker
+			</h2>
+			<p>Bugs are tracked on <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">GitHub Issues</a>. In case of trouble, please check there if your issue has already been reported. If you spotted it first, help us smash it by providing detailed and welcomed feedback.</p>
+			<ul>
+				<li><b>Report Issues:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues/new" target="_blank">Create a new issue</a> with detailed description and steps to reproduce.</li>
+				<li><b>Search Existing:</b> <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues" target="_blank">Browse existing issues</a> to see if your problem has already been reported.</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>
+				<img class="icon" src="../img/medal.png" alt="Credits">
+				Credits &amp; Contributors
+			</h2>
+			<p>This module is developed and maintained by PT. Simetri Sinergi Indonesia.</p>
+			<ul>
+				<li><b>Core Development:</b>
+					<ul>
+						<li>Andhitia Rama <a href="mailto:andhitia.r@gmail.com" style="color:#10b981;">&lt;andhitia.r@gmail.com&gt;</a></li>
+						<li>Michael Viriyananda <a href="mailto:viriyananda.michael@gmail.com" style="color:#10b981;">&lt;viriyananda.michael@gmail.com&gt;</a></li>
+					</ul>
+				</li>
+				<li><b>Maintenance:</b> <a href="https://simetri-sinergi.id" target="_blank">PT. Simetri Sinergi Indonesia</a></li>
+				<li><b>Community:</b> Thanks to all community members who reported issues and provided feedback.</li>
+				<li><b>Special Thanks:</b> To the Odoo Community Association (OCA) for the development guidelines and best practices.</li>
+			</ul>
+		</div>
+
+		<hr class="tech-divider">
+
+		<div class="footer">
+			&copy; 2026 <a href="https://simetri-sinergi.id" style="color:#10b981;">PT. Simetri Sinergi Indonesia</a>
+			<br>
+			<span>
+				Released under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" style="color:#10b981;">AGPL-3.0 license</a>.
+			</span>
+		</div>
+	</div>
+</body>
+</html>

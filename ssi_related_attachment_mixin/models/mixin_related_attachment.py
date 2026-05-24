@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -159,12 +158,8 @@ class MixinRelatedAttachment(models.AbstractModel):
                 if "result" in localdict:
                     res = localdict["result"]
             except Exception as error:
-                error_message = """Context: Related Attachment
-Error: %s
-""" % (
-                    error
-                )
-                raise UserError(_(error_message))
+                error_message = f"Context: Related Attachment\nError: {error}\n"
+                raise UserError(_(error_message)) from error
         return res
 
     def _get_template_related_attachment(self):
