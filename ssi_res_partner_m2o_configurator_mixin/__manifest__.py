@@ -4,11 +4,11 @@
 
 {
     "name": "res.partner Many2one Configurator Mixin",
-    "version": "14.0.1.0.0",
+    "version": "15.0.1.0.0",
     "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
-    "installable": False,
+    "installable": True,
     "depends": ["base", "ssi_decorator"],
     "data": [
         "templates/res_partner_m2_configurator_templates.xml",
