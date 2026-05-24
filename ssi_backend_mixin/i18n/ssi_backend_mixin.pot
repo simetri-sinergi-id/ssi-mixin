@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -54,6 +54,11 @@ msgid "Backends"
 msgstr ""
 
 #. module: ssi_backend_mixin
+#: model:ir.model.fields,help:ssi_backend_mixin.field_backend_mixin__note
+msgid "Catatan tambahan untuk master data ini."
+msgstr ""
+
+#. module: ssi_backend_mixin
 #: model:ir.model.fields,field_description:ssi_backend_mixin.field_backend_mixin__code
 msgid "Code"
 msgstr ""
@@ -64,8 +69,13 @@ msgid "Company"
 msgstr ""
 
 #. module: ssi_backend_mixin
-#: model:ir.model.fields,field_description:ssi_backend_mixin.field_backend_mixin__display_name
-msgid "Display Name"
+#: model:ir.model.fields,help:ssi_backend_mixin.field_backend_mixin__company_id
+msgid "Company this backend configuration belongs to."
+msgstr ""
+
+#. module: ssi_backend_mixin
+#: model:ir.model.fields,help:ssi_backend_mixin.field_backend_mixin__state
+msgid "Current activation state of this backend configuration."
 msgstr ""
 
 #. module: ssi_backend_mixin
@@ -79,11 +89,6 @@ msgid "Followers"
 msgstr ""
 
 #. module: ssi_backend_mixin
-#: model:ir.model.fields,field_description:ssi_backend_mixin.field_backend_mixin__message_channel_ids
-msgid "Followers (Channels)"
-msgstr ""
-
-#. module: ssi_backend_mixin
 #: model:ir.model.fields,field_description:ssi_backend_mixin.field_backend_mixin__message_partner_ids
 msgid "Followers (Partners)"
 msgstr ""
@@ -94,8 +99,8 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
 #. module: ssi_backend_mixin
-#: model:ir.model.fields,field_description:ssi_backend_mixin.field_backend_mixin__id
-msgid "ID"
+#: model:ir.model.fields,field_description:ssi_backend_mixin.field_backend_mixin__has_message
+msgid "Has Message"
 msgstr ""
 
 #. module: ssi_backend_mixin
@@ -125,11 +130,6 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: ssi_backend_mixin
-#: model:ir.model.fields,field_description:ssi_backend_mixin.field_backend_mixin____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: ssi_backend_mixin
 #: model:ir.model.fields,field_description:ssi_backend_mixin.field_backend_mixin__message_main_attachment_id
 msgid "Main Attachment"
 msgstr ""
@@ -143,17 +143,6 @@ msgid ""
 "* Transaction with inactive master data can still be viewed\n"
 "* Set master data as inactive if master data no longger needed,\n"
 "but master data already used on transaction"
-msgstr ""
-
-#. module: ssi_backend_mixin
-#: model:ir.model.fields,help:ssi_backend_mixin.field_backend_mixin__code
-msgid ""
-"Master data unique identifier.\n"
-"\n"
-"* Fill with '/' if You do not need unique identifier\n"
-"* Click 'Generate Code' button to automatically assign code.\n"
-"  Sequence template mush be set to perform this action\n"
-"  Only master data with '/' code will be assign automatic code"
 msgstr ""
 
 #. module: ssi_backend_mixin
@@ -174,6 +163,11 @@ msgstr ""
 #. module: ssi_backend_mixin
 #: model:ir.model.fields,field_description:ssi_backend_mixin.field_backend_mixin__my_activity_date_deadline
 msgid "My Activity Deadline"
+msgstr ""
+
+#. module: ssi_backend_mixin
+#: model:ir.model.fields,help:ssi_backend_mixin.field_backend_mixin__name
+msgid "Nama master data."
 msgstr ""
 
 #. module: ssi_backend_mixin
@@ -259,6 +253,11 @@ msgstr ""
 #. module: ssi_backend_mixin
 #: model:ir.model.fields,help:ssi_backend_mixin.field_backend_mixin__activity_exception_decoration
 msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: ssi_backend_mixin
+#: model:ir.model.fields,help:ssi_backend_mixin.field_backend_mixin__code
+msgid "Unique code for this backend configuration."
 msgstr ""
 
 #. module: ssi_backend_mixin
