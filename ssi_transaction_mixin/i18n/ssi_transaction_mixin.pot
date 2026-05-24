@@ -91,6 +91,7 @@ msgstr ""
 
 #. module: ssi_transaction_mixin
 #: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction__state__draft
+#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_account_move_with_field__state__draft
 #: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_cancel__state__draft
 #: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_confirm__state__draft
 #: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_done__state__draft
@@ -379,4 +380,14 @@ msgid ""
 "User that responsible to review document\n"
 "\n"
 "* Unless it configured to approve reviewer does not equal to approver"
+msgstr ""
+
+#. module: ssi_transaction_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: ssi_transaction_mixin
+#: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__website_message_ids
+msgid "Website communication history"
 msgstr ""
