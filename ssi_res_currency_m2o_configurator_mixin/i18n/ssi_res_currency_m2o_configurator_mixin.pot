@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -39,23 +39,15 @@ msgid "Currency Selection Method"
 msgstr ""
 
 #. module: ssi_res_currency_m2o_configurator_mixin
-#: model:ir.model.fields,field_description:ssi_res_currency_m2o_configurator_mixin.field_mixin_res_currency_m2o_configurator__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: ssi_res_currency_m2o_configurator_mixin
 #: model:ir.model.fields.selection,name:ssi_res_currency_m2o_configurator_mixin.selection__mixin_res_currency_m2o_configurator__currency_selection_method__domain
 msgid "Domain"
 msgstr ""
 
 #. module: ssi_res_currency_m2o_configurator_mixin
-#: model:ir.model.fields,field_description:ssi_res_currency_m2o_configurator_mixin.field_mixin_res_currency_m2o_configurator__id
-msgid "ID"
-msgstr ""
-
-#. module: ssi_res_currency_m2o_configurator_mixin
-#: model:ir.model.fields,field_description:ssi_res_currency_m2o_configurator_mixin.field_mixin_res_currency_m2o_configurator____last_update
-msgid "Last Modified on"
+#: model:ir.model.fields,help:ssi_res_currency_m2o_configurator_mixin.field_mixin_res_currency_m2o_configurator__currency_domain
+msgid ""
+"Domain expression to filter available currencies (used when Currency "
+"Selection Method is 'Domain')."
 msgstr ""
 
 #. module: ssi_res_currency_m2o_configurator_mixin
@@ -64,8 +56,30 @@ msgid "Manual"
 msgstr ""
 
 #. module: ssi_res_currency_m2o_configurator_mixin
+#: model:ir.model.fields,help:ssi_res_currency_m2o_configurator_mixin.field_mixin_res_currency_m2o_configurator__currency_ids
+msgid ""
+"Manually selected currencies available for selection (used when Currency "
+"Selection Method is 'Manual')."
+msgstr ""
+
+#. module: ssi_res_currency_m2o_configurator_mixin
+#: model:ir.model.fields,help:ssi_res_currency_m2o_configurator_mixin.field_mixin_res_currency_m2o_configurator__currency_selection_method
+msgid ""
+"Method used to filter available currencies: manual selection, domain "
+"expression, or Python code."
+msgstr ""
+
+#. module: ssi_res_currency_m2o_configurator_mixin
 #: model:ir.model.fields.selection,name:ssi_res_currency_m2o_configurator_mixin.selection__mixin_res_currency_m2o_configurator__currency_selection_method__code
 msgid "Python Code"
+msgstr ""
+
+#. module: ssi_res_currency_m2o_configurator_mixin
+#: model:ir.model.fields,help:ssi_res_currency_m2o_configurator_mixin.field_mixin_res_currency_m2o_configurator__currency_python_code
+msgid ""
+"Python code evaluated to produce the list of available currencies. Must "
+"assign a recordset to 'result' (used when Currency Selection Method is "
+"'Python Code')."
 msgstr ""
 
 #. module: ssi_res_currency_m2o_configurator_mixin
