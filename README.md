@@ -38,6 +38,10 @@ addon | version | maintainers | summary
 [ssi_qr_code_mixin](ssi_qr_code_mixin/) | 15.0.1.0.0 |  | QR Code Mixin
 [ssi_reference_document_mixin](ssi_reference_document_mixin/) | 15.0.1.0.0 |  | Reference Document Mixin
 [ssi_related_attachment_mixin](ssi_related_attachment_mixin/) | 15.0.1.0.0 |  | Related Attachment Mixin
+[ssi_res_currency_m2o_configurator_mixin](ssi_res_currency_m2o_configurator_mixin/) | 15.0.1.0.0 |  | res.currency Many2one Configurator Mixin
+[ssi_res_partner_bank_m2o_configurator_mixin](ssi_res_partner_bank_m2o_configurator_mixin/) | 15.0.1.0.0 |  | res.partner.bank Many2one Configurator Mixin
+[ssi_res_partner_m2o_configurator_mixin](ssi_res_partner_m2o_configurator_mixin/) | 15.0.1.0.0 |  | res.partner Many2one Configurator Mixin
+[ssi_res_users_m2o_configurator_mixin](ssi_res_users_m2o_configurator_mixin/) | 15.0.1.0.0 |  | res.users Many2one Configurator Mixin
 [ssi_sequence_mixin](ssi_sequence_mixin/) | 15.0.1.1.1 |  | Sequence Mixin
 [ssi_transaction_cancel_mixin](ssi_transaction_cancel_mixin/) | 15.0.1.1.1 |  | Transaction Mixin - Cancel State
 [ssi_transaction_confirm_mixin](ssi_transaction_confirm_mixin/) | 15.0.1.1.1 |  | Transaction Mixin - Waiting for Approval State
@@ -58,10 +62,6 @@ addon | version | maintainers | summary
 [ssi_data_requirement_mixin](ssi_data_requirement_mixin/) | 14.0.3.9.0 (unported) |  | Data Requirement Mixin
 [ssi_duration_mixin](ssi_duration_mixin/) | 14.0.2.1.0 (unported) |  | Duration Mixin
 [ssi_product_line_account_mixin](ssi_product_line_account_mixin/) | 14.0.2.4.0 (unported) |  | Product Line Mixin - With Accounting
-[ssi_res_currency_m2o_configurator_mixin](ssi_res_currency_m2o_configurator_mixin/) | 14.0.1.0.0 (unported) |  | res.currency Many2one Configurator Mixin
-[ssi_res_partner_bank_m2o_configurator_mixin](ssi_res_partner_bank_m2o_configurator_mixin/) | 14.0.1.0.0 (unported) |  | res.partner.bank Many2one Configurator Mixin
-[ssi_res_partner_m2o_configurator_mixin](ssi_res_partner_m2o_configurator_mixin/) | 14.0.1.0.0 (unported) |  | res.partner Many2one Configurator Mixin
-[ssi_res_users_m2o_configurator_mixin](ssi_res_users_m2o_configurator_mixin/) | 14.0.1.0.0 (unported) |  | res.users Many2one Configurator Mixin
 [ssi_salesperson_mixin](ssi_salesperson_mixin/) | 14.0.1.1.0 (unported) |  | Salesperson Mixin
 [ssi_schema_parser_mixin](ssi_schema_parser_mixin/) | 14.0.2.0.0 (unported) |  | Generic schema parser mixin with validation support
 [ssi_source_document_mixin](ssi_source_document_mixin/) | 14.0.1.1.0 (unported) |  | Source Document Mixin
