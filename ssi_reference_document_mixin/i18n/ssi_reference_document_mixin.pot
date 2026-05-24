@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -63,6 +63,13 @@ msgid "Attachment Count"
 msgstr ""
 
 #. module: ssi_reference_document_mixin
+#: model:ir.model.fields,help:ssi_reference_document_mixin.field_reference_document__note
+#: model:ir.model.fields,help:ssi_reference_document_mixin.field_reference_document_category__note
+#: model:ir.model.fields,help:ssi_reference_document_mixin.field_reference_document_set__note
+msgid "Catatan tambahan untuk master data ini."
+msgstr ""
+
+#. module: ssi_reference_document_mixin
 #: model:ir.ui.menu,name:ssi_reference_document_mixin.reference_document_category_menu
 msgid "Categories"
 msgstr ""
@@ -94,7 +101,6 @@ msgid "Created on"
 msgstr ""
 
 #. module: ssi_reference_document_mixin
-#: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_mixin_reference_document__display_name
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document__display_name
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_category__display_name
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_set__display_name
@@ -114,13 +120,6 @@ msgid "Followers"
 msgstr ""
 
 #. module: ssi_reference_document_mixin
-#: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document__message_channel_ids
-#: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_category__message_channel_ids
-#: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_set__message_channel_ids
-msgid "Followers (Channels)"
-msgstr ""
-
-#. module: ssi_reference_document_mixin
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document__message_partner_ids
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_category__message_partner_ids
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_set__message_partner_ids
@@ -135,7 +134,13 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
 #. module: ssi_reference_document_mixin
-#: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_mixin_reference_document__id
+#: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document__has_message
+#: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_category__has_message
+#: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_set__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: ssi_reference_document_mixin
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document__id
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_category__id
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_set__id
@@ -226,7 +231,6 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: ssi_reference_document_mixin
-#: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_mixin_reference_document____last_update
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document____last_update
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_category____last_update
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_set____last_update
@@ -299,6 +303,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_category__my_activity_date_deadline
 #: model:ir.model.fields,field_description:ssi_reference_document_mixin.field_reference_document_set__my_activity_date_deadline
 msgid "My Activity Deadline"
+msgstr ""
+
+#. module: ssi_reference_document_mixin
+#: model:ir.model.fields,help:ssi_reference_document_mixin.field_reference_document__name
+#: model:ir.model.fields,help:ssi_reference_document_mixin.field_reference_document_category__name
+#: model:ir.model.fields,help:ssi_reference_document_mixin.field_reference_document_set__name
+msgid "Nama master data."
 msgstr ""
 
 #. module: ssi_reference_document_mixin
