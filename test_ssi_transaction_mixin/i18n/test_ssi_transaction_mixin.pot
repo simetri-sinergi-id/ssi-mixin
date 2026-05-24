@@ -200,6 +200,16 @@ msgid "# Transaction"
 msgstr ""
 
 #. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__account_id
+msgid "Account"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model_terms:ir.ui.view,arch_db:test_ssi_transaction_mixin.test_transaction_mixin_view_form
+msgid "Accounting Entry"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
 #: model_terms:ir.ui.view,arch_db:test_ssi_transaction_mixin.test_transaction_mixin_view_form
 msgid "Action"
 msgstr ""
@@ -257,6 +267,21 @@ msgstr ""
 #. module: test_ssi_transaction_mixin
 #: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_detail_mixin__allowed_uom_ids
 msgid "Allowed UoMs"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__amount
+msgid "Amount"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__analytic_account_id
+msgid "Analytic Account"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__analytic_account_id
+msgid "Analytic account for cost/revenue allocation."
 msgstr ""
 
 #. module: test_ssi_transaction_mixin
@@ -547,11 +572,7 @@ msgstr ""
 
 #. module: test_ssi_transaction_mixin
 #: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__company_id
-msgid ""
-"Company that own the document\n"
-"\n"
-"* Automatically filled with user's company.\n"
-"  Default company can be changed"
+msgid "Company that owns this record."
 msgstr ""
 
 #. module: test_ssi_transaction_mixin
@@ -576,6 +597,7 @@ msgstr ""
 
 #. module: test_ssi_transaction_mixin
 #: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_detail_mixin__currency_id
+#: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__currency_id
 msgid "Currency"
 msgstr ""
 
@@ -589,6 +611,26 @@ msgstr ""
 #. module: test_ssi_transaction_mixin
 #: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_detail_mixin__currency_id
 msgid "Currency used for all price fields on this line."
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__currency_id
+msgid "Currency used for this accounting entry."
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__custom_info_template_id
+msgid "Custom Information Template"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__custom_info_ids
+msgid "Custom Properties"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__custom_info_ids
+msgid "Custom property values for this record."
 msgstr ""
 
 #. module: test_ssi_transaction_mixin
@@ -668,6 +710,11 @@ msgid "Free-text remark for this line."
 msgstr ""
 
 #. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__account_id
+msgid "General ledger account for the accounting entry."
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
 #: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__has_message
 msgid "Has Message"
 msgstr ""
@@ -705,8 +752,33 @@ msgid "In Progress"
 msgstr ""
 
 #. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__realized
+msgid "Indicates whether the linked journal item has been reconciled."
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
 #: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__message_is_follower
 msgid "Is Follower"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__journal_id
+msgid "Journal"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__move_id
+msgid "Journal entry generated from this document."
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__move_line_id
+msgid "Journal item linked to this document."
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__journal_id
+msgid "Journal used to post the accounting entry."
 msgstr ""
 
 #. module: test_ssi_transaction_mixin
@@ -753,6 +825,16 @@ msgstr ""
 #. module: test_ssi_transaction_mixin
 #: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__message_ids
 msgid "Messages"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__move_id
+msgid "Move"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__move_line_id
+msgid "Move Line"
 msgstr ""
 
 #. module: test_ssi_transaction_mixin
@@ -962,6 +1044,11 @@ msgid "Quantity expressed in the selected unit of measure."
 msgstr ""
 
 #. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__realized
+msgid "Realized"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
 #: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__cancel_reason_id
 msgid "Reason for cancelling this document."
 msgstr ""
@@ -1089,6 +1176,11 @@ msgid "Tanggal transaksi."
 msgstr ""
 
 #. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__custom_info_template_id
+msgid "Template that defines the custom properties shown on this record."
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
 #: model:ir.model.fields.selection,name:test_ssi_transaction_mixin.selection__test_transaction_mixin__state__terminate
 msgid "Terminate"
 msgstr ""
@@ -1120,6 +1212,11 @@ msgstr ""
 #: model:ir.actions.act_window,name:test_ssi_transaction_mixin.test_transaction_mixin_action
 #: model:ir.model,name:test_ssi_transaction_mixin.model_test_transaction_mixin
 msgid "Test Transaction Mixin"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__amount
+msgid "Total jumlah dari baris detail transaksi."
 msgstr ""
 
 #. module: test_ssi_transaction_mixin
@@ -1210,4 +1307,14 @@ msgstr ""
 #. module: test_ssi_transaction_mixin
 #: model:ir.model.fields.selection,name:test_ssi_transaction_mixin.selection__test_transaction_mixin__state__confirm
 msgid "Waiting for Approval"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,field_description:test_ssi_transaction_mixin.field_test_transaction_mixin__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: test_ssi_transaction_mixin
+#: model:ir.model.fields,help:test_ssi_transaction_mixin.field_test_transaction_mixin__website_message_ids
+msgid "Website communication history"
 msgstr ""
