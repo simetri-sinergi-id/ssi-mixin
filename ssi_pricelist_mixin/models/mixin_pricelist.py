@@ -1,6 +1,5 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 
@@ -21,6 +20,7 @@ class MixinPricelist(models.AbstractModel):
     currency_id = fields.Many2one(
         string="Currency",
         comodel_name="res.currency",
+        help="Transaction currency used to filter available pricelists.",
     )
 
     @api.depends(
@@ -42,10 +42,12 @@ class MixinPricelist(models.AbstractModel):
         comodel_name="product.pricelist",
         compute="_compute_allowed_pricelist_ids",
         store=False,
+        help="Pricelists available for selection based on the selected currency.",
     )
     pricelist_id = fields.Many2one(
         string="Pricelist",
         comodel_name="product.pricelist",
+        help="Pricelist to apply for this record. Must match the selected currency.",
     )
 
     @api.onchange(
