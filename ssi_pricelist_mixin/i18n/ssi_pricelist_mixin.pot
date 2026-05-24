@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,21 +24,6 @@ msgid "Currency"
 msgstr ""
 
 #. module: ssi_pricelist_mixin
-#: model:ir.model.fields,field_description:ssi_pricelist_mixin.field_mixin_pricelist__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: ssi_pricelist_mixin
-#: model:ir.model.fields,field_description:ssi_pricelist_mixin.field_mixin_pricelist__id
-msgid "ID"
-msgstr ""
-
-#. module: ssi_pricelist_mixin
-#: model:ir.model.fields,field_description:ssi_pricelist_mixin.field_mixin_pricelist____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: ssi_pricelist_mixin
 #: model:ir.model.fields,field_description:ssi_pricelist_mixin.field_mixin_pricelist__pricelist_id
 msgid "Pricelist"
 msgstr ""
@@ -46,4 +31,19 @@ msgstr ""
 #. module: ssi_pricelist_mixin
 #: model:ir.model,name:ssi_pricelist_mixin.model_mixin_pricelist
 msgid "Pricelist Mixin"
+msgstr ""
+
+#. module: ssi_pricelist_mixin
+#: model:ir.model.fields,help:ssi_pricelist_mixin.field_mixin_pricelist__pricelist_id
+msgid "Pricelist to apply for this record. Must match the selected currency."
+msgstr ""
+
+#. module: ssi_pricelist_mixin
+#: model:ir.model.fields,help:ssi_pricelist_mixin.field_mixin_pricelist__allowed_pricelist_ids
+msgid "Pricelists available for selection based on the selected currency."
+msgstr ""
+
+#. module: ssi_pricelist_mixin
+#: model:ir.model.fields,help:ssi_pricelist_mixin.field_mixin_pricelist__currency_id
+msgid "Transaction currency used to filter available pricelists."
 msgstr ""
