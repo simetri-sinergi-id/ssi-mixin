@@ -55,7 +55,6 @@ exclude: |
   ^test_ssi_duration_mixin/|
   ^test_ssi_policy_mixin/|
   ^test_ssi_product_line_mixin/|
-  ^test_ssi_product_line_price_mixin/|
   ^test_ssi_related_attachment_mixin/|
   ^test_ssi_sequence_mixin/|
   ^test_ssi_state_change_constrain_mixin/|
