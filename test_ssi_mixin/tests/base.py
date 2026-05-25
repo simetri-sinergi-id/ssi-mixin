@@ -19,6 +19,13 @@ class BaseCase(TransactionCase):
         cls.loader.update_registry((DummyTestMixinType,))
         cls.test_model = cls.env[DummyTestMixinType._name]
 
+        # Odoo 18 official: register fake models in attrs_before to prevent
+        # check_attrs from flagging inherited fields as "unexpected attributes"
+        if hasattr(cls, "attrs_before"):
+            for model_name, model in cls.registry.models.items():
+                if model_name not in cls.attrs_before:
+                    cls.attrs_before[model_name] = set(vars(model))
+
         # Buat model_id untuk dummy model
         cls.tester_model = cls.env["ir.model"].search(
             [("model", "=", "ssi.test.mixin.type")]
