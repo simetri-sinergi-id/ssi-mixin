@@ -15,7 +15,6 @@ msgstr ""
 
 #. module: ssi_print_mixin
 #: code:addons/ssi_print_mixin/models/print_document_type.py:0
-#: code:addons/ssi_print_mixin/models/print_document_type.py:0
 #, python-format
 msgid "%s (copy)"
 msgstr ""
@@ -243,7 +242,6 @@ msgid "Next Activity Type"
 msgstr ""
 
 #. module: ssi_print_mixin
-#: code:addons/ssi_print_mixin/wizards/base_print_document.py:0
 #: code:addons/ssi_print_mixin/wizards/base_print_document.py:0
 #, python-format
 msgid "No Report Selected"
