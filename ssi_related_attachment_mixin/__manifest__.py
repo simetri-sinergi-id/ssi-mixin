@@ -6,10 +6,10 @@
     "name": "Related Attachment Mixin",
     "version": "14.0.2.10.1",
     "category": "Administration",
-    "website": "https://simetri-sinergi.id",
+    "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
-    "installable": True,
+    "installable": False,
     "depends": [
         "ssi_decorator",
     ],
