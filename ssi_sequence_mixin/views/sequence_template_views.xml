@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2021 OpenSynergy Indonesia
-     Copyright 2021 PT. Simetri Sinergi Indonesia
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<!-- Copyright 2025 OpenSynergy Indonesia
+     Copyright 2025 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0). -->
 <odoo>
     <record id="sequence_template_view_search" model="ir.ui.view">
         <field name="name">sequence.template.search</field>
@@ -37,13 +37,14 @@
         <field name="name">sequence.template.tree</field>
         <field name="model">sequence.template</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="sequence" widget="handle" />
                 <field name="name" />
                 <field name="model_id" />
                 <field name="active" widget="boolean_toggle" />
-            </tree>
+            </list>
         </field>
+        <field name="type">list</field>
     </record>
 
     <record id="sequence_template_view_form" model="ir.ui.view">
@@ -82,19 +83,19 @@
                                 colspan="4"
                                 col="2"
                             >
-                                <field name="computation_method" colspan="4" />
+                                <field name="computation_method" colspan="2" />
                                 <field
                                     name="domain"
-                                    colspan="4"
-                                    attrs="{'invisible': [('computation_method', '=', 'use_python')]}"
+                                    colspan="2"
+                                    invisible="computation_method == 'use_python'"
                                     widget="domain"
                                     options="{'model': 'model', 'in_dialog': True}"
                                 />
                                 <field
                                     name="python_code"
-                                    colspan="4"
+                                    colspan="2"
                                     widget="ace"
-                                    attrs="{'invisible': [('computation_method', '=', 'use_domain')]}"
+                                    invisible="computation_method == 'use_domain'"
                                 />
                             </group>
                         </page>
@@ -107,12 +108,12 @@
                                 colspan="4"
                                 col="2"
                             >
-                                <field name="add_custom_prefix" colspan="4" />
+                                <field name="add_custom_prefix" colspan="2" />
                                 <field
                                     name="prefix_python_code"
-                                    colspan="4"
+                                    colspan="2"
                                     widget="ace"
-                                    attrs="{'invisible': [('add_custom_prefix', '=', False)]}"
+                                    invisible="add_custom_prefix == False"
                                 />
                             </group>
                             <group
@@ -120,12 +121,12 @@
                                 colspan="4"
                                 col="2"
                             >
-                                <field name="add_custom_suffix" colspan="4" />
+                                <field name="add_custom_suffix" colspan="2" />
                                 <field
                                     name="suffix_python_code"
-                                    colspan="4"
+                                    colspan="2"
                                     widget="ace"
-                                    attrs="{'invisible': [('add_custom_suffix', '=', False)]}"
+                                    invisible="add_custom_suffix == False"
                                 />
                             </group>
                             <group
@@ -133,17 +134,17 @@
                                 colspan="4"
                                 col="2"
                             >
-                                <field name="sequence_selection_method" colspan="4" />
+                                <field name="sequence_selection_method" colspan="2" />
                                 <field
                                     name="sequence_id"
-                                    colspan="4"
-                                    attrs="{'invisible': [('sequence_selection_method', '=', 'use_python')]}"
+                                    colspan="2"
+                                    invisible="sequence_selection_method == 'use_python'"
                                 />
                                 <field
                                     name="sequence_python_code"
-                                    colspan="4"
+                                    colspan="2"
                                     widget="ace"
-                                    attrs="{'invisible': [('sequence_selection_method', '=', 'use_sequence')]}"
+                                    invisible="sequence_selection_method == 'use_sequence'"
                                 />
                             </group>
                         </page>
@@ -162,7 +163,7 @@
         <field name="name">Sequence Templates</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">sequence.template</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <menuitem
@@ -172,5 +173,4 @@
         action="sequence_template_action"
         sequence="1"
     />
-
 </odoo>

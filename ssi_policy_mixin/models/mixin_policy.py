@@ -1,26 +1,14 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0.html).
 
 from odoo import _, api, fields, models
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError
 from odoo.tools.safe_eval import safe_eval
 
 
 class MixinPolicy(models.AbstractModel):
     """
-    Abstract mixin that implements the *policy-template* workflow control
-    mechanism.
-
-    Each inheriting model declares a list of boolean policy fields (via
-    ``_get_policy_field``) such as ``confirm_ok``, ``cancel_ok``, etc. The
-    mixin evaluates the matching ``policy.template`` against the current record
-    (using safe-eval Python code) and writes the result booleans back to those
-    fields, effectively controlling which action buttons are visible/enabled.
-
-    The active template is auto-selected on record creation via
-    ``_get_template_policy`` and can be reloaded manually through
-    ``action_reload_policy_template``.
+    Mixin object for workflow policy extensibility.
     """
 
     _name = "mixin.policy"
@@ -28,10 +16,15 @@ class MixinPolicy(models.AbstractModel):
 
     @api.model
     def _get_policy_field(self):
-        res = []
-        return res
+        """
+        Return list of policy fields for extensibility.
+        """
+        return []
 
     def _compute_allowed_policy_template_ids(self):
+        """
+        Compute allowed policy templates for this model.
+        """
         obj_template = self.env["policy.template"]
         for record in self:
             criteria = [
@@ -44,15 +37,20 @@ class MixinPolicy(models.AbstractModel):
         comodel_name="policy.template",
         compute="_compute_allowed_policy_template_ids",
         store=False,
+        help="Allowed policy templates for this record.",
     )
     policy_template_id = fields.Many2one(
         string="Policy Template",
         comodel_name="policy.template",
         copy=False,
         domain=lambda self: [("model", "=", self._name)],
+        help="Policy template applied to this record.",
     )
 
     def _get_policy_localdict(self):
+        """
+        Get localdict for policy evaluation.
+        """
         self.ensure_one()
         return {
             "env": self.env,
@@ -60,6 +58,9 @@ class MixinPolicy(models.AbstractModel):
         }
 
     def _evaluate_policy(self, template):
+        """
+        Evaluate policy python code safely.
+        """
         self.ensure_one()
         res = False
         localdict = self._get_policy_localdict()
@@ -67,10 +68,13 @@ class MixinPolicy(models.AbstractModel):
             safe_eval(template.python_code, localdict, mode="exec", nocopy=True)
             res = localdict["result"]
         except Exception as error:
-            raise UserError(_("Error evaluating conditions.\n %s") % error)
+            raise UserError(_(f"Error evaluating conditions.\n {error}")) from error
         return res
 
     def _get_template_policy(self):
+        """
+        Get template policy for this record.
+        """
         self.ensure_one()
         result = False
         obj_policy_template = self.env["policy.template"]
