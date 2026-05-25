@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,20 +14,18 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ssi_master_data_mixin
-#: code:addons/ssi_master_data_mixin/models/mixin_master_data.py:0
-#, python-format
-msgid "%s (copy)"
-msgstr ""
-
-#. module: ssi_master_data_mixin
 #: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__message_needaction
 msgid "Action Needed"
 msgstr ""
 
 #. module: ssi_master_data_mixin
-#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__active
 #: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_search
 msgid "Active"
+msgstr ""
+
+#. module: ssi_master_data_mixin
+#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__active
+msgid "Active Document"
 msgstr ""
 
 #. module: ssi_master_data_mixin
@@ -51,7 +49,16 @@ msgid "Activity Type Icon"
 msgstr ""
 
 #. module: ssi_master_data_mixin
-#: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_form
+#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__note
+msgid "Additional Note"
+msgstr ""
+
+#. module: ssi_master_data_mixin
+#: model:ir.model.fields,help:ssi_master_data_mixin.field_mixin_master_data__note
+msgid "Additional notes or remarks for this master data record."
+msgstr ""
+
+#. module: ssi_master_data_mixin
 #: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_search
 msgid "Archived"
 msgstr ""
@@ -63,22 +70,17 @@ msgstr ""
 
 #. module: ssi_master_data_mixin
 #: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__code
-msgid "Code"
+msgid "Document Code"
 msgstr ""
 
 #. module: ssi_master_data_mixin
-#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__display_name
-msgid "Display Name"
+#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__name
+msgid "Document Name"
 msgstr ""
 
 #. module: ssi_master_data_mixin
 #: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__message_follower_ids
 msgid "Followers"
-msgstr ""
-
-#. module: ssi_master_data_mixin
-#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__message_channel_ids
-msgid "Followers (Channels)"
 msgstr ""
 
 #. module: ssi_master_data_mixin
@@ -97,18 +99,18 @@ msgid "Generate Code"
 msgstr ""
 
 #. module: ssi_master_data_mixin
-#: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_tree
+#: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_list
 msgid "Generate code"
 msgstr ""
 
 #. module: ssi_master_data_mixin
-#: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_tree
+#: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_list
 msgid "Generate code. Are you sure?"
 msgstr ""
 
 #. module: ssi_master_data_mixin
-#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__id
-msgid "ID"
+#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__has_message
+msgid "Has Message"
 msgstr ""
 
 #. module: ssi_master_data_mixin
@@ -123,7 +125,6 @@ msgstr ""
 
 #. module: ssi_master_data_mixin
 #: model:ir.model.fields,help:ssi_master_data_mixin.field_mixin_master_data__message_needaction
-#: model:ir.model.fields,help:ssi_master_data_mixin.field_mixin_master_data__message_unread
 msgid "If checked, new messages require your attention."
 msgstr ""
 
@@ -138,13 +139,8 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: ssi_master_data_mixin
-#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: ssi_master_data_mixin
-#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__message_main_attachment_id
-msgid "Main Attachment"
+#: model:ir.model.fields,help:ssi_master_data_mixin.field_mixin_master_data__name
+msgid "Master data name. Fill with the name of the master data record."
 msgstr ""
 
 #. module: ssi_master_data_mixin
@@ -190,11 +186,6 @@ msgid "My Activity Deadline"
 msgstr ""
 
 #. module: ssi_master_data_mixin
-#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__name
-msgid "Name"
-msgstr ""
-
-#. module: ssi_master_data_mixin
 #: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr ""
@@ -210,7 +201,6 @@ msgid "Next Activity Type"
 msgstr ""
 
 #. module: ssi_master_data_mixin
-#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__note
 #: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_form
 msgid "Note"
 msgstr ""
@@ -227,7 +217,7 @@ msgstr ""
 
 #. module: ssi_master_data_mixin
 #: model:ir.model.fields,help:ssi_master_data_mixin.field_mixin_master_data__message_needaction_counter
-msgid "Number of messages which requires an action"
+msgid "Number of messages requiring action"
 msgstr ""
 
 #. module: ssi_master_data_mixin
@@ -236,17 +226,12 @@ msgid "Number of messages with delivery error"
 msgstr ""
 
 #. module: ssi_master_data_mixin
-#: model:ir.model.fields,help:ssi_master_data_mixin.field_mixin_master_data__message_unread_counter
-msgid "Number of unread messages"
-msgstr ""
-
-#. module: ssi_master_data_mixin
-#: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_tree
+#: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_list
 msgid "Reset code"
 msgstr ""
 
 #. module: ssi_master_data_mixin
-#: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_tree
+#: model_terms:ir.ui.view,arch_db:ssi_master_data_mixin.mixin_master_data_view_list
 msgid "Reset code. Are you sure?"
 msgstr ""
 
@@ -267,24 +252,4 @@ msgstr ""
 #. module: ssi_master_data_mixin
 #: model:ir.model.fields,help:ssi_master_data_mixin.field_mixin_master_data__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr ""
-
-#. module: ssi_master_data_mixin
-#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__message_unread
-msgid "Unread Messages"
-msgstr ""
-
-#. module: ssi_master_data_mixin
-#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__message_unread_counter
-msgid "Unread Messages Counter"
-msgstr ""
-
-#. module: ssi_master_data_mixin
-#: model:ir.model.fields,field_description:ssi_master_data_mixin.field_mixin_master_data__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: ssi_master_data_mixin
-#: model:ir.model.fields,help:ssi_master_data_mixin.field_mixin_master_data__website_message_ids
-msgid "Website communication history"
 msgstr ""
