@@ -50,7 +50,6 @@ exclude: |
   ^ssi_transaction_terminate_mixin/|
   ^ssi_transaction_total_mixin/|
   ^ssi_transaction_win_lost_mixin/|
-  ^test_ssi_policy_mixin/|
   ^test_ssi_product_line_mixin/|
   ^test_ssi_related_attachment_mixin/|
   ^test_ssi_sequence_mixin/|
