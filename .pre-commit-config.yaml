@@ -15,7 +15,6 @@ exclude: |
   ^ssi_operating_unit_mixin/|
   ^ssi_partner_mixin/|
   ^ssi_pricelist_mixin/|
-  ^ssi_print_mixin/|
   ^ssi_product_line_account_mixin/|
   ^ssi_product_line_mixin/|
   ^ssi_product_line_price_mixin/|

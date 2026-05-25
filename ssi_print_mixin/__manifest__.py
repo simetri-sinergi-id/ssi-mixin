@@ -1,14 +1,14 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
+# Copyright 2025 OpenSynergy Indonesia
+# Copyright 2025 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
-# pylint: disable=locally-disabled, manifest-required-author
+
 {
     "name": "Print Policy Mixin",
-    "version": "14.0.1.3.1",
+    "author": "PT. Simetri Sinergi Indonesia",
+    "version": "18.0.1.0.2",
     "website": "https://github.com/open-synergy/ssi-mixin",
-    "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
-    "installable": False,
+    "installable": True,
     "depends": [
         "base",
         "mail",
