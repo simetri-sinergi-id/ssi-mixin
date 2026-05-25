@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 OpenSynergy Indonesia
+     Copyright 2025 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0.html). -->
+<odoo>
+    <record id="test_mixin_type_access_all" model="ir.model.access">
+        <field name="name">test.mixin.type - all</field>
+        <field name="model_id" ref="model_test_mixin_type" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_write" eval="0" />
+        <field name="perm_create" eval="0" />
+        <field name="perm_unlink" eval="0" />
+    </record>
+
+    <record id="test_mixin_type_access_configurator" model="ir.model.access">
+        <field name="name">test.mixin.type - configurator</field>
+        <field name="model_id" ref="model_test_mixin_type" />
+        <field name="group_id" ref="test_mixin_type_configurator_group" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+</odoo>

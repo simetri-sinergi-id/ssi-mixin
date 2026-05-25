@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 OpenSynergy Indonesia
+     Copyright 2025 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0.html). -->
+<odoo>
+    <menuitem
+        id="testing_menu"
+        name="Testing"
+        parent="base.menu_administration"
+        sequence="100"
+    />
+    <menuitem
+        id="testing_mixin_menu"
+        name="Mixin"
+        parent="testing_menu"
+        sequence="10"
+    />
+</odoo>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 OpenSynergy Indonesia
+     Copyright 2025 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0.html). -->
+<odoo>
+    <!-- Search View -->
+    <record id="test_mixin_type_view_search" model="ir.ui.view">
+        <field name="name">test.mixin.type - search</field>
+        <field name="model">test.mixin.type</field>
+        <field
+            name="inherit_id"
+            ref="ssi_master_data_mixin.mixin_master_data_view_search"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <data />
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="test_mixin_type_view_list" model="ir.ui.view">
+        <field name="name">test.mixin.type - list</field>
+        <field name="model">test.mixin.type</field>
+        <field
+            name="inherit_id"
+            ref="ssi_master_data_mixin.mixin_master_data_view_list"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="value" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="test_mixin_type_view_form" model="ir.ui.view">
+        <field name="name">test.mixin.type - form</field>
+        <field name="model">test.mixin.type</field>
+        <field
+            name="inherit_id"
+            ref="ssi_master_data_mixin.mixin_master_data_view_form"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='active']" position="after">
+                    <field name="value" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <!-- Window Action -->
+    <record id="test_mixin_type_action" model="ir.actions.act_window">
+        <field name="name">Mixin Types</field>
+        <field name="res_model">test.mixin.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem
+        id="test_mixin_type_menu"
+        name="Mixin Type"
+        parent="testing_mixin_menu"
+        action="test_mixin_type_action"
+        sequence="10"
+    />
+</odoo>
