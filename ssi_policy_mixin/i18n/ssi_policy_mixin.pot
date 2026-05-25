@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -12,11 +12,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: ssi_policy_mixin
-#: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template_detail__template_id
-msgid "# Template"
-msgstr ""
 
 #. module: ssi_policy_mixin
 #: model_terms:ir.ui.view,arch_db:ssi_policy_mixin.policy_template_detail_view_form
@@ -45,6 +40,16 @@ msgid "Allowed States"
 msgstr ""
 
 #. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_mixin_policy__allowed_policy_template_ids
+msgid "Allowed policy templates for this record."
+msgstr ""
+
+#. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template_detail__allowed_state_ids
+msgid "Allowed states for this policy detail."
+msgstr ""
+
+#. module: ssi_policy_mixin
 #: model:ir.model.fields.selection,name:ssi_policy_mixin.selection__policy_template_detail__computation_method__use_group
 msgid "Any User In Specific Groups"
 msgstr ""
@@ -58,6 +63,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template__company_id
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template_detail__company_id
 msgid "Company"
+msgstr ""
+
+#. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template_detail__company_id
+msgid "Company for which this policy detail is valid."
+msgstr ""
+
+#. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template__company_id
+msgid "Company for which this policy is valid."
 msgstr ""
 
 #. module: ssi_policy_mixin
@@ -84,7 +99,6 @@ msgid "Details"
 msgstr ""
 
 #. module: ssi_policy_mixin
-#: model:ir.model.fields,field_description:ssi_policy_mixin.field_mixin_policy__display_name
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template__display_name
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template_detail__display_name
 msgid "Display Name"
@@ -96,11 +110,8 @@ msgid "Domain"
 msgstr ""
 
 #. module: ssi_policy_mixin
-#: code:addons/ssi_policy_mixin/models/mixin_policy.py:0
+#. odoo-python
 #: code:addons/ssi_policy_mixin/models/policy_template_detail.py:0
-#: code:addons/ssi_policy_mixin/models/policy_template_detail.py:0
-#: code:addons/ssi_policy_mixin/models/policy_template_detail.py:0
-#, python-format
 msgid ""
 "Error evaluating conditions.\n"
 " %s"
@@ -112,22 +123,29 @@ msgid "Field"
 msgstr ""
 
 #. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template_detail__field_id
+msgid "Field to which this policy detail applies."
+msgstr ""
+
+#. module: ssi_policy_mixin
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template_detail__group_ids
 msgid "Groups"
 msgstr ""
 
 #. module: ssi_policy_mixin
-#: model:ir.model.fields,field_description:ssi_policy_mixin.field_mixin_policy__id
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template__id
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template_detail__id
 msgid "ID"
 msgstr ""
 
 #. module: ssi_policy_mixin
-#: model:ir.model.fields,field_description:ssi_policy_mixin.field_mixin_policy____last_update
-#: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template____last_update
-#: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template_detail____last_update
-msgid "Last Modified on"
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template_detail__active
+msgid "If unchecked, the policy detail is inactive."
+msgstr ""
+
+#. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template__active
+msgid "If unchecked, the policy is inactive."
 msgstr ""
 
 #. module: ssi_policy_mixin
@@ -151,6 +169,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template__model
 #: model_terms:ir.ui.view,arch_db:ssi_policy_mixin.policy_template_view_search
 msgid "Model"
+msgstr ""
+
+#. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template__model_id
+msgid "Model to which this policy applies."
 msgstr ""
 
 #. module: ssi_policy_mixin
@@ -191,6 +214,16 @@ msgid "Policy Templates"
 msgstr ""
 
 #. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_mixin_policy__policy_template_id
+msgid "Policy template applied to this record."
+msgstr ""
+
+#. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template__name
+msgid "Policy template name."
+msgstr ""
+
+#. module: ssi_policy_mixin
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template__python_code
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template_detail__python_code
 msgid "Python Code"
@@ -202,8 +235,18 @@ msgid "Python Expression"
 msgstr ""
 
 #. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template_detail__template_id
+msgid "Reference to the parent policy template."
+msgstr ""
+
+#. module: ssi_policy_mixin
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template__model_id
 msgid "Referenced Model"
+msgstr ""
+
+#. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template_detail__restrict_state
+msgid "Restrict based on state field."
 msgstr ""
 
 #. module: ssi_policy_mixin
@@ -238,6 +281,11 @@ msgid "Sequence"
 msgstr ""
 
 #. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template__sequence
+msgid "Sequence for ordering."
+msgstr ""
+
+#. module: ssi_policy_mixin
 #: model:ir.model.fields.selection,name:ssi_policy_mixin.selection__policy_template_detail__computation_method__use_user
 msgid "Specific User"
 msgstr ""
@@ -248,8 +296,23 @@ msgid "State Field"
 msgstr ""
 
 #. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template__state_field_id
+msgid "State field for workflow restriction."
+msgstr ""
+
+#. module: ssi_policy_mixin
 #: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template_detail__state_ids
 msgid "States"
+msgstr ""
+
+#. module: ssi_policy_mixin
+#: model:ir.model.fields,help:ssi_policy_mixin.field_policy_template__model
+msgid "Technical model name."
+msgstr ""
+
+#. module: ssi_policy_mixin
+#: model:ir.model.fields,field_description:ssi_policy_mixin.field_policy_template_detail__template_id
+msgid "Template"
 msgstr ""
 
 #. module: ssi_policy_mixin
