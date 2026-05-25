@@ -53,7 +53,6 @@ exclude: |
   ^test_ssi_accounting_entry_mixin/|
   ^test_ssi_custom_information_mixin/|
   ^test_ssi_duration_mixin/|
-  ^test_ssi_multiple_approval_mixin/|
   ^test_ssi_policy_mixin/|
   ^test_ssi_product_line_account_mixin/|
   ^test_ssi_product_line_mixin/|
