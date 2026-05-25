@@ -1,0 +1,6 @@
+scenario_missing_name:
+  data:
+    name: false
+    code: "MT-001"
+    value: 10
+    note: "Missing name should raise ValidationError"

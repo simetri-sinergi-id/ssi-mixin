@@ -1,0 +1,11 @@
+scenario:
+  data1:
+    name: "Mixin Type A"
+    code: "MT-001"
+    value: 10
+    note: "First record"
+  data2:
+    name: "Mixin Type B"
+    code: "MT-001"
+    value: 20
+    note: "Duplicate code should raise UserError"

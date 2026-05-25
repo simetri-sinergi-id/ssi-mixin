@@ -1,0 +1,6 @@
+scenario:
+  data:
+    name: "Mixin Type A"
+    code: "MT-001"
+    value: 10
+    note: "Test create valid data"

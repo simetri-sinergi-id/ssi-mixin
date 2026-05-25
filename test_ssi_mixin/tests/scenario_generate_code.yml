@@ -1,0 +1,18 @@
+scenario:
+  data:
+    name: "Mixin Type A"
+    value: 10
+    note: "Test generate code"
+  sequence:
+    name: "Test Sequence Mixin Type"
+    code: "ssi.test.mixin.type"
+    prefix: "MT-"
+    number_next: 1
+    number_increment: 1
+    padding: 6
+  template:
+    name: "Test Template Mixin Type"
+    initial_string: "/"
+    computation_method: "use_python"
+    python_code: "result = document.value > 0"
+    sequence_selection_method: "use_sequence"
