@@ -10,55 +10,10 @@ class BaseCase(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.loader = FakeModelLoader(cls.env, cls.__module__)
-        cls.loader.backup_registry()
-        from .dummy_model import (
-            DummyModel,
-        )
-
-        cls.loader.update_registry((DummyModel,))
-        cls.test_model = cls.env[DummyModel._name]
-
-        # Odoo 18 official: register fake models in attrs_before to prevent
-        # check_attrs from flagging inherited fields as "unexpected attributes"
-        if hasattr(cls, "attrs_before"):
-            for model_name, model in cls.registry.models.items():
-                if model_name not in cls.attrs_before:
-                    cls.attrs_before[model_name] = set(vars(model))
-
-        # Buat model_id untuk dummy model
-        cls.tester_model = cls.env["ir.model"].search([("model", "=", "dummy_model")])
-
-        # Buat field_id
-        cls.field_obj = cls.env["ir.model.fields"].search(
-            [("model_id", "=", cls.tester_model.id), ("name", "=", "code")], limit=1
-        )
-        cls.field_date_obj = cls.env["ir.model.fields"].search(
-            [
-                ("model_id", "=", cls.tester_model.id),
-                ("ttype", "in", ["date", "datetime"]),
-            ],
-            limit=1,
-        )
 
         # Create a multi-company
         cls.main_company = cls.env.ref("base.main_company")
         cls.other_company = cls.env["res.company"].create({"name": "My Company"})
-
-        models = (cls.tester_model,)
-
-        for model in models:
-            # Access record:
-            cls.env["ir.model.access"].create(
-                {
-                    "name": f"access {model.name}",
-                    "model_id": model.id,
-                    "perm_read": 1,
-                    "perm_write": 1,
-                    "perm_create": 1,
-                    "perm_unlink": 1,
-                }
-            )
 
         # Create users:
         group_ids = cls.env.ref("base.group_system").ids
@@ -82,7 +37,42 @@ class BaseCase(TransactionCase):
             }
         )
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.loader.restore_registry()
-        super().tearDownClass()
+    def setUp(self):
+        super().setUp()
+        self.loader = FakeModelLoader(self.env, self.__module__)
+        self.loader.backup_registry()
+        from .dummy_model import DummyModel
+
+        self.loader.update_registry((DummyModel,))
+        self.test_model = self.env[DummyModel._name]
+
+        # Buat model_id untuk dummy model
+        self.tester_model = self.env["ir.model"].search([("model", "=", "dummy_model")])
+
+        # Buat field_id
+        self.field_obj = self.env["ir.model.fields"].search(
+            [("model_id", "=", self.tester_model.id), ("name", "=", "code")], limit=1
+        )
+        self.field_date_obj = self.env["ir.model.fields"].search(
+            [
+                ("model_id", "=", self.tester_model.id),
+                ("ttype", "in", ["date", "datetime"]),
+            ],
+            limit=1,
+        )
+
+        # Access record:
+        self.env["ir.model.access"].create(
+            {
+                "name": f"access {self.tester_model.name}",
+                "model_id": self.tester_model.id,
+                "perm_read": 1,
+                "perm_write": 1,
+                "perm_create": 1,
+                "perm_unlink": 1,
+            }
+        )
+
+    def tearDown(self):
+        self.loader.restore_registry()
+        super().tearDown()
