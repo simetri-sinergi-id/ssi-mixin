@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2022 OpenSynergy Indonesia
-     Copyright 2022 PT. Simetri Sinergi Indonesia
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<!-- Copyright 2026 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0.html). -->
 <odoo>
-    <record id="policy_template_detail_view_tree" model="ir.ui.view">
-        <field name="name">policy.template.detail.tree</field>
+    <record id="policy_template_detail_view_list" model="ir.ui.view">
+        <field name="name">policy.template.detail.list</field>
         <field name="model">policy.template_detail</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="field_id" />
                 <field name="restrict_state" />
                 <field name="restrict_user" />
                 <field name="computation_method" />
                 <field name="restrict_additional" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -65,27 +64,23 @@
                                 <field name="restrict_user" string="Activate" />
                                 <field
                                     name="computation_method"
-                                    attrs="{'invisible': [('restrict_user', '=', False)],'required': [('restrict_user', '=', True)]}"
+                                    invisible="restrict_user == False"
                                 />
                                 <field
                                     name="user_ids"
-                                    attrs="{
-                                         'invisible': [('computation_method', '!=', 'use_user'), ('computation_method', '!=', 'use_both')],
-                                         'required': ['|', ('computation_method', '=', 'use_user'), ('computation_method', '=', 'use_both')]}"
+                                    invisible="not (computation_method == 'use_user' or computation_method == 'use_both')"
                                     widget="many2many_tags"
                                 />
                                 <field
                                     name="group_ids"
-                                    attrs="{
-                                         'invisible': [('computation_method', '!=', 'use_group'), ('computation_method', '!=', 'use_both')],
-                                         'required': ['|', ('computation_method', '=', 'use_group'), ('computation_method', '=', 'use_both')]}"
+                                    invisible="not (computation_method == 'use_group' or computation_method == 'use_both')"
                                     widget="many2many_tags"
                                 />
                                 <field
                                     name="python_code"
                                     colspan="4"
                                     widget="ace"
-                                    attrs="{'invisible': [('computation_method', '&lt;&gt;', 'use_python')]}"
+                                    invisible="computation_method != 'use_python'"
                                 />
                             </group>
                             <group
@@ -98,7 +93,7 @@
                                 <field
                                     name="additional_python_code"
                                     widget="ace"
-                                    attrs="{'invisible': [('restrict_additional', '=', False)]}"
+                                    invisible="restrict_additional == False"
                                 />
                             </group>
                         </page>
