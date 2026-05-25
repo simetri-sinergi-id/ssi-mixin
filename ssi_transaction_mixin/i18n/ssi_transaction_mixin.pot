@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,8 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__name
-#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_tree
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_list
 msgid "# Document"
 msgstr ""
 
@@ -45,8 +44,18 @@ msgid "Activity Type Icon"
 msgstr ""
 
 #. module: ssi_transaction_mixin
+#: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__note
+msgid "Additional notes for this transaction."
+msgstr ""
+
+#. module: ssi_transaction_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__allowed_policy_template_ids
 msgid "Allowed Policy Templates"
+msgstr ""
+
+#. module: ssi_transaction_mixin
+#: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__allowed_policy_template_ids
+msgid "Allowed policy templates for this record."
 msgstr ""
 
 #. module: ssi_transaction_mixin
@@ -78,10 +87,15 @@ msgstr ""
 #. module: ssi_transaction_mixin
 #: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__company_id
 msgid ""
-"Company that own the document\n"
+"Company that owns the document.\n"
 "\n"
 "* Automatically filled with user's company.\n"
-"  Default company can be changed"
+"  Default company can be changed."
+msgstr ""
+
+#. module: ssi_transaction_mixin
+#: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__state
+msgid "Current state of the transaction."
 msgstr ""
 
 #. module: ssi_transaction_mixin
@@ -90,36 +104,17 @@ msgid "Display Name"
 msgstr ""
 
 #. module: ssi_transaction_mixin
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__data_requirement__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__data_requirement_package__state__draft
+#: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__display_name
+msgid "Display name for the transaction."
+msgstr ""
+
+#. module: ssi_transaction_mixin
+#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__name
+msgid "Document Name"
+msgstr ""
+
+#. module: ssi_transaction_mixin
 #: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_account_move_with_field__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_cancel__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_confirm__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_date_due__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_date_duration__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_done__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_open__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_partner__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_partner_contact_required__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_pricelist__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_queue__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_queue_cancel__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_queue_done__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_ready__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_residual__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_residual_with_field__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_salesperson__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_tax__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_tax_address__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_tax_address_required__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_tax_with_field__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_terminate__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_total__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_total_with_field__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_untaxed__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_untaxed_with_field__state__draft
-#: model:ir.model.fields.selection,name:ssi_transaction_mixin.selection__mixin_transaction_win_lost__state__draft
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_search
 msgid "Draft"
 msgstr ""
@@ -127,11 +122,6 @@ msgstr ""
 #. module: ssi_transaction_mixin
 #: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__message_follower_ids
 msgid "Followers"
-msgstr ""
-
-#. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__message_channel_ids
-msgid "Followers (Channels)"
 msgstr ""
 
 #. module: ssi_transaction_mixin
@@ -150,8 +140,8 @@ msgid "Future Activities"
 msgstr ""
 
 #. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__id
-msgid "ID"
+#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__has_message
+msgid "Has Message"
 msgstr ""
 
 #. module: ssi_transaction_mixin
@@ -166,7 +156,6 @@ msgstr ""
 
 #. module: ssi_transaction_mixin
 #: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__message_needaction
-#: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__message_unread
 msgid "If checked, new messages require your attention."
 msgstr ""
 
@@ -181,26 +170,16 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: ssi_transaction_mixin
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_search
 msgid "Late Activities"
 msgstr ""
 
 #. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__message_main_attachment_id
-msgid "Main Attachment"
-msgstr ""
-
-#. module: ssi_transaction_mixin
 #: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__manual_number_ok
 msgid ""
-"Manual number assignment policy\n"
+"Manual number assignment policy.\n"
 "\n"
-"* If active user can edit document number"
+"* If active user can edit document number."
 msgstr ""
 
 #. module: ssi_transaction_mixin
@@ -256,17 +235,12 @@ msgstr ""
 
 #. module: ssi_transaction_mixin
 #: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__message_needaction_counter
-msgid "Number of messages which requires an action"
+msgid "Number of messages requiring action"
 msgstr ""
 
 #. module: ssi_transaction_mixin
 #: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
-
-#. module: ssi_transaction_mixin
-#: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__message_unread_counter
-msgid "Number of unread messages"
 msgstr ""
 
 #. module: ssi_transaction_mixin
@@ -280,13 +254,18 @@ msgid "Policy Template"
 msgstr ""
 
 #. module: ssi_transaction_mixin
+#: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__policy_template_id
+msgid "Policy template applied to this record."
+msgstr ""
+
+#. module: ssi_transaction_mixin
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_form
 msgid "Reload Template Policy"
 msgstr ""
 
 #. module: ssi_transaction_mixin
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_form
-#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_tree
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_list
 msgid "Reset Document Number"
 msgstr ""
 
@@ -303,28 +282,28 @@ msgstr ""
 
 #. module: ssi_transaction_mixin
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_form
-#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_tree
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_list
 msgid "Restart"
 msgstr ""
 
 #. module: ssi_transaction_mixin
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_form
-#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_tree
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_list
 msgid "Restart data. Are you sure?"
 msgstr ""
 
 #. module: ssi_transaction_mixin
 #: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_form
-#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_tree
+#: model_terms:ir.ui.view,arch_db:ssi_transaction_mixin.mixin_transaction_view_list
 msgid "Restart document number. Are you sure?"
 msgstr ""
 
 #. module: ssi_transaction_mixin
 #: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__restart_ok
 msgid ""
-"Restart policy\n"
+"Restart policy.\n"
 "\n"
-"* If active user can see and execute 'Restart' button"
+"* If active user can see and execute 'Restart' button."
 msgstr ""
 
 #. module: ssi_transaction_mixin
@@ -366,13 +345,13 @@ msgstr ""
 #. module: ssi_transaction_mixin
 #: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__name
 msgid ""
-"Transaction/document number\n"
+"Transaction/document number.\n"
 "\n"
-"* Unique indentifer of transaction\n"
+"* Unique identifier of transaction\n"
 "* Leave '/' to automatically generate number\n"
 "* Change '/' into any number/identifier to manually assign number.\n"
 "  Manual number assignment can be done in 'Draft' state\n"
-"  Only user with 'Can Manualy Assign Number' policy can manually assign number.\n"
+"  Only user with 'Can Manually Assign Number' policy can manually assign number.\n"
 "* Transaction with number other than '/' can not be deleted."
 msgstr ""
 
@@ -387,39 +366,25 @@ msgid "Type of the exception activity on record."
 msgstr ""
 
 #. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__message_unread
-msgid "Unread Messages"
-msgstr ""
-
-#. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__message_unread_counter
-msgid "Unread Messages Counter"
-msgstr ""
-
-#. module: ssi_transaction_mixin
 #: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__user_id
 msgid ""
-"User that responsible for document\n"
+"User responsible for document.\n"
 "\n"
-"* Create user can be different with responsible user\n"
-"* Automatically filled with user that initiate document creation.\n"
+"* Creator can be different from responsible user.\n"
+"* Automatically filled with user that initiates document creation.\n"
 "  Default responsible can be changed."
 msgstr ""
 
 #. module: ssi_transaction_mixin
 #: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__reviewer_id
 msgid ""
-"User that responsible to review document\n"
+"User responsible to review document.\n"
 "\n"
-"* Unless it configured to approve reviewer does not equal to approver"
+"* Unless configured to approve, reviewer does not equal to approver."
 msgstr ""
 
 #. module: ssi_transaction_mixin
-#: model:ir.model.fields,field_description:ssi_transaction_mixin.field_mixin_transaction__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: ssi_transaction_mixin
-#: model:ir.model.fields,help:ssi_transaction_mixin.field_mixin_transaction__website_message_ids
-msgid "Website communication history"
+#. odoo-python
+#: code:addons/ssi_transaction_mixin/models/mixin_transaction.py:0
+msgid "{doc} {name} restarted"
 msgstr ""
