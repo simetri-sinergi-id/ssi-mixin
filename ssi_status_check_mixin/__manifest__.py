@@ -6,7 +6,7 @@
     "name": "Status Check Mixin",
     "version": "14.0.2.4.3",
     "category": "Administration",
-    "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
+    "website": "https://github.com/open-synergy/ssi-mixin",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
     "installable": False,

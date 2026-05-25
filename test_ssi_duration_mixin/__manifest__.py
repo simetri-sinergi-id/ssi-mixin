@@ -4,7 +4,7 @@
 {
     "name": "Test Module: Duration Mixin",
     "version": "14.0.1.1.0",
-    "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
+    "website": "https://github.com/open-synergy/ssi-mixin",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "category": "Tools",
     "license": "AGPL-3",

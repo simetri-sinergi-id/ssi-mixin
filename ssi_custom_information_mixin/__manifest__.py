@@ -5,7 +5,7 @@
 {
     "name": "Custom Information Mixin",
     "version": "14.0.3.2.2",
-    "website": "https://github.com/simetri-sinergi-id/ssi-mixin",
+    "website": "https://github.com/open-synergy/ssi-mixin",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "category": "Tools",
     "license": "AGPL-3",
