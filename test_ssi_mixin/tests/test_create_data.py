@@ -27,8 +27,8 @@ class TestCreateData(BaseCase):
 
     @file_data("scenario_create_invalid_data.yml")
     def test_create_invalid_data_raises(self, data):
-        # required=True violated via create() raises DB exception, not ValidationError
-        with self.assertRaises(Exception):  # noqa: B017
+        # value="-" on Integer field raises ValueError at Python level (before DB)
+        with self.assertRaises(ValueError):
             self.test_model.with_user(self.test_user_1.id).create(
                 {
                     "name": data.get("name"),

@@ -1,6 +1,6 @@
-scenario_missing_name:
+scenario_invalid_integer:
   data:
-    name: false
-    code: "MT-001"
-    value: 10
-    note: "Missing name should raise ValidationError"
+    name: "Test Invalid"
+    code: "MT-INVALID"
+    value: "-"
+    note: "Invalid integer value should raise ValueError"
