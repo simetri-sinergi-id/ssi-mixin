@@ -51,4 +51,4 @@ class TestTransactionMixinErrors(BaseCase):
         )
         # Hapus bypass — tanpa policy template → manual_number_ok=False
         with self.assertRaises(UserError):
-            doc.action_reset_document_number()
+            doc.with_context(bypass_policy_check=False).action_reset_document_number()
