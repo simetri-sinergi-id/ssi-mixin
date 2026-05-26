@@ -1,8 +1,8 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2025 OpenSynergy Indonesia
+# Copyright 2025 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0).
 from odoo import _, models
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError
 from odoo.tools.safe_eval import safe_eval
 
 
@@ -27,8 +27,8 @@ class MixingSequence(models.AbstractModel):
             method_name = "_evaluate_sequence_" + template.computation_method
             result = getattr(self, method_name)(template)
         except Exception as error:
-            msg_err = _("Error evaluating conditions.\n %s") % error
-            raise UserError(msg_err)
+            msg_err = _(f"Error evaluating conditions.\n {error}")
+            raise UserError(msg_err) from error
         return result
 
     def _evaluate_sequence_use_python(self, template):
@@ -39,7 +39,7 @@ class MixingSequence(models.AbstractModel):
             safe_eval(template.python_code, localdict, mode="exec", nocopy=True)
             res = localdict["result"]
         except Exception as error:
-            raise UserError(_("Error evaluating conditions.\n %s") % error)
+            raise UserError(_(f"Error evaluating conditions.\n {error}")) from error
         return res
 
     def _evaluate_sequence_use_domain(self, template):
@@ -83,14 +83,11 @@ class MixingSequence(models.AbstractModel):
                 result,
             )
         else:
-            error_message = """
-            Document Type: %s
+            error_message = f"""
+            Document Type: {self._description.lower()}
             Context: Generate code or document number
-            Database ID: %s
+            Database ID: {self.id}
             Problem: No sequence template found
             Solution: Create sequence template
-            """ % (
-                self._description.lower(),
-                self.id,
-            )
-            raise UserError(_(error_message))
+            """
+            raise UserError(_(error_message)) from None
