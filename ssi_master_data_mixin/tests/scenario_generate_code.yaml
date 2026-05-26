@@ -1,0 +1,51 @@
+scenarios:
+  - name: "Generate code berhasil menggunakan sequence template"
+    steps:
+      - step: "Buat ir.sequence"
+        action: "create"
+        model: "ir.sequence"
+        save_as: "ir_seq"
+        values:
+          name: "Test Sequence"
+          code: "ssi.test.master_data_mixin"
+          prefix: "TEST-"
+          number_next: 1
+          number_increment: 1
+          padding: 6
+
+      - step: "Buat sequence.template"
+        action: "create"
+        model: "sequence.template"
+        save_as: "seq_template"
+        values:
+          name: "Test Sequence"
+          model_id: "EVAL: registry['tester_model'].id"
+          sequence_field_id: "EVAL: registry['field_obj'].id"
+          date_field_id: "EVAL: registry['field_date_obj'].id"
+          initial_string: "/"
+          computation_method: "use_python"
+          python_code: "result = document.value > 0"
+          sequence_selection_method: "use_sequence"
+          sequence_id: "EVAL: registry['ir_seq'].id"
+
+      - step: "Buat record master data"
+        action: "create"
+        model: "ssi.test.master_data_mixin"
+        save_as: "my_record"
+        values:
+          name: "Test"
+          value: 100
+          note: "Test Generate Code"
+
+      - step: "Jalankan action_generate_code"
+        action: "call"
+        target: "my_record"
+        method: "action_generate_code"
+
+      - step: "Assert code berhasil digenerate"
+        action: "assert"
+        target: "my_record"
+        asserts:
+          code:
+            type: "value"
+            expected: "TEST-000001"

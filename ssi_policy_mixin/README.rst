@@ -1,60 +1,56 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
-   :alt: License: AGPL-3
+    :target: https://www.gnu.org/licenses/agpl-3.0-standalone.html
+    :alt: License: AGPL-3
 
 ============
 Policy Mixin
 ============
 
-``ssi_policy_mixin`` provides an abstract Odoo model — ``mixin.policy`` — that
-implements a *policy-template* mechanism for controlling which action buttons
-are available on a document at any given time.
+Description
+-----------
+Policy Mixin is a core mixin module for Odoo 18.0, providing standardized policy and workflow management capabilities that can be integrated into other modules. It enables flexible, reusable policy templates and detail configurations for business process control.
 
-Each inheriting model declares boolean policy fields (e.g. ``confirm_ok``,
-``cancel_ok``) via ``_get_policy_field`` and links to a ``policy.template``
-that evaluates Python conditions against the current record to set those fields
-automatically.
+Key Features
+------------
+- Reusable policy template model
+- Detail configuration for field-level policy
+- Company and model-specific policy support
+- State-based restriction and validation
+- Extensible for custom business logic
 
-* **policy.template** — master-data record holding Python evaluation code
-  (matching criteria) and ordered detail lines.
-* **policy.template.detail** — maps a policy field to its computed value
-  for records that match the template.
-* ``action_reload_policy_template`` — manually re-selects the active
-  template based on the record’s current state.
-
+Use Cases / Context
+-------------------
+Use this module to enforce workflow policies, restrict field access, or implement business rules that depend on model state or company context. Suitable for organizations needing flexible, maintainable policy management in Odoo.
 
 Installation
-============
+------------
+1. Clone the repository and add to your Odoo addons path.
+2. Update the app list and install "Policy Mixin" from Apps menu.
 
-To install this module, you need to:
+Installation & Usage
+--------------------
+After installation, configure policy templates and details from the Policy menu. Integrate with other modules by inheriting the mixin or referencing policy templates in your business logic.
 
-1.  Clone the branch 14.0 of the repository https://github.com/open-synergy/ssi-mixin
-2.  Add the path to this repository in your configuration (addons-path)
-3.  Update the module list (Must be on developer mode)
-4.  Go to menu *Apps -> Apps -> Main Apps*
-5.  Search For *Policy Mixin*
-6.  Install the module
+FAQ
+---
+- **Q:** Can I use this for any model?
+   **A:** Yes, as long as you configure the template for the target model.
+- **Q:** How to add custom logic?
+   **A:** Inherit the mixin and override methods as needed.
 
 Bug Tracker
-===========
-
-Bugs are tracked on `GitHub Issues
-<https://github.com/open-synergy/ssi-mixin/issues>`_. In case of trouble, please
-check there if your issue has already been reported. If you spotted it first,
-help us smash it by providing detailed and welcomed feedback.
-
+-----------
+Bugs are tracked on `GitHub Issues <https://github.com/simetri-sinergi-id/ssi-mixin/issues>`_. Please report with details for faster resolution.
 
 Credits
-=======
-
-Contributors
-------------
-
-* Michael Viriyananda <viriyananda.michael@gmail.com>
-* Andhitia Rama <andhitia.r@gmail.com>
+-------
+- Michael Viriyananda
+- Andhitia Rama
 
 Maintainer
 ----------
+PT. Simetri Sinergi Indonesia
+------------------------------
 
 .. image:: https://simetri-sinergi.id/logo.png
    :alt: PT. Simetri Sinergi Indonesia

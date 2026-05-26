@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction Mixin</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #fff; color: #222; margin: 0; padding: 0; }
+        .container { max-width: 800px; margin: 40px auto; background: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 8px #eee; padding: 32px; }
+        h1, h2 { color: #1a237e; }
+        .section { margin-bottom: 32px; }
+        ul { margin: 0 0 0 24px; }
+        .icon { width: 24px; vertical-align: middle; margin-right: 8px; }
+        .maintainer-logo { width: 120px; margin-top: 16px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Transaction Mixin</h1>
+
+    <div class="section">
+        <h2><img class="icon" src="../img/info.png" alt="Info"> Description</h2>
+        <p>
+            <b>Transaction Mixin</b> is a reusable Odoo mixin module from <b>@simetri-sinergi-id/ssi-mixin</b> that provides standardized transaction management logic for Odoo models. It is designed to be inherited by other modules to enable consistent transaction handling, state management, and extensibility for business processes.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2><img class="icon" src="../img/circuit.png" alt="Features"> Key Features</h2>
+        <ul>
+            <li><b>Transaction State Management:</b> Standardizes transaction state fields and logic.</li>
+            <li><b>Reusable Mixin:</b> Easily inherited by custom modules for transaction workflows.</li>
+            <li><b>Extensible:</b> Designed for easy extension and customization.</li>
+            <li><b>Odoo 18.0 Ready:</b> Follows latest Odoo coding standards and best practices.</li>
+            <li><b>Open Source:</b> AGPL-3.0 license, community-driven.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2><img class="icon" src="../img/workflow.png" alt="Use Cases"> Use Cases / Context</h2>
+        <ul>
+            <li>Standardize transaction logic in sales, purchase, or custom business modules.</li>
+            <li>Centralize transaction state and validation logic for consistency.</li>
+            <li>Enable extensible transaction workflows in custom Odoo solutions.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2><img class="icon" src="../img/install.png" alt="Install"> Installation & Usage</h2>
+        <ol>
+            <li>Add <code>ssi_transaction_mixin</code> to your Odoo addons path.</li>
+            <li>Install via Odoo Apps menu.</li>
+            <li>Inherit <code>ssi.transaction.mixin</code> in your custom models to enable transaction logic.</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2><img class="icon" src="../img/faq.png" alt="FAQ"> FAQ</h2>
+        <ul>
+            <li><b>Standalone?</b> No, this is a mixin for other modules requiring transaction logic.</li>
+            <li><b>Odoo Version?</b> Odoo 18.0 or above.</li>
+            <li><b>Contribute?</b> Fork, branch, and submit a pull request on <a href="https://github.com/simetri-sinergi-id/ssi-mixin">GitHub</a>.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2><img class="icon" src="../img/bug.png" alt="Bug"> Bug Tracker</h2>
+        <p>Bugs are tracked on <a href="https://github.com/simetri-sinergi-id/ssi-mixin/issues">GitHub Issues</a>.<br>
+        If you encounter any issues, please check if it has already been reported. If not, help us improve by providing detailed feedback.</p>
+    </div>
+
+    <div class="section">
+        <h2><img class="icon" src="../img/credits.png" alt="Credits"> Credits</h2>
+        <ul>
+            <li><b>Core Development:</b> Andhitia Rama, Asrul Bastian Yunas, Michael Viriyananda</li>
+            <li><b>Community:</b> Thanks to all community members who reported issues and provided feedback</li>
+            <li><b>Special Thanks:</b> Odoo Community Association (OCA) for guidelines and best practices</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2><img class="icon" src="../img/maintainer.png" alt="Maintainer"> Maintainer</h2>
+        <img class="maintainer-logo" src="https://simetri-sinergi.id/logo.png" alt="PT. Simetri Sinergi Indonesia">
+        <p>This module is maintained by <a href="https://simetri-sinergi.id">PT. Simetri Sinergi Indonesia</a>.</p>
+    </div>
+</div>
+</body>
+</html>

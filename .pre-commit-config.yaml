@@ -11,11 +11,9 @@ exclude: |
   ^ssi_field_date_callable_attribute/|
   ^ssi_localdict_mixin/|
   ^ssi_m2o_configurator_mixin/|
-  ^ssi_master_data_mixin/|
   ^ssi_multiple_approval_mixin/|
   ^ssi_operating_unit_mixin/|
   ^ssi_partner_mixin/|
-  ^ssi_policy_mixin/|
   ^ssi_pricelist_mixin/|
   ^ssi_product_line_account_mixin/|
   ^ssi_product_line_mixin/|
@@ -40,7 +38,6 @@ exclude: |
   ^ssi_transaction_date_due_mixin/|
   ^ssi_transaction_date_duration_mixin/|
   ^ssi_transaction_done_mixin/|
-  ^ssi_transaction_mixin/|
   ^ssi_transaction_open_mixin/|
   ^ssi_transaction_partner_mixin/|
   ^ssi_transaction_pricelist_mixin/|
