@@ -4,8 +4,6 @@
 
 from . import (
     base,
-    test_mixin_sequence,
-    test_custom_prefix,
-    test_custom_suffix,
-    test_custom_prefix_suffix,
+    test_sequence_generation,
+    test_sequence_errors,
 )
