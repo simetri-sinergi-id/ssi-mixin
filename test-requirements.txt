@@ -1,2 +1,1 @@
 odoo_test_helper
-git+https://github.com/andhit-r/odoo-yaml-test.git@master#egg=odoo-yaml-test
