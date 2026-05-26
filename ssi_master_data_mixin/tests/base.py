@@ -86,6 +86,12 @@ class BaseCase(YamlTransactionCase):
         self.loader.restore_registry()
         super().tearDown()
 
+    def _run_scenario(self, scenario, yaml_file):
+        self.registry["tester_model"] = self.tester_model
+        self.registry["field_obj"] = self.field_obj
+        self.registry["field_date_obj"] = self.field_date_obj
+        super()._run_scenario(scenario, yaml_file)
+
     def run_yaml_scenario(self, filename):
         real_registry = odoo.registry(self.env.cr.dbname)
         try:
