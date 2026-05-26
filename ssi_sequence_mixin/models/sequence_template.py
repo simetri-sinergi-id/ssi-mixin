@@ -1,13 +1,13 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2025 OpenSynergy Indonesia
+# Copyright 2025 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
 from datetime import datetime
 
 import pytz
 
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError, ValidationError
-from odoo.tools.safe_eval import safe_eval, test_python_expr
+from odoo.exceptions import UserError
+from odoo.tools.safe_eval import safe_eval
 
 
 class SequenceTemplate(models.Model):
@@ -19,14 +19,14 @@ class SequenceTemplate(models.Model):
 #  - env: Odoo Environment on which the action is triggered.
 #  - document: record on which the action is triggered; may be void."""
 
-    @api.model
     def _default_company_id(self):
-        return self.env["res.company"]._company_default_get("sequence.template")
+        return self.env.user.company_id
 
     name = fields.Char(
-        string="Name",
+        string="Document Name",
         required=True,
         copy=True,
+        help="Name of the sequence template.",
     )
     model_id = fields.Many2one(
         string="Referenced Model",
@@ -35,52 +35,62 @@ class SequenceTemplate(models.Model):
         required=True,
         copy=True,
         ondelete="cascade",
+        help="Model to which this sequence template refers.",
     )
     model = fields.Char(
+        string="Model Technical Name",
         related="model_id.model",
         index=True,
         store=True,
+        help="Technical name of the referenced model.",
     )
     company_id = fields.Many2one(
-        string="Company",
+        string="Company Name",
         comodel_name="res.company",
         default=lambda self: self._default_company_id(),
         copy=True,
+        help="Company for which this sequence template is applicable.",
     )
     sequence = fields.Integer(
+        string="Sequence Order",
         default=5,
         required=True,
         copy=True,
+        help="Sequence order for template selection.",
     )
     initial_string = fields.Char(
-        string="Initial String",
+        string="Initial Sequence String",
         required=True,
         default="/",
+        help="Initial string value for the sequence field.",
     )
     sequence_field_id = fields.Many2one(
-        string="Sequence Field",
+        string="Sequence Field Name",
         comodel_name="ir.model.fields",
         ondelete="cascade",
         required=True,
         domain="[('model_id', '=', model_id),('ttype','=','char')]",
+        help="Field to store the generated sequence value.",
     )
     date_field_id = fields.Many2one(
-        string="Date Field",
+        string="Sequence Date Field",
         comodel_name="ir.model.fields",
         ondelete="cascade",
         required=True,
         domain="[('model_id', '=', model_id),('ttype','in',['date','datetime'])]",
+        help="Date field used for sequence generation.",
     )
     state = fields.Selection(
-        string="States",
+        string="Sequence State",
         selection=[
             ("draft", "Draft"),
             ("apply", "Sequence Applied"),
         ],
         default="draft",
+        help="Status of the sequence template.",
     )
     computation_method = fields.Selection(
-        string="Computation Method",
+        string="Method",
         selection=[
             ("use_domain", "Domain"),
             ("use_python", "Python Code"),
@@ -88,20 +98,23 @@ class SequenceTemplate(models.Model):
         default="use_python",
         required=True,
         copy=True,
+        help="Method to determine if this template should be applied.",
     )
     domain = fields.Char(
-        string="Domain",
+        string="Domain Expression",
         copy=True,
+        help="Domain expression to filter applicable records.",
     )
     python_code = fields.Text(
-        string="Python Code",
+        string="Python Condition Code",
         default=DEFAULT_PYTHON_CODE
         + "\n#  - result: Return result, the value is boolean."
         + "\nresult = True",
         copy=True,
+        help="Python code to determine if this template should be applied.",
     )
     sequence_selection_method = fields.Selection(
-        string="Sequence Method",
+        string="Selection Method",
         selection=[
             ("use_sequence", "Sequence"),
             ("use_python", "Python Code"),
@@ -109,44 +122,54 @@ class SequenceTemplate(models.Model):
         default="use_python",
         required=True,
         copy=True,
+        help="Method to select the sequence to use.",
     )
     sequence_id = fields.Many2one(
-        string="Sequence",
+        string="Sequence Reference",
         comodel_name="ir.sequence",
+        help="Sequence to use for generating values.",
     )
     sequence_python_code = fields.Text(
-        string="Python Code",
+        string="Python Sequence Code",
         default=DEFAULT_PYTHON_CODE
         + "\n#  - sequence: Return sequence, the value is recordset of sequence.",
         copy=True,
+        help="Python code to select the sequence to use.",
     )
     add_custom_prefix = fields.Boolean(
-        string="Add Custom Prefix",
+        string="Enable Custom Prefix",
         default=False,
+        help="Enable to add a custom prefix to the generated sequence.",
     )
     prefix_python_code = fields.Text(
-        string="Python Code",
+        string="Python Prefix Code",
         default=DEFAULT_PYTHON_CODE
         + "\n#  - result: Return prefix, the value is string.",
         copy=True,
+        help="Python code to compute the custom prefix.",
     )
     add_custom_suffix = fields.Boolean(
-        string="Add Custom Suffix",
+        string="Enable Custom Suffix",
         default=False,
+        help="Enable to add a custom suffix to the generated sequence.",
     )
     suffix_python_code = fields.Text(
-        string="Python Code",
+        string="Python Suffix Code",
         default=DEFAULT_PYTHON_CODE
         + "\n#  - result: Return suffix, the value is string.",
         copy=True,
+        help="Python code to compute the custom suffix.",
     )
     active = fields.Boolean(
+        string="Active Document",
         default=True,
         copy=True,
+        help="Set inactive to hide this sequence template from selection.",
     )
     note = fields.Text(
-        string="Note",
+        string="Additional Note",
         copy=True,
+        help="Additional notes or remarks.",
     )
 
     @api.onchange(
@@ -164,15 +187,13 @@ class SequenceTemplate(models.Model):
     @api.model
     def create_sequence(self, document):
         self.ensure_one()
-        ctx = {}
         result = False
         sequence_date = False
         sequence = self._evaluate_sequence(document)
         if sequence:
             if self.date_field_id:
                 sequence_date = getattr(document, self.date_field_id.name)
-                ctx = {"ir_sequence_date": sequence_date}
-            result = sequence.with_context(ctx).next_by_id()
+            result = sequence.with_context(ir_sequence_date=sequence_date).next_by_id()
 
             if self.add_custom_prefix:
                 prefix = self._get_prefix_computation(document, sequence_date)
@@ -198,8 +219,8 @@ class SequenceTemplate(models.Model):
             method_name = "_evaluate_sequence_" + self.sequence_selection_method
             result = getattr(self, method_name)(document)
         except Exception as error:
-            msg_err = _("Error evaluating conditions.\n %s") % error
-            raise UserError(msg_err)
+            msg_err = _(f"Error evaluating conditions.\n {error}")
+            raise UserError(msg_err) from error
         return result
 
     def _evaluate_sequence_use_python(self, document):
@@ -210,7 +231,7 @@ class SequenceTemplate(models.Model):
             safe_eval(self.sequence_python_code, localdict, mode="exec", nocopy=True)
             res = localdict["sequence"]
         except Exception as error:
-            raise UserError(_("Error evaluating conditions.\n %s") % error)
+            raise UserError(_(f"Error evaluating conditions.\n {error}")) from error
         return res
 
     def _evaluate_sequence_use_sequence(self, document):
@@ -228,7 +249,7 @@ class SequenceTemplate(models.Model):
             safe_eval(self.prefix_python_code, localdict, mode="exec", nocopy=True)
             res = localdict["result"]
         except Exception as error:
-            raise UserError(_("Error on get prefix.\n %s") % error)
+            raise UserError(_(f"Error on get prefix.\n {error}")) from error
         return res
 
     def _get_suffix(self, document):
@@ -239,7 +260,7 @@ class SequenceTemplate(models.Model):
             safe_eval(self.suffix_python_code, localdict, mode="exec", nocopy=True)
             result = localdict["result"]
         except Exception as error:
-            raise UserError(_("Error on get suffix.\n %s") % error)
+            raise UserError(_(f"Error on get suffix.\n {error}")) from error
         return result
 
     def _interpolate(self, s, d):
@@ -251,11 +272,11 @@ class SequenceTemplate(models.Model):
             pytz.timezone(self._context.get("tz") or "UTC")
         )
         if date or self._context.get("ir_sequence_date"):
-            effective_date = fields.Datetime.from_string(
+            effective_date = fields.Datetime.to_datetime(
                 date or self._context.get("ir_sequence_date")
             )
         if date_range or self._context.get("ir_sequence_date_range"):
-            range_date = fields.Datetime.from_string(
+            range_date = fields.Datetime.to_datetime(
                 date_range or self._context.get("ir_sequence_date_range")
             )
 
@@ -290,7 +311,7 @@ class SequenceTemplate(models.Model):
         try:
             interpolated_prefix = self._interpolate(prefix, d)
         except Exception as error:
-            raise UserError(_("Error on convert prefix.\n %s") % error)
+            raise UserError(_(f"Error on convert prefix.\n {error}")) from error
 
         result = interpolated_prefix
         return result
@@ -305,53 +326,10 @@ class SequenceTemplate(models.Model):
         try:
             interpolated_suffix = self._interpolate(suffix, d)
         except Exception as error:
-            raise UserError(_("Error on convert suffix.\n %s") % error)
+            raise UserError(_(f"Error on convert suffix.\n {error}")) from error
 
         result = interpolated_suffix
         return result
 
-    # @api.model_cr
     def _register_hook(self):
         return True
-
-    @api.constrains(
-        "python_code",
-    )
-    def _check_python_code(self):
-        for action in self.sudo().filtered("python_code"):
-            msg = test_python_expr(expr=action.python_code.strip(), mode="exec")
-            if msg:
-                msg1 = "Template:\n"
-                raise ValidationError(msg1 + msg)
-
-    @api.constrains(
-        "sequence_python_code",
-    )
-    def _check_sequence_python_code(self):
-        for action in self.sudo().filtered("sequence_python_code"):
-            msg = test_python_expr(
-                expr=action.sequence_python_code.strip(), mode="exec"
-            )
-            if msg:
-                msg1 = "Sequence:\n"
-                raise ValidationError(msg1 + msg)
-
-    @api.constrains(
-        "prefix_python_code",
-    )
-    def _check_prefix_python_code(self):
-        for action in self.sudo().filtered("prefix_python_code"):
-            msg = test_python_expr(expr=action.prefix_python_code.strip(), mode="exec")
-            if msg:
-                msg1 = "Prefix:\n"
-                raise ValidationError(msg1 + msg)
-
-    @api.constrains(
-        "suffix_python_code",
-    )
-    def _check_suffix_python_code(self):
-        for action in self.sudo().filtered("suffix_python_code"):
-            msg = test_python_expr(expr=action.suffix_python_code.strip(), mode="exec")
-            if msg:
-                msg1 = "Suffix:\n"
-                raise ValidationError(msg1 + msg)

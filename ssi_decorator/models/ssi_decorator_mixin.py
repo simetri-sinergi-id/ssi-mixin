@@ -10,21 +10,6 @@ from odoo import api, models
 
 
 class MixinDecorator(models.AbstractModel):
-    """
-    View-decoration framework that allows methods on an Odoo model to
-    declaratively inject XML fragments into form, tree, and search views.
-
-    Methods decorated with the SSI decorator markers (``_insert_on_form_view``,
-    ``_insert_on_tree_view``, ``_insert_on_search_view``) are discovered via
-    introspection during ``fields_view_get`` and called in sequence to modify
-    the view architecture before it is returned to the client.
-
-    Concrete models inherit this mixin (and ``mixin.master_data`` or
-    ``mixin.transaction``) and then add decorator-marked methods to
-    programmatically extend views from other modules without writing XML
-    ``inherit`` records.
-    """
-
     _name = "mixin.decorator"
     _description = "SSI Decorator Mixin"
 
@@ -32,6 +17,11 @@ class MixinDecorator(models.AbstractModel):
     def fields_view_get(
         self, view_id=None, view_type="form", toolbar=False, submenu=False
     ):
+        """
+        Override to allow decorator-based view element injection.
+        This enables dynamic injection of elements into form, search, or tree views
+        using decorator patterns defined in the class.
+        """
         result = super().fields_view_get(
             view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu
         )
@@ -57,6 +47,9 @@ class MixinDecorator(models.AbstractModel):
 
     @api.model
     def _run_insert_on_tree_view(self, view_arch):
+        """
+        Run all methods decorated for tree view injection.
+        """
         cls = type(self)
         methods = []
         for _attr, func in getmembers(cls):
@@ -68,6 +61,9 @@ class MixinDecorator(models.AbstractModel):
 
     @api.model
     def _run_insert_on_search_view(self, view_arch):
+        """
+        Run all methods decorated for search view injection.
+        """
         cls = type(self)
         methods = []
         for _attr, func in getmembers(cls):
@@ -79,6 +75,9 @@ class MixinDecorator(models.AbstractModel):
 
     @api.model
     def _run_insert_on_form_view(self, view_arch):
+        """
+        Run all methods decorated for form view injection.
+        """
         cls = type(self)
         methods = []
         for _attr, func in getmembers(cls):
@@ -89,18 +88,30 @@ class MixinDecorator(models.AbstractModel):
         return view_arch
 
     def is_decorator(self, func, decorator):
+        """
+        Check if a function is decorated with a specific decorator attribute.
+        """
         self.ensure_one()
         return callable(func) and hasattr(func, decorator)
 
     def run_decorator_method(self, methods):
+        """
+        Run all decorator methods (for business logic hooks).
+        """
         self.ensure_one()
         for method_name in methods:
             getattr(self, method_name.__name__)()
 
     def is_api_model_decorator(self, func, decorator):
+        """
+        Check if a function is decorated for API model view injection.
+        """
         return callable(func) and hasattr(func, decorator)
 
     def run_decorator_field_view_get_method(self, methods, view_arch):
+        """
+        Run all decorator methods for view field injection.
+        """
         for method_name in methods:
             view_arch = getattr(self, method_name.__name__)(view_arch)
         return view_arch
@@ -109,6 +120,10 @@ class MixinDecorator(models.AbstractModel):
     def _add_view_element(
         self, view_arch, qweb_template_xml_id, xpath, position="after", order=False
     ):
+        """
+        Add a rendered QWeb template element to a view at a given xpath.
+        Handles position (after, before, inside) and order for insertion.
+        """
         additional_element = self.env["ir.qweb"]._render(qweb_template_xml_id)
         if len(view_arch.xpath(xpath)) == 0:
             return view_arch

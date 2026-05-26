@@ -1,0 +1,101 @@
+scenarios:
+  - name: "Sequence generation with both custom prefix and suffix"
+    steps:
+      - step: "Find tester model in ir.model"
+        action: "search"
+        model: "ir.model"
+        domain:
+          - ["model", "=", "ssi.test.sequence"]
+        save_as: "tester_model"
+        limit: 1
+        expect_count: 1
+
+      - step: "Find name field in ir.model.fields"
+        action: "search"
+        model: "ir.model.fields"
+        domain:
+          - ["model_id", "=", "EVAL: registry['tester_model'].id"]
+          - ["name", "=", "name"]
+        save_as: "field_name"
+        limit: 1
+        expect_count: 1
+
+      - step: "Find date field in ir.model.fields"
+        action: "search"
+        model: "ir.model.fields"
+        domain:
+          - ["model_id", "=", "EVAL: registry['tester_model'].id"]
+          - ["ttype", "in", ["date", "datetime"]]
+        save_as: "field_date"
+        limit: 1
+        expect_count: 1
+
+      - step: "Create ir.sequence (no ir.sequence prefix — both come from template)"
+        action: "create"
+        model: "ir.sequence"
+        save_as: "ir_seq"
+        values:
+          name: "Test Seq - Prefix and Suffix"
+          code: "ssi.test.seq.pfx.sfx"
+          number_next: 1
+          number_increment: 1
+          padding: 6
+
+      - step:
+          "Create sequence.template with both add_custom_prefix and add_custom_suffix"
+        action: "create"
+        model: "sequence.template"
+        save_as: "template"
+        values:
+          name: "Template - Prefix and Suffix"
+          model_id: "EVAL: registry['tester_model'].id"
+          sequence_field_id: "EVAL: registry['field_name'].id"
+          date_field_id: "EVAL: registry['field_date'].id"
+          initial_string: "/"
+          computation_method: "use_python"
+          python_code: "result = True"
+          sequence_selection_method: "use_sequence"
+          sequence_id: "EVAL: registry['ir_seq'].id"
+          add_custom_prefix: true
+          prefix_python_code: "result = 'PRE/'"
+          add_custom_suffix: true
+          suffix_python_code: "result = '/SUF'"
+
+      - step: "Create test document"
+        action: "create"
+        model: "ssi.test.sequence"
+        save_as: "doc"
+        values:
+          name: "/"
+          value: 15
+
+      - step: "Generate sequence"
+        action: "call"
+        target: "doc"
+        method: "_create_sequence"
+
+      - step: "Assert name contains custom prefix"
+        action: "assert"
+        target: "doc"
+        asserts:
+          name:
+            type: "value"
+            operator: "contains"
+            expected: "PRE/"
+
+      - step: "Assert name contains custom suffix"
+        action: "assert"
+        target: "doc"
+        asserts:
+          name:
+            type: "value"
+            operator: "contains"
+            expected: "/SUF"
+
+      - step: "Assert final value is prefix + sequence number + suffix"
+        action: "assert"
+        target: "doc"
+        asserts:
+          name:
+            type: "value"
+            expected: "PRE/000001/SUF"

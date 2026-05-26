@@ -7,7 +7,6 @@ exclude: |
   ^ssi_currency_mixin/|
   ^ssi_custom_information_mixin/|
   ^ssi_data_requirement_mixin/|
-  ^ssi_decorator/|
   ^ssi_duration_mixin/|
   ^ssi_field_date_callable_attribute/|
   ^ssi_localdict_mixin/|
@@ -18,7 +17,6 @@ exclude: |
   ^ssi_partner_mixin/|
   ^ssi_policy_mixin/|
   ^ssi_pricelist_mixin/|
-  ^ssi_print_mixin/|
   ^ssi_product_line_account_mixin/|
   ^ssi_product_line_mixin/|
   ^ssi_product_line_price_mixin/|
@@ -31,7 +29,6 @@ exclude: |
   ^ssi_res_users_m2o_configurator_mixin/|
   ^ssi_salesperson_mixin/|
   ^ssi_schema_parser_mixin/|
-  ^ssi_sequence_mixin/|
   ^ssi_source_document_mixin/|
   ^ssi_state_change_constrain_mixin/|
   ^ssi_state_change_history_mixin/|
@@ -116,7 +113,7 @@ repos:
       # update the NOT INSTALLABLE ADDONS section above
       - id: oca-update-pre-commit-excluded-addons
       - id: oca-fix-manifest-website
-        args: ["https://github.com/open-synergy/ssi-mixin"]
+        args: ["https://github.com/simetri-sinergi-id/ssi-mixin"]
       - id: oca-gen-addon-readme
         args:
           - --addons-dir=.

@@ -1,0 +1,97 @@
+scenarios:
+  - name: "Sequence generation using Python computation method"
+    steps:
+      - step: "Find tester model in ir.model"
+        action: "search"
+        model: "ir.model"
+        domain:
+          - ["model", "=", "ssi.test.sequence"]
+        save_as: "tester_model"
+        limit: 1
+        expect_count: 1
+
+      - step: "Find name field in ir.model.fields"
+        action: "search"
+        model: "ir.model.fields"
+        domain:
+          - ["model_id", "=", "EVAL: registry['tester_model'].id"]
+          - ["name", "=", "name"]
+        save_as: "field_name"
+        limit: 1
+        expect_count: 1
+
+      - step: "Find date field in ir.model.fields"
+        action: "search"
+        model: "ir.model.fields"
+        domain:
+          - ["model_id", "=", "EVAL: registry['tester_model'].id"]
+          - ["ttype", "in", ["date", "datetime"]]
+        save_as: "field_date"
+        limit: 1
+        expect_count: 1
+
+      - step: "Create ir.sequence"
+        action: "create"
+        model: "ir.sequence"
+        save_as: "ir_seq"
+        values:
+          name: "Test Seq - Python Method"
+          code: "ssi.test.seq.py"
+          prefix: "PY/"
+          number_next: 1
+          number_increment: 1
+          padding: 6
+
+      - step: "Create sequence.template with use_python computation"
+        action: "create"
+        model: "sequence.template"
+        save_as: "template"
+        values:
+          name: "Template - Python Computation"
+          model_id: "EVAL: registry['tester_model'].id"
+          sequence_field_id: "EVAL: registry['field_name'].id"
+          date_field_id: "EVAL: registry['field_date'].id"
+          initial_string: "/"
+          computation_method: "use_python"
+          python_code: "result = document.value > 10"
+          sequence_selection_method: "use_sequence"
+          sequence_id: "EVAL: registry['ir_seq'].id"
+
+      - step: "Create test document with value 15 (satisfies value > 10)"
+        action: "create"
+        model: "ssi.test.sequence"
+        save_as: "doc"
+        values:
+          name: "/"
+          value: 15
+
+      - step: "Assert name equals initial_string before generation"
+        action: "assert"
+        target: "doc"
+        asserts:
+          name:
+            type: "value"
+            expected: "/"
+
+      - step: "Generate sequence number"
+        action: "call"
+        target: "doc"
+        method: "_create_sequence"
+
+      - step: "Assert name changed from initial_string after generation"
+        action: "assert"
+        target: "doc"
+        asserts:
+          name:
+            type: "value"
+            operator: "not_equals"
+            expected: "/"
+
+      - step: "Assert generated name contains expected sequence prefix"
+        action: "assert"
+        target: "doc"
+        asserts:
+          name:
+            type: "value"
+            operator: "contains"
+            expected: "PY/"

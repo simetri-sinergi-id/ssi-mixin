@@ -1,26 +1,12 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2025 OpenSynergy Indonesia
+# Copyright 2025 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0.html)
 
-from odoo import api, fields, models
-from odoo.exceptions import ValidationError
-from odoo.tools.safe_eval import safe_eval, test_python_expr
+from odoo import fields, models
+from odoo.tools.safe_eval import safe_eval
 
 
 class IrActionsReport(models.Model):
-    """
-    Extends ``ir.actions.report`` with print-policy fields.
-
-    Added fields:
-
-    * ``print_document_type_ids`` — links the report to one or more
-      ``print_document_type`` records, scoping it to specific document types.
-    * ``print_python_code`` — an optional Python condition evaluated at print
-      time; the report is only offered if ``result`` is truthy.
-    * ``print_multi`` — flag indicating that the report can be generated for
-      multiple selected records at once.
-    """
-
     _inherit = "ir.actions.report"
 
     print_document_type_ids = fields.Many2many(
@@ -30,15 +16,20 @@ class IrActionsReport(models.Model):
         column1="report_id",
         column2="type_id",
         domain="[('model', '=', model)]",
+        help="Select the print document types associated with this report.",
     )
     print_python_code = fields.Text(
         string="Condition",
-        help="The result of executing the expresion must be " "a boolean.",
-        default="""# Available locals:\n#  - document: current recordset\nresult = True""",
+        help="""Python code to determine if the report should be available.
+The result of executing the expression must be a boolean.
+Available locals: document (current recordset).""",
+        default="""
+# Available locals:\n#  - document: current recordset\nresult = True""",
     )
     print_multi = fields.Boolean(
         string="Multiple Records",
         default=False,
+        help="Enable to allow printing for multiple records at once.",
     )
 
     def _get_print_localdict(self, document):
@@ -50,20 +41,11 @@ class IrActionsReport(models.Model):
 
     def _evaluate_print_python_code(self, document):
         self.ensure_one()
-        result = ""
+        result = False
         localdict = self._get_print_localdict(document)
         try:
             safe_eval(self.print_python_code, localdict, mode="exec", nocopy=True)
-            result = localdict["result"]
-        except:  # noqa: E722
+            result = localdict.get("result", False)
+        except Exception:
             result = False
         return result
-
-    @api.constrains(
-        "print_python_code",
-    )
-    def _check_print_python_code(self):
-        for action in self.sudo().filtered("print_python_code"):
-            msg = test_python_expr(expr=action.print_python_code.strip(), mode="exec")
-            if msg:
-                raise ValidationError(msg)
