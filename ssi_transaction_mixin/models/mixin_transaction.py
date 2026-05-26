@@ -72,7 +72,6 @@ class MixinTransaction(models.AbstractModel):
         help="Company that owns the document.\n\n"
         "* Automatically filled with user's company.\n"
         "  Default company can be changed.",
-        translate=True,
     )
     company_partner_id = fields.Many2one(
         string="Company Partner",
@@ -93,7 +92,6 @@ class MixinTransaction(models.AbstractModel):
         "* Automatically filled with user that initiates"
         " document creation.\n"
         "  Default responsible can be changed.",
-        translate=True,
     )
     reviewer_id = fields.Many2one(
         string="Reviewer",
@@ -104,7 +102,6 @@ class MixinTransaction(models.AbstractModel):
         states={"draft": [("readonly", False)]},
         help="User responsible to review document.\n\n"
         "* Unless configured to approve, reviewer does not equal to approver.",
-        translate=True,
     )
 
     note = fields.Text(
@@ -124,7 +121,6 @@ class MixinTransaction(models.AbstractModel):
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="Current state of the transaction.",
-        translate=True,
     )
 
     restart_ok = fields.Boolean(
@@ -135,7 +131,6 @@ class MixinTransaction(models.AbstractModel):
             "Restart policy.\n\n"
             "* If active user can see and execute 'Restart' button."
         ),
-        translate=True,
     )
     manual_number_ok = fields.Boolean(
         string="Can Input Manual Document Number",
@@ -145,7 +140,6 @@ class MixinTransaction(models.AbstractModel):
             "Manual number assignment policy.\n\n"
             "* If active user can edit document number."
         ),
-        translate=True,
     )
     display_name = fields.Char(
         string="Display Name",
@@ -153,7 +147,6 @@ class MixinTransaction(models.AbstractModel):
         store=True,
         index=True,
         help="Display name for the transaction.",
-        translate=True,
     )
 
     @api.depends(lambda self: [self._document_number_field])
