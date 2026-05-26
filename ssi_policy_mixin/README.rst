@@ -50,7 +50,7 @@ Credits
 Maintainer
 ----------
 PT. Simetri Sinergi Indonesia
-----------
+------------------------------
 
 .. image:: https://simetri-sinergi.id/logo.png
    :alt: PT. Simetri Sinergi Indonesia
