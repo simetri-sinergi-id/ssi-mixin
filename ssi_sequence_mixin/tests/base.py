@@ -69,3 +69,24 @@ class BaseCase(YamlTransactionCase):
     def tearDown(self):
         self.loader.restore_registry()
         super().tearDown()
+
+    def run_yaml_scenario(self, filename):
+        """Wrap run_yaml_scenario to restore self.registry to the Odoo ORM
+        registry after each call.
+
+        YamlTransactionCase.setUp() overwrites self.registry with {}, then
+        each scenario leaves it populated with recordsets. Odoo 18+ CI builds
+        include a check_attrs() hook (run via doCleanups) that iterates over
+        self.registry.values() and calls vars(model) on each item. Odoo
+        recordsets define __slots__ = () and therefore have no __dict__, so
+        vars() raises TypeError. Restoring self.registry here ensures
+        check_attrs sees the real Odoo ORM registry (containing model classes)
+        rather than the scenario's recordset dict.
+        """
+        import odoo
+
+        real_registry = odoo.registry(self.env.cr.dbname)
+        try:
+            super().run_yaml_scenario(filename)
+        finally:
+            self.registry = real_registry
