@@ -51,6 +51,10 @@ jobs:
           - 5432:5432
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install odoo-yaml-test from git
+        run: pip install git+https://github.com/andhit-r/odoo-yaml-test.git@master#egg=odoo-yaml-test
       - name: Install addons and dependencies
         run: oca_install_addons
         env:
