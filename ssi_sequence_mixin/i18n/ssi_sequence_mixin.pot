@@ -78,10 +78,6 @@ msgstr ""
 #. module: ssi_sequence_mixin
 #: code:addons/ssi_sequence_mixin/models/mixin_sequence.py:0
 #: code:addons/ssi_sequence_mixin/models/mixin_sequence.py:0
-#: code:addons/ssi_sequence_mixin/models/mixin_sequence.py:0
-#: code:addons/ssi_sequence_mixin/models/mixin_sequence.py:0
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #, python-format
@@ -92,7 +88,6 @@ msgstr ""
 
 #. module: ssi_sequence_mixin
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #, python-format
 msgid ""
 "Error on convert prefix.\n"
@@ -100,7 +95,6 @@ msgid ""
 msgstr ""
 
 #. module: ssi_sequence_mixin
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #, python-format
 msgid ""
@@ -110,7 +104,6 @@ msgstr ""
 
 #. module: ssi_sequence_mixin
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #, python-format
 msgid ""
 "Error on get prefix.\n"
@@ -118,7 +111,6 @@ msgid ""
 msgstr ""
 
 #. module: ssi_sequence_mixin
-#: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #: code:addons/ssi_sequence_mixin/models/sequence_template.py:0
 #, python-format
 msgid ""

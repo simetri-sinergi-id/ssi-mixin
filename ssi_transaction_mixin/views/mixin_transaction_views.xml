@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2022 OpenSynergy Indonesia
-     Copyright 2022 PT. Simetri Sinergi Indonesia
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<!-- Copyright 2026 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0.html). -->
 <odoo>
 <record id="mixin_transaction_view_search" model="ir.ui.view">
     <field name="name">mixin.transaction - search</field>
     <field name="model">mixin.transaction</field>
     <field name="arch" type="xml">
         <search>
-            <field name="id" />
             <field name="name" />
             <field name="company_id" groups="base.group_multi_company" />
             <field name="user_id" />
@@ -74,11 +72,11 @@
     </field>
 </record>
 
-<record id="mixin_transaction_view_tree" model="ir.ui.view">
-    <field name="name">mixin.transaction -tree</field>
+<record id="mixin_transaction_view_list" model="ir.ui.view">
+    <field name="name">mixin.transaction -list</field>
     <field name="model">mixin.transaction</field>
     <field name="arch" type="xml">
-        <tree decoration-bf="message_unread==True">
+        <list>
             <header>
                 <button
                         name="action_reset_document_number"
@@ -93,8 +91,6 @@
                         confirm="Restart data. Are you sure?"
                     />
             </header>
-            <field name="message_unread" invisible="1" />
-            <field name="id" optional="hide" />
             <field name="display_name" string="# Document" />
             <field
                     name="company_id"
@@ -105,7 +101,7 @@
             <field name="reviewer_id" optional="hide" widget="many2one_avatar" />
             <field name="activity_ids" widget="list_activity" optional="show" />
             <field name="state" widget="badge" decoration-info="state == 'draft'" />
-        </tree>
+        </list>
     </field>
 </record>
 
@@ -122,7 +118,7 @@
                         string="Reset Document Number"
                         type="object"
                         confirm="Restart document number. Are you sure?"
-                        attrs="{'invisible':[('manual_number_ok','!=',True)]}"
+                        invisible="manual_number_ok != True"
                         order="99"
                     />
                 <button
@@ -130,7 +126,7 @@
                         string="Restart"
                         type="object"
                         confirm="Restart data. Are you sure?"
-                        attrs="{'invisible':[('restart_ok','!=',True)]}"
+                        invisible="restart_ok != True"
                         order="99"
                     />
                 <field name="state" widget="statusbar" />
@@ -145,7 +141,7 @@
                             <field
                                     name="name"
                                     class="oe_edit_only"
-                                    attrs="{'readonly':[('manual_number_ok','=',False)]}"
+                                    readonly="manual_number_ok == False"
                                 />
                             <field name="display_name" class="oe_read_only" />
                         </h1>

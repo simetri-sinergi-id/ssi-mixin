@@ -1,36 +1,43 @@
-# Copyright 2022 OpenSynergy Indonesia
-# Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2026 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0.html).
 
 from odoo import SUPERUSER_ID, _, api, fields, models
-from odoo.exceptions import ValidationError, Warning as UserError
+from odoo.exceptions import UserError, ValidationError
 from odoo.tools.safe_eval import safe_eval, test_python_expr
 
 
 class PolicyTemplateDetail(models.Model):
+    """
+    Policy Template Detail for field-level policy configuration.
+    """
+
     _name = "policy.template_detail"
     _description = "Policy Template Detail"
 
     template_id = fields.Many2one(
-        string="# Template",
+        string="Template",
         comodel_name="policy.template",
         ondelete="cascade",
+        help="Reference to the parent policy template.",
     )
     company_id = fields.Many2one(
         related="template_id.company_id",
         store=True,
+        help="Company for which this policy detail is valid.",
     )
     field_id = fields.Many2one(
         string="Field",
         comodel_name="ir.model.fields",
         domain="[('model_id', '=', parent.model_id)]",
+        help="Field to which this policy detail applies.",
     )
     active = fields.Boolean(
-        default=True,
+        default=True, help="If unchecked, the policy detail is inactive."
     )
     restrict_state = fields.Boolean(
         string="Restriction Based on State",
         default=True,
+        help="Restrict based on state field.",
     )
 
     @api.depends(
@@ -38,8 +45,10 @@ class PolicyTemplateDetail(models.Model):
         "template_id.state_field_id",
     )
     def _compute_allowed_state_ids(self):
+        """
+        Compute allowed state ids for the field based on template's state field.
+        """
         obj_fields_selection = self.env["ir.model.fields.selection"]
-
         for document in self:
             result = []
             state_field_id = document.template_id.state_field_id
@@ -54,6 +63,7 @@ class PolicyTemplateDetail(models.Model):
         comodel_name="ir.model.fields.selection",
         compute="_compute_allowed_state_ids",
         store=False,
+        help="Allowed states for this policy detail.",
     )
     state_ids = fields.Many2many(
         string="States",
@@ -130,7 +140,7 @@ class PolicyTemplateDetail(models.Model):
                     result_user = getattr(self, method_name)(document)
                 except Exception as error:
                     msg_err = _("Error evaluating conditions.\n %s") % error
-                    raise UserError(msg_err)
+                    raise UserError(msg_err) from error
 
         if self.restrict_additional:
             localdict = self._get_localdict(document)
@@ -141,7 +151,7 @@ class PolicyTemplateDetail(models.Model):
                 result_additional = localdict["result"]
             except Exception as error:
                 msg_err = _("Error evaluating conditions.\n %s") % error
-                raise UserError(msg_err)
+                raise UserError(msg_err) from error
 
         return result_state and result_user and result_additional
 
@@ -185,7 +195,7 @@ class PolicyTemplateDetail(models.Model):
             safe_eval(self.python_code, localdict, mode="exec", nocopy=True)
             result = localdict["result"]
         except Exception as error:
-            raise UserError(_("Error evaluating conditions.\n %s") % error)
+            raise UserError(_("Error evaluating conditions.\n %s") % error) from error
         return result
 
     def _evaluate_states(self, document):
