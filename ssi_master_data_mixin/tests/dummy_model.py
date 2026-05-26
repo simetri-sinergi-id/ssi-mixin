@@ -1,13 +1,13 @@
-# Copyright 2025 OpenSynergy Indonesia
-# Copyright 2025 PT. Simetri Sinergi Indonesia
+# Copyright YYYY OpenSynergy Indonesia
+# Copyright YYYY PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0).
 from odoo import fields, models
 
 
-class DummyModel(models.Model):
-    _name = "dummy_model"
+class DummyTestMasterData(models.Model):
+    _name = "ssi.test.master_data_mixin"
     _inherit = "mixin.master_data"
-    _description = "Dummy Model"
+    _description = "Dummy Test Master Data"
 
     value = fields.Integer(
         string="Input Value",

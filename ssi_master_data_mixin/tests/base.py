@@ -1,12 +1,13 @@
-# Copyright 2025 OpenSynergy Indonesia
-# Copyright 2025 PT. Simetri Sinergi Indonesia
+# Copyright YYYY OpenSynergy Indonesia
+# Copyright YYYY PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0).
 from odoo_test_helper import FakeModelLoader
+from odoo_yaml_test import YamlTransactionCase
 
-from odoo.tests import TransactionCase
+import odoo
 
 
-class BaseCase(TransactionCase):
+class BaseCase(YamlTransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -42,14 +43,16 @@ class BaseCase(TransactionCase):
         self.loader = FakeModelLoader(self.env, self.__module__)
         self.loader.backup_registry()
         from .dummy_model import (
-            DummyModel,
+            DummyTestMasterData,
         )
 
-        self.loader.update_registry((DummyModel,))
-        self.test_model = self.env[DummyModel._name]
+        self.loader.update_registry((DummyTestMasterData,))
+        self.test_model = self.env[DummyTestMasterData._name]
 
         # Buat model_id untuk dummy model
-        self.tester_model = self.env["ir.model"].search([("model", "=", "dummy_model")])
+        self.tester_model = self.env["ir.model"].search(
+            [("model", "=", DummyTestMasterData._name)]
+        )
 
         # Buat field_id
         self.field_obj = self.env["ir.model.fields"].search(
@@ -78,4 +81,10 @@ class BaseCase(TransactionCase):
     def tearDown(self):
         self.loader.restore_registry()
         super().tearDown()
-        super().tearDownClass()
+
+    def run_yaml_scenario(self, filename):
+        real_registry = odoo.registry(self.env.cr.dbname)
+        try:
+            super().run_yaml_scenario(filename)
+        finally:
+            self.registry = real_registry

@@ -1,0 +1,29 @@
+scenarios:
+  - name: "Membuat master data dengan data valid"
+    steps:
+      - step: "Buat record master data"
+        action: "create"
+        model: "ssi.test.master_data_mixin"
+        save_as: "my_record"
+        values:
+          name: "Test"
+          code: "TEST-001"
+          value: 20
+          note: "Test Create Data"
+
+      - step: "Assert data tersimpan dengan benar"
+        action: "assert"
+        target: "my_record"
+        asserts:
+          name:
+            type: "value"
+            expected: "Test"
+          code:
+            type: "value"
+            expected: "TEST-001"
+          value:
+            type: "value"
+            expected: 20
+          note:
+            type: "value"
+            expected: "Test Create Data"
