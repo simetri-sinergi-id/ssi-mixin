@@ -14,6 +14,15 @@ ssi-mixin
 
 [//]: # (addons)
 
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[ssi_decorator](ssi_decorator/) | 18.0.1.0.0 |  | SSI - Decorator
+[ssi_print_mixin](ssi_print_mixin/) | 18.0.1.0.2 |  | Print Policy Mixin
+[ssi_sequence_mixin](ssi_sequence_mixin/) | 18.0.1.1.0 |  | Sequence Mixin
+
+
 Unported addons
 ---------------
 addon | version | maintainers | summary
@@ -24,7 +33,6 @@ addon | version | maintainers | summary
 [ssi_currency_mixin](ssi_currency_mixin/) | 14.0.1.2.0 (unported) |  | Currency Mixin
 [ssi_custom_information_mixin](ssi_custom_information_mixin/) | 14.0.3.2.2 (unported) |  | Custom Information Mixin
 [ssi_data_requirement_mixin](ssi_data_requirement_mixin/) | 14.0.3.9.0 (unported) |  | Data Requirement Mixin
-[ssi_decorator](ssi_decorator/) | 14.0.1.5.1 (unported) |  | SSI - Decorator
 [ssi_duration_mixin](ssi_duration_mixin/) | 14.0.2.1.0 (unported) |  | Duration Mixin
 [ssi_field_date_callable_attribute](ssi_field_date_callable_attribute/) | 14.0.1.1.0 (unported) |  | Custom Date Field With Callable Attribute
 [ssi_localdict_mixin](ssi_localdict_mixin/) | 14.0.1.0.0 (unported) |  | Localdict Mixin
@@ -35,7 +43,6 @@ addon | version | maintainers | summary
 [ssi_partner_mixin](ssi_partner_mixin/) | 14.0.1.3.0 (unported) |  | Partner Mixin
 [ssi_policy_mixin](ssi_policy_mixin/) | 14.0.1.4.0 (unported) |  | Policy Mixin
 [ssi_pricelist_mixin](ssi_pricelist_mixin/) | 14.0.1.1.0 (unported) |  | Pricelist Mixin
-[ssi_print_mixin](ssi_print_mixin/) | 14.0.1.3.1 (unported) |  | Print Policy Mixin
 [ssi_product_line_account_mixin](ssi_product_line_account_mixin/) | 14.0.2.4.0 (unported) |  | Product Line Mixin - With Accounting
 [ssi_product_line_mixin](ssi_product_line_mixin/) | 14.0.1.3.0 (unported) |  | Product Line Mixin
 [ssi_product_line_price_mixin](ssi_product_line_price_mixin/) | 14.0.1.4.0 (unported) |  | Product Line Mixin - With Price
@@ -48,7 +55,6 @@ addon | version | maintainers | summary
 [ssi_res_users_m2o_configurator_mixin](ssi_res_users_m2o_configurator_mixin/) | 14.0.1.0.0 (unported) |  | res.users Many2one Configurator Mixin
 [ssi_salesperson_mixin](ssi_salesperson_mixin/) | 14.0.1.1.0 (unported) |  | Salesperson Mixin
 [ssi_schema_parser_mixin](ssi_schema_parser_mixin/) | 14.0.2.0.0 (unported) |  | Generic schema parser mixin with validation support
-[ssi_sequence_mixin](ssi_sequence_mixin/) | 14.0.2.0.2 (unported) |  | Sequence Mixin
 [ssi_source_document_mixin](ssi_source_document_mixin/) | 14.0.1.1.0 (unported) |  | Source Document Mixin
 [ssi_state_change_constrain_mixin](ssi_state_change_constrain_mixin/) | 14.0.1.7.2 (unported) |  | State Change Constrain Mixin
 [ssi_state_change_history_mixin](ssi_state_change_history_mixin/) | 14.0.1.2.0 (unported) |  | State Change History Mixin

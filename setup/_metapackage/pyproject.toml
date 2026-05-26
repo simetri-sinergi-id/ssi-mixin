@@ -1,0 +1,13 @@
+[project]
+name = "odoo-addons-simetri-sinergi-id-ssi-mixin"
+version = "18.0.20260526.0"
+dependencies = [
+    "odoo-addon-ssi_decorator==18.0.*",
+    "odoo-addon-ssi_print_mixin==18.0.*",
+    "odoo-addon-ssi_sequence_mixin==18.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 18.0",
+]
