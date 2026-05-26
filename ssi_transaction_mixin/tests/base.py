@@ -55,5 +55,9 @@ class BaseCase(TransactionCase):
         )
 
     def tearDown(self):
+        from .dummy_model import DummyTestTransaction
+
+        if "__annotations__" in DummyTestTransaction.__dict__:
+            del DummyTestTransaction.__annotations__
         self.loader.restore_registry()
         super().tearDown()

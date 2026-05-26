@@ -79,6 +79,10 @@ class BaseCase(YamlTransactionCase):
             )
 
     def tearDown(self):
+        from .dummy_model import DummyTestMasterData
+
+        if "__annotations__" in DummyTestMasterData.__dict__:
+            del DummyTestMasterData.__annotations__
         self.loader.restore_registry()
         super().tearDown()
 
